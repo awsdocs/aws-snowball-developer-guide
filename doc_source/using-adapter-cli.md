@@ -11,17 +11,6 @@ Following, you can find information about how to specify the Amazon S3 Adapter f
 **Note**  
 For information on installing and setting up the AWS CLI, including specifying what regions you want to make AWS CLI calls against, see [AWS Command Line Interface User Guide](http://docs.aws.amazon.com/cli/latest/userguide/)\.
 
-## Specifying the Adapter as the AWS CLI Endpoint<a name="using-adapter-cli-endpoint"></a>
-
-When you use the AWS CLI to issue a command to the AWS Snowball Edge appliance, you specify that the endpoint is the Amazon S3 Adapter for Snowball, as shown following\.
-
-```
-aws s3 ls --profile snowballEdge --endpoint http://192.0.2.0:8080
-```
-
-**Note**  
-For the Snowball Edge, the adapter runs on port 8080\.
-
 ## Supported AWS CLI Commands for Amazon S3<a name="using-adapter-cli-commands"></a>
 
 Following, you can find a description of the subset of AWS CLI commands and options for Amazon S3 that the AWS Snowball Edge appliance supports\. If a command or option isn't listed following, it's not supported\. You can declare some unsupported options, like `--sse` or `--storage-class`, along with a command\. However, these are ignored and have no impact on how data is imported\.
@@ -32,7 +21,7 @@ Following, you can find a description of the subset of AWS CLI commands and opti
 
   + `--quiet` \(boolean\) Operations performed by the specified command are not displayed\.
 
-  + `--include` \(string\) Don't exclude files or objects in the command that match the specified pattern\. For details, see [Use of Exclude and Include Filters](http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#use-of-exclude-and-include-filters) in the *AWS Command Line Interface Reference*\.
+  + `--include` \(string\) Don't exclude files or objects in the command that match the specified pattern\. For details, see [Use of Exclude and Include Filters](http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#use-of-exclude-and-include-filters) in the *AWS CLI Command Reference*\.
 
   + `--exclude` \(string\) Exclude all files or objects from the command that matches the specified pattern\.
 
@@ -66,7 +55,7 @@ You can only use this option to sync the contents between your on\-premises data
 
   + `--dryrun` \(boolean\) The operations that would be performed using the specified command are displayed without being run\.
 
-  + `--include` \(string\) Don't exclude files or objects in the command that match the specified pattern\. For details, see [Use of Exclude and Include Filters](http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#use-of-exclude-and-include-filters) in the *AWS Command Line Interface Reference*\.
+  + `--include` \(string\) Don't exclude files or objects in the command that match the specified pattern\. For details, see [Use of Exclude and Include Filters](http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#use-of-exclude-and-include-filters) in the *AWS CLI Command Reference*\.
 
   + `--exclude` \(string\) Exclude all files or objects from the command that matches the specified pattern\.
 
@@ -88,7 +77,7 @@ You can only use this option to sync the contents between your on\-premises data
 
   + `--quiet` \(boolean\) Operations performed by the specified command are not displayed\.
 
-  + `--include` \(string\) Don't exclude files or objects in the command that match the specified pattern\. For details, see [Use of Exclude and Include Filters](http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#use-of-exclude-and-include-filters) in the *AWS Command Line Interface Reference*\.
+  + `--include` \(string\) Don't exclude files or objects in the command that match the specified pattern\. For details, see [Use of Exclude and Include Filters](http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#use-of-exclude-and-include-filters) in the *AWS CLI Command Reference*\.
 
   + `--exclude` \(string\) Exclude all files or objects from the command that matches the specified pattern\.
 

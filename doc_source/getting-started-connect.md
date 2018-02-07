@@ -6,7 +6,7 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 
 # Connect to Your Local Network<a name="getting-started-connect"></a>
 
-In this procedure, you'll connect the AWS Snowball Edge appliance to your local network\. The appliance doesn't need to be connected to the internet\. Note that the appliance has three doors, a front, a back, and a top\.
+In this procedure, you connect the AWS Snowball Edge appliance to your local network\. The appliance doesn't need to be connected to the internet\. The appliance has three doors, a front, a back, and a top\.
 
 **To connect the appliance to your network**
 
@@ -25,6 +25,6 @@ In this procedure, you'll connect the AWS Snowball Edge appliance to your local 
 The appliance is now connected to your network\.
 
 **Important**  
-To prevent corrupting your data, don't disconnect the AWS Snowball Edge appliance or change its connection settings while its in use\.
+To prevent corrupting your data, don't disconnect the AWS Snowball Edge appliance or change its connection settings while it's in use\.
 
 **Next:** [Get Your Credentials and Tools](get-credentials.md) 

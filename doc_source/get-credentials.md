@@ -17,11 +17,11 @@ You can only get your credentials after the appliance has been delivered to you\
 
 1. In the AWS Snowball Management Console, search the table for the specific job to download the job manifest for, and then choose that job\.
 
-1. Expand that job's **Job status** pane, and select **View job details**
+1. Expand that job's **Job status** pane, and choose **View job details**\.
 
 1. In the details pane that appears, expand **Credentials** and then do the following:
 
-   + Make a note of the unlock code \(including the hyphens\), because you'll need to provide all 29 characters to transfer data\. 
+   + Make a note of the unlock code \(including the hyphens\), because you need to provide all 29 characters to transfer data\. 
 
    + Choose **Download manifest** in the dialog box and follow the instructions to download the job manifest file to your computer\. The name of your manifest file includes your **Job ID**\.
 **Note**  

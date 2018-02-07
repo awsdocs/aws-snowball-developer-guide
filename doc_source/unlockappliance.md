@@ -37,7 +37,7 @@ When you've entered the preceding command with the right variables for your job,
 
 **Job\-Type Specific Consideration**
 
-If you're unlocking a cluster, you'll need to specify the `-s` option for each of the secondary nodes\. For more information, see [Using the Snowball Client](using-client.md)\.
+If you're unlocking a cluster, you need to specify only the IP address for one of the cluster nodes\. For more information, see [Using the Snowball Client](using-client.md)\.
 
 Now you can begin using the AWS Snowball Edge appliance\. 
 

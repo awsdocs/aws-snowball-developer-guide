@@ -40,7 +40,7 @@ The guide you're reading now is for the Snowball Edge, which has 100 TB of stora
 
 The following limitations exist for creating AWS Snowball Edge appliance jobs:
 
-+ For security purposes, jobs must be completed within 360 days of the AWS Snowball Edge appliance being prepared\.
++ For security purposes, jobs must be completed within 120 days of the AWS Snowball Edge appliance being prepared\. If you need to keep one or more devices for longer than 120 days, contact AWS Support\.
 
 + Currently, AWS Snowball Edge appliance doesn't support server\-side encryption with AWS Key Management Service–managed keys \(SSE\-KMS\) or server\-side encryption with customer\-provided keys \(SSE\-C\)\. AWS Snowball Edge appliance does support server\-side encryption with Amazon S3–managed encryption keys \(SSE\-S3\)\. For more information on SSE\-S3, see [Protecting Data Using Server\-Side Encryption with Amazon S3\-Managed Encryption Keys \(SSE\-S3\)](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html) in the *Amazon Simple Storage Service Developer Guide\.*
 

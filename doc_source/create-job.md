@@ -28,7 +28,7 @@ The process for creating an AWS Snowball Edge appliance job in the AWS Snowball 
 
 1. On the **Give job details** page, provide the details for your job, including a name, region, and at least one bucket\.
 **Important**  
-With a AWS Snowball Edge appliance, all jobs can use the compute functionality in regions where Lambda is supported\. How the compute functionality is implemented in AWS Snowball jobs is specific to Snowball—the functionality can differ significantly from how Lambda works in the cloud\. Before creating your first compute job, we recommend that you familiarize yourself with how AWS Lambda powered by AWS Greengrass works\. For more information, see [Using AWS Lambda with an AWS Snowball Edge](using-lambda.md)\.
+With an AWS Snowball Edge appliance, all jobs can use the compute functionality in regions where Lambda is supported\. How the compute functionality is implemented in AWS Snowball jobs is specific to Snowball—the functionality can differ significantly from how Lambda works in the cloud\. Before creating your first compute job, we recommend that you familiarize yourself with how AWS Lambda powered by AWS Greengrass works\. For more information, see [Using AWS Lambda with an AWS Snowball Edge](using-lambda.md)\.
 
 1. Choose **Next**\.
 
@@ -55,7 +55,7 @@ The **Job created** status is the only status during which you can cancel a job\
 
 For more information on managing jobs from the AWS Snowball Management Console and tracking job status, see [Job Statuses](jobstatuses.md)\. Jobs can also be created and managed with the job management API\. For more information, see the [AWS Snowball API Reference](http://docs.aws.amazon.com/snowball/latest/api-reference/api-reference.html)\.
 
-After you created your first job, AWS processes the information you provided and prepares an AWS Snowball Edge appliance specifically for your job\. During the processing stage, if there's an issue with your job, we contact you by email\. Otherwise, we ship the appliance to the address you provided when you created the job\. Shipping can take a few days, but you can track the shipping status of the appliance we prepared for your job\. In your job's details, you'll see a link to the tracking webpage with your tracking number provided\.
+After you created your first job, AWS processes the information you provided and prepares an AWS Snowball Edge appliance specifically for your job\. During the processing stage, if there's an issue with your job, we contact you by email\. Otherwise, we ship the appliance to the address you provided when you created the job\. Shipping can take a few days, but you can track the shipping status of the appliance we prepared for your job\. In your job's details, you should see a link to the tracking webpage with your tracking number provided\.
 
 **Job\-Type Specific Consideration**
 

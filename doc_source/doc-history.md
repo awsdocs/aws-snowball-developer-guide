@@ -10,20 +10,21 @@ The following table describes documentation releases for the AWS Snowball Edge a
 
 + **API version: 1\.0** 
 
-+ **Latest documentation update:** December 18, 2017
++ **Latest documentation update: **February 5, 2017
 
 
 ****  
 
 | Change | Description | Date | 
 | --- | --- | --- | 
+| Major feature revision to the Snowball client, and cluster update | The new major feature revision for the Snowball client includes performance improvements, profiles, and support for the cluster update\. For more information, see [Using the Snowball Client](using-client.md)\. Clusters are now leaderless\. All nodes can read and write data to the cluster\. For more information, see [Using an AWS Snowball Edge Cluster](UsingCluster.md)\. | February 5, 2017 | 
 | New region supported | AWS Snowball is now supported in the EU \(Paris\) region\. For more information on shipping in this region, see [Shipping Considerations for AWS Snowball](shipping.md)\. | December 18, 2017 | 
-| Improved AWS CLI support for the Amazon S3 Adapter for Snowball | You can now use the `s3 sync` command with the Amazon S3 Adapter for Snowball to sync data between a Snowball Edge and your local computer\. For more information, see [Supported AWS CLI Commands for Amazon S3](using-adapter-cli.md#using-adapter-cli-commands)\. | November 10th, 2017 | 
-| Updated file interface file size support | The file interface can now support files up to 150 GB in size\. For more information, see [Using the File Interface for the AWS Snowball Edge](using-fileinterface.md)\. | October 4th 2017 | 
-| New region supported | AWS Snowball Edge is now supported in the Asia Pacific \(Tokyo\) region, with region specific shipping options\. For more information, see [Shipping Considerations for AWS Snowball](shipping.md)\. | September 19th, 2017 | 
-| New region supported | AWS Snowball Edge is now supported in the South America \(São Paulo\) region, with region specific shipping options\. For more information, see [Shipping Considerations for AWS Snowball](shipping.md)\. | August 8th, 2017 | 
-| Updated AWS Greengrass and Lambda functionality | Lambda functions running on AWS Snowball Edge devices can now be added, updated, removed, or replaced, once the devices are on\-premises\. In addition, AWS Snowball Edge devices can now be used as AWS Greengrass core devices\. For more information, see [Using AWS Lambda with an AWS Snowball Edge](using-lambda.md)\. | July 25th, 2017 | 
-| New region supported | AWS Snowball Edge is now supported in the Canada \(Central\) region, with region specific shipping options\. For more information, see [Shipping Considerations for AWS Snowball](shipping.md)\. | June 29th, 2017 | 
+| Improved AWS CLI support for the Amazon S3 Adapter for Snowball | You can now use the `s3 sync` command with the Amazon S3 Adapter for Snowball to sync data between a Snowball Edge and your local computer\. For more information, see [Supported AWS CLI Commands for Amazon S3](using-adapter-cli.md#using-adapter-cli-commands)\. | November 10, 2017 | 
+| Updated file interface file size support | The file interface can now support files up to 150 GB in size\. For more information, see [Using the File Interface for the AWS Snowball Edge](using-fileinterface.md)\. | October 4, 2017 | 
+| New region supported | AWS Snowball Edge is now supported in the Asia Pacific \(Tokyo\) region, with region\-specific shipping options\. For more information, see [Shipping Considerations for AWS Snowball](shipping.md)\. | September 19, 2017 | 
+| New region supported | AWS Snowball Edge is now supported in the South America \(São Paulo\) region, with region\-specific shipping options\. For more information, see [Shipping Considerations for AWS Snowball](shipping.md)\. | August 8, 2017 | 
+| Updated AWS Greengrass and Lambda functionality | Lambda functions running on AWS Snowball Edge devices can now be added, updated, removed, or replaced, once the devices are on\-premises\. In addition, AWS Snowball Edge devices can now be used as AWS Greengrass core devices\. For more information, see [Using AWS Lambda with an AWS Snowball Edge](using-lambda.md)\. | July 25, 2017 | 
+| New region supported | AWS Snowball Edge is now supported in the Canada \(Central\) region, with region\-specific shipping options\. For more information, see [Shipping Considerations for AWS Snowball](shipping.md)\. | June 29, 2017 | 
 | Updated file interface functionality | With the file interface, you can now choose the Network File System \(NFS\) clients that are allowed to access the file share on the Snowball Edge, in addition to accessing other support and troubleshooting features\. For more information, see [Using the File Interface for the AWS Snowball Edge](using-fileinterface.md)\. | June 21, 2017 | 
 | Updated cluster functionality | Clusters can now be created in groups of 5–10 AWS Snowball Edge appliances\. For more information, see [Using an AWS Snowball Edge Cluster](UsingCluster.md)\. | June 5, 2017 | 
 | Documentation update | Documentation navigation has been updated for clarity and consistency, and a regional limitations section has been added\. For more information, see [Regional Limitations for AWS Snowball](limits.md#region-limits)\. | May 8, 2017 | 

@@ -8,7 +8,7 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 
 Now you can use the AWS Snowball Edge appliance\. Regardless of your job type, keep the following information in mind while using the appliance:
 
-+ You can use the built\-in Amazon S3 Adapter for Snowball to read or write data to an appliance or cluster of appliances through the AWS Command Line Interface \(AWS CLI\), one of the AWS SDKs, or your own RESTful application\. For more information on the adapter, see [Using the Amazon S3 Adapter](using-adapter.md)\.
++ You can use the built\-in Amazon S3 Adapter for Snowball to read or write data to an appliance or cluster of appliances\. The adapter can work through the AWS Command Line Interface \(AWS CLI\), one of the AWS SDKs, or your own RESTful application\. For more information on the adapter, see [Using the Amazon S3 Adapter](using-adapter.md)\.
 
 + You can use the file interface to read or write data to an appliance or a cluster of appliances\. For more information, see [Using the File Interface for the AWS Snowball Edge](using-fileinterface.md)\.
 

@@ -63,7 +63,7 @@ When it arrives in a few days, you’ll connect the AWS Snowball Edge appliance 
 
 ## How Local Compute and Storage Works<a name="how-localcompute"></a>
 
-You can use the local compute and storage functionality of a AWS Snowball Edge appliance with all job types in regions that support Lambda\. The compute functionality is AWS Lambda powered by AWS Greengrass, where Python\-language AWS Lambda functions can be triggered by Amazon S3 PUT object actions on buckets specified when you created the job\. For more information, see [Local Compute and Storage Only Jobs](computetype.md)\.
+You can use the local compute and storage functionality of an AWS Snowball Edge appliance with all job types in regions that support Lambda\. The compute functionality is AWS Lambda powered by AWS Greengrass, where Python\-language AWS Lambda functions can be triggered by Amazon S3 PUT object actions on buckets specified when you created the job\. For more information, see [Local Compute and Storage Only Jobs](computetype.md)\.
 
 ### How Clustered Local Compute and Storage Works<a name="how-cluster"></a>
 
@@ -72,10 +72,8 @@ A special kind of job for local storage and compute only, the cluster job is for
 **Note**  
 As with standalone local storage and compute jobs, the data stored in a cluster can't be imported into Amazon S3 without ordering additional appliances as a part of separate import jobs\. Then you could transfer the data from the cluster to those appliances and import the data when you return the appliances for the import jobs\.
 
-Clusters have anywhere from 5 to 10 AWS Snowball Edge appliances, called nodes\. When you receive the nodes from your regional carrier, you'll need to choose one node as the leader node, and the other four as the secondary nodes\. This choice is up to you\. Once you've chosen, connect all the nodes to power and network, to obtain their IP addresses\.
+Clusters have anywhere from 5 to 10 AWS Snowball Edge appliances, called nodes\. When you receive the nodes from your regional carrier, connect all the nodes to power and network to obtain their IP addresses\. With these IP addresses, you unlock all the nodes of the cluster at once with a single unlock command, with the IP address of one of the nodes\. For more information, see [Using the Snowball Client](using-client.md)\.
 
-With these IP addresses, you'll unlock all the nodes of the cluster at once with a single unlock command\. You do this by specifying the leader\-node IP address with the `-i` option, and the IP addresses of each of the secondary\-nodes with the `-s` option\. For more information, see [Using the Snowball Client](using-client.md)\.
-
-You can write data to an unlocked cluster by using the Amazon S3 Adapter for Snowball or the NFS mount point through the leader node, and it will distribute the data amongst the other nodes\.
+You can write data to an unlocked cluster by using the Amazon S3 Adapter for Snowball or the NFS mount point through the leader node, and it distributes the data among the other nodes\.
 
 When you’re done with your cluster, ship all the nodes back to AWS\. Once we receive a returned cluster node, we perform a complete erasure of the Snowball\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.

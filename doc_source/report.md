@@ -6,7 +6,7 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 
 # Get Your Job Completion Report and Logs in the Console<a name="report"></a>
 
-Whenever data is imported into or exported out of Amazon S3, you'll get a downloadable PDF job report\. For import jobs, this report becomes available at the very end of the import process\. For export jobs, your job report typically becomes available for you while the AWS Snowball Edge appliance for your job part is being delivered to you\.
+Whenever data is imported into or exported out of Amazon S3, you get a downloadable PDF job report\. For import jobs, this report becomes available at the very end of the import process\. For export jobs, your job report typically becomes available for you while the AWS Snowball Edge appliance for your job part is being delivered to you\.
 
 The job report provides you insight into the state of your Amazon S3 data transfer\. The report includes details about your job or job part for your records\. The job report also includes a table that provides a high\-level overview of the total number of objects and bytes transferred between the appliance and Amazon S3\.
 

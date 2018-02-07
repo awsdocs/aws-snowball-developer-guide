@@ -13,9 +13,9 @@ Following, you can find information to help you troubleshoot problems with an AW
 + Objects transferred onto AWS Snowball Edge appliances have a maximum key length of 933 bytes\. Key names that include characters that take up more than 1 byte each still have a maximum key length of 933 bytes\. When determining key length, you include the file or object name and also its path or prefixes\. Thus, files with short file names within a heavily nested path can have keys longer than 933 bytes\. The bucket name is not factored into the path when determining the key length\. Some examples follow\.    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/troubleshooting.html)
 
-+ For security purposes, import and export jobs using an AWS Snowball Edge appliance must be completed within 360 days of the being prepared\. After 360 days, the appliance becomes locked to additional on\-premises data transfers\. If the appliance becomes locked during a data transfer, return it and create a new job to transfer the rest of your data\. If the AWS Snowball Edge appliance becomes locked during an import job, we can still transfer the existing data on the appliance into Amazon S3\.
++ For security purposes, import and export jobs using an AWS Snowball Edge appliance must be completed within 120 days of the being prepared\. If you need to keep one or more devices for longer than 120 days, contact AWS Support\. Otherwise, after 120 days, the appliance becomes locked to additional on\-premises data transfers\. If the appliance becomes locked during a data transfer, return it and create a new job to transfer the rest of your data\. If the AWS Snowball Edge appliance becomes locked during an import job, we can still transfer the existing data on the appliance into Amazon S3\.
 
-+ If you encounter unexpected errors using an AWS Snowball Edge appliance, we want to hear about it\. Make a copy of the relevant logs and include them along with a brief description of the issues that you encountered in a message to AWS Support\. For more information about logs, see [Commands for the Snowball Client](using-client.md#using-client-commands)\.
++ If you encounter unexpected errors using an AWS Snowball Edge appliance, we want to hear about it\. Make a copy of the relevant logs and include them along with a brief description of the issues that you encountered in a message to AWS Support\. For more information about logs, see [Commands for the Snowball Client](using-client-commands.md)\.
 
 ## Troubleshooting Connection Problems<a name="connection-troubleshooting"></a>
 
@@ -56,7 +56,7 @@ A file can fail export to a Microsoft Windows Server if it or a related folder i
 
 **Action to take**
 
-1. Make a list of the names that are causing the error\. You can find the names of the files and folders that failed export in your logs\. For more information, see [AWS Snowball Edge Appliance Logs](using-client.md#logs)\.
+1. Make a list of the names that are causing the error\. You can find the names of the files and folders that failed export in your logs\. For more information, see [AWS Snowball Edge Logs](using-client-commands.md#logs)\.
 
 1. Change the names of the objects in Amazon S3 that are causing the issue to remove or replace the unsupported characters\.
 

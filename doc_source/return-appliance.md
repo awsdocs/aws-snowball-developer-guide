@@ -6,7 +6,7 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 
 # Return the Snowball Edge<a name="return-appliance"></a>
 
-The prepaid shipping label on the E Ink display contains the correct address to return the AWS Snowball Edge appliance\. For information on how to return the appliance, see [Shipping Carriers](mailing-storage.md#carriers)\. The appliance will be delivered to an AWS sorting facility and forwarded to the AWS data center\. The carrier will automatically report back a tracking number for your job to the AWS Snowball Management Console\. You can access that tracking number, and also a link to the tracking website, by viewing the job's status details in the console, or by making calls to the job management API\.
+The prepaid shipping label on the E Ink display contains the correct address to return the AWS Snowball Edge appliance\. For information on how to return the appliance, see [Shipping Carriers](mailing-storage.md#carriers)\. The appliance is delivered to an AWS sorting facility and forwarded to the AWS data center\. The carrier automatically reports back a tracking number for your job to the AWS Snowball Management Console\. You can access that tracking number, and also a link to the tracking website, by viewing the job's status details in the console, or by making calls to the job management API\.
 
 **Important**  
 Unless personally instructed otherwise by AWS, never affix a separate shipping label to the appliance\. Always use the shipping label that is displayed on the E Ink display\.

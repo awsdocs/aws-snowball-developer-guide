@@ -31,11 +31,7 @@ Following is a table that shows how the devices differ from each other, physical
 
 | Snowball | Snowball Edge | 
 | --- | --- | 
-|  ![\[The Snowball is a large briefcase-sized device that
-                                        weighs less than 50 pounds and is used to transfer
-                                        data.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/Snowball-closed-600w.png)  |  ![\[The Snowball Edge is a large briefcase-sized device
-                                        that weighs less than 50 pounds and is used to transfer,
-                                        store, or compute data.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/SnowballEdgeAppliance.png)  | 
+|  ![\[The Snowball is a large briefcase-sized device that weighs less than 50 pounds and is used to transfer data.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/Snowball-closed-600w.png)  |  ![\[The Snowball Edge is a large briefcase-sized device that weighs less than 50 pounds and is used to transfer, store, or compute data.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/SnowballEdgeAppliance.png)  | 
 
 Each device has different storage capacities, as follows:
 
