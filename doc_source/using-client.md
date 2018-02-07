@@ -11,7 +11,7 @@ Following, you can find information about how to get and use the Snowball client
 When you read and write data to the AWS Snowball Edge appliance, you use the Amazon S3 Adapter for Snowball or the file interface\.
 
 **Note**  
-In January 2018, there was a feature update for clusters, making them leaderless\. The cluster update is backward\-compatible with older clusters\. However, if you're looking for documentation for the original Snowball client for Snowball Edge, see [Download and Install the Snowball Client](old-using-client.md#old-download-client)\.
+In January 2018, there was a feature update for clusters, making them leaderless\. The cluster update is backward\-compatible with older clusters\. However, if you're looking for documentation for the original Snowball client for Snowball Edge, see [Using the Snowball Client](old-using-client.md) in the Appendices\.
 
 ## Download and Install the Snowball Client<a name="download-client"></a>
 
