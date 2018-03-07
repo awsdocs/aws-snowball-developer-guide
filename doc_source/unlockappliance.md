@@ -6,7 +6,7 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 
 # Unlock the Snowball Edge<a name="unlockappliance"></a>
 
-To unlock the AWS Snowball Edge appliance, run the `snowballEdge unlock` command\. To run this command, the AWS Snowball Edge appliance that you use for your job must be onsite, plugged into power and network, and turned on\. In addition, the LCD display on the AWS Snowball Edge appliance's front must indicate that the appliance is ready for use\.
+To unlock the AWS Snowball Edge appliance, run the `snowballEdge unlock-device` command\. To run this command, the AWS Snowball Edge appliance that you use for your job must be onsite, plugged into power and network, and turned on\. In addition, the LCD display on the AWS Snowball Edge appliance's front must indicate that the appliance is ready for use\.
 
 **To unlock the appliance with the Snowball client**
 
@@ -18,17 +18,17 @@ To unlock the AWS Snowball Edge appliance, run the `snowballEdge unlock` command
 
 1. Find the IP address for the AWS Snowball Edge appliance on the AWS Snowball Edge appliance's LCD display, under the **Connections** tab\. Make a note of that IP address\.
 
-1. Run the `snowballEdge unlock` command to authenticate your access to the AWS Snowball Edge appliance with the AWS Snowball Edge appliance's IP address and your credentials, as follows:
+1. Run the `snowballEdge unlock-device` command to authenticate your access to the AWS Snowball Edge appliance with the AWS Snowball Edge appliance's endpoint and your credentials, as follows:
 
    ```
-   snowballEdge unlock -i [IP Address] -m [Path/to/manifest/file] -u [29
-                           character unlock code]
+   snowballEdge unlock-device --endpoint https://ip address --manifest-file Path/to/manifest/file --unlock-code
+    29 character unlock code
    ```
 
 Following is an example of the command to unlock the Snowball client\.
 
 ```
-snowballEdge unlock -i 192.0.2.0 -m /Downloads/JID2EXAMPLE-0c40-49a7-9f53-916aEXAMPLE81-manifest.bin  -u 12345-abcde-12345-ABCDE-12345
+snowballEdge unlock-device --endpoint https://192.0.2.0 --manifest-file /Downloads/JID2EXAMPLE-0c40-49a7-9f53-916aEXAMPLE81-manifest.bin  --unlock-code 12345-abcde-12345-ABCDE-12345
 ```
 
 In this example, the IP address for the appliance is `192.0.2.0`, the job manifest file that you downloaded is `JID2EXAMPLE-0c40-49a7-9f53-916aEXAMPLE81-manifest.bin`, and the 29\-character unlock code is `12345-abcde-12345-ABCDE-12345`\.

@@ -13,7 +13,7 @@ When you read and write data to the AWS Snowball Edge appliance, you use the Ama
 **Note**  
 In January 2018, there was a feature update for clusters, making them leaderless\. The cluster update is backward\-compatible with older clusters\. However, if you're looking for documentation for the original Snowball client for Snowball Edge, see [Using the Snowball Client](old-using-client.md) in the Appendices\.
 
-## Download and Install the Snowball Client<a name="download-client"></a>
+## Downloading and Installing the Snowball Client<a name="download-client"></a>
 
 You can download and install the Snowball client from the [AWS Snowball Tools Download](http://aws.amazon.com/snowball/tools) page\. On that page, you can find the installation package for your operating system and follow the instructions to install the Snowball client\. Running the Snowball client from a terminal in your workstation might require using a specific path, depending on your operating system:
 

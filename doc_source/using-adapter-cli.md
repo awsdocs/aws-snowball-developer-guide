@@ -36,10 +36,6 @@ Following, you can find a description of the subset of AWS CLI commands and opti
   + `--page-size` \(integer\) The number of results to return in each response to a list operation\. The default value is 1000 \(the maximum allowed\)\. Using a lower value might help if an operation times out\.
 
   + `--metadata` \(map\) A map of metadata to store with the objects in Amazon S3\. This map is applied to every object that is part of this request\. In a sync, this functionality means that files that haven't changed don't receive the new metadata\. When copying between two Amazon S3 locations, the `metadata-directive` argument defaults to `REPLACE` unless otherwise specified\.
-**Important**  
-Syncing from one directory to another directory on the same Snowball Edge isn't supported\.   
-Syncing from one AWS Snowball device to another AWS Snowball device isn't supported\.  
-You can only use this option to sync the contents between your on\-premises data storage and a Snowball Edge\.
 
 + [ls](http://docs.aws.amazon.com/cli/latest/reference/s3/ls.html) Lists objects on the AWS Snowball Edge appliance\. The following are options for this command:
 

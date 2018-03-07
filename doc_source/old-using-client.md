@@ -11,7 +11,7 @@ In January 2018, there was a feature update for clusters, making them leaderless
 
 Following, you can find information about how to get and use the Snowball client with your AWS Snowball Edge appliance\. The Snowball client is a standalone terminal application that you run on your local server to unlock the appliance and get credentials, logs, and status information\. You can also use the client for administrative tasks for a cluster\. When you read and write data to the AWS Snowball Edge appliance, you use the Amazon S3 Adapter for Snowball or the file interface\.
 
-## Download and Install the Snowball Client<a name="old-download-client"></a>
+## Downloading and Installing the Snowball Client<a name="old-download-client"></a>
 
 You can download and install the Snowball client from the [AWS Snowball Tools Download](http://aws.amazon.com/snowball/tools) page\. When you've reached that page, find the installation package for your operating system and follow the instructions to install the Snowball client\. Running the Snowball client from a terminal in your workstation might require using a specific path, depending on your operating system:
 
@@ -125,7 +125,7 @@ Total Size: 82 TB
 Free Space: 74 TB
 ```
 
-### Getting AWS Lambda Powered by AWS Greengrass And File Interface Logs<a name="old-client-logs"></a>
+### Getting AWS Lambda Powered by AWS Greengrass and File Interface Logs<a name="old-client-logs"></a>
 
 The `logs` command saves a copy of the Lambda and file interface logs to the specified path on your server in an archive format\. You can specify the path with the `-o` option\.
 

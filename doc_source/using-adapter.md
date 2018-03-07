@@ -59,7 +59,7 @@ If you use the HTTPS endpoint of `8443`, your data is securely transferred from 
 
 1. From a terminal on your network, make sure you can ping the Snowball Edge\.
 
-1. Run the `snowballEdge get-certificate` command in your terminal\. For more information on this command, see [Getting your Certificate for Transferring Data](using-client-commands.md#snowball-edge-certificates-cli)\.
+1. Run the `snowballEdge get-certificate` command in your terminal\. For more information on this command, see [Getting Your Certificate for Transferring Data](using-client-commands.md#snowball-edge-certificates-cli)\.
 
 1. Save the output of the `snowballEdge get-certificate` command to a file, for example `ca-bundle.pem`\.
 

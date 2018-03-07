@@ -10,6 +10,7 @@ Following, you can find information about how shipping is handled for an AWS Sno
 
 
 + [Preparing an AWS Snowball Edge for Shipping](#appliance-shipping)
++ [Region\-Based Shipping Restrictions](#shipwithinregion)
 + [Shipping an AWS Snowball Edge](mailing-storage.md)
 
 **Note**  
@@ -32,3 +33,18 @@ If you've powered off and unplugged the AWS Snowball Edge appliance, and your sh
 1. Close the three doors on the back, the top, and the front of the AWS Snowball Edge appliance, pressing in on each one at a time until you hear and feel them click\.
 
 You don't need to pack the AWS Snowball Edge appliance in a container, because it is its own physically rugged shipping container\. The E Ink display on the top of the AWS Snowball Edge appliance changes to your return shipping label when the AWS Snowball Edge appliance is turned off\.
+
+## Region\-Based Shipping Restrictions<a name="shipwithinregion"></a>
+
+Before you create a job, you should sign in to the console from the AWS Region that your Amazon S3 or Amazon Glacier data is housed in\. A few shipping restrictions apply, as follows:
+
++ For data transfers in US regions, we don't ship AWS Snowball Edge appliances outside of the United States\.
+
++ We don't ship AWS Snowball Edge appliances between non\-US regions—for example, from EU \(Ireland\) to EU \(Frankfurt\), or from Asia Pacific \(Mumbai\) to Asia Pacific \(Sydney\)\.
+
++ For data transfers in Asia Pacific \(Sydney\), we only ship AWS Snowball Edge appliances within Australia\.
+
++ For data transfers in the EU regions, we only ship AWS Snowball Edge appliances to the EU member countries listed following: Austria, Belgium, Bulgaria, Croatia, Republic of Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden, and the UK\.
+
+**Note**  
+AWS doesn't ship AWS Snowball Edge appliances to post office boxes\.

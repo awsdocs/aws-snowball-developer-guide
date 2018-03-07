@@ -89,21 +89,6 @@ In Japan, Schenker\-Seino handles your pickups\. When you are ready to return yo
 
 + The Snowball Edge is delivered to an AWS sorting facility and forwarded to the AWS data center\. Schenker\-Seino automatically reports back a tracking number for your job\.
 
-### Region\-Based Shipping Restrictions<a name="shipwithinregion"></a>
-
-Before you create a job, you should sign in to the console from the AWS Region that your Amazon S3 or Amazon Glacier data is housed in\. A few shipping restrictions apply, as follows:
-
-+ For data transfers in US regions, we don't ship AWS Snowball Edge appliances outside of the United States\.
-
-+ We don't ship AWS Snowball Edge appliances between non\-US regions—for example, from EU \(Ireland\) to EU \(Frankfurt\), or from Asia Pacific \(Mumbai\) to Asia Pacific \(Sydney\)\.
-
-+ For data transfers in Asia Pacific \(Sydney\), we only ship AWS Snowball Edge appliances within Australia\.
-
-+ For data transfers in the EU regions, we only ship AWS Snowball Edge appliances to the EU member countries listed following: Austria, Belgium, Bulgaria, Croatia, Republic of Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden, and the UK\.
-
-**Note**  
-AWS doesn't ship AWS Snowball Edge appliances to post office boxes\.
-
 ### Shipping Speeds<a name="shippingspeeds"></a>
 
 Each country has different shipping speeds available\. These shipping speeds are based on the country in which you're shipping an AWS Snowball Edge appliance\. Shipping speeds are as follows:
