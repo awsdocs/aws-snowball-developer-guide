@@ -21,7 +21,9 @@ The AWS Snowball appliances are the property of AWS\. Tampering with an applianc
 
 We perform the following security steps:
 
-+ Object metadata is not persisted\. The only metadata that remains the same is `filename` and `filesize`\. All other metadata is set as in the following example: `-rw-rw-r-- 1 root root [filesize] Dec 31 1969 [path/filename]`
++ When transfering data with the Amazon S3 Adapter for Snowball, object metadata is not persisted\. The only metadata that remains the same is `filename` and `filesize`\. All other metadata is set as in the following example: `-rw-rw-r-- 1 root root [filesize] Dec 31 1969 [path/filename]`
+
++ When transferring data with the file interface, object metadata is persisted\.
 
 + When an appliance arrives at AWS, we inspect it for any signs of tampering and to verify that no changes were detected by the Trusted Platform Module \(TPM\)\. AWS Snowball uses multiple layers of security designed to protect your data, including tamper\-resistant enclosures, 256\-bit encryption, and an industry\-standard TPM designed to provide both security and full chain of custody for your data\. 
 

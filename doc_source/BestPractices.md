@@ -6,7 +6,7 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 
 # Best Practices for the AWS Snowball Edge Appliance<a name="BestPractices"></a>
 
-To help get the maximum benefit from and satisfaction with your AWS Snowball Edge appliance, we recommend that you follow these the following best practices\.
+To help get the maximum benefit from and satisfaction with your AWS Snowball Edge appliance, we recommend that you follow these best practices\.
 
 **Security**
 
