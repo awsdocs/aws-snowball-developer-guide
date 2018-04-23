@@ -25,9 +25,7 @@ You can download the report and the logs from the AWS Snowball Management Consol
 1. Choose the log you want to download\.
 
 The following list describes the possible values for the report:
-
 + **Completed** – The transfer was completed successfully\. You can find more detailed information in the success log\.
-
 + **Completed with errors** – Some or all of your data was not transferred\. You can find more detailed information in the failure log\.
 
 **Next:** [Where Do I Go from Here?](where-to.md) 

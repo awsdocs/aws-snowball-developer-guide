@@ -8,20 +8,16 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 
 Following, you can find information about administrative tasks to operate a healthy cluster of Snowball Edge devices\. The primary administrative tasks are covered in the following topics\.
 
-
+**Topics**
 + [Reading and Writing Data to a Cluster](#transfer-to-cluster)
 + [Reconnecting an Unavailable Cluster Node](#reconnectingclusternode)
 + [Removing an Unhealthy Node from a Cluster](#remove-node)
 + [Adding or Replacing a Node in a Cluster](#replacement)
 
 Most administrative tasks require that you use the Snowball client and its commands that perform the following actions:
-
 + [Unlocking AWS Snowball Edge Devices](using-client-commands.md#setting-up-client)
-
 + [Getting Device Status](using-client-commands.md#client-status) of a cluster
-
 + [Removing a Node from a Cluster](using-client-commands.md#client-cluster-remove)
-
 + [Adding a Node to a Cluster](using-client-commands.md#client-cluster-add)
 
 ## Reading and Writing Data to a Cluster<a name="transfer-to-cluster"></a>

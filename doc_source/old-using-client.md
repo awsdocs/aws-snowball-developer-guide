@@ -14,11 +14,8 @@ Following, you can find information about how to get and use the Snowball client
 ## Downloading and Installing the Snowball Client<a name="old-download-client"></a>
 
 You can download and install the Snowball client from the [AWS Snowball Tools Download](http://aws.amazon.com/snowball/tools) page\. When you've reached that page, find the installation package for your operating system and follow the instructions to install the Snowball client\. Running the Snowball client from a terminal in your workstation might require using a specific path, depending on your operating system:
-
 + **Microsoft Windows** – When the client has been installed, you can run it from any directory without any additional preparation\.
-
 + **Linux** – The Snowball client must be run from the \~/snowball\-client\-linux\-*build\_number*/bin/ directory\.
-
 + **Mac** – The **install\.sh** script creates symbolic links \(symlinks\) in addition to copying folders from the Snowball client \.tar file to the /usr/local/bin/snowball directory\. If you run this script, you can then run the Snowball client from any directory, as long as the /usr/local/bin is a path in your bash\_profile\. You can verify your path with the `echo $PATH` command\.
 
 ## Commands for the Snowball Client<a name="old-using-client-commands"></a>

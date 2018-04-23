@@ -9,9 +9,7 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 Following, you can find an overview of the Amazon S3 Adapter for Snowball, which allows you to programmatically transfer data to and from the AWS Snowball Edge appliance using Amazon S3 REST API actions\. This Amazon S3 REST API support is limited to a subset of actions\. You can use this subset of actions with one of the AWS SDKs to transfer data programmatically\. You can also use the subset of supported AWS Command Line Interface \(AWS CLI\) commands for Amazon S3 to transfer data programmatically\.
 
 If your solution uses the AWS SDK for Java version 1\.11\.0 or newer, you must use the following `S3ClientOptions`:
-
 + `disableChunkedEncoding()` – Indicates that chunked encoding is not supported with the adapter\.
-
 + `setPathStyleAccess(true)` – Configures the adapter to use path\-style access for all requests\.
 
 For more information, see [Class S3ClientOptions\.Builder](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/S3ClientOptions.Builder.html) in the Amazon AppStream SDK for Java\.

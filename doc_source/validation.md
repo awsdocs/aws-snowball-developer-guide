@@ -8,7 +8,7 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 
 Following, you'll find information on how Snowball Edge validates data transfers, and the manual steps you can take to ensure data integrity during and after a job\.
 
-
+**Topics**
 + [Checksum Validation of Transferred Data](#snowball-edge-checksums)
 + [Common Validation Errors](#validation-error-causes)
 + [Manual Data Validation for Snowball Edge During Transfer](#manual-validation-device)
@@ -25,23 +25,15 @@ When these checksums don't match, we won't import the associated data into Amazo
 ## Common Validation Errors<a name="validation-error-causes"></a>
 
 Validations errors can occur\. Whenever there's a validation error, the corresponding data \(a file or a part of a large file\) is not written to the destination\. The common causes for validation errors are as follows:
-
 + Attempting to copy symbolic links\.
-
 + Attempting to copy files that are actively being modified\. This will not result in a validation error, but it will cause the checksums to not match at the end of the transfer\.
-
 + Attempting to copy files larger than 5 TB in size\.
-
 + Attempting to copy part sizes larger than 5 GB in size\.
-
 + Attempting to copy files to a Snowball Edge that is already at full data storage capacity\.
-
 + Attempting to copy files to a Snowball Edge that doesn't follow the [Object Key Naming Guidelines](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-key-guidelines) for Amazon S3\.
 
 Whenever any one of these validation errors occurs, it is logged\. You can take steps to manually identify what files failed validation and why as described in the following sections:
-
 + [Manual Data Validation for Snowball Edge During Transfer](#manual-validation-device) – Outlines how to check for failed files while you still have the Snowball Edge on\-premises\.
-
 + [Manual Data Validation for Snowball Edge After Import into Amazon S3](#manual-validation-s3) – Outlines how to check for failed files after your import job into Amazon S3 has ended\.
 
 ## Manual Data Validation for Snowball Edge During Transfer<a name="manual-validation-device"></a>
@@ -49,11 +41,8 @@ Whenever any one of these validation errors occurs, it is logged\. You can take 
 You can use manual validation to check that your data was successfully transferred to a Snowball Edge\. You can also use manual validation if you receive an error after attempting to transfer data\. Use the following section to find how to manually validate data on a Snowball Edge\.
 
 When you run the Amazon S3 Adapter for Snowball to copy data with the AWS CLI, logs are generated\. One option for manual validation is to check these logs\. These are saved in the following locations, depending on your file system:
-
 + **Windows** – `C:/Users/<username>/.aws/snowball/logs/snowball_adapter_<year_month_date_hour>`
-
 + **Linux** – `/home/.aws/snowball/logs/snowball_adapter_<year_month_date_hour>`
-
 + **Mac** – `/Users/<username>/.aws/snowball/logs/snowball_adapter_<year_month_date_hour>`
 
 ## Manual Data Validation for Snowball Edge After Import into Amazon S3<a name="manual-validation-s3"></a>

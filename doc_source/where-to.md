@@ -7,11 +7,8 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 # Where Do I Go from Here?<a name="where-to"></a>
 
 Now that you've read through one of the previous getting started sections and begun your first job, you can learn more about using the AWS Snowball Edge appliance tools and interfaces in detail from the following topics:
-
 + [Using an AWS Snowball Edge](using-appliance.md)
-
 + [Using the Snowball Client](using-client.md)
-
 + [Using the Amazon S3 Adapter](using-adapter.md)
 
 We also recommend that you learn about the job management API for AWS Snowball\. For more information, see [AWS Snowball API Reference](http://docs.aws.amazon.com/snowball/latest/api-reference/api-reference.html)\.

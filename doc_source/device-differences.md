@@ -58,49 +58,33 @@ The following outlines the different tools used with the AWS Snowball devices, a
 ### Snowball Tools<a name="tool-differences-snowball"></a>
 
 **Snowball client with Snowball**
-
 + Must be downloaded from the [AWS Snowball Tools Download](http://aws.amazon.com/snowball/tools) page and installed on a powerful workstation that you own\.
-
 + Can transfer data to or from the Snowball\. For more information, see [Using the Snowball Client](http://docs.aws.amazon.com/snowball/latest/ug/using-client.html)\.
-
 + Encrypts data on your powerful workstation before the data is transferred to the Snowball\.
 
 **Amazon S3 Adapter for Snowball with Snowball**
-
 + Must be downloaded from the [AWS Snowball Tools Download](http://aws.amazon.com/snowball/tools) page and installed on a powerful workstation that you own\.
-
 + Can transfer data to or from the Snowball\. For more information, see [Transferring Data with the Amazon S3 Adapter for Snowball](http://docs.aws.amazon.com/snowball/latest/ug/snowball-transfer-adapter.html)\.
-
 + Encrypts data on your powerful workstation before the data is transferred to the Snowball\.
 
 ### Snowball Edge Tools<a name="tool-differences-edge"></a>
 
 **Snowball client with Snowball Edge**
-
 + Must be downloaded from the [AWS Snowball Tools Download](http://aws.amazon.com/snowball/tools) page and installed on a computer that you own\.
-
 + Must be used to unlock the Snowball Edge or the cluster of Snowball Edge devices\. For more information, see [Using the Snowball Client](using-client.md)\.
-
 + Can't be used to transfer data\.
 
 **Amazon S3 Adapter for Snowball with Snowball Edge**
-
 + Is already installed on the Snowball Edge by default\. It does not need to be downloaded or installed\.
-
 + Can transfer data to or from the Snowball Edge\. For more information, see [Using the Amazon S3 Adapter](using-adapter.md)\.
-
 + Encrypts data on the Snowball Edge while the data is transferred to the device\.
 
 **File interface with Snowball Edge**
-
 + Is already installed on the Snowball Edge by default\. It does not need to be downloaded or installed\.
-
 + Can transfer data by dragging and dropping files up to 150 GB in size from your computer to the buckets on the Snowball Edge through an easy\-to\-configure NFS mount point\. For more information, see [Using the File Interface for the AWS Snowball Edge](using-fileinterface.md)\.
-
 + Encrypts data on the Snowball Edge while the data is transferred to the device\.
 
 **AWS Greengrass console with Snowball Edge**
-
 + With a Snowball Edge, you can use the AWS Greengrass console to update your AWS Greengrass group and the core running on the Snowball Edge\.
 
 ### Differences Between Items Provided for the Snowball and Snowball Edge<a name="network-differences"></a>
@@ -116,15 +100,11 @@ The following outlines the differences between the network adapters, cables used
 | QSFP |   | ✓ | No cables or optics provided | 
 
 For more information on the network interfaces, cables, and connectors that work with the different device types, see the following topics:
-
 + [Supported Network Hardware](http://docs.aws.amazon.com/snowball/latest/ug/specifications.html#network-hardware) in the *AWS Snowball User Guide\.*
-
 + [Supported Network Hardware](specifications.md#network-hardware) in this guide\.
 
 ## AWS Snowball Other Differences<a name="other-differences"></a>
 
 For other differences, including FAQs and pricing information, see:
-
 + [https://aws.amazon.com/snowball](https://aws.amazon.com/snowball)
-
 + [https://aws.amazon.com/snowball-edge](https://aws.amazon.com/snowball-edge)

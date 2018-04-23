@@ -10,11 +10,8 @@ A job in AWS Snowball is a discrete unit of work, defined when you create it in 
 
 **Important**  
 With an AWS Snowball Edge appliance, all jobs can use the compute functionality in regions where AWS Lambda is supported\. How the compute functionality is implemented in AWS Snowball jobs is specific to Snowball—the functionality can differ significantly from how Lambda works in the cloud\. Before creating your first compute job, we recommend that you familiarize yourself with how AWS Lambda powered by AWS Greengrass works\. For more information, see [Using AWS Lambda with an AWS Snowball Edge](using-lambda.md)\.
-
 + [Import Jobs into Amazon S3](importtype.md) – The transfer of 100 TB or less of your local data copied onto a single appliance, and then moved into Amazon S3\. For import jobs, AWS Snowball Edge appliances and jobs have a one\-to\-one relationship\. Each job has exactly one appliance associated with it\. If you need to import more data, you can create new import jobs or clone existing ones\. When you return an appliance of this job type, that data on it is imported into Amazon S3\.
-
 + [Export Jobs from Amazon S3](exporttype.md) – The transfer of any amount of data \(located in Amazon S3\), copied onto any number of AWS Snowball Edge appliances, and then moved one AWS Snowball Edge appliance at a time into your on\-premises data destination\. When you create an export job, it's split into job parts\. Each job part is no more than 100 TB in size, and each job part has exactly one AWS Snowball Edge appliance associated with it\. When you return an appliance of this job type, it's erased\.
-
 + [Local Compute and Storage Only Jobs](computetype.md) – These jobs involve one AWS Snowball Edge appliance, or multiple appliances used in a cluster\. These jobs don't start with data in their buckets like an export job, and can't have data imported into Amazon S3 at the end like an import job\. When you return an appliance of this job type, it's erased\. With this job type, you also have the option of creating a cluster of appliances\. A cluster improves local storage durability and you can scale up or down with local storage capacity\.
 
   In regions where Lambda is not available, this job type will be called *Local storage only*\.

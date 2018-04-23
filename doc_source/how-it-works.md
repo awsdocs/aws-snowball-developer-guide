@@ -21,11 +21,8 @@ There are three job types you can use with an AWS Snowball Edge appliance\.  Alt
 1. **Receive the appliance** – A few days later, your region's carrier delivers the AWS Snowball Edge appliance to the address that you provided when you created the job, and the status of your job changes to **Delivered to you**\. When it arrives, you’ll notice that it didn’t arrive in a box, because the appliance is its own shipping container\.
 
 1. **Get your credentials and download the Snowball client** – Get ready to start transferring data by getting your credentials, your job manifest, and the manifest's unlock code, and then downloading the Snowball client\.
-
    + The Snowball client is the tool that you’ll use to manage the flow of data from the appliance to your on\-premises data destination\. You can download the Snowball client from the [AWS Snowball Tools Download](http://aws.amazon.com/snowball/tools) page\.
-
    + The manifest is used to authenticate your access to the appliance, and it is encrypted so that only the unlock code can decrypt it\. You can get the manifest from the console or with the job management API when the appliance is on\-premises at your location\.
-
    + The unlock code is a 29\-character code used to decrypt the manifest\. You can get the unlock code from the console or with the job management API\. We recommend that you keep the unlock code saved somewhere separate from the manifest to prevent unauthorized access to the appliance while it’s at your facility\.
 
 1. **Position the hardware** – Move the appliance into your data center and open it following the instructions on the case\. Connect the appliance to power and your local network\.

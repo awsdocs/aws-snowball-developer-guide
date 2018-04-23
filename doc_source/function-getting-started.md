@@ -51,9 +51,7 @@ Now you can create a job for a Snowball Edge and use AWS Lambda powered by AWS G
 ## Configuring AWS Greengrass with a Snowball Edge<a name="gg-config"></a>
 
 When you create a compute job for a Snowball Edge, the service automatically configures the following AWS Greengrass elements:
-
 + **AWS Greengrass Core Software** – The AWS Greengrass distributable has been pre\-installed on the Snowball Edge\.
-
 + **AWS Greengrass Group** – When you create a compute job, an AWS Greengrass group named `JobID_group` is created and provisioned\. The core of this group is named `JobID_core`, and it has a device in it named `JobID_s3adapter`\. The Amazon S3 Adapter for Snowball is registered as an IoT device in your AWS Greengrass group\. This registration is because the adapter sends MQTT messages for every Amazon S3 PUT object action for the buckets on the Snowball Edge\.
 
 If you have other configuration changes that you want to make for the AWS Greengrass group associated with a Snowball Edge, you can make them after you unlock the device and connect it to the internet\.

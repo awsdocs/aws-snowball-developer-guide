@@ -12,7 +12,7 @@ When transferring petabytes of data, we recommend that you plan and calibrate yo
 
 To plan your petabyte\-scale data transfer, we recommend the following steps:
 
-
+**Topics**
 + [Step 1: Understand What You're Moving to the Cloud](#understand-the-transfer)
 + [Step 2: Calculate Your Target Transfer Rate](#calculate-rate)
 + [Step 3: Determine How Many AWS Snowball Edge Appliances You Need](#number-of-snowballs)
@@ -49,11 +49,8 @@ Now that you know how many AWS Snowball Edge appliances you need, you can create
 ### Step 5: Separate Your Data into Transfer Segments<a name="prepare-segments"></a>
 
 As a best practice for large data transfers involving multiple jobs, we recommend that you separate your data into a number of smaller, manageable data transfer segments\. If you separate the data this way, you can transfer each segment one at a time, or multiple segments in parallel\. When planning your segments, make sure that all the sizes of the data for each segment combined fit on the AWS Snowball Edge appliance for this job\. When segmenting your data transfer, take care not to copy the same files or directories multiple times\. Some examples of separating your transfer into segments are as follows:
-
 + You can make 9 segments of 10 TB each for an AWS Snowball Edge appliance\.
-
 + For large files, each file can be an individual segment, keeping in mind the 5 TB size limit for objects in Amazon S3\.
-
 + Each segment can be a different size, and each individual segment can be made of the same kind of data—for example, small files in one segment, compressed archives in another, large files in another segment, and so on\. This approach helps you determine your average transfer rate for different types of files\.
 
 **Note**  
@@ -72,9 +69,7 @@ While the calibration is being performed, monitor the information that comes fro
 Continue adding additional parallel copy operations during calibration until you see diminishing returns in the sum of the transfer speed of all instances currently transferring data\. At this point, you can end the last active instance and make a note of your new target transfer rate\.
 
 Sometimes the fastest way to transfer data with the AWS Snowball Edge appliance is to transfer data in parallel in one of the following scenarios:
-
 + Using multiple instances of the Amazon S3 Adapter for Snowball on a single AWS Snowball Edge appliance\.
-
 + Using multiple instances of the Amazon S3 Adapter for Snowball on multiple AWS Snowball Edge appliances\.
 
 When you complete these steps, you should know how quickly you can transfer data to an AWS Snowball Edge appliance\.

@@ -45,6 +45,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Using the Snowball Client](using-client.md)
       + [Commands for the Snowball Client](using-client-commands.md)
    + [Using the Amazon S3 Adapter](using-adapter.md)
+      + [Batching Small Files](batching-small-files.md)
       + [Supported AWS CLI Commands](using-adapter-cli.md)
       + [Supported REST API Actions](using-adapter-supported-api.md)
    + [Using the File Interface for the AWS Snowball Edge](using-fileinterface.md)

@@ -8,6 +8,6 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 
 Following, you can find additional information for Snowball Edge, including a discussion of features that are still supported but not necessarily recommended\.
 
-
+**Topics**
 + [Using the Snowball Client](old-using-client.md)
 + [Clustering Overview](old-clusters.md)

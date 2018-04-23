@@ -8,7 +8,7 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 
 Regardless of the type of job you're creating for an AWS Snowball Edge appliance, there's a set of common procedures in the AWS Snowball Management Console\. These are procedures for creating a job, monitoring the status of your job, setting up the appliance, unlocking the appliance, transferring data, and returning the appliance\. Following, you can walk through these procedures\. Whenever there is a job\-type specific consideration, we call out that consideration in a note\.
 
-
+**Topics**
 + [Create Your First Job](create-job.md)
 + [Receive the Snowball Edge](receive-appliance.md)
 + [Connect to Your Local Network](getting-started-connect.md)

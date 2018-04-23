@@ -13,7 +13,7 @@ An *account administrator* \(or administrator user\) is a user with administrato
 
 When granting permissions, you decide who is getting the permissions, the resources they get permissions for, and the specific actions that you want to allow on those resources\.
 
-
+**Topics**
 + [Resources and Operations](#access-control-resources)
 + [Understanding Resource Ownership](#access-control-owner)
 + [Managing Access to Resources in the AWS Cloud](#access-control-manage-access-intro)
@@ -36,11 +36,8 @@ AWS Snowball provides a set of operations to create and manage jobs\. For a list
 ## Understanding Resource Ownership<a name="access-control-owner"></a>
 
 The AWS account owns the resources that are created in the account, regardless of who created the resources\. Specifically, the resource owner is the AWS account of the [principal entity](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html) \(that is, the root account, an IAM user, or an IAM role\) that authenticates the resource creation request\. The following examples illustrate how this works:
-
 + If you use the root account credentials of your AWS account to create a file system, your AWS account is the owner of the resource \(in AWS Snowball, the resource is the job\)\.
-
 + If you create an IAM user in your AWS account and grant permissions to create a job to that user, the user can create a job\. However, your AWS account, to which the user belongs, owns the job resource\.
-
 + If you create an IAM role in your AWS account with permissions to create a job, anyone who can assume the role can create a job\. Your AWS account, to which the role belongs, owns the job resource\. 
 
 ## Managing Access to Resources in the AWS Cloud<a name="access-control-manage-access-intro"></a>
@@ -52,16 +49,14 @@ This section discusses using IAM in the context of AWS Snowball\. It doesn't pro
 
 Policies attached to an IAM identity are referred to as *identity\-based* policies \(IAM polices\) and policies attached to a resource are referred to as *resource\-based* policies\. AWS Snowball supports only identity\-based policies \(IAM policies\)\. 
 
-
+**Topics**
 + [Identity\-Based Policies \(IAM Policies\)](#access-control-manage-access-intro-iam-policies)
 + [Resource\-Based Policies](#access-control-manage-access-intro-resource-policies)
 
 ### Identity\-Based Policies \(IAM Policies\)<a name="access-control-manage-access-intro-iam-policies"></a>
 
 You can attach policies to IAM identities\. For example, you can do the following:
-
 + **Attach a permissions policy to a user or a group in your account** – To grant a user permissions to create a job, you can attach a permissions policy to a user or group that the user belongs to\.
-
 + **Attach a permissions policy to a role \(grant cross\-account permissions\)** – You can attach an identity\-based permissions policy to an IAM role to grant cross\-account permissions\. For example, the administrator in Account A can create a role to grant cross\-account permissions to another AWS account \(for example, Account B\) or an AWS service as follows:
 
   1. Account A administrator creates an IAM role and attaches a permissions policy to the role that grants permissions on resources in Account A\.
@@ -106,13 +101,9 @@ Other services, such as Amazon S3, also support resource\-based permissions poli
 For each job \(see [Resources and Operations](#access-control-resources)\), the service defines a set of API operations \(see [AWS Snowball API Reference](http://docs.aws.amazon.com/snowball/latest/api-reference/api-reference.html)\) to create and manage said job\. To grant permissions for these API operations, AWS Snowball defines a set of actions that you can specify in a policy\. For example, for a job, the following actions are defined: `CreateJob`, `CancelJob`, and `DescribeJob`\. Note that, performing an API operation can require permissions for more than one action\.
 
 The following are the most basic policy elements:
-
 + **Resource** – In a policy, you use an Amazon Resource Name \(ARN\) to identify the resource to which the policy applies\. For more information, see [Resources and Operations](#access-control-resources)\.
-
 + **Action** – You use action keywords to identify resource operations that you want to allow or deny\. For example, depending on the specified `Effect`, `snowball:*` either allows or denies the user permissions to perform all operations\.
-
 + **Effect** – You specify the effect when the user requests the specific action—this can be either allow or deny\. If you don't explicitly grant access to \(allow\) a resource, access is implicitly denied\. You can also explicitly deny access to a resource, which you might do to make sure that a user cannot access it, even if a different policy grants access\.
-
 + **Principal** – In identity\-based policies \(IAM policies\), the user that the policy is attached to is the implicit principal\. For resource\-based policies, you specify the user, account, service, or other entity that you want to receive permissions \(applies to resource\-based policies only\)\. AWS Snowball doesn't support resource\-based policies\.
 
 To learn more about IAM policy syntax and descriptions, see [AWS IAM Policy Reference](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html) in the *IAM User Guide*\.

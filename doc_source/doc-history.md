@@ -7,16 +7,16 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 # Document History<a name="doc-history"></a>
 
 The following table describes documentation releases for the AWS Snowball Edge appliance\.
-
 + **API version: 1\.0** 
-
-+ **Latest documentation update: **February 5, 2018
++ **Latest documentation update: **April 3, 2018
 
 
 ****  
 
 | Change | Description | Date | 
 | --- | --- | --- | 
+| New AWS Region supported | AWS Snowball is now supported in the Asia Pacific \(Singapore\) region\. For more information on shipping in this AWS Region, see [Shipping Considerations for AWS Snowball](shipping.md)\. | April 3, 2018 | 
+| Automatically extracted batches of small files are now supported | You can now batch many small files together into a larger archive, and specify that those batches are automatically extracted when the data is imported into Amazon S3\. Batching small files together can significantly improve your transfer performance when moving data from your on\-premises server to a Snowball Edge device\. For more information, see [Batching Small Files](batching-small-files.md)\. | March 20, 2018 | 
 | Major feature revision to the Snowball client, and cluster update | The new major feature revision for the Snowball client includes performance improvements, profiles, and support for the cluster update\. For more information, see [Using the Snowball Client](using-client.md)\. Clusters are now leaderless\. All nodes can read and write data to the cluster\. For more information, see [Using an AWS Snowball Edge Cluster](UsingCluster.md)\. | February 5, 2018 | 
 | New AWS Region supported | AWS Snowball is now supported in the EU \(Paris\) region\. For more information on shipping in this AWS Region, see [Shipping Considerations for AWS Snowball](shipping.md)\. | December 18, 2017 | 
 | Improved AWS CLI support for the Amazon S3 Adapter for Snowball | You can now use the `s3 sync` command with the Amazon S3 Adapter for Snowball to sync data between a Snowball Edge and your local computer\. For more information, see [Supported AWS CLI Commands for Amazon S3](using-adapter-cli.md#using-adapter-cli-commands)\. | November 10, 2017 | 

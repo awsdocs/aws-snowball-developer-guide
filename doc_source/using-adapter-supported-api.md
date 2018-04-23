@@ -8,7 +8,7 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 
 Following, you can find REST API actions that you can use with a Snowball Edge\.
 
-
+**Topics**
 + [Supported REST API Actions for Snowball Edge](#using-adapter-snowball-api)
 + [Supported REST API Actions for Amazon S3](#using-adapter-s3api)
 
@@ -60,29 +60,17 @@ Server: AWSSnowball
 ```
 
 Amazon S3 REST API calls require SigV4 signing\. If you're using the AWS CLI or an AWS SDK to make these API calls, the SigV4 signing is handled for you\. Otherwise, you need to implement your own SigV4 signing solution\. For more information, see [Authenticating Requests \(AWS Signature Version 4\)](http://docs.aws.amazon.com/AmazonS3/latest/dev/sig-v4-authenticating-requests.html) in the *Amazon Simple Storage Service Developer Guide\.*
-
 + [GET Bucket \(List Objects\) version 1](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html)  – Supported\. However, the only supported delimiter is a forward slash\. Only version 1 is supported\. GET Bucket \(List Objects\) version 2 is not supported\.
-
 + [GET Service](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTServiceGET.html) 
-
 + [HEAD Bucket](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketHEAD.html) 
-
 + [HEAD Object](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectHEAD.html)  
-
 + [GET Object](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html) – When an object is uploaded to an AWS Snowball Edge appliance using `GET Object`, an entity tag \(ETag\) is not generated unless the object was uploaded using multipart upload\. The ETag is a hash of the object\. The ETag reflects changes only to the contents of an object, not its metadata\. The ETag might or might not be an MD5 digest of the object data\. For more information on ETags, see [Common Response Headers](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html) in the *Amazon Simple Storage Service API Reference\.*
-
 + [PUT Object](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html) – When an object is uploaded to an AWS Snowball Edge appliance using `PUT Object`, an ETag is not generated unless the object was uploaded using multipart upload\.
-
 + [DELETE Object](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html) 
-
 + [Initiate Multipart Upload](http://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadInitiate.html) – In this implementation, initiating a multipart upload request for an object already on the AWS Snowball Edge appliance first deletes that object\. It then copies it in parts to the AWS Snowball Edge appliance\. 
-
 + [List Multipart Uploads](http://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadListMPUpload.html)  
-
 + [Upload Part](http://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadUploadPart.html)  
-
 + [Complete Multipart Upload](http://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadComplete.html)  
-
 + [Abort Multipart Upload](http://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadAbort.html)  
 
 **Note**  

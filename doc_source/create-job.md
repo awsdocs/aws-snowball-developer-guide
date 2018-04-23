@@ -17,7 +17,6 @@ The process for creating an AWS Snowball Edge appliance job in the AWS Snowball 
 1. On the **Plan your job** page of the job creation wizard, choose your job type\.
 
    **Job\-Type Specific Consideration**
-
    + If you are creating a cluster, select the **Make this a cluster** check box\.
 
 1. Choose **Next**\.
@@ -33,9 +32,7 @@ With an AWS Snowball Edge appliance, all jobs can use the compute functionality 
 1. Choose **Next**\.
 
 1. On the **Set security** page, specify the following:
-
    + The Amazon Resource Name \(ARN\) for the AWS Identity and Access Management \(IAM\) role that AWS Snowball assumes to import your data to your destination S3 bucket when you return the AWS Snowball Edge appliance\.
-
    + The ARN for the AWS Key Management Service \(AWS KMS\) master key to be used to protect your data within the AWS Snowball Edge appliance\. For more information, see [Security for AWS Snowball Edge](security.md)\.
 
 1. Choose **Next**\.

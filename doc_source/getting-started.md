@@ -26,5 +26,4 @@ If you already have an administrator AWS Identity and Access Management \(IAM\) 
 There is no free tier for AWS Snowball\. To avoid unwanted charges and delays, read through the relevant import or export section following before you start creating your jobs\.
 
 **Next:**
-
 + [Getting Started with AWS Snowball Edge: Your First Job](common-get-start.md)

@@ -12,9 +12,7 @@ In January 2018, there was a feature update to for clusters, making them leaderl
 For the AWS Snowball service, a cluster is a collective of AWS Snowball Edge appliances, used as a single logical unit, for local storage and compute purposes\.
 
 A cluster offers two primary benefits over a standalone Snowball Edge for local storage and compute purposes:
-
 + **Increased Durability** – The data stored in a cluster of Snowball Edges enjoys increased data durability over a single device\. In addition, the data on the cluster remains as safe and viable as it was previously, despite possible Snowball Edge outages in the cluster\. Clusters can withstand the loss of two nodes before the data is in danger\. You can also add or replace nodes\.
-
 + **Increased Storage** – The total available storage is 45 terabytes of data per node in the cluster\. Thus, in a five\-node cluster there's 225 terabytes of available storage space\. In contrast, there's about 82 terabytes of available storage space in a standalone Snowball Edge\. Clusters that have more than five nodes have even more storage space\.
 
 A cluster of Snowball Edge devices is made of nodes\. There are two types of nodes: primary nodes and secondary nodes\. When writing data to a cluster, data is written from your server, across your internal network, and to the primary node of the cluster\. The primary node then writes the data to the secondary nodes\.
@@ -41,27 +39,17 @@ You can check the quorum state of your cluster by running the `snowballEdge stat
 ## Considerations for Cluster Jobs for AWS Snowball Edge<a name="old-clusterconsiderations"></a>
 
 Keep the following considerations in mind when planning to use a cluster of Snowball Edges:
-
 + We recommend that you have a redundant power supply to reduce potential performance and stability issues for your cluster\.
-
 + As with standalone local storage and compute jobs, the data stored in a cluster can't be imported into Amazon S3 without ordering additional appliances as a part of separate import jobs\. Then you could transfer the data from the cluster to those appliances and import the data when you return the appliances for the import jobs\.
-
 + To get data onto a cluster from Amazon S3, you have to create a separate export job and copy the data from the appliances of the export job onto the cluster\.
-
 + You can create a cluster job from the console, the AWS CLI, or one of the AWS SDKs\. For a guided walkthrough of creating a job, see [Getting Started with an AWS Snowball Edge Appliance](getting-started.md)\.
-
 + Cluster nodes have node IDs\. A *node ID* is the same as the job ID for a device that you can get from the console, the AWS CLI, the AWS SDKs, and the Snowball client\. You can use node IDs to remove old nodes from clusters\. You can get a list of node IDs by using the `snowballEdge status` command\.
-
 + The lifespan of a cluster is limited by the security certificate granted to the cluster devices when the cluster is provisioned\. By default, Snowball Edge devices can be used for up to 120 days before they need to be returned\. At the end of that time, the devices stop responding to read/write requests\. If you need to keep one or more devices for longer than 120 days, contact AWS Support\.
-
 + When AWS receives a returned appliance that was part of a cluster, we perform a complete erasure of the appliance\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.
 
 ## Related Topics<a name="old-relatedcluster"></a>
 
 Beyond the content presented in this topic, you can find other topics in this guide that are relevant to clusters:
-
 + [Getting Started with an AWS Snowball Edge Appliance](getting-started.md) – This section outlines how to get started creating your first job\. The techniques in this section work for all job types, including cluster jobs\.
-
 + [Commands for the Snowball Client](old-using-client.md#old-using-client-commands) – This section contains a list of commands for the Snowball client tool\. These commands include the Snowball Edge administrative commands to unlock a cluster, get the status information for the nodes and the cluster as a whole, remove unavailable nodes, and add new nodes\.
-
 + [Administrating a Cluster](old-administercluster.md) – This section contains information about the administrative tasks you perform with a cluster like adding and removing nodes, and includes helpful procedures\.

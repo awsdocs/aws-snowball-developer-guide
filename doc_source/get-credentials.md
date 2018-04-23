@@ -20,9 +20,7 @@ You can only get your credentials after the appliance has been delivered to you\
 1. Expand that job's **Job status** pane, and choose **View job details**\.
 
 1. In the details pane that appears, expand **Credentials** and then do the following:
-
    + Make a note of the unlock code \(including the hyphens\), because you need to provide all 29 characters to transfer data\. 
-
    + Choose **Download manifest** in the dialog box and follow the instructions to download the job manifest file to your computer\. The name of your manifest file includes your **Job ID**\.
 **Note**  
 We recommend that you don't save a copy of the unlock code in the same location in the workstation as the manifest for that job\. For more information, see [Best Practices for the AWS Snowball Edge Appliance](BestPractices.md)\.
