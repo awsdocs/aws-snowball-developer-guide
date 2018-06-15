@@ -72,3 +72,13 @@ After you complete the procedure, you can run CLI commands with these local cred
 ```
 aws s3 ls --profile snowballEdge --endpoint https://192.0.2.0:8443
 ```
+
+## Unsupported Amazon S3 Features for Snowball Edge<a name="snowball-edge-s3-unsupported-features"></a>
+
+Using the Amazon S3 Adapter for Snowball, you can programmatically transfer data to and from a Snowball Edge with Amazon S3 API actions\. However, not all Amazon S3 transfer features and API actions are supported for use with a Snowball Edge device\. For more information on the supported features, see the following:
++ [Supported AWS CLI Commands](using-adapter-cli.md)
++ [Supported REST API Actions](using-adapter-supported-api.md)
+
+Any features or actions not explicitly listed in these topics are not supported\. For example, the following features and actions are not supported for use with Snowball Edge:
++ [TransferManager](http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-s3-transfermanager.html) – This utility transfers files from a local environment to Amazon S3 with the SDK for Java\. Consider using the supported API actions or AWS CLI commands with the adapter instead\.
++ [GET Bucket \(List Objects\) Version 2](http://docs.aws.amazon.com/AmazonS3/latest/API/v2-RESTBucketGET.html) – This implementation of the GET action returns some or all \(up to 1,000\) of the objects in a bucket\. Consider using the [GET Bucket \(List Objects\) Version 1](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html) action or the [ls](http://docs.aws.amazon.com/cli/latest/reference/s3/ls.html) AWS CLI command\.

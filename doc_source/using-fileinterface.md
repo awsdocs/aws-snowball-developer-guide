@@ -105,7 +105,7 @@ Now that you have your IP address, you're ready to mount a bucket on the Snowbal
 When you mount file shares on your Linux server, we recommend that you first update your NFS client with the following command\.
 
 ```
-$ sudo nfs-utils
+$sudo yum install nfs-utils
 ```
 
 When the file interface is enabled, it exposes an NFS mount point for each local bucket on the appliance\. The file interface supports NFS versions 3, 4\.0, and 4\.1\. You can mount the file shares with a simple command with the IP address for the file interface\. For more information, see [Getting the IP Address for the File Share of a Bucket on a Snowball Edge](#fileinterface-ipaddress)\.

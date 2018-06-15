@@ -59,9 +59,7 @@ The permissions reference table lists the AWS Snowball job management API operat
 
 ```
 {
-    "Version": "2012-10-17
-                     
-                    ",
+    "Version": "2012-10-17",
     "Statement": [
         {
             "Effect": "Allow",
@@ -72,38 +70,37 @@ The permissions reference table lists the AWS Snowball job management API operat
                 "s3:ListBucketMultipartUploads",
                 "s3:ListAllMyBuckets"
             ],
-             "Resource": "arn:aws:s3:::*"
+            "Resource": "arn:aws:s3:::*"
         },
-       {
+        {
             "Effect": "Allow",
             "Action": [
                 "s3:CreateBucket",
                 "s3:PutObject",
                 "s3:AbortMultipartUpload",
                 "s3:ListMultipartUploadParts",
-                "s3:PutObjectAcl",
+                "s3:PutObjectAcl"
             ],
-             "Resource": "arn:aws:s3:::*"
+            "Resource": "arn:aws:s3:::*"
         },
-       
         {
             "Effect": "Allow",
             "Action": [
                 "lambda:GetFunction",
                 "lambda:GetFunctionConfiguration"
             ],
-           "Resource": "arn:aws:lambda:::function:*"
+            "Resource": "arn:aws:lambda:::function:*"
         },
         {
             "Effect": "Allow",
             "Action": [
                 "lambda:ListFunctions"
             ],
-           "Resource": "arn:aws:lambda:::*"
+            "Resource": "arn:aws:lambda:::*"
         },
         {
-           "Effect": "Allow",
-           "Action": [
+            "Effect": "Allow",
+            "Action": [
                 "kms:CreateGrant",
                 "kms:GenerateDataKey",
                 "kms:Decrypt",
@@ -112,14 +109,14 @@ The permissions reference table lists the AWS Snowball job management API operat
                 "kms:ListKeys",
                 "kms:DescribeKey",
                 "kms:ListAliases"
-           ],
-           "Resource": [
+            ],
+            "Resource": [
                 "*"
-           ]
+            ]
         },
         {
-           "Effect": "Allow",
-           "Action": [
+            "Effect": "Allow",
+            "Action": [
                 "iam:AttachRolePolicy",
                 "iam:CreatePolicy",
                 "iam:CreateRole",
@@ -127,44 +124,42 @@ The permissions reference table lists the AWS Snowball job management API operat
                 "iam:ListRolePolicies",
                 "iam:PutRolePolicy",
                 "iam:PassRole"
-           ],
-           "Resource": [
+            ],
+            "Resource": [
                 "*"
-           ]
+            ]
         },
         {
-           "Effect": "Allow",
-           "Action": [
+            "Effect": "Allow",
+            "Action": [
                 "sns:CreateTopic",
                 "sns:ListTopics",
                 "sns:GetTopicAttributes",
                 "sns:SetTopicAttributes",
-                "sns:ListSubscriptionsByTopic",  
+                "sns:ListSubscriptionsByTopic",
                 "sns:Subscribe"
-           ],
-           "Resource": [
+            ],
+            "Resource": [
                 "*"
-           ]
+            ]
         },
-
         {
-           "Effect": "Allow",
-           "Action": [
+            "Effect": "Allow",
+            "Action": [
                 "greengrass:getServiceRoleForAccount"
-           ],
-           "Resource": [
+            ],
+            "Resource": [
                 "*"
-           ]
+            ]
         },
-        
         {
-           "Effect": "Allow",
-           "Action": [
+            "Effect": "Allow",
+            "Action": [
                 "snowball:*"
-           ],
-           "Resource": [
+            ],
+            "Resource": [
                 "*"
-           ]
+            ]
         }
     ]
 }
