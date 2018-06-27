@@ -42,8 +42,8 @@ Before you create a job, you should sign in to the console from the AWS Region t
 + For data transfers in US regions, we don't ship AWS Snowball Edge appliances outside of the United States\.
 + We don't ship AWS Snowball Edge appliances between non\-US regions—for example, from EU \(Ireland\) to EU \(Frankfurt\), or from Asia Pacific \(Mumbai\) to Asia Pacific \(Sydney\)\.
 + For data transfers in Asia Pacific \(Sydney\), we only ship AWS Snowball Edge appliances within Australia\.
-+ For data transfers in the EU regions, we only ship AWS Snowball Edge appliances to the EU member countries listed following: Austria, Belgium, Bulgaria, Croatia, Republic of Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden, and the UK\.
-+ For data transfers in the Asia Pacific \(Singapore\) region, we only ship s to Singapore\.
++ For data transfers in the EU regions, we only ship AWS Snowball Edge appliances to the EU member countries listed following: Austria, Belgium, Bulgaria, Croatia, Republic of Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Italy, Ireland, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden, and the UK\.
++ For data transfers in the Asia Pacific \(Singapore\) region, we only ship Snowballs to Singapore\.
 
 **Note**  
 AWS doesn't ship AWS Snowball Edge appliances to post office boxes\.
