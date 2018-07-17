@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -8,7 +8,7 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 
 AWS Key Management Service \(AWS KMS\) is a managed service that makes it easy for you to create and control the encryption keys used to encrypt your data\. AWS KMS uses hardware security modules \(HSMs\) to protect the security of your keys\. Specifically, the Amazon Resource Name \(ARN\) for the AWS KMS key that you choose for a job in AWS Snowball is associated with a KMS key\. That KMS key is used to encrypt the unlock code for your job\. The unlock code is used to decrypt the top layer of encryption on your manifest file\. The encryption keys stored within the manifest file are used to encrypt and de\-encrypt the data on the device\.
 
-In AWS Snowball, AWS KMS protects the encryption keys used to protect data on each AWS Snowball Edge appliance\. When you create your job, you also choose an existing KMS key\. Specifying the ARN for an AWS KMS key tells AWS Snowball which AWS KMS master key to use to encrypt the unique keys on the AWS Snowball Edge appliance\.
+In AWS Snowball, AWS KMS protects the encryption keys used to protect data on each AWS Snowball Edge device\. When you create your job, you also choose an existing KMS key\. Specifying the ARN for an AWS KMS key tells AWS Snowball which AWS KMS master key to use to encrypt the unique keys on the AWS Snowball Edge device\.
 
 In Amazon S3, there is a server\-side\-encryption option that uses AWS KMS–managed keys \(SSE\-KMS\)\. SSE\-KMS is not supported with AWS Snowball\. For more information on supported SSE in AWS Snowball, see [Server\-Side Encryption in AWS Snowball](security.md#sse)\.
 

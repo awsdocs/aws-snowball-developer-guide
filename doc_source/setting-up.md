@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -32,7 +32,7 @@ Note your AWS account number, because you'll need it for the next task\.
 
 ## Create an IAM User<a name="setting-up-iam"></a>
 
-Services in AWS, such as AWS Snowball, require that you provide credentials when you access them, so that the service can determine whether you have permission to access its resources\. AWS recommends not using the root credentials of your AWS account to make requests\. Instead, create an AWS Identity and Access Management \(IAM\) user, and grant that user full access\. We refer to these users as administrator users\.
+Services in AWS, such as AWS Snowball, require that you provide credentials when you access them, so that the service can determine whether you have permission to access its resources\. AWS recommends not using the root credentials of your AWS account to make requests\. Instead, create an AWS Identity and Access Management \(IAM\) user, and grant that user full access\. We refer to these users as IAM users with administrator\-level credentials\.
 
 You can use the administrator user credentials, instead of root credentials of your account, to interact with AWS and perform tasks, such as to create an Amazon S3 bucket, create users, and grant them permissions\. For more information, see [Root Account Credentials vs\. IAM User Credentials](http://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html) in the *AWS General Reference* and [IAM Best Practices](http://docs.aws.amazon.com/IAM/latest/UserGuide/IAMBestPractices.html) in *IAM User Guide*\. 
 
@@ -88,4 +88,4 @@ If you're going to create AWS Snowball jobs through an IAM user that is not an a
 
 ## Next Step<a name="setting-up-next-step"></a>
 
-[Getting Started with an AWS Snowball Edge Appliance](getting-started.md)
+[Getting Started with an AWS Snowball Edge Device](getting-started.md)

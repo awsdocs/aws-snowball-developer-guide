@@ -1,33 +1,33 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # Shipping an AWS Snowball Edge<a name="mailing-storage"></a>
 
-The prepaid shipping label contains the correct address to return the AWS Snowball Edge appliance\. For information on how to return your AWS Snowball Edge appliance, see [Shipping Carriers](#carriers)\. The AWS Snowball Edge appliance is delivered to an AWS sorting facility and forwarded to the AWS data center\. Package tracking is available through your region's carrier\. You can track status changes for your job by using the AWS Snowball Management Console\.
+The prepaid shipping label contains the correct address to return the AWS Snowball Edge device\. For information on how to return your AWS Snowball Edge device, see [Shipping Carriers](#carriers)\. The AWS Snowball Edge device is delivered to an AWS sorting facility and forwarded to the AWS data center\. Package tracking is available through your region's carrier\. You can track status changes for your job by using the AWS Snowball Management Console\.
 
 **Important**  
-Unless personally instructed otherwise by AWS, don't affix a separate shipping label to the AWS Snowball Edge appliance\. Always use the shipping label that is displayed on the AWS Snowball Edge appliance E Ink display\.
+Unless personally instructed otherwise by AWS, don't affix a separate shipping label to the AWS Snowball Edge device\. Always use the shipping label that is displayed on the AWS Snowball Edge device E Ink display\.
 
 ## Shipping Carriers<a name="carriers"></a>
 
-When you create a job, you provide the address that you want the AWS Snowball Edge appliance shipped to\. The carrier that supports your region handles the shipping of AWS Snowball Edge appliances from AWS to you, and from you back to AWS\. Whenever an AWS Snowball Edge appliance is shipped, you get a tracking number\. You can find each job's tracking number and a link to the tracking website from the [AWS Snowball Management Console](https://console.aws.amazon.com/importexport/home?region=us-west-2)'s job dashboard, or by using API calls to the job management API\.
+When you create a job, you provide the address that you want the AWS Snowball Edge device shipped to\. The carrier that supports your region handles the shipping of AWS Snowball Edge devices from AWS to you, and from you back to AWS\. Whenever an AWS Snowball Edge device is shipped, you get a tracking number\. You can find each job's tracking number and a link to the tracking website from the [AWS Snowball Management Console](https://console.aws.amazon.com/importexport/home?region=us-west-2)'s job dashboard, or by using API calls to the job management API\.
 
-Following is the list of supported carriers for AWS Snowball Edge appliances by region:
+Following is the list of supported carriers for AWS Snowball Edge devices by region:
 + For Japan, Schenker\-Seino Co\., Ltd\. is the carrier\.
 + For all other regions, [UPS](https://www.ups.com/) is the carrier\.
 
 ### AWS Snowball Pickups in the EU, US, and Canada<a name="standard-pickup"></a>
 
-In the EU, US, Canada, and Singapore, keep the following information in mind for UPS to pick up an AWS Snowball Edge appliance:
-+ You arrange for UPS to pick up the AWS Snowball Edge appliance by scheduling a pickup with UPS directly, or take the AWS Snowball Edge appliance to a UPS package drop\-off facility to be shipped to AWS\. To schedule a pickup with UPS, you need a UPS account\.
-+ The prepaid UPS shipping label on the E Ink display contains the correct address to return the AWS Snowball Edge appliance\.
-+ The AWS Snowball Edge appliance is delivered to an AWS sorting facility and forwarded to the AWS data center\. UPS automatically reports back a tracking number for your job\.
+In the EU, US, Canada, and Singapore, keep the following information in mind for UPS to pick up an AWS Snowball Edge device:
++ You arrange for UPS to pick up the AWS Snowball Edge device by scheduling a pickup with UPS directly, or take the AWS Snowball Edge device to a UPS package drop\-off facility to be shipped to AWS\. To schedule a pickup with UPS, you need a UPS account\.
++ The prepaid UPS shipping label on the E Ink display contains the correct address to return the AWS Snowball Edge device\.
++ The AWS Snowball Edge device is delivered to an AWS sorting facility and forwarded to the AWS data center\. UPS automatically reports back a tracking number for your job\.
 
 **Important**  
-Unless personally instructed otherwise by AWS, never affix a separate shipping label to the AWS Snowball Edge appliance\. Always use the shipping label that is displayed on the AWS Snowball Edge appliance's E Ink display\.
+Unless personally instructed otherwise by AWS, never affix a separate shipping label to the AWS Snowball Edge device\. Always use the shipping label that is displayed on the AWS Snowball Edge device's E Ink display\.
 
 ### AWS Snowball Pickups in Brazil<a name="Brazil-pickup"></a>
 
@@ -47,14 +47,14 @@ For non\-ICMS taxpayer declaration, we recommend that you generate four copies o
 
 ### AWS Snowball Pickups in Australia<a name="Australia-pickup"></a>
 
-In Australia, if you're shipping an AWS Snowball Edge appliance back to AWS, send an email to [snowball\-pickup@amazon\.com](mailto:snowball-pickup@amazon.com) with *Snowball Edge Pickup Request* in the subject line so we can schedule the pickup for you\. In the body of the email, include the following information:
-+ **Job ID** – The job ID associated with the AWS Snowball Edge appliance that you want returned to AWS\.
+In Australia, if you're shipping an AWS Snowball Edge device back to AWS, send an email to [snowball\-pickup@amazon\.com](mailto:snowball-pickup@amazon.com) with *Snowball Edge Pickup Request* in the subject line so we can schedule the pickup for you\. In the body of the email, include the following information:
++ **Job ID** – The job ID associated with the AWS Snowball Edge device that you want returned to AWS\.
 + **AWS Account ID** – The ID for the AWS account that created the job\.
-+ **Postcode** – The postcode for the address where we originally shipped the AWS Snowball Edge appliance to you\.
-+ **Earliest Pickup Time** \(your local time\) – The earliest time of day that you want the AWS Snowball Edge appliance picked up\.
-+ **Latest Pickup Time** \(your local time\) – The latest time of day that you want the AWS Snowball Edge appliance picked up\.
++ **Postcode** – The postcode for the address where we originally shipped the AWS Snowball Edge device to you\.
++ **Earliest Pickup Time** \(your local time\) – The earliest time of day that you want the AWS Snowball Edge device picked up\.
++ **Latest Pickup Time** \(your local time\) – The latest time of day that you want the AWS Snowball Edge device picked up\.
 + **Email Address** – The email address that you want the pickup request confirmation sent to\.
-+ **Special Instructions** \(optional\) – Any special instructions for picking up the AWS Snowball Edge appliance\.
++ **Special Instructions** \(optional\) – Any special instructions for picking up the AWS Snowball Edge device\.
 
 Soon, you get a follow\-up email from UPS to the email address you specified with more information about your pending pickup, scheduled for the soonest available date\.
 
@@ -67,10 +67,10 @@ In Japan, Schenker\-Seino handles your pickups\. When you are ready to return yo
 
 ### Shipping Speeds<a name="shippingspeeds"></a>
 
-Each country has different shipping speeds available\. These shipping speeds are based on the country in which you're shipping an AWS Snowball Edge appliance\. Shipping speeds are as follows:
-+ **Australia** – When shipping within Australia, you have access to express shipping\. Typically, AWS Snowball Edge appliances shipped express are delivered in about a day\.
+Each country has different shipping speeds available\. These shipping speeds are based on the country in which you're shipping an AWS Snowball Edge device\. Shipping speeds are as follows:
++ **Australia** – When shipping within Australia, you have access to express shipping\. Typically, AWS Snowball Edge devices shipped express are delivered in about a day\.
 + **Brazil** – When shipping within Brazil, you have access to UPS Domestic Express Saver shipping, which delivers within two business days during commercial hours\. Shipping speeds might be affected by interstate border delays\.
-+ **European Union \(EU\)** – When shipping to any of the countries that within the EU, you have access to express shipping\. Typically, AWS Snowball Edge appliances shipped express are delivered in about a day\. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way\.
++ **European Union \(EU\)** – When shipping to any of the countries that within the EU, you have access to express shipping\. Typically, AWS Snowball Edge devices shipped express are delivered in about a day\. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way\.
 + **Japan** – When shipping within Japan, you have access to standard shipping speed\.
 + **United States of America \(US\) and Canada** – When shipping in the US or in Canada, you have access to one\-day shipping and two\-day shipping\.
 + **Singapore** – When shipping within Singapore, you have access to Domestic Express Saver shipping\.

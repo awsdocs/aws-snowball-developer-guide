@@ -1,21 +1,21 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # AWS Snowball Edge Specifications<a name="specifications"></a>
 
-The following table outlines hardware specifications for the AWS Snowball Edge appliance\.
+The following table outlines hardware specifications for the AWS Snowball Edge device\.
 
 
 | Item | Specification | 
 | --- | --- | 
 | Storage capacity | 100 TB Snowballs have about 82 TB of usable space\. | 
-| Data and network connections | Network connections:  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/specifications.html) To use the AWS Snowball Edge appliance, you need your own network cables\. For RJ45 cables, there are no specific recommendations\. SFP\+ and QSFP\+ cables and modules from Mellanox and Finisar have been verified to be compatible with the appliance\.  | 
-| Cables | Each AWS Snowball Edge appliance ships country\-specific power cables\. No other cables or optics are not provided\. | 
-| Thermal requirements | AWS Snowball Edge appliances are designed for office operations, and are ideal for data center operations\. | 
-| Decibel output | On average, an AWS Snowball Edge appliance produces 68 decibels of sound, typically quieter than a vacuum cleaner or living\-room music\. | 
+| Data and network connections | Network connections:  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/specifications.html) To use the AWS Snowball Edge device, you need your own network cables\. For RJ45 cables, there are no specific recommendations\. SFP\+ and QSFP\+ cables and modules from Mellanox and Finisar have been verified to be compatible with the device\.  | 
+| Cables | Each AWS Snowball Edge device ships country\-specific power cables\. No other cables or optics are not provided\. | 
+| Thermal requirements | AWS Snowball Edge devices are designed for office operations, and are ideal for data center operations\. | 
+| Decibel output | On average, an AWS Snowball Edge device produces 68 decibels of sound, typically quieter than a vacuum cleaner or living\-room music\. | 
 | Weight | 49\.5 pounds \(22\.6 Kg\) | 
 | Height | 15\.25 inches \(386 mm\) | 
 | Width | 10\.375 inches \(259 mm\) | 
@@ -33,7 +33,7 @@ The following table outlines hardware specifications for the AWS Snowball Edge a
 
 ## Supported Network Hardware<a name="network-hardware"></a>
 
-After you open the back panel of the AWS Snowball Edge appliance, you'll see the network ports shown in the following photograph\.
+After you open the back panel of the AWS Snowball Edge device, you'll see the network ports shown in the following photograph\.
 
 ![\[The available network ports.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/snowball-edge-back-connectors.png)
 

@@ -1,12 +1,12 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # Using the Amazon S3 Adapter<a name="using-adapter"></a>
 
-Following, you can find an overview of the Amazon S3 Adapter for Snowball, which allows you to programmatically transfer data to and from the AWS Snowball Edge appliance using Amazon S3 REST API actions\. This Amazon S3 REST API support is limited to a subset of actions\. You can use this subset of actions with one of the AWS SDKs to transfer data programmatically\. You can also use the subset of supported AWS Command Line Interface \(AWS CLI\) commands for Amazon S3 to transfer data programmatically\.
+Following, you can find an overview of the Amazon S3 Adapter for Snowball, which allows you to programmatically transfer data to and from the AWS Snowball Edge device using Amazon S3 REST API actions\. This Amazon S3 REST API support is limited to a subset of actions\. You can use this subset of actions with one of the AWS SDKs to transfer data programmatically\. You can also use the subset of supported AWS Command Line Interface \(AWS CLI\) commands for Amazon S3 to transfer data programmatically\.
 
 If your solution uses the AWS SDK for Java version 1\.11\.0 or newer, you must use the following `S3ClientOptions`:
 + `disableChunkedEncoding()` – Indicates that chunked encoding is not supported with the adapter\.
@@ -15,13 +15,13 @@ If your solution uses the AWS SDK for Java version 1\.11\.0 or newer, you must u
 For more information, see [Class S3ClientOptions\.Builder](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/S3ClientOptions.Builder.html) in the Amazon AppStream SDK for Java\.
 
 **Important**  
-We recommend that you only use one method of reading and writing data to a local bucket on an AWS Snowball Edge appliance at a time\. Using both the file interface and the Amazon S3 Adapter for Snowball on the same bucket at the same time can result in read/write conflicts\.
+We recommend that you only use one method of reading and writing data to a local bucket on an AWS Snowball Edge device at a time\. Using both the file interface and the Amazon S3 Adapter for Snowball on the same bucket at the same time can result in read/write conflicts\.
 
 ## Getting and Using Local Amazon S3 Credentials<a name="adapter-credentials"></a>
 
 Every interaction with a Snowball Edge is signed with the AWS Signature Version 4 algorithm\. For more information on the algorithm, see [Signature Version 4 Signing Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)\.
 
-You can get the local Amazon S3 credentials to sign your requests to the Snowball Edge device by running the `snowballEdge list-access-keys` and `snowballEdge get-secret-access-key` Snowball client commands\. For more information, see [Getting Credentials](using-client-commands.md#client-credentials)\. These local Amazon S3 credentials include a pair of keys: an access key ID and a secret key\. These credentials are only valid for the appliances associated with your job\. They can't be used in the AWS Cloud because they have no AWS Identity and Access Management \(IAM\) counterpart\.
+You can get the local Amazon S3 credentials to sign your requests to the Snowball Edge device by running the `snowballEdge list-access-keys` and `snowballEdge get-secret-access-key` Snowball client commands\. For more information, see [Getting Credentials](using-client-commands.md#client-credentials)\. These local Amazon S3 credentials include a pair of keys: an access key ID and a secret key\. These credentials are only valid for the devices associated with your job\. They can't be used in the AWS Cloud because they have no AWS Identity and Access Management \(IAM\) counterpart\.
 
 You can add these credentials to the AWS credentials file on your server\. The default credential profiles file is typically located at `~/.aws/credentials`, but the location can vary per platform\. This file is shared by many of the AWS SDKs and by the AWS CLI\. You can save local credentials with a profile name as in the following example\.
 
@@ -33,7 +33,7 @@ aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
 ### Specifying the Adapter as the AWS CLI Endpoint<a name="using-adapter-cli-endpoint"></a>
 
-When you use the AWS CLI to issue a command to the AWS Snowball Edge appliance, you specify that the endpoint is the Amazon S3 Adapter for Snowball\. You have the choice of using the HTTPS endpoint, or an unsecured HTTP endpoint, as shown following\.
+When you use the AWS CLI to issue a command to the AWS Snowball Edge device, you specify that the endpoint is the Amazon S3 Adapter for Snowball\. You have the choice of using the HTTPS endpoint, or an unsecured HTTP endpoint, as shown following\.
 
 **HTTPS secured endpoint**
 

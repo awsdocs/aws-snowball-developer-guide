@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -9,7 +9,7 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 **Note**  
 In January 2018, there was a feature update for clusters, making them leaderless\. The cluster update is backward\-compatible with older clusters\. Following, you can find the documentation for the original Snowball client for Snowball Edge\. If you're looking for the updated content, see [Using the Snowball Client](using-client.md)\.
 
-Following, you can find information about how to get and use the Snowball client with your AWS Snowball Edge appliance\. The Snowball client is a standalone terminal application that you run on your local server to unlock the appliance and get credentials, logs, and status information\. You can also use the client for administrative tasks for a cluster\. When you read and write data to the AWS Snowball Edge appliance, you use the Amazon S3 Adapter for Snowball or the file interface\.
+Following, you can find information about how to get and use the Snowball client with your AWS Snowball Edge device\. The Snowball client is a standalone terminal application that you run on your local server to unlock the device and get credentials, logs, and status information\. You can also use the client for administrative tasks for a cluster\. When you read and write data to the AWS Snowball Edge device, you use the Amazon S3 Adapter for Snowball or the file interface\.
 
 ## Downloading and Installing the Snowball Client<a name="old-download-client"></a>
 
@@ -24,7 +24,7 @@ Following, you can find information on the Snowball client commands, including e
 
 ### Unlocking<a name="old-client-unlock"></a>
 
-The `unlock` command unlocks access to the AWS Snowball Edge appliance with the AWS Snowball Edge appliance's IP address and your credentials\.
+The `unlock` command unlocks access to the AWS Snowball Edge device with the AWS Snowball Edge device's IP address and your credentials\.
 
 If you're unlocking a cluster, you use the `-i` option for your primary node and the `-s` option for each secondary node, as in the following example\. All nodes are identical until you assign one to be the primary node\. The primary node is the leader of the cluster and performs most of the behind\-the\-scenes management of the cluster\. For more information on clusters, see [Clustering Overview](old-clusters.md)\.
 
@@ -72,7 +72,7 @@ Durability Status: HEALTHY - The Snowball Edge cluster is highly durable.
 
 ### Getting Credentials<a name="old-client-credentials"></a>
 
-The `credentials` command returns the set of local credentials \(an access key and a secret key\)\. You use these to sign your requests when using the AWS CLI or your own application with the Amazon S3 Adapter for Snowball to read and write data to the AWS Snowball Edge appliance\. These credentials are only associated with an individual job for AWS Snowball, and they can only be used on the appliance or cluster of appliances\. The appliance or appliances don't have any AWS Identity and Access Management \(IAM\) permissions in the AWS Cloud\.
+The `credentials` command returns the set of local credentials \(an access key and a secret key\)\. You use these to sign your requests when using the AWS CLI or your own application with the Amazon S3 Adapter for Snowball to read and write data to the AWS Snowball Edge device\. These credentials are only associated with an individual job for AWS Snowball, and they can only be used on the device or cluster of devices\. The device or devices don't have any AWS Identity and Access Management \(IAM\) permissions in the AWS Cloud\.
 
 **Note**  
 If you're using the AWS CLI with the Snowball Edge, you must use these credentials when you configure the CLI\. For information on configuring credentials for the CLI, see [Quick Configuration](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration) in the *AWS Command Line Interface User Guide\. *
@@ -99,7 +99,7 @@ aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
 ### Getting Status<a name="old-client-status"></a>
 
-The `status` command returns the status of an AWS Snowball Edge appliance\. When you run this command to check the status of a cluster, the IP address you should use is the IP address of the primary node\. For more information on clusters, see [Clustering Overview](old-clusters.md)\. 
+The `status` command returns the status of an AWS Snowball Edge device\. When you run this command to check the status of a cluster, the IP address you should use is the IP address of the primary node\. For more information on clusters, see [Clustering Overview](old-clusters.md)\. 
 
 **Usage**
 
@@ -218,21 +218,21 @@ snowballEdge addnode -i 192.0.2.0 -m /user/tmp/manifest -u 01234-abcde-01234-ABC
 The node: 192.0.2.5 was successfully added to the cluster.
 ```
 
-## Unlocking the AWS Snowball Edge Appliance<a name="old-setting-up-client"></a>
+## Unlocking the AWS Snowball Edge Device<a name="old-setting-up-client"></a>
 
-To unlock the AWS Snowball Edge appliance, run the `snowballEdge unlock` command\. This command authenticates your access to the AWS Snowball Edge appliance\. To run this command, the AWS Snowball Edge appliance you use for your job must be onsite, plugged into power and network, and turned on\. In addition, the LCD display on the AWS Snowball Edge appliance's front must indicate that the appliance is ready for use\.
+To unlock the AWS Snowball Edge device, run the `snowballEdge unlock` command\. This command authenticates your access to the AWS Snowball Edge device\. To run this command, the AWS Snowball Edge device you use for your job must be onsite, plugged into power and network, and turned on\. In addition, the LCD display on the AWS Snowball Edge device's front must indicate that the device is ready for use\.
 
-**To authenticate the Snowball client's access to an AWS Snowball Edge appliance**
+**To authenticate the Snowball client's access to an AWS Snowball Edge device**
 
 1. Obtain your manifest and unlock code\.
 
-   1. Get the manifest from the AWS Snowball Management Console or the job management API\. Your manifest is encrypted so that only the unlock code can decrypt it\. The Snowball client compares the decrypted manifest against the information that was put in the AWS Snowball Edge appliance when it was being prepared\. This comparison verifies that you have the right AWS Snowball Edge appliance for the data transfer job you’re about to begin\. 
+   1. Get the manifest from the AWS Snowball Management Console or the job management API\. Your manifest is encrypted so that only the unlock code can decrypt it\. The Snowball client compares the decrypted manifest against the information that was put in the AWS Snowball Edge device when it was being prepared\. This comparison verifies that you have the right AWS Snowball Edge device for the data transfer job you’re about to begin\. 
 
-   1. Get the unlock code, a 29\-character code that also appears when you download your manifest\. We recommend that you write it down and keep it in a separate location from the manifest that you downloaded, to prevent unauthorized access to the AWS Snowball Edge appliance while it’s at your facility\.
+   1. Get the unlock code, a 29\-character code that also appears when you download your manifest\. We recommend that you write it down and keep it in a separate location from the manifest that you downloaded, to prevent unauthorized access to the AWS Snowball Edge device while it’s at your facility\.
 
-1. Locate the IP address for the AWS Snowball Edge appliance on the AWS Snowball Edge appliance's LCD display\. When the AWS Snowball Edge appliance is connected to your network for the first time, it automatically creates a DHCP IP address\. If you want to use a different IP address, you can change it from the E Ink display\. For more information, see [Using an AWS Snowball Edge](using-appliance.md)\.
+1. Locate the IP address for the AWS Snowball Edge device on the AWS Snowball Edge device's LCD display\. When the AWS Snowball Edge device is connected to your network for the first time, it automatically creates a DHCP IP address\. If you want to use a different IP address, you can change it from the E Ink display\. For more information, see [Using an AWS Snowball Edge](using-device.md)\.
 
-1. Execute the `snowballEdge unlock` command to authenticate your access to the AWS Snowball Edge appliance with the AWS Snowball Edge appliance's IP address and your credentials, as follows:
+1. Execute the `snowballEdge unlock` command to authenticate your access to the AWS Snowball Edge device with the AWS Snowball Edge device's IP address and your credentials, as follows:
 
    ```
    snowballEdge unlock -i [IP Address] -m [Path/to/manifest/file] -u [29

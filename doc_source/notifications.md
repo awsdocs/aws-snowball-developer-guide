@@ -1,12 +1,12 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # Notifications for the AWS Snowball Edge<a name="notifications"></a>
 
-Like the standard Snowball, the AWS Snowball Edge appliance is designed to take advantage of the robust notifications delivered by Amazon Simple Notification Service \(Amazon SNS\)\. While creating a job, you can provide a list of comma\-separated email addresses to receive email notifications for your job\.
+Like the standard Snowball, the AWS Snowball Edge device is designed to take advantage of the robust notifications delivered by Amazon Simple Notification Service \(Amazon SNS\)\. While creating a job, you can provide a list of comma\-separated email addresses to receive email notifications for your job\.
 
 You can also choose from the status list which job status values trigger these notifications\. For more information about the different job status values, see [Job Statuses](jobstatuses.md)\.
 

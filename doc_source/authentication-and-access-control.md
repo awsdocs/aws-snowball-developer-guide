@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -10,7 +10,7 @@ As with all AWS services, access to AWS Snowball requires credentials that AWS c
 
 1. Jobs in AWS Snowball do not have Amazon Resource Names \(ARNs\)\.
 
-1. Physical and network access control for an appliance on\-premises is your responsibility\.
+1. Physical and network access control for a device on\-premises is your responsibility\.
 
 The following sections provide details on how you can use [AWS Identity and Access Management \(IAM\)](http://docs.aws.amazon.com/IAM/latest/UserGuide/) and AWS Snowball to help secure your resources by controlling who can access them in the AWS Cloud, and also local access control recommendations\.
 + [Authentication](#authentication)

@@ -1,13 +1,13 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # Where Do I Go from Here?<a name="where-to"></a>
 
-Now that you've read through one of the previous getting started sections and begun your first job, you can learn more about using the AWS Snowball Edge appliance tools and interfaces in detail from the following topics:
-+ [Using an AWS Snowball Edge](using-appliance.md)
+Now that you've read through one of the previous getting started sections and begun your first job, you can learn more about using the AWS Snowball Edge device tools and interfaces in detail from the following topics:
++ [Using an AWS Snowball Edge](using-device.md)
 + [Using the Snowball Client](using-client.md)
 + [Using the Amazon S3 Adapter](using-adapter.md)
 

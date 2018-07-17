@@ -1,15 +1,12 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # Using AWS Lambda with an AWS Snowball Edge<a name="using-lambda"></a>
 
-Following, you can find an overview of AWS Lambda powered by AWS Greengrass as used in an AWS Snowball Edge appliance\. With this feature, you can run Lambda functions locally on a Snowball Edge\. There is no charge for AWS Lambda powered by AWS Greengrass functions executed locally on an appliance\. However, there might be charges for functions that create or use resources in the AWS Cloud\.
-
-**Note**  
-To use AWS Lambda powered by AWS Greengrass functions with Snowball Edge, you must create your jobs in an AWS Region supported by AWS Greengrass\. For a list of valid regions, see [AWS Greengrass](http://docs.aws.amazon.com/general/latest/gr/rande.html#greengrass_region) in the *AWS General Reference*\.
+Following, you can find an overview of AWS Lambda powered by AWS Greengrass as used in an AWS Snowball Edge device\. With this feature, you can run Lambda functions locally on a Snowball Edge\. To use AWS Lambda powered by AWS Greengrass functions with Snowball Edge, you must create your jobs in an AWS Region supported by AWS Greengrass\. For a list of valid regions, see [AWS Greengrass](http://docs.aws.amazon.com/general/latest/gr/rande.html#greengrass_region) in the *AWS General Reference*\.
 
 ## Before You Start<a name="function-recommendations"></a>
 

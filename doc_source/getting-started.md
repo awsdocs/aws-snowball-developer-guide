@@ -1,18 +1,21 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
-# Getting Started with an AWS Snowball Edge Appliance<a name="getting-started"></a>
+# Getting Started with an AWS Snowball Edge Device<a name="getting-started"></a>
 
-With AWS Snowball using an AWS Snowball Edge appliance, you can access the storage and compute power of the AWS Cloud locally and cost effectively in places where connecting to the internet might not be an option\. You can also transfer hundreds of terabytes or petabytes of data between your on\-premises data centers and Amazon Simple Storage Service \(Amazon S3\)\. 
+With AWS Snowball using an AWS Snowball Edge device, you can access the storage and compute power of the AWS Cloud locally and cost effectively in places where connecting to the internet might not be an option\. You can also transfer hundreds of terabytes or petabytes of data between your on\-premises data centers and Amazon Simple Storage Service \(Amazon S3\)\. 
 
-Following, you can find general instructions for creating and completing your first AWS Snowball Edge appliance job in the AWS Snowball Management Console\. The console presents the most common workflows, separated into job types\. You can find more information on specific components of the AWS Snowball Edge appliance later in this documentation\. For an overview of the service as a whole, see [How AWS Snowball Works with the Snowball Edge](how-it-works.md)\. The getting started exercises cover the following job types:
+Following, you can find general instructions for creating and completing your first AWS Snowball Edge device job in the AWS Snowball Management Console\. The console presents the most common workflows, separated into job types\. You can find more information on specific components of the AWS Snowball Edge device later in this documentation\. For an overview of the service as a whole, see [How AWS Snowball Works with the Snowball Edge](how-it-works.md)\. The getting started exercises cover the following job types:
 
-Each of the getting started exercises assume that you use the AWS Snowball Management Console to create your job, the Snowball client to unlock the AWS Snowball Edge appliance, and the Amazon S3 Adapter for Snowball to read and write data\. If you'd rather create your job programmatically with more options for the jobs you're creating, you can use the job management API\. For more information, see [AWS Snowball API Reference](http://docs.aws.amazon.com/snowball/latest/api-reference/api-reference.html)\.
+Each of the getting started exercises assume that you use the AWS Snowball Management Console to create your job, the Snowball client to unlock the AWS Snowball Edge device, and the Amazon S3 Adapter for Snowball to read and write data\. If you'd rather create your job programmatically with more options for the jobs you're creating, you can use the job management API\. For more information, see [AWS Snowball API Reference](http://docs.aws.amazon.com/snowball/latest/api-reference/api-reference.html)\.
 
 Before you can get started, you need to create an AWS account and an administrator user in AWS Identity and Access Management \(IAM\)\. If you already have these, then you can skip these first two steps\.
+
+**Note**  
+This getting started exercise focuses on creating jobs for transferring data\. For more information about jobs using compute instances, see [Using Amazon EC2 Compute Instances](using-ec2.md)\.
 
 ## Sign Up for AWS<a name="signing-up"></a>
 

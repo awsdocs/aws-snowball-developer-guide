@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -9,7 +9,7 @@ This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are loo
 Each job has a set of credentials that you must get from the AWS Snowball Management Console or the job management API to authenticate your access to the Snowball\. These credentials are an encrypted manifest file and an unlock code\. The manifest file contains important information about the job and permissions associated with it\.
 
 **Note**  
-You can only get your credentials after the appliance has been delivered to you\.
+You can only get your credentials after the device has been delivered to you\.
 
 **To get your credentials by using the console**
 
@@ -23,8 +23,8 @@ You can only get your credentials after the appliance has been delivered to you\
    + Make a note of the unlock code \(including the hyphens\), because you need to provide all 29 characters to transfer data\. 
    + Choose **Download manifest** in the dialog box and follow the instructions to download the job manifest file to your computer\. The name of your manifest file includes your **Job ID**\.
 **Note**  
-We recommend that you don't save a copy of the unlock code in the same location in the workstation as the manifest for that job\. For more information, see [Best Practices for the AWS Snowball Edge Appliance](BestPractices.md)\.
+We recommend that you don't save a copy of the unlock code in the same location in the workstation as the manifest for that job\. For more information, see [Best Practices for the AWS Snowball Edge Device](BestPractices.md)\.
 
-Now that you have your credentials, the next step is to download the Snowball client, which is used to unlock the AWS Snowball Edge appliance\.
+Now that you have your credentials, the next step is to download the Snowball client, which is used to unlock the AWS Snowball Edge device\.
 
 **Next:** [Download and Install the Snowball Client](download-the-client.md) 

@@ -1,18 +1,18 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # Export Jobs from Amazon S3<a name="exporttype"></a>
 
-Your data source for an export job is one or more Amazon S3 buckets\. Once the data for a job part is moved from Amazon S3 to an AWS Snowball Edge appliance, you can download a job report\. This report alerts you to any objects that failed the transfer to the appliance\. You can find more information in your job's success and failure logs\.
+Your data source for an export job is one or more Amazon S3 buckets\. Once the data for a job part is moved from Amazon S3 to an AWS Snowball Edge device, you can download a job report\. This report alerts you to any objects that failed the transfer to the device\. You can find more information in your job's success and failure logs\.
 
-You can export any number of objects for each export job, using as many appliances as it takes to complete the transfer\. AWS Snowball Edge appliances for an export job's job parts are delivered one after another, with subsequent appliances shipping to you after the previous job part enters the **In transit to AWS** status\.
+You can export any number of objects for each export job, using as many devices as it takes to complete the transfer\. AWS Snowball Edge devices for an export job's job parts are delivered one after another, with subsequent devices shipping to you after the previous job part enters the **In transit to AWS** status\.
 
-When you copy objects into your on\-premises data destination from an appliance using the Amazon S3 Adapter for Snowball or the NFS mount point, those objects are saved as files\. If you copy objects into a location that already holds files, any existing files with the same names are overwritten\. The export job type is also capable of local storage and compute functionality\. This functionality uses the file interface or Amazon S3 Adapter for Snowball to read and write data, and triggers Lambda functions based off of Amazon S3 PUT object API actions running locally on the AWS Snowball Edge appliance\.
+When you copy objects into your on\-premises data destination from a device using the Amazon S3 Adapter for Snowball or the NFS mount point, those objects are saved as files\. If you copy objects into a location that already holds files, any existing files with the same names are overwritten\. The export job type is also capable of local storage and compute functionality\. This functionality uses the file interface or Amazon S3 Adapter for Snowball to read and write data, and triggers Lambda functions based off of Amazon S3 PUT object API actions running locally on the AWS Snowball Edge device\.
 
-When AWS receives a returned appliance, we completely erase it, following the NIST 800\-88 standards\.
+When AWS receives a returned device, we completely erase it, following the NIST 800\-88 standards\.
 
 **Important**  
 Don't change, update, or delete the exported Amazon S3 objects until you can verify that all of your contents for the entire job have been copied to your on\-premises data destination\.

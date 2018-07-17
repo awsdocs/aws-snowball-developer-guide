@@ -1,14 +1,14 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # Get Your Job Completion Report and Logs in the Console<a name="report"></a>
 
-Whenever data is imported into or exported out of Amazon S3, you get a downloadable PDF job report\. For import jobs, this report becomes available at the very end of the import process\. For export jobs, your job report typically becomes available for you while the AWS Snowball Edge appliance for your job part is being delivered to you\.
+Whenever data is imported into or exported out of Amazon S3, you get a downloadable PDF job report\. For import jobs, this report becomes available at the very end of the import process\. For export jobs, your job report typically becomes available for you while the AWS Snowball Edge device for your job part is being delivered to you\.
 
-The job report provides you insight into the state of your Amazon S3 data transfer\. The report includes details about your job or job part for your records\. The job report also includes a table that provides a high\-level overview of the total number of objects and bytes transferred between the appliance and Amazon S3\.
+The job report provides you insight into the state of your Amazon S3 data transfer\. The report includes details about your job or job part for your records\. The job report also includes a table that provides a high\-level overview of the total number of objects and bytes transferred between the device and Amazon S3\.
 
 For deeper visibility into the status of your transferred objects, you can look at the two associated logs: a success log and a failure log\. The logs are saved in comma\-separated value \(CSV\) format, and the name of each log includes the ID of the job or job part that the log describes\.
 

@@ -1,20 +1,20 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # Supported AWS CLI Commands<a name="using-adapter-cli"></a>
 
-Following, you can find information about how to specify the Amazon S3 Adapter for Snowball as the endpoint for applicable AWS Command Line Interface \(AWS CLI\) commands\. You can also find the list of AWS CLI commands for Amazon S3 that are supported for transferring data to the AWS Snowball Edge appliance with the adapter\.
+Following, you can find information about how to specify the Amazon S3 Adapter for Snowball as the endpoint for applicable AWS Command Line Interface \(AWS CLI\) commands\. You can also find the list of AWS CLI commands for Amazon S3 that are supported for transferring data to the AWS Snowball Edge device with the adapter\.
 
 **Note**  
 For information on installing and setting up the AWS CLI, including specifying what regions you want to make AWS CLI calls against, see [AWS Command Line Interface User Guide](http://docs.aws.amazon.com/cli/latest/userguide/)\.
 
 ## Supported AWS CLI Commands for Amazon S3<a name="using-adapter-cli-commands"></a>
 
-Following, you can find a description of the subset of AWS CLI commands and options for Amazon S3 that the AWS Snowball Edge appliance supports\. If a command or option isn't listed following, it's not supported\. You can declare some unsupported options, like `--sse` or `--storage-class`, along with a command\. However, these are ignored and have no impact on how data is imported\.
-+ [cp](http://docs.aws.amazon.com/cli/latest/reference/s3/cp.html) Copies a file or object to or from the AWS Snowball Edge appliance\. The following are options for this command:
+Following, you can find a description of the subset of AWS CLI commands and options for Amazon S3 that the AWS Snowball Edge device supports\. If a command or option isn't listed following, it's not supported\. You can declare some unsupported options, like `--sse` or `--storage-class`, along with a command\. However, these are ignored and have no impact on how data is imported\.
++ [cp](http://docs.aws.amazon.com/cli/latest/reference/s3/cp.html) Copies a file or object to or from the AWS Snowball Edge device\. The following are options for this command:
   + `--dryrun` \(boolean\) The operations that would be performed using the specified command are displayed without being run\.
   + `--quiet` \(boolean\) Operations performed by the specified command are not displayed\.
   + `--include` \(string\) Don't exclude files or objects in the command that match the specified pattern\. For details, see [Use of Exclude and Include Filters](http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#use-of-exclude-and-include-filters) in the *AWS CLI Command Reference*\.
@@ -25,12 +25,12 @@ Following, you can find a description of the subset of AWS CLI commands and opti
   + `--storage-class` \(string\) The type of storage to use for the object\. Valid choices are `STANDARD`, `REDUCED_REDUNDANCY`, and `STANDARD_IA`\. The option defaults to `STANDARD`\.
   + `--page-size` \(integer\) The number of results to return in each response to a list operation\. The default value is 1000 \(the maximum allowed\)\. Using a lower value might help if an operation times out\.
   + `--metadata` \(map\) A map of metadata to store with the objects in Amazon S3\. This map is applied to every object that is part of this request\. In a sync, this functionality means that files that haven't changed don't receive the new metadata\. When copying between two Amazon S3 locations, the `metadata-directive` argument defaults to `REPLACE` unless otherwise specified\.
-+ [ls](http://docs.aws.amazon.com/cli/latest/reference/s3/ls.html) Lists objects on the AWS Snowball Edge appliance\. The following are options for this command:
++ [ls](http://docs.aws.amazon.com/cli/latest/reference/s3/ls.html) Lists objects on the AWS Snowball Edge device\. The following are options for this command:
   + `--human-readable` \(boolean\) File sizes are displayed in human\-readable format\.
   + `--summarize` \(boolean\) Summary information is displayed\. This information is the number of objects and their total size\.
   + `--recursive` \(boolean\) The command is performed on all files or objects under the specified directory or prefix\.
   + `--page-size` \(integer\) The number of results to return in each response to a list operation\. The default value is 1000 \(the maximum allowed\)\. Using a lower value might help if an operation times out\.
-+ [rm](http://docs.aws.amazon.com/cli/latest/reference/s3/rm.html) Deletes an object on the AWS Snowball Edge appliance\. The following are options for this command:
++ [rm](http://docs.aws.amazon.com/cli/latest/reference/s3/rm.html) Deletes an object on the AWS Snowball Edge device\. The following are options for this command:
   + `--dryrun` \(boolean\) The operations that would be performed using the specified command are displayed without being run\.
   + `--include` \(string\) Don't exclude files or objects in the command that match the specified pattern\. For details, see [Use of Exclude and Include Filters](http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#use-of-exclude-and-include-filters) in the *AWS CLI Command Reference*\.
   + `--exclude` \(string\) Exclude all files or objects from the command that matches the specified pattern\.

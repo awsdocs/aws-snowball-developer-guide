@@ -1,23 +1,23 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # Job Statuses<a name="jobstatuses"></a>
 
-Each job has a *status*, which changes to denote the current state of the job\. This job status information doesn't reflect the health, the current processing state, or the storage used for the associated appliances\.
+Each job has a *status*, which changes to denote the current state of the job\. This job status information doesn't reflect the health, the current processing state, or the storage used for the associated devices\.
 
 
 | Console Identifier | API Identifier | Status Description | 
 | --- | --- | --- | 
 | Job created | New | Your job has just been created\. This status is the only one during which you can cancel a job or its job parts, if the job is an export job\. | 
-| Preparing Appliance | PreparingAppliance | AWS is preparing an appliance for your job\. | 
-| Exporting | InProgress | AWS is exporting your data from Amazon S3 onto an appliance\. | 
-| Preparing shipment | PreparingShipment | AWS is preparing to ship an appliance to you\. | 
-| In transit to you | InTransitToCustomer | The appliance has been shipped to the address you provided during job creation\. | 
-| Delivered to you | WithCustomer | The appliance has arrived at the address you provided during job creation\. | 
-| In transit to AWS | InTransitToAWS | You have shipped the appliance back to AWS\. | 
+| Preparing device | PreparingAppliance | AWS is preparing a device for your job\. | 
+| Exporting | InProgress | AWS is exporting your data from Amazon S3 onto a device\. | 
+| Preparing shipment | PreparingShipment | AWS is preparing to ship a device to you\. | 
+| In transit to you | InTransitToCustomer | The device has been shipped to the address you provided during job creation\. | 
+| Delivered to you | WithCustomer | The device has arrived at the address you provided during job creation\. | 
+| In transit to AWS | InTransitToAWS | You have shipped the device back to AWS\. | 
 | At AWS | WithAWS | Your shipment has arrived at AWS\. If you're importing data, your import typically begins within a day of its arrival\. | 
 | Importing | InProgress | AWS is importing your data into Amazon Simple Storage Service \(Amazon S3\)\. | 
 | Completed | Complete | Your job or a part of your job has completed successfully\. | 

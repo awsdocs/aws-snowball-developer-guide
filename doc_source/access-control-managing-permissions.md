@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -130,6 +130,16 @@ The permissions reference table lists the AWS Snowball job management API operat
             ]
         },
         {
+           "Effect": "Allow",
+           "Action": [
+                "ec2:DescribeImages",
+                "ec2:ModifyImageAttribute",
+           ],
+           "Resource": [
+                "*"
+           ]
+        },
+        {
             "Effect": "Allow",
             "Action": [
                 "sns:CreateTopic",
@@ -166,6 +176,7 @@ The permissions reference table lists the AWS Snowball job management API operat
 ```
 
 The AWS Snowball console needs these additional permissions for the following reasons:
++ `ec2:` – These allow the user to describe Amazon EC2 instances and modify their attributes for local compute purposes\. For more information, see [Using Amazon EC2 Compute Instances](using-ec2.md)\.
 + `lambda:` – These allow the user to select Lambda functions for local compute purposes\. For more information, see [Using AWS Lambda with an AWS Snowball Edge](using-lambda.md)\.
 + `kms:` – These allow the user to create or choose the KMS key that will encrypt your data\. For more information, see [AWS Key Management Service in AWS Snowball](kms.md)\.
 + `iam:` – These allow the user to create or choose an IAM role ARN that AWS Snowball will assume to access the AWS resources associated with job creation and processing\.

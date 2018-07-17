@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -13,6 +13,10 @@ To get started with AWS Lambda powered by AWS Greengrass functions on a Snowball
 1. [Configuring AWS Greengrass with a Snowball Edge](#gg-config)
 
 1. [Creating Your Job](#function-create-job)
+
+1. [Creating A Virtual Network Interface](#create-vnic-lambda)
+
+1. [Starting AWS Greengrass on a Snowball Edge](#starting-greengrass)
 
 1. [Using Lambda Powered by AWS Greengrass Functions on a Snowball Edge](#use-functions)
 
@@ -60,24 +64,100 @@ If you have other configuration changes that you want to make for the AWS Greeng
 
 Create a job in the AWS Snowball Management Console and associate the Amazon Resource Name \(ARN\) for at least one published Lambda function with a bucket\. For a walkthrough on creating your first job, see [Getting Started with AWS Snowball Edge: Your First Job](common-get-start.md)\. 
 
-All the Lambda functions that you choose during job creation are triggered by MQTT messages sent by the IoT device associated with the Amazon S3 Adapter for Snowball\. These MQTT messages are triggered whenever an [Amazon S3 PUT object](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html) action is made against the bucket on the AWS Snowball Edge appliance\.
+All the Lambda functions that you choose during job creation are triggered by MQTT messages sent by the IoT device associated with the Amazon S3 Adapter for Snowball\. These MQTT messages are triggered whenever an [Amazon S3 PUT object](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html) action is made against the bucket on the AWS Snowball Edge device\.
+
+## Creating A Virtual Network Interface<a name="create-vnic-lambda"></a>
+
+When the Snowball Edge arrives, unlock the device, and create a virtual network interface to bind to AWS Greengrass\. Each Snowball Edge has three network interfaces \(NICs\), the physical network interface controllers for the device\. These are the RJ45, SFP, and QSFP ports on the back of the device\.
+
+Each VNIC is based on the physical one, and you can have any number of VNICs associated with each NIC\. To create a virtual network interface, use the `snowballEdge create-virtual-network-interface` command\. 
+
+**Note**  
+`--static-ip-address-configuration` is only a valid option when using `STATIC` for `--ip-address-assignment`\.
+
+**Usage \(configured Snowball client\)**
+
+```
+snowballEdge create-virtual-network-interface --ip-address-assignment [DHCP or STATIC] --physical-network-interface-id [physical network interface id] --static-ip-address-configuration IpAddress=[IP address],NetMask=[Netmask]
+```
+
+**Usage \(Snowball client not configured\)**
+
+```
+snowballEdge create-virtual-network-interface --endpoint https://[ip address] --manifest-file /path/to/manifest --unlock-code [unlock code] --ip-address-assignment [DHCP or STATIC] --physical-network-interface-id [physical network interface id] --static-ip-address-configuration IpAddress=[IP address],NetMask=[Netmask]
+```
+
+**Example Creating VNICs \(DHCP\)**  
+
+```
+./snowballEdge create-virtual-network-interface --ip-address-assignment dhcp --physical-network-interface-id s.ni-8EXAMPLEaEXAMPLEd
+{
+  "VirtualNetworkInterface" : {
+    "VirtualNetworkInterfaceArn" : "arn:aws:snowball-device:::interface/s.ni-8EXAMPLE8EXAMPLEf",
+    "PhysicalNetworkInterfaceId" : "s.ni-8EXAMPLEaEXAMPLEd",
+    "IpAddressAssignment" : "DHCP",
+    "IpAddress" : "192.0.2.0",
+    "Netmask" : "255.255.255.0",
+    "DefaultGateway" : "192.0.2.1",
+    "MacAddress" : "EX:AM:PL:E1:23:45"
+  }
+}
+```
+
+## Starting AWS Greengrass on a Snowball Edge<a name="starting-greengrass"></a>
+
+Before you can use AWS Lambda powered by AWS Greengrass, you need to use the Snowball client to start it\.
+
+**Note**  
+It can take several minutes to start AWS Greengrass on a Snowball Edge\. We recommend using the `describe-service` Snowball client command after you start the service to determine when it's active\. For more information, see [Getting Service Status](using-client-commands.md#client-service-status)\.
+
+**To start AWS Lambda powered by AWS Greengrass**
+
+1. Run the `snowballEdge describe-device` command to get the list of network interface IDs\. For more information on this command, see [Getting Device Status](using-client-commands.md#client-status)\.
+
+1. Identify the ID for the physical network interface that you want to use, and make a note of it\. The following examples show running this command with the two different IP address assignment methods, either `DHCP` or `STATIC`\.
+
+   ```
+   snowballEdge create-virtual-network-interface \
+   --physical-network-interface-id s.ni-abcd1234 \
+   --ip-address-assignment DHCP
+   	         
+   	        //OR//
+   	        
+   snowballEdge create-virtual-network-interface \
+   --physical-network-interface-id s.ni-abcd1234 \
+   --ip-address-assignment STATIC \
+   --static-ip-address-configuration IpAddress=192.0.2.0,Netmask=255.255.255.0
+   ```
+
+1. The command returns a JSON structure that includes the virtual network interface ARN\. Make a note of that ARN\.
+
+1. Start the AWS Greengrass service using the virtual network interface, as in the following example\.
+
+   ```
+   snowballEdge start-service \
+   --service-id greengrass\
+   --virtual-network-interface-arns arn:aws:snowball-device:::interface/s.ni-abcd1234abcd1234a
+   ```
+
+AWS Lambda powered by AWS Greengrass has now started\. Anytime you need the IP address or virtual network interface ARN for the AWS Greengrass, you can use the `snowballEdge describe-virtual-network-interfaces` Snowball client command\.
 
 ## Connecting to the Internet to Update AWS Greengrass Group Certificates<a name="function-update-certs"></a>
 
-When the Snowball Edge arrives, unlock the device, and then connect it to the internet for at least one minute\. Connecting the device to the internet allows the AWS Greengrass service in the cloud to send the AWS Greengrass certificates that are needed to operate the Snowball Edge\. After that, you can disconnect the device from the internet\. The associated AWS Greengrass group then functions in offline mode\.
+Every time you start the AWS Greengrass service, you must log into the AWS Greengrass Console with the account used to create the job in the AWS Snowball Management Console and initiate a AWS Greengrass Group deployment to the AWS Greengrass Core\. For more information, see [Deploy Cloud Configurations to an AWS Greengrass Core Device](http://docs.aws.amazon.com/greengrass/latest/developerguide/configs-core.html) in the *AWS Greengrass Developer Guide*\. After that, you can disconnect the device from the internet\. The associated AWS Greengrass group then functions in offline mode\.
 
 **Important**  
 When the IP address for any device in the local AWS Greengrass group changes, reconnect the Snowball Edge to the internet so it can get new certificates\.
 
 ## Using Lambda Powered by AWS Greengrass Functions on a Snowball Edge<a name="use-functions"></a>
 
-Unless programmed otherwise, Lambda functions are triggered by MQTT messages sent by the IoT device associated with the Amazon S3 Adapter for Snowball\. These MQTT messages are in turn triggered by Amazon S3 PUT object actions\. Amazon S3 PUT object actions occur through the file interface \(with a write operation\), the AWS CLI \(using the Amazon S3 Adapter for Snowball\), or programmatically through one of the SDKs or a REST application of your own design\.
+Now that the service is started, and you've initiated a AWS Greengrass Group deployment to the AWS Greengrass Core, you can trigger Lambda functions by writing data to the Amazon S3 buckets on the device\. Unless programmed otherwise, Lambda functions are triggered by MQTT messages sent by the IoT device associated with the Amazon S3 Adapter for Snowball\. These MQTT messages are in turn triggered by Amazon S3 PUT object actions\. Amazon S3 PUT object actions occur through the file interface \(with a write operation\), the AWS CLI \(using the Amazon S3 Adapter for Snowball\), or programmatically through one of the SDKs or a REST application of your own design\.
 
-You can use your AWS Lambda powered by AWS Greengrass functions to execute Python code against public endpoints among AWS services in the cloud\. For this Python code execution to work, your AWS Snowball Edge appliance needs to be connected to the internet\. For more information, see the [AWS Lambda Developer Guide](http://docs.aws.amazon.com/lambda/latest/dg/)\.
+You can use your AWS Lambda powered by AWS Greengrass functions to execute Python code against public endpoints among AWS services in the cloud\. For this Python code execution to work, your AWS Snowball Edge device needs to be connected to the internet\. For more information, see the [AWS Lambda Developer Guide](http://docs.aws.amazon.com/lambda/latest/dg/)\.
 
 ### Updating Existing Functions<a name="update-functions"></a>
 
-You can update existing Lambda functions in the console\. If you do, and if your AWS Snowball Edge appliance is connected to the internet, a deployment agent notifies each Lambda function of the updated AWS Greengrass group configuration\. For more information, see [Create a Deployment](http://docs.aws.amazon.com/lambda/latest/dg/create-deployment.html) in the *AWS Greengrass Developer Guide*\.
+You can update existing Lambda functions in the console\. If you do, and if your AWS Snowball Edge device is connected to the internet, a deployment agent notifies each Lambda function of the updated AWS Greengrass group configuration\. For more information, see [Create a Deployment](http://docs.aws.amazon.com/lambda/latest/dg/create-deployment.html) in the *AWS Greengrass Developer Guide*\.
 
 ### Adding New Functions<a name="add-new-functions"></a>
 
@@ -85,4 +165,34 @@ After your Snowball Edge arrives and you unlock it and connect it to the interne
 
 ### Testing Lambda Powered by AWS Greengrass Functions<a name="testing-functions"></a>
 
-While testing your Python\-coded function in the Lambda console, you might encounter errors\. If that happens, see [Retries on Errors](http://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html) in the *AWS Lambda Developer Guide*\.
+You can test your Lambda functions before you create your job, or after you've started the AWS Greengrass on the device\. When testing your Python\-coded function in the Lambda console, before creating your job, you might encounter errors\. If that happens, see [Retries on Errors](http://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html) in the *AWS Lambda Developer Guide*\.
+
+To test your Lambda functions on\-premises, you can use the following procedure\.
+
+**To test your Lambda functions on\-premises**
+
+1. Create a subscription in the AWS Greengrass Console\. For more information, see [Configure Subscriptions](http://docs.aws.amazon.com/greengrass/latest/developerguide/config_subs.html) in the *AWS Greengrass Developer Guide*\.
+
+1. Deploy the AWS Greengrass Group containing that subscription to the AWS Greengrass Core running on the Snowball Edge device\. In this subscription, you specify the following:
+   + The **Source** as the device with Snowball Edge Job ID generated when you created the job\.
+   + The **Target** as the AWS IoT service\.
+
+1. Once the deployment is successfully completed, log into the AWS IoT console with the account used to create your job\.
+
+1. Choose **Test** and then choose **Subscribe to a topic**\.
+
+1. In the **Subscription topic** textbox, enter the name of the bucket on the Snowball Edge that you will copy an object into\.
+
+1. Choose **Subscribe to topic**\. The MQTT client page you are on will then show you the subscription to the bucket you specified\.
+
+1. Using the AWS CLI, Amazon S3 Adapter for Snowball, or one of the AWS SDKs, copy an object to the specified bucket
+
+1. A JSON object will display the payload included in the MQTT message published to the AWS Greengrass Core backing the AWS Greengrass service running on the Snowball Edge device\. This payload includes the name of the object and the name of the bucket the object was PUT into\. 
+
+You've now successfully tested your Lambda function\. The JSON object indicates that the MQTT message published to the AWS Greengrass Core was received successfully, and the associated Lambda function was executed\. For information on adding AWS Greengrass subscriptions to your AWS Greengrass Group, see [Configure Subscriptions](http://docs.aws.amazon.com/greengrass/latest/developerguide/config_subs.html) in the *AWS Greengrass Developer Guide*\.
+
+### Stopping AWS Greengrass<a name="stopping-gg-lambda"></a>
+
+When you're done with AWS Lambda powered by AWS Greengrass, you can stop it with the `snowballEdge stop-service` Snowball client command\. For more information, see [Stopping a Service on your Snowball Edge](using-client-commands.md#edge-stop-service)\.
+
+AWS Lambda powered by AWS Greengrass running on a Snowball Edge; device is stateless\. As a result, any data \(including AWS Greengrass configuration, certificates, and Lambda functions\) running on the device will be lost when the AWS Greengrass service enters the `DEACTIVATING` state or becomes `INACTIVE`\.

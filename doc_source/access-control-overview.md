@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -22,7 +22,7 @@ When granting permissions, you decide who is getting the permissions, the resour
 
 ## Resources and Operations<a name="access-control-resources"></a>
 
-In AWS Snowball the primary resource is a *job*\. AWS Snowball also has appliances like the Snowball and the AWS Snowball Edge appliance, however, you can only use those appliances in the context of an existing job\. Amazon S3 buckets and Lambda functions are resources of Amazon S3 and Lambda respectively\.
+In AWS Snowball the primary resource is a *job*\. AWS Snowball also has devices like the Snowball and the AWS Snowball Edge device, however, you can only use those devices in the context of an existing job\. Amazon S3 buckets and Lambda functions are resources of Amazon S3 and Lambda respectively\.
 
 As mentioned previously, jobs don't have Amazon Resource Names \(ARNs\) associated with them\. However, other services' resources, like Amazon S3 buckets These do have unique \(ARNs\) associated with them as shown in the following table\.
 

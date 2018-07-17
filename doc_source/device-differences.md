@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge \(100 TB of storage space\)\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -20,6 +20,7 @@ Following is a table that shows the different use cases for the different AWS Sn
 | Export from Amazon S3 | ✓ | ✓ | 
 | Durable local storage |  | ✓ | 
 | Local compute with AWS Lambda |  | ✓ | 
+| Amazon EC2 compute instances |  | ✓ | 
 | Use in a cluster of devices |  | ✓ | 
 | Use with AWS Greengrass \(IoT\) |  | ✓ | 
 | Transfer files through NFS with a GUI |  | ✓ | 
