@@ -77,5 +77,8 @@ Amazon's trademarks and trade dress may not be used in
    + [Using the Snowball Client](old-using-client.md)
    + [Clustering Overview](old-clusters.md)
       + [Administrating a Cluster](old-administercluster.md)
+   + [Using the File Interface for the AWS Snowball Edge](using-fileinterface-old.md)
+   + [Using AWS Lambda with an AWS Snowball Edge](using-lambda-old.md)
+      + [Getting Started with Lambda Powered by AWS Greengrass](function-getting-started-old.md)
 + [Document History](doc-history.md)
 + [AWS Glossary](glossary.md)

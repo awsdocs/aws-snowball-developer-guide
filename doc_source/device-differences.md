@@ -16,7 +16,6 @@ Following is a table that shows the different use cases for the different AWS Sn
 | Use Case | Snowball | Snowball Edge | 
 | --- | --- | --- | 
 | Import data into Amazon S3 | ✓ | ✓ | 
-| Copy data directly from HDFS | ✓ |  | 
 | Export from Amazon S3 | ✓ | ✓ | 
 | Durable local storage |  | ✓ | 
 | Local compute with AWS Lambda |  | ✓ | 
@@ -59,19 +58,19 @@ The following outlines the different tools used with the AWS Snowball devices, a
 ### Snowball Tools<a name="tool-differences-snowball"></a>
 
 **Snowball client with Snowball**
-+ Must be downloaded from the [AWS Snowball Tools Download](http://aws.amazon.com/snowball/tools) page and installed on a powerful workstation that you own\.
++ Must be downloaded from the [AWS Snowball Edge Resources](http://aws.amazon.com/snowball-edge/resources/) page and installed on a powerful workstation that you own\.
 + Can transfer data to or from the Snowball\. For more information, see [Using the Snowball Client](http://docs.aws.amazon.com/snowball/latest/ug/using-client.html)\.
 + Encrypts data on your powerful workstation before the data is transferred to the Snowball\.
 
 **Amazon S3 Adapter for Snowball with Snowball**
-+ Must be downloaded from the [AWS Snowball Tools Download](http://aws.amazon.com/snowball/tools) page and installed on a powerful workstation that you own\.
++ Must be downloaded from the [AWS Snowball Edge Resources](http://aws.amazon.com/snowball-edge/resources/) page and installed on a powerful workstation that you own\.
 + Can transfer data to or from the Snowball\. For more information, see [Transferring Data with the Amazon S3 Adapter for Snowball](http://docs.aws.amazon.com/snowball/latest/ug/snowball-transfer-adapter.html)\.
 + Encrypts data on your powerful workstation before the data is transferred to the Snowball\.
 
 ### Snowball Edge Tools<a name="tool-differences-edge"></a>
 
 **Snowball client with Snowball Edge**
-+ Must be downloaded from the [AWS Snowball Tools Download](http://aws.amazon.com/snowball/tools) page and installed on a computer that you own\.
++ Must be downloaded from the [AWS Snowball Edge Resources](http://aws.amazon.com/snowball-edge/resources/) page and installed on a computer that you own\.
 + Must be used to unlock the Snowball Edge or the cluster of Snowball Edge devices\. For more information, see [Using the Snowball Client](using-client.md)\.
 + Can't be used to transfer data\.
 

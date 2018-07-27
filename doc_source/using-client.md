@@ -15,7 +15,7 @@ In January 2018, there was a feature update for clusters, making them leaderless
 
 ## Downloading and Installing the Snowball Client<a name="download-client"></a>
 
-You can download and install the Snowball client from the [AWS Snowball Tools Download](http://aws.amazon.com/snowball/tools) page\. On that page, you can find the installation package for your operating system and follow the instructions to install the Snowball client\. Running the Snowball client from a terminal in your workstation might require using a specific path, depending on your operating system:
+You can download and install the Snowball client from the [AWS Snowball Edge Resources](http://aws.amazon.com/snowball-edge/resources/) page\. On that page, you can find the installation package for your operating system and follow the instructions to install the Snowball client\. Running the Snowball client from a terminal in your workstation might require using a specific path, depending on your operating system:
 + **Microsoft Windows** – When the client has been installed, you can run it from any directory without any additional preparation\.
 + **Linux** – The Snowball client must be run from the \~/snowball\-client\-linux\-*build\_number*/bin/ directory\. Note that the Snowball client is only supported on 64\-bit Linux distributions\.
 + **MacOS** – The `install.sh` script copies folders from the Snowball client \.tar file to the /usr/local/bin/snowball directory\. If you run this script, you can then run the Snowball client from any directory if /usr/local/bin is a path in your bash\_profile\. You can verify your path with the `echo $PATH` command\.

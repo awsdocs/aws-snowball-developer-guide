@@ -6,6 +6,6 @@ This guide is for the Snowball Edge\. If you are looking for documentation for t
 
 # Download and Install the Snowball Client<a name="download-the-client"></a>
 
-The Snowball client is the tool that you use to unlock the AWS Snowball Edge device\. You can download the Snowball client for your operating system from the [AWS Snowball Tools Download](http://aws.amazon.com/snowball/tools) page\.
+The Snowball client is the tool that you use to unlock the AWS Snowball Edge device\. You can download the Snowball client for your operating system from the [AWS Snowball Edge Resources](http://aws.amazon.com/snowball-edge/resources/) page\.
 
 **Next:** [Unlock the Snowball Edge](unlockdevice.md) 

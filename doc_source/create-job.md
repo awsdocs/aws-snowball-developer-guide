@@ -8,6 +8,9 @@ This guide is for the Snowball Edge\. If you are looking for documentation for t
 
 The process for creating an AWS Snowball Edge device job in the AWS Snowball Management Console has the following steps\.
 
+**Important**  
+Before including Amazon EC2 compute instances in your job creation request, see [Creating a Job with Compute Instances](using-ec2.md#create-ec2-edge-job)\.
+
 **To create an AWS Snowball Edge device job in the console**
 
 1. Sign in to the AWS Management Console and open the [AWS Snowball Management Console](https://console.aws.amazon.com/importexport/home?region=us-west-2)\.

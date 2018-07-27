@@ -6,7 +6,7 @@ This guide is for the Snowball Edge\. If you are looking for documentation for t
 
 # AWS Snowball API Permissions: Actions, Resources, and Conditions Reference<a name="snowball-api-permissions-ref"></a>
 
-When you are setting up [Access Control in the AWS Cloud](authentication-and-access-control.md#access-control) and writing a permissions policy that you can attach to an IAM identity \(identity\-based policies\), you can use the following table as a reference\. The table lists each AWS Snowball job management API operation, the corresponding actions for which you can grant permissions to perform the action, and the AWS resource for which you can grant the permissions\. You specify the actions in the policy's `Action` field, and you specify the resource value in the policy's `Resource` field\. 
+When you are setting up [Access Control in the AWS Cloud](authentication-and-access-control.md#access-control) and writing a permissions policy that you can attach to an IAM identity \(identity\-based policies\), you can use the following table as a reference\. The table following each AWS Snowball job management API operation and the corresponding actions for which you can grant permissions to perform the action\. It also includes for each API operation the AWS resource for which you can grant the permissions\. You specify the actions in the policy's `Action` field, and you specify the resource value in the policy's `Resource` field\. 
 
 You can use AWS\-wide condition keys in your AWS Snowball policies to express conditions\. For a complete list of AWS\-wide keys, see [Available Keys](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#AvailableKeys) in the *IAM User Guide*\. 
 

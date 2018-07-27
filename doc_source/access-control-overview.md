@@ -22,9 +22,9 @@ When granting permissions, you decide who is getting the permissions, the resour
 
 ## Resources and Operations<a name="access-control-resources"></a>
 
-In AWS Snowball the primary resource is a *job*\. AWS Snowball also has devices like the Snowball and the AWS Snowball Edge device, however, you can only use those devices in the context of an existing job\. Amazon S3 buckets and Lambda functions are resources of Amazon S3 and Lambda respectively\.
+In AWS Snowball, the primary resource is a *job*\. AWS Snowball also has devices like the Snowball and the AWS Snowball Edge device, however, you can only use those devices in the context of an existing job\. Amazon S3 buckets and Lambda functions are resources of Amazon S3 and Lambda respectively\.
 
-As mentioned previously, jobs don't have Amazon Resource Names \(ARNs\) associated with them\. However, other services' resources, like Amazon S3 buckets These do have unique \(ARNs\) associated with them as shown in the following table\.
+As mentioned previously, jobs don't have Amazon Resource Names \(ARNs\) associated with them\. However, other services' resources, like Amazon S3 buckets, do have unique \(ARNs\) associated with them as shown in the following table\.
 
 
 | Resource Type | ARN Format | 
