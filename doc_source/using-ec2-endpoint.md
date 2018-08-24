@@ -63,24 +63,39 @@ Following, you can find information about how to specify the Amazon EC2 endpoint
 Following, you can find a description of the subset of AWS CLI commands and options for Amazon EC2 that are supported on Snowball Edge devices\. If a command or option isn't listed following, it's not supported\. You can declare some unsupported options along with a command, however, these are ignored\.
 + [run\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) – Launches a number of compute instances using a Snowball AMI ID for an AMI\.
 **Note**  
-Note that it can take up to an hour and a half to launch a compute instance on a Snowball Edge, depending on the size and type of the instance\.
+It can take up to an hour and a half to launch a compute instance on a Snowball Edge, depending on the size and type of the instance\.
   + \-\-image\-id – The Snowball AMI ID of the AMI, which you can get by calling describe\-images\. An AMI is required to launch an instance\.
   + \-\-count – Number of instances to launch\. If a single number is provided, it is assumed to be the minimum to launch \(defaults to 1\)\. If a range is provided in the form min:max then the first number is interpreted as the minimum number of instances to launch and the second is interpreted as the maximum number of instances to launch\.
   + \-\-instance\-type – The `sbe1.xxxx` instance type\.
+  + \-\-user\-data – The user data to make available to the instance\. If you are using the AWS CLI, base64\-encoding is performed for you, and you can load the text from a file\. Otherwise, you must provide base64\-encoded text\.
+  + \-\-tag\-specifications – The tags to apply to the resources during launch\. You can only tag instances on launch\. The specified tags are applied to all instances that are created during launch\. To tag a resource after it has been created, use create\-tags\.
 + [start\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) – Starts an `sbe1.xxxx` instance that you've previously stopped\. All resources attached to the instance persist through starts and stops, but is erased if the instance is terminated\.
   + \-\-instance\-ids – The IDs of one or more `sbe1.xxxx` instances that were stopped on the device\.
 + [stop\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) – Stops an `sbe1.xxxx` instance that is running\. All resources attached to the instance persist through starts and stops, but is erased if the instance is terminated\.
-  + \-\-instance\-ids – The IDs of one or more `sbe1.xxxx` instances that will be stopped on the device\.
+  + \-\-instance\-ids – The IDs of one or more `sbe1.xxxx` instances to be stopped on the device\.
 + [terminate\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/terminate-instances.html) – Shuts down one or more instances\. This operation is idempotent; if you terminate an instance more than once, each call succeeds\. All resources attached to the instance persist through starts and stops, but data is erased if the instance is terminated\.
-  + \-\-instance\-ids – The IDs of one or more `sbe1.xxxx` instances that will be terminated on the device\. All associated data stored for those instances will be lost\.
+  + \-\-instance\-ids – The IDs of one or more `sbe1.xxxx` instances to be terminated on the device\. All associated data stored for those instances will be lost\.
++ [create\-tags](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-tags.html) – Adds or overwrites one or more tags for the specified resource\. Each resource can have a maximum of 50 tags\. Each tag consists of a key and optional value\. Tag keys must be unique for a resource\. The following resources are supported:
+  + AMI
+  + Instance
++ [describe\-tags](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-tags.html) – Describes one or more of the tags for specified resource \(`image` or `instance`\)\. With this command, the following filters are supported:
+  + resource\-id
+  + resource\-type – `image` or `instance`
+  + key
+  + value
++ [delete\-tags](http://docs.aws.amazon.com/cli/latest/reference/ec2/delete-tags.html) – Deletes the specified set of tags from the specified resource \(AMI or compute instance\)\.
 + [describe\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) – Describes one or more of your instances\.
   + \-\-instance\-ids – The IDs of one or more `sbe1.xxxx` instances that were stopped on the device\.
-  + \-\-page\-size – The size of each page to get in the call\. This does not affect the number of items returned in the command's output\. Setting a smaller page size results in more calls to the device, retrieving fewer items in each call\. This can help prevent the calls from timing out\.
-  + \-\-max\-items – The total number of items to return in the command's output\. If the total number of items available is more than the value specified, a NextToken is provided in the command's output\. To resume pagination, provide the NextToken value in the starting\-token argument of a subsequent command\.
-  + \-\-starting\-token – A token to specify where to start paginating\. This is the NextToken from a previously truncated response\.
+  + \-\-page\-size – The size of each page to get in the call\. This value doesn't affect the number of items returned in the command's output\. Setting a smaller page size results in more calls to the device, retrieving fewer items in each call\. Doing this can help prevent the calls from timing out\.
+  + \-\-max\-items – The total number of items to return in the command's output\. If the total number of items available is more than the value specified, a `NextToken` is provided in the command's output\. To resume pagination, provide the `NextToken` value in the starting\-token argument of a subsequent command\.
+  + \-\-starting\-token – A token to specify where to start paginating\. This token is the `NextToken` from a previously truncated response\.
 + [describe\-images](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) – Describes one or more of the images \(AMIs\) available to you\. Images available to you are added to the Snowball Edge device during job creation\.
   + \-\-image\-id – The Snowball AMI ID of the AMI\.
-+ [associate\-address](http://docs.aws.amazon.com/cli/latest/reference/ec2/associate-address.html) – Associates a virtual IP address with an instance for use on one of the three physical network interfaces on the device\.
++ [describe\-instance\-attribute](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-attribute.html) – Describes the specified attribute of the specified instance\. You can specify only one attribute at a time\. The following attributes are supported:
+  + instanceType
+  + userData
++ [modify\-instance\-attribute](http://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) – Modifies the userData attribute of the specified instance\. Only the userData attribute is supported\.
++ [associate\-address](http://docs.aws.amazon.com/cli/latest/reference/ec2/associate-address.html) – Associates a virtual IP address with an instance for use on one of the three physical network interfaces on the device:
   + \-\-instance\-id – The ID of a single `sbe1.xxxx` instance\.
   + \-\-public\-ip – The virtual IP address that you want to use to access your instance\.
 + [disassociate\-address](http://docs.aws.amazon.com/cli/latest/reference/ec2/disassociate-address.html) – Disassociates a virtual IP address from the instance it's associated with\.
@@ -90,15 +105,28 @@ Note that it can take up to an hour and a half to launch a compute instance on a
 
 ## Supported Amazon EC2 API Actions<a name="using-ec2-adapter-supported-api"></a>
 
-Following, you can find Amazon EC2 API actions that you can use with a Snowball Edge\. Amazon EC2 API calls require SigV4 signing\. If you're using the AWS CLI or an AWS SDK to make these API calls, the SigV4 signing is handled for you\. Otherwise, you need to implement your own SigV4 signing solution\. For more information, see [Getting and Using Local Amazon S3 Credentials](using-adapter.md#adapter-credentials)\.
+Following, you can find Amazon EC2 API operations that you can use with a Snowball Edge, with links to their descriptions in the *Amazon EC2 API Reference\. *Amazon EC2 API calls require Signature Version 4 \(SigV4\) signing\. If you're using the AWS CLI or an AWS SDK to make these API calls, the SigV4 signing is handled for you\. Otherwise, you need to implement your own SigV4 signing solution\. For more information, see [Getting and Using Local Amazon S3 Credentials](using-adapter.md#adapter-credentials)\.
 + [RunInstances](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html) –
 **Note**  
-Note that it can take up to an hour and a half to launch a compute instance on a Snowball Edge, depending on the size and type of the instance\.
+It can take up to an hour and a half to launch a compute instance on a Snowball Edge, depending on the size and type of the instance\.
 + [StartInstances](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartInstances.html)
-+ [StopInstances](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StopInstances.html) – Note that resources associated with a stopped instance persist\. You can terminate the instance to free up these resources, however any associated data will be deleted\. 
++ [StopInstances](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StopInstances.html) – Resources associated with a stopped instance persist\. You can terminate the instance to free up these resources\. However, any associated data is deleted\. 
 + [TerminateInstances](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TerminateInstances.html)
++ [CreateTags](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) – The following resources are supported:
+  + AMI
+  + Instance
++ [DescribeTags](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTags.html) – With this command, the following filters are supported:
+  + resource\-id
+  + resource\-type – AMI or compute instance only
+  + key
+  + value
++ [DeleteTags](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTags.html)
 + [DescribeInstances](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
 + [DescribeImages](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html)
++ [DescribeInstanceAttribute](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceAttribute.html) – The following attributes are supported:
+  + instanceType
+  + userData
++ [ModifyInstanceAttribute](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html) – Only the userData attribute is supported\.
 + [AssociateAddress](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateAddress.html)
 + [DisassociateAddress](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateAddress.html)
 + [DescribeAddresses](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAddresses.html)

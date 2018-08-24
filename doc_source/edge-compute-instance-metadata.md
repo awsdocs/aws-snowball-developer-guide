@@ -6,9 +6,9 @@ This guide is for the Snowball Edge\. If you are looking for documentation for t
 
 # Supported Instance Metadata and User Data<a name="edge-compute-instance-metadata"></a>
 
-Instance metadata is data about your instance that you can use to configure or manage the running instance\. Snowball Edge supports a subset of instance metadata categories for your compute instances\. For more information, see [Instance Metadata and User Data](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) in the Amazon EC2 User Guide for Linux Instances\.
+*Instance metadata *is data about your instance that you can use to configure or manage the running instance\. Snowball Edge supports a subset of instance metadata categories for your compute instances\. For more information, see [Instance Metadata and User Data](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) in the *Amazon EC2 User Guide for Linux Instances\.*
 
-The following categories are supported\. Using any other categories will return a `404` error message\.
+The following categories are supported\. Using any other categories return a `404` error message\.
 
 
 **Supported Instance Metadata Categories on a Snowball Edge**  
@@ -29,10 +29,25 @@ The following categories are supported\. Using any other categories will return 
 |  public\-ipv4  | The public IPv4 address\. | 
 |  public\-keys/0/openssh\-key  | Public key\. Only available if supplied at instance launch time\. | 
 |  reservation\-id  | The ID of the reservation\. | 
+| userData | Shell scripts to send instructions to an instance at launch\. | 
 
 
 **Supported Instance Dynamic Data Categories on a Snowball Edge**  
 
 | Data | Description | 
 | --- | --- | 
-| instance\-identity/document | JSON containing instance attributes\. Note that only instanceId, imageId, privateIp, and instanceType have values, while the other returned attributes are null\. For more information, see [Instance Identity Documents](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html) in the Amazon EC2 User Guide for Linux Instances\. | 
+| instance\-identity/document | JSON containing instance attributes\. Only instanceId, imageId, privateIp, and instanceType have values, and the other returned attributes are null\. For more information, see [Instance Identity Documents](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html) in the Amazon EC2 User Guide for Linux Instances\. | 
+
+## User Data in Snowball Compute Instances<a name="userdatasupport"></a>
+
+User data is supported for use with shell scripts for compute instances on a Snowball Edge\. Using shell scripts, you can send instructions to an instance at launch\. You can change user data with the `modify-instance-attribute` AWS CLI command, or the `ModifyInstanceAttribute` API action\.
+
+**To change user data**
+
+1. Stop your compute instance with the `stop-instances` AWS CLI command\.
+
+1. Using the `modify-instance-attribute` AWS CLI command, modify the `userData` attribute\.
+
+1. Restart your compute instance with the `start-instances` AWS CLI command\.
+
+Only shell scripts are supported with compute instances\. There is no support for `cloud-init` package directives on compute instances running on a Snowball Edge\. For more information about working with AWS CLI commands, see the *[AWS CLI Command Reference](http://docs.aws.amazon.com/cli/latest/reference/)\.* 

@@ -251,7 +251,7 @@ If you use server\-side encryption with AWS KMS–managed keys \(SSE\-KMS\) to e
      "Action": [
        "kms:GenerateDataKey"
      ],
-     "Resource": "arn:aws:s3:::SSEKMSEncryptedBucketName"
+     "Resource": "arn:aws:kms:us-west-2:123456789012:key/abc123a1-abcd-1234-efgh-111111111111"
 }
 ```
 
@@ -283,7 +283,7 @@ If you use server\-side encryption with AWS KMS–managed keys to encrypt the Am
      "Action": [
             “kms:Decrypt”
       ],
-      "Resource": "arn:aws:s3:::SSEKMSEncryptedBucketName"
+     "Resource": "arn:aws:kms:us-west-2:123456789012:key/abc123a1-abcd-1234-efgh-111111111111"
 }
 ```
 

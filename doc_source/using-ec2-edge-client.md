@@ -12,7 +12,7 @@ The following Snowball client commands are specific to compute instances\.
 
 ## Creating a Virtual Network Interface<a name="ec2-edge-create-vnic"></a>
 
-In order to run a compute instance on your Snowball Edge or start the file interface, on your Snowball Edge, you will have to first create a virtual network interface \(VNIC\)\. Each Snowball Edge has three network interfaces \(NICs\), the physical network interface controllers for the device\. These are the RJ45, SFP, and QSFP ports on the back of the device\.
+To run a compute instance on your Snowball Edge or start the file interface, on your Snowball Edge, you first create a virtual network interface \(VNIC\)\. Each Snowball Edge has three network interfaces \(NICs\), the physical network interface controllers for the device\. These are the RJ45, SFP, and QSFP ports on the back of the device\.
 
 Each VNIC is based on the physical one, and you can have any number of VNICs associated with each NIC\. To create a virtual network interface, use the `snowballEdge create-virtual-network-interface` command\. 
 
@@ -113,7 +113,7 @@ snowballEdge update-virtual-network-interface --endpoint https://[ip address] --
 
 ## Deleting a Virtual Network Interface<a name="ec2-edge-delete-vnic"></a>
 
-To delete a virtual network interface, you can use the` snowballEdge delete-virtual-network-interface` command\. The Amazon S3 and Amazon EC2 services may not be started using the start\-service command\. Note that services can only be bound to a single virtual network interface
+To delete a virtual network interface, you can use the` snowballEdge delete-virtual-network-interface` command\. The Amazon S3 and Amazon EC2 services may not be started using the start\-service command\. Services can only be bound to a single virtual network interface\.
 
 **Usage \(configured Snowball client\)**
 

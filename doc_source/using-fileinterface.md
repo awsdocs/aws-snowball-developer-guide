@@ -64,6 +64,9 @@ While using the file interface, keep the following considerations in mind:
 
 Before you can use the file interface, you need to use the Snowball client to start it\.
 
+**Important**  
+It can take an hour or more for the file interface to activate\. Don't power off or restart the device during this time\.
+
 **To start the file interface**
 
 1. Run the `snowballEdge describe-device` command to get the list of network interface IDs\. For more information on this command, see [Getting Device Status](using-client-commands.md#client-status)\.
@@ -93,7 +96,9 @@ Before you can use the file interface, you need to use the Snowball client to st
    --virtual-network-interface-arns arn:aws:snowball-device:::interface/s.ni-abcd1234abcd1234a
    ```
 
-The file interface has now started\. Anytime you need the IP address for the file interface, you can use the `snowballEdge describe-virtual-network-interfaces` Snowball client command\.
+1. It can take an hour or more for the file interface to activate\. To see if the service has started, or if it's still activating, you can run the `snowballEdge describe-service --service-id fileinterface` Snowball client command\.
+
+It takes an hour or more for the file interface to activate\. After that time the file interface will start\. Anytime you need the IP address for the file interface, you can use the `snowballEdge describe-virtual-network-interfaces` Snowball client command\.
 
 ## Mounting a Bucket with the File Interface<a name="mounting-fileinterface"></a>
 

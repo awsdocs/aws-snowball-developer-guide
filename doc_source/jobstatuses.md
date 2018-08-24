@@ -18,6 +18,7 @@ Each job has a *status*, which changes to denote the current state of the job\. 
 | In transit to you | InTransitToCustomer | The device has been shipped to the address you provided during job creation\. | 
 | Delivered to you | WithCustomer | The device has arrived at the address you provided during job creation\. | 
 | In transit to AWS | InTransitToAWS | You have shipped the device back to AWS\. | 
+| At sorting facility | WithAWSSortingFacility | The device for this job is at our internal sorting facility\. Any additional processing for import jobs into Amazon S3 will begin soon, typically within 2 days\. | 
 | At AWS | WithAWS | Your shipment has arrived at AWS\. If you're importing data, your import typically begins within a day of its arrival\. | 
 | Importing | InProgress | AWS is importing your data into Amazon Simple Storage Service \(Amazon S3\)\. | 
 | Completed | Complete | Your job or a part of your job has completed successfully\. | 

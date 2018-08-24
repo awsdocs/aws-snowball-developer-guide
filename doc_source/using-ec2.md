@@ -12,22 +12,22 @@ The following contains an overview on using compute instances on a Snowball Edge
 
 Amazon Elastic Compute Cloud \(Amazon EC2\) is a web service that provides resizeable computing capacity—literally, servers in Amazon's data centers—that you use to build and host your software systems\. You can now run Amazon EC2 compute instances hosted on a Snowball Edge with the new `sbe1.xxxx` instance type\. This provides more options to run your compute workloads, adding to the existing support for serverless compute through AWS Lambda powered by AWS Greengrass\.
 
-The compute instance types supported for use on a Snowball Edge \(identified by `sbe1.xxxx`\) are unique to Snowball Edge devices\. Like their cloud\-based counterparts, these instances require Amazon Machine Images \(AMIs\) to launch\. You choose the AMI that will be that base image for an `sbe1.xxxx `instance in the cloud, before you create your Snowball Edge job\.
+The compute instance types supported for use on a Snowball Edge \(identified by `sbe1.xxxx`\) are unique to Snowball Edge devices\. Like their cloud\-based counterparts, these instances require Amazon Machine Images \(AMIs\) to launch\. You choose the AMI to be that base image for an `sbe1.xxxx `instance in the cloud, before you create your Snowball Edge job\.
 
 To use a compute instance on a Snowball Edge, create a job and specify your AMIs\. This can be done from the [AWS Snowball Management Console](https://console.aws.amazon.com/importexport/home?region=us-west-2), with the AWS CLI, or with one of the AWS SDKs\. Typically, there are some housekeeping prerequisites that you must resolve before creating your job, in order to use your instances\.
 
-After you've handled the prerequisites, created your job, and waited for your device to arrive, you can start managing your AMIs and instances\. You can manage your compute instances on a Snowball Edge through an Amazon EC2–compatible endpoint\. This type of endpoint supports many of the Amazon EC2 AWS CLI commands and actions for the AWS SDKs\. Note that you can't use the AWS Management Console on the Snowball Edge to manage your AMIs and compute instances\.
+After you've handled the prerequisites, created your job, and waited for your device to arrive, you can start managing your AMIs and instances\. You can manage your compute instances on a Snowball Edge through an Amazon EC2–compatible endpoint\. This type of endpoint supports many of the Amazon EC2 AWS CLI commands and actions for the AWS SDKs\. You can't use the AWS Management Console on the Snowball Edge to manage your AMIs and compute instances\.
 
-When you're done with your device, return it to AWS\. If the device was used in an import job, the data transferred using the Amazon S3 Adapter for Snowball or the file interface will be imported into Amazon S3\. Otherwise, we perform a complete erasure of the device when it is returned to AWS\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.
+When you're done with your device, return it to AWS\. If the device was used in an import job, the data transferred using the Amazon S3 Adapter for Snowball or the file interface is imported into Amazon S3\. Otherwise, we perform a complete erasure of the device when it is returned to AWS\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.
 
 **Important**  
-Data in compute instances running on a Snowball Edge will not be imported into AWS\.
+Data in compute instances running on a Snowball Edge is not imported into AWS\.
 
 ### Compute Instances on Clusters<a name="ec2-overview-cluster"></a>
 
 You can use compute instances on clusters of Snowball Edge devices, and the procedures and guidance for doing so is the same as it would be for using compute instances on a stand\-alone device\.
 
-When you create a cluster job with AMIs, a copy of each AMI will exist on each node in the cluster\. For that reason, there can only be 10 AMIs associated with a cluster of devices, regardless of the number of nodes on the cluster\. When you launch an instance in a cluster, you declare the node that will host the instance in your command, and the instance will run on a single node\.
+When you create a cluster job with AMIs, a copy of each AMI exists on each node in the cluster\. For that reason, there can only be 10 AMIs associated with a cluster of devices, regardless of the number of nodes on the cluster\. When you launch an instance in a cluster, you declare the node to host the instance in your command, and the instance runs on a single node\.
 
 ### Pricing for compute instances on Snowball Edge<a name="pricing-for-ec2-edge"></a>
 
@@ -62,7 +62,7 @@ The storage available for compute resources is a separate resource from the dedi
 + **AWS Snowball Edge device without compute instances** – 80 TB
 + **AWS Snowball Edge device with compute instances** – 70 \- 60 TB
 
-When you create a job with compute instances, 10 TB of space are reserved for your AMIs\. This 10 TB is allocated regardless of the number and size of AMIs associated with your job\. When you start the device for the first time, the actual storage required for each of your AMIs is also reserved\. So if you have 5 TB of AMIs, when you turn on your device for the first time, it will have 65 TB of available space \(10 TB allocated for compute instances, and 5 TB reserved for your actual AMIs\)\.
+When you create a job with compute instances, 10 TB of space are reserved for your AMIs\. This 10 TB is allocated regardless of the number and size of AMIs associated with your job\. When you start the device for the first time, the actual storage required for each of your AMIs is also reserved\. So if you have 5 TB of AMIs, when you turn on your device for the first time, it has 65 TB of available space\. Of this space, 10 TB is allocated for compute instances, and 5 TB is reserved for your actual AMIs\.
 
 There's also a limit to the physical resources available for compute instances on a device\. To find the resource requirements and limitations for this feature, see the following tables\.
 
@@ -97,7 +97,7 @@ The vCPU cores, memory, and storage available for compute resources is a separat
 You can determine whether or not a service is `ACTIVE` on a Snowball Edge using the Snowball client command `snowballEdge describe-service`\. For more information, see [Getting Service Status](using-client-commands.md#client-service-status)\.
 
 **Important**  
-Snowball Edge devices with any of it's available compute resources maxed out will be unable to launch new compute resources, and those requests will fail\. For example, if you try to start the file interface while also running a `sbe1.4xlarge` compute instance, the file interface will not start\.
+A Snowball Edge device with any of its available compute resources maxed out is unable to launch new compute resources, and those requests fail\. For example, if you try to start the file interface while also running a `sbe1.4xlarge` compute instance, the file interface doesn't start\.
 
 ## Creating a Job with Compute Instances<a name="create-ec2-edge-job"></a>
 
@@ -129,7 +129,7 @@ If you don't follow this optional procedure, there is no way to SSH into your in
 
 ### Creating Your Job in the Console<a name="create-ec2-edge-console"></a>
 
-Your next step will be to create a job\. Your job can be of any job type, including a cluster\. Using the [AWS Snowball Management Console](https://console.aws.amazon.com/importexport/home?region=us-west-2), and follow the instructions provided in [Create Your First Job](create-job.md), add these additional steps when you get to the **Step 3: Give job details** page in the job creation wizard\.
+Your next step is to create a job\. Your job can be of any job type, including a cluster\. Using the [AWS Snowball Management Console](https://console.aws.amazon.com/importexport/home?region=us-west-2), and follow the instructions provided in [Create Your First Job](create-job.md), add these additional steps when you get to the **Step 3: Give job details** page in the job creation wizard\.
 
 1. Choose **Enable compute with EC2**\.
 
@@ -204,7 +204,7 @@ In order to use SSH to connect to your compute instances on Snowball Edge device
 
 1. Refer to your notes to find the PEM/PPK key pair that you used for this specific instance, and make a copy of those files somewhere on your computer\. Make a note of the path to the PEM file\.
 
-1. Connect to your instance through SSH as in the following example command\. Note that the IP address is the IP address of the VNIC that you set up in [Network Configuration for Compute Instances](#network-config-ec2-edge)\.
+1. Connect to your instance through SSH as in the following example command\. The IP address is the IP address of the virtual network interface \(VNIC\) that you set up in [Network Configuration for Compute Instances](#network-config-ec2-edge)\.
 
    ```
    ssh -i path/to/PEM/key/file instance-user-name@192.0.2.0

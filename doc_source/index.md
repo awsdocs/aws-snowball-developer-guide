@@ -55,7 +55,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Snowball Client commands for Compute Instances](using-ec2-edge-client.md)
       + [Using the Amazon EC2 Endpoint](using-ec2-endpoint.md)
       + [Supported Instance Metadata and User Data](edge-compute-instance-metadata.md)
-      + [Troubleshooting Compute Instances on Snowball Edge devices](troubleshooting-ec2-edge.md)
+      + [Troubleshooting Compute Instances on Snowball Edge Devices](troubleshooting-ec2-edge.md)
 + [Using an AWS Snowball Edge Cluster](UsingCluster.md)
    + [Administrating a Cluster](administercluster.md)
 + [Shipping Considerations for AWS Snowball](shipping.md)
