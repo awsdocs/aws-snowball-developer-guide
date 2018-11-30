@@ -40,7 +40,7 @@ Each device has different storage capacities, as follows:
 | --- | --- | --- | 
 |  50 TB \(42 TB\) \- US regions only  | ✓ |  | 
 |  80 TB \(72 TB\)  | ✓ |  | 
-|  100 TB \(83 TB\)  |  | ✓ | 
+|  100 TB \(80 TB\)  |  | ✓ | 
 |  100 TB Clustered \(45 TB per node\)  |  | ✓ | 
 
 Each device has the following physical interfaces for management purposes:
