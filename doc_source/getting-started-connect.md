@@ -1,12 +1,12 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # Connect to Your Local Network<a name="getting-started-connect"></a>
 
-In this procedure, you connect the AWS Snowball Edge device to your local network\. The device doesn't need to be connected to the internet\. The device has three doors, a front, a back, and a top\.
+Using the following procedure, you connect the AWS Snowball Edge device to your local network\. The device doesn't need to be connected to the internet\. The device has three doors, a front, a back, and a top\.
 
 **To connect the device to your network**
 
@@ -20,7 +20,17 @@ In this procedure, you connect the AWS Snowball Edge device to your local networ
 
 1. When the device is ready, the LCD display shows a short video while the device is getting ready to start\. After about 10 minutes, the device is ready to be unlocked\.
 
-1. \(Optional\) Change the default network settings through the LCD display by choosing **CONNECTION**\. To learn more about specifying network settings for the device, see [Changing Your IP Address](using-device.md#change-device-ip)\.
+1. \(Optional\) Change the default network settings through the LCD display by choosing **CONNECTION**\. 
+
+   You can change your IP address to a different static address, which you provide by using the following procedure\.
+
+**To change the IP address of a AWS Snowball Edge device**
+
+1. On the LCD display, choose **CONNECTION**\. 
+
+   A screen appears that shows you the current network settings for the AWS Snowball Edge device\. The IP address below the drop\-down box is automatically updated to reflect the DHCP address that the AWS Snowball Edge device requested\. 
+
+1. \(Optional\) Change the IP address to a static IP address\. You can also keep it as is\.
 
 The device is now connected to your network\.
 

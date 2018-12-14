@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -10,7 +10,9 @@ Following, you can find information on the Snowball client commands, including e
 
 **Topics**
 + [Configuring a Profile for the Snowball Client](#client-configuration)
-+ [Unlocking AWS Snowball Edge Devices](#setting-up-client)
++ [Getting Your QR Code for NFC Validation](#client-qr-code)
++ [Unlocking Snowball Edge Devices](#setting-up-client)
++ [Updating a Snowball Edge](#update-client-commands)
 + [Getting Credentials](#client-credentials)
 + [Starting a Service on your Snowball Edge](#edge-start-service)
 + [Stopping a Service on your Snowball Edge](#edge-stop-service)
@@ -49,21 +51,30 @@ Unlock Code: 29 character unlock code
 Default Endpoint: https://192.0.2.0
 ```
 
-You can have multiple profiles if you have multiple jobs at once, or if you want the option of managing a cluster from different endpoints\. For more info on multiple AWS CLI profiles, see [Named Profiles](http://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html) in the AWS Command Line Interface User Guide\.
+You can have multiple profiles if you have multiple jobs at once, or if you want the option of managing a cluster from different endpoints\. For more info on multiple AWS CLI profiles, see [Named Profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html) in the AWS Command Line Interface User Guide\.
 
-## Unlocking AWS Snowball Edge Devices<a name="setting-up-client"></a>
+## Getting Your QR Code for NFC Validation<a name="client-qr-code"></a>
+
+You can use this command to generate a device\-specific QR code for use with the AWS Snowball Edge Verification App\. You can download this app from the App Store or Google Play store\. For more information on NFC validation, see [Validating NFC Tags](nfc-validation.md)\.
+
+**Usage**
+
+```
+snowballEdge get-app-qr-code --output-file ~/downloads/snowball-qr-code.png
+```
+
+**Example Output**  
+
+```
+QR code is saved to ~/downloads/snowball-qr-code.png
+```
+
+## Unlocking Snowball Edge Devices<a name="setting-up-client"></a>
 
 To unlock a standalone AWS Snowball Edge device, run the `snowballEdge unlock-device` command\. To unlock a cluster, use the `snowballEdge unlock-cluster` command\. These commands authenticate your access to the AWS Snowball Edge device\.
 
 **Note**  
 To unlock the devices associated with your job, the devices must be on site, plugged into power and network, and turned on\. In addition, the LCD display on the AWS Snowball Edge device's front must indicate that the device is ready for use\.
-
-**Usage \(Snowball client not configured\)**
-
-```
-snowballEdge unlock-device --endpoint https://ip address --manifest-file Path/to/manifest/file --unlock-code
- 29 character unlock code
-```
 
 **Usage \(configured Snowball client\)**
 
@@ -97,18 +108,142 @@ snowballEdge unlock-cluster --endpoint https://192.0.2.0 --manifest-file Path/to
 Your Snowball Edge Cluster is unlocking. You may determine the unlock state of your cluster using the describe-device command. Your Snowball Edge Cluster will be available for use when your Snowball Edge devices are in the UNLOCKED state.
 ```
 
+## Updating a Snowball Edge<a name="update-client-commands"></a>
+
+The following commands can be used to download and install updates for your Snowball Edge device\. For procedures that use these commands, see [Updating an AWS Snowball Edge](updating-device.md)\.
+
+`snowballEdge check-for-updates`: Returns version information about the Snowball Edge software available in the cloud, and the current version installed on the device\. 
+
+**Usage \(configured Snowball client\)**
+
+```
+snowballEdge check-for-updates
+```
+
+**Example Output**  
+
+```
+Latest version: 102
+Installed version: 101
+```
+
+`snowballEdge describe-device-software`: Returns the current software version for the device\. Additionally, if the update is being downloaded, the download state is also displayed\. If a software update is in progress, the version manifest of update, and state of installation is also displayed\. Following is a list of possible outputs:
++ `NA` – No software updates are currently in progress\.
++ `Downloading` – New software is being downloaded\.
++ `Installing` – New software is being installed\.
++ `Requires Reboot` – new software has been installed, and the device needs to be restarted\.
+**Warning**  
+We highly recommend that you suspend all activity on the device before you restart the device\. Restarting a device stops running instances, interrupts any writing to Amazon S3 buckets on the device, and stops any write operations from the file interface without clearing the cache\. All of these processes can result in lost data\.
+
+**Usage \(configured Snowball client\)**
+
+```
+snowballEdge describe-device-software
+```
+
+**Example Output**  
+
+```
+Installed version: 101
+Installing version: 102
+Install State: Downloading
+```
+
+`snowballEdge download-updates`: Starts downloading the latest software updates for your Snowball Edge\.
+
+**Usage \(configured Snowball client\)**
+
+```
+snowballEdge download-updates
+```
+
+**Example Output**  
+
+```
+Download started. Run describe-device-software API for additional information.
+```
+
+`snowballEdge install-updates`: Starts installing the latest software updates for your Snowball Edge that were already downloaded\.
+
+**Usage \(configured Snowball client\)**
+
+```
+snowballEdge install-updates
+```
+
+**Example Output**  
+
+```
+Installation started.
+```
+
+`snowballEdge reboot-device`: Reboots the device\.
+
+**Warning**  
+We highly recommend that you suspend all activity on the device before you restart the device\. Restarting a device stops running instances, interrupts any writing to Amazon S3 buckets on the device, and stops any write operations from the file interface without clearing the cache\. All of these processes can result in lost data\.
+
+**Usage \(configured Snowball client\)**
+
+```
+snowballEdge reboot-device
+```
+
+**Example Output**  
+
+```
+Rebooting device now.
+```
+
+`snowballEdge configure-auto-update-strategies`: Configures an automatic update strategy\.
+
+**Usage \(configured Snowball client\)**
+
+```
+snowballEdge configure-auto-update-strategy --auto-check autoCheck [--auto-check-frequency
+autoCheckFreq] --auto-download autoDownload
+[--auto-download-frequency autoDownloadFreq]
+--auto-install autoInstall
+[--auto-install-frequency autoInstallFreq]
+--auto-reboot autoReboot [--endpoint
+endpoint]
+```
+
+**Example Output**  
+
+```
+Successfully configured auto update strategy. Run describe-auto-update-strategies for additional information.
+```
+
+`snowballEdge describe-auto-update-strategies`: Returns any currently configured automatic update strategy\.
+
+**Usage \(configured Snowball client\)**
+
+```
+snowballEdge describe-auto-update-strategies
+```
+
+**Example Output**  
+
+```
+auto-update-strategy {[
+auto-check:true,
+auto-check-frequency: "0 0 * * FRI", // CRON Expression String, Every Friday at midnight
+auto-download:true,
+auto-download-frequency: "0 0 * * SAT", // CRON Expression String, Every Saturday at
+midnight
+auto-install:true,
+auto-install-frequency: "0 13 * * Sun", // CRON Expression String, Every Saturday at
+midnight
+auto-reboot: false;
+]}
+```
+
 ## Getting Credentials<a name="client-credentials"></a>
 
 Using the `snowballEdge list-access-keys` and `snowballEdge get-secret-access-key` commands, you can get your local credentials\. You use these to authenticate your requests when using the AWS CLI or with an AWS SDK\. These credentials are only associated with an individual job for Snowball Edge, and you can use them only on the device or cluster of devices\. The device or devices don't have any AWS Identity and Access Management \(IAM\) permissions in the AWS Cloud\.
 
 **Note**  
-If you're using the AWS CLI with the Snowball Edge, you must use these credentials when you configure the CLI\. For information on configuring credentials for the CLI, see [Quick Configuration](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration) in the *AWS Command Line Interface User Guide\. *
-
-**Usage \(Snowball client not configured\)**
-
-```
-snowballEdge list-access-keys --endpoint https://192.0.2.0 --manifest-file Path/to/manifest/file --unlock-code 29 character unlock code
-```
+If you're using the AWS CLI with the Snowball Edge, you must use these credentials when you configure the CLI\. For information on configuring credentials for the CLI, see [Quick Configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration) in the *AWS Command Line Interface User Guide\. *
 
 **Usage \(configured Snowball client\)**
 
@@ -122,12 +257,6 @@ snowballEdge list-access-keys
 {
   "AccessKeyIds" : [ "AKIAIOSFODNN7EXAMPLE" ]
 }
-```
-
-**Usage \(Snowball client not configured\)**
-
-```
-snowballEdge get-secret-access-key --access-key-id Access Key --endpoint https://192.0.2.0 --manifest-file Path/to/manifest/file --unlock-code 29 character unlock code
 ```
 
 **Usage \(configured Snowball client\)**
@@ -146,15 +275,9 @@ aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
 ## Starting a Service on your Snowball Edge<a name="edge-start-service"></a>
 
-Snowball Edge devices support multiple services, in addition to Amazon S3\. These include compute instances, the file interface, and AWS Greengrass\. Amazon S3 and Amazon EC2 are always on by default, and can't be stopped or restarted with the Snowball client\. However, the file interface and AWS Greengrass can be started with the `snowballEdge start-service` command\. To get the service ID for each service, you can use the `snowballEdge list-services` command\.
+Snowball Edge devices support multiple services, in addition to Amazon S3\. These include compute instances, the file interface, and AWS IoT Greengrass\. Amazon S3 and Amazon EC2 are always on by default, and can't be stopped or restarted with the Snowball client\. However, the file interface and AWS IoT Greengrass can be started with the `snowballEdge start-service` command\. To get the service ID for each service, you can use the `snowballEdge list-services` command\.
 
 Before you run this command, create a single virtual network interface to bind to the service that you're starting\. For more information, see [Creating a Virtual Network Interface](using-ec2-edge-client.md#ec2-edge-create-vnic)\.
-
-**Usage \(Snowball client not configured\)**
-
-```
-snowballEdge start-service --endpoint https://192.0.2.0 --manifest-file /path/to/manifest --unlock-code 29 character unlock code --service-id service_id --virtual-network-interface-arns virtual-network-interface-arn
-```
 
 **Usage \(configured Snowball client\)**
 
@@ -177,12 +300,6 @@ To stop a service running on your Snowball Edge, you can use the `snowballEdge s
 **Warning**  
 Data loss can occur if the file interface is stopped before remaining buffered data is written to the device\. For more information on using the file interface, see [Using the File Interface for the AWS Snowball Edge](using-fileinterface.md)\.
 
-**Usage \(Snowball client not configured\)**
-
-```
-snowballEdge stop-service --endpoint https://192.0.2.0 --manifest-file /path/to/manifest --unlock-code 29 character unlock code --service-id service_id
-```
-
 **Usage \(configured Snowball client\)**
 
 ```
@@ -202,12 +319,6 @@ To transfer data to a Snowball Edge, use the Amazon S3 Adapter for Snowball\. To
 You can list these certificates and download them from your Snowball Edge device with the following commands:
 + `list-certificates` – Lists the Amazon Resource Names \(ARNs\) for the certificates available for use\.
 
-  **Usage \(Snowball client not configured\)**
-
-  ```
-  snowballEdge list-certificates --endpoint https://192.0.2.0 --manifest-file Path/to/manifest/file --unlock-code 29 character unlock code
-  ```
-
   **Usage \(configured Snowball client\)**
 
   ```
@@ -224,12 +335,6 @@ You can list these certificates and download them from your Snowball Edge device
   }
   ```
 + `get-certificate` – Gets a specific certificate, based on the ARN provided\.
-
-  **Usage \(Snowball client not configured\)**
-
-  ```
-  snowballEdge get-certificate --certificate-arn arn:aws:snowball-device:::certificate/78EXAMPLE516EXAMPLEf538EXAMPLEa7 --endpoint https://192.0.2.0 --manifest-file Path/to/manifest/file --unlock-code 29 character unlock code
-  ```
 
   **Usage \(configured Snowball client\)**
 
@@ -252,12 +357,6 @@ When you transfer data between your on\-premises data center and a Snowball Edge
 
 There are three commands related to logs:
 + `list-logs` – Returns a list of logs in JSON format\. This list reports the size of the logs in bytes, the ARN for the logs, the service ID for the logs, and the type of logs\. 
-
-  **Usage \(Snowball client not configured\)**
-
-  ```
-  snowballEdge list-logs --endpoint https://192.0.2.0 --manifest-file Path/to/manifest/file --unlock-code 29 character unlock code
-  ```
 
   **Usage \(configured Snowball client\)**
 
@@ -283,12 +382,6 @@ There are three commands related to logs:
   ```
 + `get-log` – Downloads a copy of a specific log from the Snowball Edge to your server at a specified path\. `CUSTOMER` logs are saved in the `.zip` format, and you can extract this type of log to view its contents\. `SUPPORT` logs are encrypted and can only be read by AWS Support engineers\. You have the option of specifying a name and a path for the log\. 
 
-  **Usage \(Snowball client not configured\)**
-
-  ```
-  snowballEdge get-log --log-arn arn:aws:snowball-device:::log/fileinterface-JIDEXAMPLEf-1234-4953-a7c4-dfEXAMPLE709 --endpoint https://192.0.2.0 --manifest-file Path/to/manifest/file --unlock-code 29 character unlock code
-  ```
-
   **Usage \(configured Snowball client\)**
 
   ```
@@ -300,12 +393,6 @@ There are three commands related to logs:
   Logs are being saved to download/path/snowball-edge-logs-1515EXAMPLE88.bin
   ```
 + `get-support-logs` – Downloads a copy of all the `SUPPORT` type of logs from the Snowball Edge to your service at a specified path\.
-
-  **Usage \(Snowball client not configured\)**
-
-  ```
-  snowballEdge get-support-logs --endpoint https://192.0.2.0 --manifest-file Path/to/manifest/file --unlock-code 29 character unlock code
-  ```
 
   **Usage \(configured Snowball client\)**
 
@@ -325,12 +412,6 @@ There are three commands related to logs:
 
 You can determine the status and general health of your Snowball Edge devices with the following Snowball client commands:
 + `describe-device`
-
-  **Usage \(Snowball client not configured\)**
-
-  ```
-  snowballEdge describe-device --endpoint https://192.0.2.0 --manifest-file Path/to/manifest/file --unlock-code 29 character unlock code
-  ```
 
   **Usage \(configured Snowball client\)**
 
@@ -377,12 +458,6 @@ You can determine the status and general health of your Snowball Edge devices wi
   }
   ```
 + `describe-cluster`
-
-  **Usage \(Snowball client not configured\)**
-
-  ```
-  snowballEdge describe-cluster --endpoint https://192.0.2.0 --manifest-file Path/to/manifest/file --unlock-code 29 character unlock code
-  ```
 
   **Usage \(configured Snowball client\)**
 
@@ -478,12 +553,6 @@ You can determine the status and general health of your Snowball Edge devices wi
 You can determine the status and general health of the services running on Snowball Edge devices with the `describe-service` command\. You can first run the `list-services` command to see what services are running\.
 + `list-services`
 
-  **Usage \(Snowball client not configured\)**
-
-  ```
-  snowballEdge list-services --endpoint https://192.0.2.0 --manifest-file Path/to/manifest/file --unlock-code 29 character unlock code
-  ```
-
   **Usage \(configured Snowball client\)**
 
   ```
@@ -503,12 +572,6 @@ You can determine the status and general health of the services running on Snowb
   + `ACTIVATING` – The service is starting up, but it is not yet available for use\.
   + `DEACTIVATING` – The service is in the process of shutting down\.
   + `INACTIVE` – The service is not running and is not available for use\.
-
-  **Usage \(Snowball client not configured\)**
-
-  ```
-  snowballEdge describe-service --endpoint https://192.0.2.0 --manifest-file Path/to/manifest/file --unlock-code 29 character unlock code --service-id service-id
-  ```
 
   **Usage \(configured Snowball client\)**
 
@@ -553,12 +616,6 @@ Don't use this command to remove a node that was accidentally powered off or dis
 
 If a node was accidentally powered off or disconnected from the network, simply plug the node back into power, and the network, and use the `associate-device` command\. You can't use the `disassociate-device` command to disassociate a node if it's powered on and healthy\.
 
-**Usage \(Snowball client not configured\)**
-
-```
-snowballEdge disassociate-device --device-id Job ID for the Device --endpoint https://192.0.2.0 --manifest-file Path/to/manifest/file --unlock-code 29 character unlock code
-```
-
 **Usage \(configured Snowball client\)**
 
 ```
@@ -574,12 +631,6 @@ Disassociating your Snowball Edge device from the cluster. Your Snowball Edge de
 ## Adding a Node to a Cluster<a name="client-cluster-add"></a>
 
 The `associate-device` command adds a node to a cluster of Snowball Edge devices\. If you power off a node, then it reverts from being unlocked to being locked\. To unlock that node, you can use this command\. You can use this command to replace an unavailable node with a new node that you ordered as a replacement\. For more information on clusters, see [Using an AWS Snowball Edge Cluster](UsingCluster.md)\.
-
-**Usage \(Snowball client not configured\)**
-
-```
-snowballEdge associate-device --device-ip-address IP Address --endpoint https://192.0.2.0 --manifest-file Path/to/manifest/file --unlock-code 29 character unlock code
-```
 
 **Usage \(configured Snowball client\)**
 

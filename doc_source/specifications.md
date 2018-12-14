@@ -1,41 +1,66 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # AWS Snowball Edge Specifications<a name="specifications"></a>
 
-The following table outlines hardware specifications for the AWS Snowball Edge device\.
+Find hardware specifications for Snowball Edge Storage Optimized devices in the following table\. 
 
 
 | Item | Specification | 
 | --- | --- | 
-| Storage capacity | 100 TB Snowballs have about 82 TB of usable space\. | 
-| Data and network connections | Network connections:  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/specifications.html) To use the AWS Snowball Edge device, you need your own network cables\. For RJ45 cables, there are no specific recommendations\. SFP\+ and QSFP\+ cables and modules from Mellanox and Finisar have been verified to be compatible with the device\.  | 
-| Cables | Each AWS Snowball Edge device ships country\-specific power cables\. No other cables or optics are not provided\. | 
+| Storage capacity | Snowball Edge devices have up to 80 TB of usable space\. | 
+| Data and network connections | Network connections:  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/specifications.html)  | 
+| Cables | Each AWS Snowball Edge device ships country\-specific power cables\. No other cables or optics are provided\. | 
 | Thermal requirements | AWS Snowball Edge devices are designed for office operations, and are ideal for data center operations\. | 
 | Decibel output | On average, an AWS Snowball Edge device produces 68 decibels of sound, typically quieter than a vacuum cleaner or living\-room music\. | 
-| Weight | 49\.5 pounds \(22\.6 Kg\) | 
+| Weight | 49\.5 pounds \(22\.45 Kg\) | 
 | Height | 15\.25 inches \(386 mm\) | 
-| Width | 10\.375 inches \(259 mm\) | 
+| Width | 10\.6 inches \(269 mm\) | 
 | Length | 26\.00 inches \(671 mm\) | 
-| Power | In the US regions: NEMA 5–15p 100–220 volts\. In all regions, a power cable is included\. | 
+| Power | In AWS Regions in the US: NEMA 5–15p 100–220 volts\. In all AWS Regions, a power cable is included\. | 
 | Power consumption | 400 watts | 
 | Voltage | 100 – 240V AC | 
 | Frequency | 47/63 Hz | 
-| Power conversion efficiency | 89 – 92% at 25C, 230Vac | 
 | Temperature range | 0 – 40°C \(operational\) | 
-| Non\-Operational Vibration | ASTM D4169 Truck Level I 0\.73 GRMS | 
-| Non\-Operational Shock | Drop Test \(12” all sides \+ 24” 1 side\) | 
-| Non\-operational Altitude | 0 – 12,000 meters | 
-| Operational Altitude | 0 to 3,000m \(0 to 10,000’\) | 
+| Nonoperational vibration | ASTM D4169 Truck Level I 0\.73 GRMS | 
+| Nonoperational shock | Drop test \(12 inches all sides \+ 24 inches one side\) | 
+| Nonoperational altitude | 0–12,000 meters | 
+| Operational altitude | 0–3,000 meters \(0–10,000 feet\) | 
+
+Find hardware specifications for Snowball Edge Compute Optimized devices in the following table\.
+
+
+| Item | Specification | 
+| --- | --- | 
+| Storage capacity | 42 TB of usable space plus 7\.68 TB of dedicated NVMe SSD storage for instances\. | 
+| Data and network connections |  Network connections:  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/specifications.html)  | 
+| Cables | Each AWS Snowball Edge device ships country\-specific power cables\. No other cables or optics are provided\. | 
+| Thermal requirements | AWS Snowball Edge devices are designed for office operations, and are ideal for data center operations\. | 
+| Decibel output | On average, an AWS Snowball Edge device produces 68 decibels of sound, typically quieter than a vacuum cleaner or living\-room music\. | 
+| Weight | 49\.7 pounds \(22\.54 Kg\) | 
+| Height | 15\.5 inches \(394 mm\) | 
+| Width | 10\.6 inches \(265 mm\) | 
+| Length | 28\.3 inches \(718 mm\) | 
+| Power | In AWS Regions in the US: NEMA 5–15p 100–220 volts\. In all AWS Regions, a power cable is included\. | 
+| Power consumption | 304 watts for an average use case, though the power supply is rated for 1200 watts\. | 
+| Voltage | 100 – 240V AC | 
+| Frequency | 47/63 Hz | 
+| Temperature range | 0 – 40°C \(operational\) | 
+| Nonoperational vibration | ASTM D4169 Truck level I 0\.73 GRMS | 
+| Nonoperational shock | Drop test \(12 inches all sides \+ 24 inches one side\) | 
+| Nonoperational altitude | 0 – 12,000 meters | 
+| Operational altitude | 0–3,000 meters \(0–10,000 feet\) | 
 
 ## Supported Network Hardware<a name="network-hardware"></a>
 
-After you open the back panel of the AWS Snowball Edge device, you'll see the network ports shown in the following photograph\.
+To use the AWS Snowball Edge device, you need your own network cables\. For RJ45 cables, there are no specific recommendations\. SFP\+ and QSFP\+ cables and modules from Mellanox and Finisar have been verified to be compatible with the device\.
 
-![\[The available network ports.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/snowball-edge-back-connectors.png)
+After you open the back panel of the AWS Snowball Edge device, you see the network ports shown in the following photograph\.
+
+![\[The available network ports\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/snowball-edge-back-connectors.png)
 
 These ports support the following network hardware\.
 
@@ -53,7 +78,7 @@ This port provides a 10G/25G SFP28 interface compatible with SFP28 and SFP\+ tra
 ![\[SFP+ Copper\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/sfp.png)
 
 **QSFP**  
-This port provides a 40G QSFP\+ interface compatible with QSFP\+ transceiver modules and DAC cables\. You need to provide your own transceivers or DAC cables\. Examples include the following:
+This port provides a 40G QSFP\+ interface on storage optimized devices and a 40/50/100G QSFP\+ interface on compute optimized devices\. Both are compatible with QSFP\+ transceiver modules and DAC cables\. You need to provide your own transceivers or DAC cables\. Examples include the following:
 + 40Gbase\-LR4 \(single mode fiber\) transceiver
 + 40Gbase\-SR4 \(multi\-mode fiber\) transceiver
 + QSFP\+ DAC
@@ -61,7 +86,7 @@ This port provides a 40G QSFP\+ interface compatible with QSFP\+ transceiver mod
 ![\[QSFP+\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/qsfp.png)
 
 **RJ45**  
-This port provides 1Gbase\-TX/10Gbase\-TX operation\. It is connected via UTP cable terminated with a RJ45 connector\.
+This port provides 1Gbase\-TX/10Gbase\-TX operation\. It is connected via UTP cable terminated with a RJ45 connector\. Compute optimized devices have two RJ45 ports\.
 
 1G operation is indicated by a blinking amber light\. 1G operation is not recommended for large\-scale data transfers to the Snowball Edge device, as it dramatically increases the time it takes to transfer data\.
 
@@ -69,9 +94,9 @@ This port provides 1Gbase\-TX/10Gbase\-TX operation\. It is connected via UTP ca
 
 ![\[RJ45\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/rj45.png)
 
-## Network Converter for a Second Connection to the Snowball Edge<a name="network-other-hardware"></a>
+## Network Converter for a Second Connection to the Snowball Edge Storage Optimized<a name="network-other-hardware"></a>
 
-For applications requiring a second 10G BASE\-T connection to the Snowball Edge, you can install an SFP\+ to 10G BASE\-T media converter module in the SFP\+ port\. 
+Compute optimized devices have two RJ45 10G BASE\-T ports\. However, for applications requiring a second 10G BASE\-T connection to a Snowball Edge storage optimized, you can install an SFP\+ to 10G BASE\-T media converter module in the SFP\+ port\. 
 
 AWS has qualified the ProLabs model SFP\-10G\-T\-NC media converter for this purpose\. You can purchase this converter from Anixter, Graybar, and other distributors\.
 

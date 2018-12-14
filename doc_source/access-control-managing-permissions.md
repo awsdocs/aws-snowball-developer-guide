@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -133,7 +133,7 @@ The permissions reference table lists the AWS Snowball job management API operat
            "Effect": "Allow",
            "Action": [
                 "ec2:DescribeImages",
-                "ec2:ModifyImageAttribute",
+                "ec2:ModifyImageAttribute"
            ],
            "Resource": [
                 "*"
@@ -184,7 +184,7 @@ The AWS Snowball console needs these additional permissions for the following re
 
 ## AWS\-Managed \(Predefined\) Policies for AWS Snowball Edge<a name="access-policy-examples-aws-managed"></a>
 
-AWS addresses many common use cases by providing standalone IAM policies that are created and administered by AWS\. Managed policies grant necessary permissions for common use cases so you can avoid having to investigate what permissions are needed\. For more information, see [AWS Managed Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) in the *IAM User Guide*\. 
+AWS addresses many common use cases by providing standalone IAM policies that are created and administered by AWS\. Managed policies grant necessary permissions for common use cases so you can avoid having to investigate what permissions are needed\. For more information, see [AWS Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) in the *IAM User Guide*\. 
 
 You can use the following AWS\-managed policies with AWS Snowball\.
 

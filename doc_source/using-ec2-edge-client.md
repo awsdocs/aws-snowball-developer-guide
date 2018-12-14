@@ -1,10 +1,10 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
-# Snowball Client commands for Compute Instances<a name="using-ec2-edge-client"></a>
+# Snowball Client Commands for Compute Instances<a name="using-ec2-edge-client"></a>
 
 The Snowball client is a standalone terminal application that you run on your local server to perform some administrative tasks on your device or cluster of devices\. For more information on how to use it, including how to start and stop services with the Snowball client, see [Using the Snowball Client](using-client.md)\.
 

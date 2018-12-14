@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -12,6 +12,7 @@ Following, you can find information on security considerations for working with 
 + [Encryption for AWS Snowball Edge](#encryption)
 + [AWS Key Management Service in AWS Snowball](kms.md)
 + [Authorization with the Amazon S3 API Adapter for AWS Snowball](auth-adapter.md)
++ [Validating NFC Tags](nfc-validation.md)
 + [Other Security Considerations for AWS Snowball](security-considerations.md)
 
 ## Encryption for AWS Snowball Edge<a name="encryption"></a>
@@ -20,11 +21,11 @@ When you're using a Snowball Edge to import data into S3, all data transferred t
 
 ### Server\-Side Encryption in AWS Snowball<a name="sse"></a>
 
-AWS Snowball supports server\-side encryption with Amazon S3–managed encryption keys \(SSE\-S3\)\. Server\-side encryption is about protecting data at rest, and SSE\-S3 has strong, multifactor encryption to protect your data at rest in Amazon S3\. For more information on SSE\-S3, see [Protecting Data Using Server\-Side Encryption with Amazon S3\-Managed Encryption Keys \(SSE\-S3\)](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html) in the * Amazon Simple Storage Service Developer Guide*\.
+AWS Snowball supports server\-side encryption with Amazon S3–managed encryption keys \(SSE\-S3\)\. Server\-side encryption is about protecting data at rest, and SSE\-S3 has strong, multifactor encryption to protect your data at rest in Amazon S3\. For more information on SSE\-S3, see [Protecting Data Using Server\-Side Encryption with Amazon S3\-Managed Encryption Keys \(SSE\-S3\)](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html) in the * Amazon Simple Storage Service Developer Guide*\.
 
-Currently, AWS Snowball doesn't support server\-side encryption with AWS KMS–managed keys \(SSE\-KMS\) or server\-side encryption with customer\-provided keys \(SSE\-C\)\. However, you might want to use either of these SSE types to protect data that has been imported\. Or you might already use one of those two SSE types and want to export\. In these cases, keep the following in mind:
-+ **Import** – If you want to use SSE\-KMS or SSE\-C to encrypt the objects that you've imported into S3, copy those objects into another bucket that has SSE\-KMS encryption established as a part of that bucket's bucket policy\.
-+ **Export** – If you want to export objects that are encrypted with SSE\-KMS or SSE\-C, first copy those objects to another bucket that either has no server\-side encryption, or has SSE\-S3 specified in that bucket's bucket policy\. 
+Currently, AWS Snowball doesn't server\-side encryption with customer\-provided keys \(SSE\-C\)\. However, you might want to use that SSE type to protect data that has been imported, or you might already use it on data you want to export\. In these cases, keep the following in mind:
++ **Import** – If you want to use SSE\-C to encrypt the objects that you've imported into S3, copy those objects into another bucket that has SSE\-KMS or SSE\-S3 encryption established as a part of that bucket's bucket policy\.
++ **Export** – If you want to export objects that are encrypted with SSE\-C, first copy those objects to another bucket that either has no server\-side encryption, or has SSE\-KMS or SSE\-S3 specified in that bucket's bucket policy\.
 
 #### Enabling SSE\-S3 for Data Imported into Amazon S3 from a Snowball Edge<a name="howto-sse"></a>
 
@@ -77,6 +78,6 @@ To enable SSE\-S3 encryption for the data that you're importing into Amazon S3, 
    }
    ```
 
-1. Choose **Save**
+1. Choose **Save**\.
 
 You've finished configuring your Amazon S3 bucket\. When your data is imported into this bucket, it is protected by SSE\-S3\. Repeat this procedure for any other buckets, as necessary\.

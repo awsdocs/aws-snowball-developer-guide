@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -12,14 +12,62 @@ If your solution uses the AWS SDK for Java version 1\.11\.0 or newer, you must u
 + `disableChunkedEncoding()` – Indicates that chunked encoding is not supported with the adapter\.
 + `setPathStyleAccess(true)` – Configures the adapter to use path\-style access for all requests\.
 
-For more information, see [Class S3ClientOptions\.Builder](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/S3ClientOptions.Builder.html) in the Amazon AppStream SDK for Java\.
+For more information, see [Class S3ClientOptions\.Builder](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/S3ClientOptions.Builder.html) in the Amazon AppStream SDK for Java\.
 
 **Important**  
 We recommend that you only use one method of reading and writing data to a local bucket on an AWS Snowball Edge device at a time\. Using both the file interface and the Amazon S3 Adapter for Snowball on the same bucket at the same time can result in read/write conflicts\.
 
+## Downloading and Installing Version 1\.16\.14 of the AWS CLI<a name="cli-version"></a>
+
+Currently, only version 1\.16\.14 and earlier of the AWS CLI are supported for use with Snowball Edge devices\. You can download and install this version of the AWS CLI from GitHub\. Use the following procedure to perform this task\.
+
+**Note**  
+Make sure that you install version 2\.6\.5\+ or 3\.4\+ of Python before you install version 1\.16\.14 of the AWS CLI\.
+
+**To download and install version 1\.16\.14 of the AWS CLI**
+
+1. Uninstall existing installations of the AWS CLI\. This step is optional for Linux installations\.
+   + **Windows** – For more information, see [Uninstalling](https://docs.aws.amazon.com/cli/latest/userguide/awscli-install-windows.html#install-msi-uninstall) in the *AWS Command Line Interface User Guide*\.
+   + **Linux** – This step is optional for Linux installations\. However, to uninstall an existing installation of the AWS CLI, run the following commands from a terminal\.
+
+     ```
+     sudo rm -rf /usr/local/aws
+     sudo rm /usr/local/bin/aws
+     ```
+
+1. Download the AWS CLI as [a \.zip file](https://github.com/aws/aws-cli/archive/1.16.14.zip) from the AWS GitHub repository where it resides\.
+
+1. Install the AWS CLI version 1\.16\.14 from the `1.16.14.zip` file with one of the following procedures:
+   + **Windows**
+
+     1. Extract the archive to a location on your computer, for example: `C:\Users\username\aws_cli\aws-cli-1.6.14`
+
+     1. Open a command prompt, navigate to the folder that you extracted the archive to, and run the setup script with the following command\.
+
+        ```
+        py setup.py install
+        ```
+
+     1. Add the AWS CLI to your `PATH` environment variable\. 
+
+     Doing this installs version 1\.6\.14 of the AWS CLI\.
+   + **Linux**
+
+     1. Extract the archive to a location on your computer, for example: `/home/username/aws_cli/aws-cli-1.6.14`
+
+     1. Open a terminal window, navigate to the directory that you extracted the archive to, and run the setup script with the following command\.
+
+        ```
+        python setup.py install
+        ```
+**Note**  
+You might need to run the command with `sudo`\.
+
+        This command installs version 1\.6\.14 of the AWS CLI, and overwrites files created by any previously installed AWS CLI version\.
+
 ## Getting and Using Local Amazon S3 Credentials<a name="adapter-credentials"></a>
 
-Every interaction with a Snowball Edge is signed with the AWS Signature Version 4 algorithm\. For more information on the algorithm, see [Signature Version 4 Signing Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)\.
+Every interaction with a Snowball Edge is signed with the AWS Signature Version 4 algorithm\. For more information on the algorithm, see [Signature Version 4 Signing Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)\.
 
 You can get the local Amazon S3 credentials to sign your requests to the Snowball Edge device by running the `snowballEdge list-access-keys` and `snowballEdge get-secret-access-key` Snowball client commands\. For more information, see [Getting Credentials](using-client-commands.md#client-credentials)\. These local Amazon S3 credentials include a pair of keys: an access key ID and a secret key\. These credentials are only valid for the devices associated with your job\. They can't be used in the AWS Cloud because they have no AWS Identity and Access Management \(IAM\) counterpart\.
 
@@ -80,5 +128,5 @@ Using the Amazon S3 Adapter for Snowball, you can programmatically transfer data
 + [Supported REST API Actions](using-adapter-supported-api.md)
 
 Any features or actions not explicitly listed in these topics are not supported\. For example, the following features and actions are not supported for use with Snowball Edge:
-+ [TransferManager](http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-s3-transfermanager.html) – This utility transfers files from a local environment to Amazon S3 with the SDK for Java\. Consider using the supported API actions or AWS CLI commands with the adapter instead\.
-+ [GET Bucket \(List Objects\) Version 2](http://docs.aws.amazon.com/AmazonS3/latest/API/v2-RESTBucketGET.html) – This implementation of the GET action returns some or all \(up to 1,000\) of the objects in a bucket\. Consider using the [GET Bucket \(List Objects\) Version 1](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html) action or the [ls](http://docs.aws.amazon.com/cli/latest/reference/s3/ls.html) AWS CLI command\.
++ [TransferManager](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-s3-transfermanager.html) – This utility transfers files from a local environment to Amazon S3 with the SDK for Java\. Consider using the supported API actions or AWS CLI commands with the adapter instead\.
++ [GET Bucket \(List Objects\) Version 2](https://docs.aws.amazon.com/AmazonS3/latest/API/v2-RESTBucketGET.html) – This implementation of the GET action returns some or all \(up to 1,000\) of the objects in a bucket\. Consider using the [GET Bucket \(List Objects\) Version 1](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html) action or the [ls](https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html) AWS CLI command\.

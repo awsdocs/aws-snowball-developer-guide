@@ -1,14 +1,14 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # Using the Amazon EC2 Endpoint<a name="using-ec2-endpoint"></a>
 
-Following, you'll find an overview of the Amazon Elastic Compute Cloud \(Amazon EC2\) endpoint, which allows you to manage your Amazon Machine Images \(AMIs\) and compute instances programmatically using Amazon EC2 API actions\.
+Following, you can find an overview of the Amazon Elastic Compute Cloud \(Amazon EC2\) endpoint, which allows you to manage your Amazon Machine Images \(AMIs\) and compute instances programmatically using Amazon EC2 API actions\.
 
-## Specifying the Amazon EC2 endpoint as the AWS CLI Endpoint<a name="using-ec2-adapter-cli-endpoint"></a>
+## Specifying the Amazon EC2 Endpoint as the AWS CLI Endpoint<a name="using-ec2-adapter-cli-endpoint"></a>
 
 When you use the AWS CLI to issue a command to the AWS Snowball Edge device, you can specify that the endpoint is the Amazon EC2 endpoint\. You have the choice of using the HTTPS endpoint, or an unsecured HTTP endpoint, as shown following\.
 
@@ -51,82 +51,132 @@ After you complete the procedure, you can run CLI commands with these local cred
 Using the Amazon EC2 endpoint, you can programmatically manage your AMIs and compute instances on a Snowball Edge with Amazon EC2 API actions\. However, not all features and API actions are supported for use with a Snowball Edge device\.
 
 Any features or actions not explicitly listed as supported in this guide are not supported\. For example, the following Amazon EC2 actions are not supported for use with Snowball Edge:
-+ [attach\-volume](http://docs.aws.amazon.com/cli/latest/reference/ec2/attach-volume.html)
-+ [create\-key\-pair](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-key-pair.html)
++ [attach\-volume](https://docs.aws.amazon.com/cli/latest/reference/ec2/attach-volume.html)
++ [create\-key\-pair](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-key-pair.html)
 
 ## Supported AWS CLI Commands for Amazon EC2 on a Snowball Edge<a name="cli-support-ec2-edge"></a>
 
-Following, you can find information about how to specify the Amazon EC2 endpoint for applicable AWS CLI commands\. For information on installing and setting up the AWS CLI, including specifying what regions you want to make AWS CLI calls against, see the [AWS Command Line Interface User Guide](http://docs.aws.amazon.com/cli/latest/userguide/)\.
+Following, you can find information about how to specify the Amazon EC2 endpoint for applicable AWS CLI commands\. For information on installing and setting up the AWS CLI, including specifying what regions you want to make AWS CLI calls against, see the [AWS Command Line Interface User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
 
 ### List of Supported Amazon EC2 AWS CLI Commands on a Snowball Edge<a name="list-cli-commands-ec2-edge"></a>
 
-Following, you can find a description of the subset of AWS CLI commands and options for Amazon EC2 that are supported on Snowball Edge devices\. If a command or option isn't listed following, it's not supported\. You can declare some unsupported options along with a command, however, these are ignored\.
-+ [run\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) – Launches a number of compute instances using a Snowball AMI ID for an AMI\.
-**Note**  
-It can take up to an hour and a half to launch a compute instance on a Snowball Edge, depending on the size and type of the instance\.
-  + \-\-image\-id – The Snowball AMI ID of the AMI, which you can get by calling describe\-images\. An AMI is required to launch an instance\.
-  + \-\-count – Number of instances to launch\. If a single number is provided, it is assumed to be the minimum to launch \(defaults to 1\)\. If a range is provided in the form min:max then the first number is interpreted as the minimum number of instances to launch and the second is interpreted as the maximum number of instances to launch\.
-  + \-\-instance\-type – The `sbe1.xxxx` instance type\.
-  + \-\-user\-data – The user data to make available to the instance\. If you are using the AWS CLI, base64\-encoding is performed for you, and you can load the text from a file\. Otherwise, you must provide base64\-encoded text\.
-  + \-\-tag\-specifications – The tags to apply to the resources during launch\. You can only tag instances on launch\. The specified tags are applied to all instances that are created during launch\. To tag a resource after it has been created, use create\-tags\.
-+ [start\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) – Starts an `sbe1.xxxx` instance that you've previously stopped\. All resources attached to the instance persist through starts and stops, but is erased if the instance is terminated\.
-  + \-\-instance\-ids – The IDs of one or more `sbe1.xxxx` instances that were stopped on the device\.
-+ [stop\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) – Stops an `sbe1.xxxx` instance that is running\. All resources attached to the instance persist through starts and stops, but is erased if the instance is terminated\.
-  + \-\-instance\-ids – The IDs of one or more `sbe1.xxxx` instances to be stopped on the device\.
-+ [terminate\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/terminate-instances.html) – Shuts down one or more instances\. This operation is idempotent; if you terminate an instance more than once, each call succeeds\. All resources attached to the instance persist through starts and stops, but data is erased if the instance is terminated\.
-  + \-\-instance\-ids – The IDs of one or more `sbe1.xxxx` instances to be terminated on the device\. All associated data stored for those instances will be lost\.
-+ [create\-tags](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-tags.html) – Adds or overwrites one or more tags for the specified resource\. Each resource can have a maximum of 50 tags\. Each tag consists of a key and optional value\. Tag keys must be unique for a resource\. The following resources are supported:
+Following, you can find a description of the subset of AWS CLI commands and options for Amazon EC2 that are supported on Snowball Edge devices\. If a command or option isn't listed following, it's not supported\. You can declare some unsupported options along with a command\. However, these are ignored\.
++ [associate\-address](https://docs.aws.amazon.com/cli/latest/reference/ec2/associate-address.html) – Associates a virtual IP address with an instance for use on one of the three physical network interfaces on the device:
+  + \-\-instance\-id – The ID of a single `sbe1.xxxx` instance\.
+  + \-\-public\-ip – The virtual IP address that you want to use to access your instance\.
++ [authorize\-security\-group\-egress](https://docs.aws.amazon.com/cli/latest/reference/ec2/authorize-security-group-egress.html) – Adds one or more egress rules to a security group for use with a Snowball Edge device\. Specifically, this action permits instances to send traffic to one or more destination IPv4 CIDR address ranges\. For more information, see [Security Groups in Snowball Edge Devices](edge-security-groups.md)\.
+  + \-\-group\-id `value` – The ID of the security group
+  + \[\-\-ip\-permissions `value`\] – One or more sets of IP permissions\.
++ [authorize\-security\-group\-ingress](https://docs.aws.amazon.com/cli/latest/reference/ec2/authorize-security-group-ingress.html) – Adds one or more ingress rules to a security group\. When calling `authorize-security-group-ingress`, you must specify a value either for `group-name` or `group-id`\.
+  + \[\-\-group\-name `value`\] – The name of the security group\.
+  + \[\-\-group\-id `value`\] – The ID of the security group
+  + \[\-\-ip\-permissions `value`\] – One or more sets of IP permissions\.
+  + \[\-\-protocol `value`\] The IP protocol\. Possible values are `tcp`, `udp`, and `icmp`\. The `--port` argument is required unless the "all protocols" value is specified \(\-1\)\.
+  + \[\-\-port `value`\] – For TCP or UDP, the range of ports to allow\. This value can be a single integer or a range \(minimum–maximum\)\.
+
+    For ICMP, a single integer or a range \(`type`\-`code`\) in which `type` represents the ICMP type number and `code` represents the ICMP code number\. A value of \-1 indicates all ICMP codes for all ICMP types\. A value of \-1 just for `type` indicates all ICMP codes for the specified ICMP type\.
+  + \[\-\-cidr `value`\] – The CIDR IP range\.
++ [create\-tags](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-tags.html) – Adds or overwrites one or more tags for the specified resource\. Each resource can have a maximum of 50 tags\. Each tag consists of a key and optional value\. Tag keys must be unique for a resource\. The following resources are supported:
   + AMI
   + Instance
-+ [describe\-tags](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-tags.html) – Describes one or more of the tags for specified resource \(`image` or `instance`\)\. With this command, the following filters are supported:
+  + Security group
++ [create\-security\-group](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-security-group.html) – Creates a security group on your Snowball Edge\. You can create up to 50 security groups\. When you create a security group, you specify a friendly name of your choice:
+  + \-\-group\-name `value` – The name of the security group\.
+  + \-\-description `value` – A description of the security group\. This is informational only\. This value can be up to 255 characters in length\.
++ [delete\-security\-group](https://docs.aws.amazon.com/cli/latest/reference/ec2/delete-security-group.html) – Deletes a security group\.
+
+  If you attempt to delete a security group that is associated with an instance, or is referenced by another security group, the operation fails with `DependencyViolation`\.
+  + \-\-group\-name `value` – The name of the security group\.
+  + \-\-description `value` – A description of the security group\. This is informational only\. This value can be up to 255 characters in length\.
++ [delete\-tags](https://docs.aws.amazon.com/cli/latest/reference/ec2/delete-tags.html) – Deletes the specified set of tags from the specified resource \(AMI, compute instance, or security group\)\.
++ [describe\-address](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-addresses.html) – Describes one or more of your virtual IP addresses associated with the same number of `sbe1.xxxx` instances on your device\.
+  + \-\-public\-ips – One or more of the virtual IP addresses associated with your instances\.
++ [describe\-images](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) – Describes one or more of the images \(AMIs\) available to you\. Images available to you are added to the Snowball Edge device during job creation\.
+  + \-\-image\-id – The Snowball AMI ID of the AMI\.
++ [describe\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-attribute.html) – Describes the specified attribute of the specified instance\. You can specify only one attribute at a time\. The following attributes are supported:
+  + instanceType
+  + userData
++ [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) – Describes one or more of your instances\. The response returns any security groups that are assigned to the instances\.
+  + \-\-instance\-ids – The IDs of one or more `sbe1.xxxx` instances that were stopped on the device\.
+  + \-\-page\-size – The size of each page to get in the call\. This value doesn't affect the number of items returned in the command's output\. Setting a smaller page size results in more calls to the device, retrieving fewer items in each call\. Doing this can help prevent the calls from timing out\.
+  + \-\-max\-items – The total number of items to return in the command's output\. If the total number of items available is more than the value specified, `NextToken` is provided in the command's output\. To resume pagination, provide the `NextToken` value in the `starting-token` argument of a subsequent command\.
+  + \-\-starting\-token – A token to specify where to start paginating\. This token is the `NextToken` value from a previously truncated response\.
++ [describe\-security\-groups](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-security-groups.html) – Describes one or more of your security groups\.
+
+  describe\-security\-groups is a paginated operation\. You can issue multiple API calls to retrieve the entire data set of results\.
+  + \[\-\-group\-name `value`\] – The name of the security group\.
+  + \[\-\-group\-id `value`\] – The ID of the security group\.
+  + \[\-\-page\-size `value`\] – The size of each page to get in the AWS service call\. This size doesn't affect the number of items returned in the command's output\. Setting a smaller page size results in more calls to the AWS service, retrieving fewer items in each call\. This approach can help prevent the AWS service calls from timing out\. For usage examples, see [Pagination](https://docs.aws.amazon.com/cli/latest/userguide/pagination.html) in the *AWS Command Line Interface User Guide*\.
+  + \[\-\-max\-items `value`\] – The total number of items to return in the command's output\. If the total number of items available is more than the value specified, `NextToken` is provided in the command's output\. To resume pagination, provide the `NextToken` value in the `starting-token` argument of a subsequent command\. Don't use the `NextToken` response element directly outside of the AWS CLI\. For usage examples, see [Pagination](https://docs.aws.amazon.com/cli/latest/userguide/pagination.html) in the *AWS Command Line Interface User Guide*\.
+  + \[\-\-starting\-token `value`\] – A token to specify where to start paginating\. This token is the `NextToken` value from a previously truncated response\. For usage examples, see [Pagination](https://docs.aws.amazon.com/cli/latest/userguide/pagination.html) in the *AWS Command Line Interface User Guide*\.
++ [describe\-tags](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-tags.html) – Describes one or more of the tags for specified resource \(`image`, `instance`, or security group\)\. With this command, the following filters are supported:
   + resource\-id
   + resource\-type – `image` or `instance`
   + key
   + value
-+ [delete\-tags](http://docs.aws.amazon.com/cli/latest/reference/ec2/delete-tags.html) – Deletes the specified set of tags from the specified resource \(AMI or compute instance\)\.
-+ [describe\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) – Describes one or more of your instances\.
-  + \-\-instance\-ids – The IDs of one or more `sbe1.xxxx` instances that were stopped on the device\.
-  + \-\-page\-size – The size of each page to get in the call\. This value doesn't affect the number of items returned in the command's output\. Setting a smaller page size results in more calls to the device, retrieving fewer items in each call\. Doing this can help prevent the calls from timing out\.
-  + \-\-max\-items – The total number of items to return in the command's output\. If the total number of items available is more than the value specified, a `NextToken` is provided in the command's output\. To resume pagination, provide the `NextToken` value in the starting\-token argument of a subsequent command\.
-  + \-\-starting\-token – A token to specify where to start paginating\. This token is the `NextToken` from a previously truncated response\.
-+ [describe\-images](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) – Describes one or more of the images \(AMIs\) available to you\. Images available to you are added to the Snowball Edge device during job creation\.
-  + \-\-image\-id – The Snowball AMI ID of the AMI\.
-+ [describe\-instance\-attribute](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-attribute.html) – Describes the specified attribute of the specified instance\. You can specify only one attribute at a time\. The following attributes are supported:
-  + instanceType
-  + userData
-+ [modify\-instance\-attribute](http://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) – Modifies the userData attribute of the specified instance\. Only the userData attribute is supported\.
-+ [associate\-address](http://docs.aws.amazon.com/cli/latest/reference/ec2/associate-address.html) – Associates a virtual IP address with an instance for use on one of the three physical network interfaces on the device:
-  + \-\-instance\-id – The ID of a single `sbe1.xxxx` instance\.
-  + \-\-public\-ip – The virtual IP address that you want to use to access your instance\.
-+ [disassociate\-address](http://docs.aws.amazon.com/cli/latest/reference/ec2/disassociate-address.html) – Disassociates a virtual IP address from the instance it's associated with\.
-  + \-\-public\-ip – The virtual IP address that you want to disassociate with your instance\.
-+ [describe\-address](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-addresses.html) – Describes one or more of your virtual IP addresses associated with the same number of `sbe1.xxxx` instances on your device\.
-  + \-\-public\-ips – One or more of the virtual IP addresses associated with your instances\.
++ [disassociate\-address](https://docs.aws.amazon.com/cli/latest/reference/ec2/disassociate-address.html) – Disassociates a virtual IP address from the instance it's associated with\.
+  + \-\-public\-ip – The virtual IP address that you want to disassociate from your instance\.
++ [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) – Modifies the `userData` attribute of the specified instance\. Only the `userData` attribute is supported\.
++ [revoke\-security\-group\-egress](https://docs.aws.amazon.com/cli/latest/reference/ec2/revoke-security-group-egress.html) – Removes one or more egress rules from a security group:
+  + \[\-\-group\-id `value`\] – The ID of the security group
+  + \[\-\-ip\-permissions `value`\] – One or more sets of IP permissions\.
++ [revoke\-security\-group\-ingress](https://docs.aws.amazon.com/cli/latest/reference/ec2/revoke-security-group-ingress.html) – Revokes one or more ingress rules to a security group\. When calling `revoke-security-group-ingress`, you must specify a value for either `group-name` or `group-id`\.
+  + \[\-\-group\-name `value`\] – The name of the security group\.
+  + \[\-\-group\-id `value`\] – The ID of the security group\.
+  + \[\-\-ip\-permissions `value`\] – One or more sets of IP permissions\.
+  + \[\-\-protocol `value`\] The IP protocol\. Possible values are `tcp`, `udp`, and `icmp`\. The `--port` argument is required unless the "all protocols" value is specified \(\-1\)\.
+  + \[\-\-port `value`\] – For TCP or UDP, the range of ports to allow\. A single integer or a range \(minimum–maximum\)\.
 
-## Supported Amazon EC2 API Actions<a name="using-ec2-adapter-supported-api"></a>
-
-Following, you can find Amazon EC2 API operations that you can use with a Snowball Edge, with links to their descriptions in the *Amazon EC2 API Reference\. *Amazon EC2 API calls require Signature Version 4 \(SigV4\) signing\. If you're using the AWS CLI or an AWS SDK to make these API calls, the SigV4 signing is handled for you\. Otherwise, you need to implement your own SigV4 signing solution\. For more information, see [Getting and Using Local Amazon S3 Credentials](using-adapter.md#adapter-credentials)\.
-+ [RunInstances](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html) –
+    For ICMP, a single integer or a range \(`type`\-`code`\) in which `type` represents the ICMP type number and `code` represents the ICMP code number\. A value of \-1 indicates all ICMP codes for all ICMP types\. A value of \-1 just for `type` indicates all ICMP codes for the specified ICMP type\.
+  + \[\-\-cidr `value`\] – The CIDR IP range\.
++ [run\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) – Launches a number of compute instances by using a Snowball AMI ID for an AMI\.
 **Note**  
 It can take up to an hour and a half to launch a compute instance on a Snowball Edge, depending on the size and type of the instance\.
-+ [StartInstances](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartInstances.html)
-+ [StopInstances](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StopInstances.html) – Resources associated with a stopped instance persist\. You can terminate the instance to free up these resources\. However, any associated data is deleted\. 
-+ [TerminateInstances](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TerminateInstances.html)
-+ [CreateTags](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) – The following resources are supported:
+  + \-\-image\-id – The Snowball AMI ID of the AMI, which you can get by calling `describe-images`\. An AMI is required to launch an instance\.
+  + \-\-count – Number of instances to launch\. If a single number is provided, it is assumed to be the minimum to launch \(defaults to 1\)\. If a range is provided in the form `min:max`, then the first number is interpreted as the minimum number of instances to launch and the second is interpreted as the maximum number of instances to launch\.
+  + \-\-instance\-type – The `sbe1.xxxx` instance type\.
+  + \-\-user\-data – The user data to make available to the instance\. If you are using the AWS CLI, base64\-encoding is performed for you, and you can load the text from a file\. Otherwise, you must provide base64\-encoded text\.
+  + \-\-tag\-specifications – The tags to apply to the resources during launch\. You can only tag instances on launch\. The specified tags are applied to all instances that are created during launch\. To tag a resource after it has been created, use `create-tags`\.
+  + \-\-security\-group\-ids – One or more security group IDs\. You can create a security group using [CreateSecurityGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html)\. If no value is provided, the ID for the default security group is assigned to created instances\.
++ [start\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) – Starts an `sbe1.xxxx` instance that you've previously stopped\. All resources attached to the instance persist through starts and stops, but are erased if the instance is terminated\.
+  + \-\-instance\-ids – The IDs of one or more `sbe1.xxxx` instances that were stopped on the device\.
++ [stop\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) – Stops an `sbe1.xxxx` instance that is running\. All resources attached to the instance persist through starts and stops, but are erased if the instance is terminated\.
+  + \-\-instance\-ids – The IDs of one or more `sbe1.xxxx` instances to be stopped on the device\.
++ [terminate\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/terminate-instances.html) – Shuts down one or more instances\. This operation is idempotent; if you terminate an instance more than once, each call succeeds\. All resources attached to the instance persist through starts and stops, but data is erased if the instance is terminated\.
+  + \-\-instance\-ids – The IDs of one or more `sbe1.xxxx` instances to be terminated on the device\. All associated data stored for those instances will be lost\.
+
+## Supported Amazon EC2 API Operations<a name="using-ec2-adapter-supported-api"></a>
+
+Following, you can find Amazon EC2 API operations that you can use with a Snowball Edge, with links to their descriptions in the *Amazon EC2 API Reference\. *Amazon EC2 API calls require Signature Version 4 \(SigV4\) signing\. If you're using the AWS CLI or an AWS SDK to make these API calls, the SigV4 signing is handled for you\. Otherwise, you need to implement your own SigV4 signing solution\. For more information, see [Getting and Using Local Amazon S3 Credentials](using-adapter.md#adapter-credentials)\.
++ [AssociateAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateAddress.html) – Associates an Elastic IP address with an instance or a network interface\. 
++ [AuthorizeSecurityGroupEgress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AuthorizeSecurityGroupEgress.html) – Adds one or more egress rules to a security group for use with a Snowball Edge device\. Specifically, this action permits instances to send traffic to one or more destination IPv4 CIDR address ranges\.
++ [AuthorizeSecurityGroupIngress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AuthorizeSecurityGroupIngress.html) – Adds one or more ingress rules to a security group\. When calling AuthorizeSecurityGroupIngress, you must specify a value either for `GroupName` or `GroupId`\.
++ [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) – The following resources are supported:
   + AMI
   + Instance
-+ [DescribeTags](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTags.html) – With this command, the following filters are supported:
-  + resource\-id
-  + resource\-type – AMI or compute instance only
-  + key
-  + value
-+ [DeleteTags](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTags.html)
-+ [DescribeInstances](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
-+ [DescribeImages](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html)
-+ [DescribeInstanceAttribute](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceAttribute.html) – The following attributes are supported:
-  + instanceType
-  + userData
-+ [ModifyInstanceAttribute](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html) – Only the userData attribute is supported\.
-+ [AssociateAddress](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateAddress.html)
-+ [DisassociateAddress](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateAddress.html)
-+ [DescribeAddresses](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAddresses.html)
+  + Security group
++ [CreateSecurityGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html) – Creates a security group on your Snowball Edge\. You can create up to 50 security groups\. When you create a security group, you specify a friendly name of your choice\.
++ [DeleteSecurityGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSecurityGroup.html) – Deletes a security group\. If you attempt to delete a security group that is associated with an instance, or is referenced by another security group, the operation fails with `DependencyViolation`\.
++ [DeleteTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTags.html) – Deletes the specified set of tags from the specified set of resources\.
++ [DescribeAddresses](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAddresses.html)
++ [DescribeImages](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html)
++ [DescribeInstanceAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceAttribute.html) – The following attributes are supported:
+  + `instanceType`
+  + `userData`
++ [DescribeInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
++ [DescribeSecurityGroups](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html) – Describes one or more of your security groups\. `DescribeSecurityGroups` is a paginated operation\. You can issue multiple API calls to retrieve the entire data set of results\.
++ [DescribeTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTags.html) – With this command, the following filters are supported:
+  + `resource-id`
+  + `resource-type` – AMI or compute instance only
+  + `key`
+  + `value`
++ [DisassociateAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateAddress.html)
++ [ModifyInstanceAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html) – Only the `userData` attribute is supported\.
++ [RevokeSecurityGroupEgress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RevokeSecurityGroupEgress.html) – Removes one or more egress rules from a security group\.
++ [RevokeSecurityGroupIngress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RevokeSecurityGroupIngress.html) – Revokes one or more ingress rules to a security group\. When calling RevokeSecurityGroupIngress, you must specify a value either for `group-name` or `group-id`\.
++ [RunInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html) –
+**Note**  
+It can take up to an hour and a half to launch a compute instance on a Snowball Edge, depending on the size and type of the instance\.
++ [StartInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartInstances.html)
++ [StopInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StopInstances.html) – Resources associated with a stopped instance persist\. You can terminate the instance to free up these resources\. However, any associated data is deleted\. 
++ [TerminateInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TerminateInstances.html)

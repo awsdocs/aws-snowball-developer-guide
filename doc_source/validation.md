@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -30,7 +30,7 @@ Validations errors can occur\. Whenever there's a validation error, the correspo
 + Attempting to copy files larger than 5 TB in size\.
 + Attempting to copy part sizes larger than 5 GB in size\.
 + Attempting to copy files to a Snowball Edge that is already at full data storage capacity\.
-+ Attempting to copy files to a Snowball Edge that doesn't follow the [Object Key Naming Guidelines](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-key-guidelines) for Amazon S3\.
++ Attempting to copy files to a Snowball Edge that doesn't follow the [Object Key Naming Guidelines](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-key-guidelines) for Amazon S3\.
 
 Whenever any one of these validation errors occurs, it is logged\. You can take steps to manually identify what files failed validation and why as described in the following sections:
 + [Manual Data Validation for Snowball Edge During Transfer](#manual-validation-device) – Outlines how to check for failed files while you still have the Snowball Edge on\-premises\.
@@ -58,7 +58,7 @@ If you transferred a huge amount of data into Amazon S3 in multiple jobs, going 
 Once you have the inventory of the Amazon S3 buckets that you've imported data into, you can easily compare it against the files that you transferred on your source data location\. In this way, you can quickly identify what files where not transferred\.
 
 **Use the Amazon S3 sync command**  
-If your workstation can connect the internet, you can do a final validation of all your transferred files by running the AWS CLI command `aws s3 sync`\. This command syncs directories and S3 prefixes\. This command recursively copies new and updated files from the source directory to the destination\. For more information, see [http://docs.aws.amazon.com/cli/latest/reference/s3/sync.html](http://docs.aws.amazon.com/cli/latest/reference/s3/sync.html)\.
+If your workstation can connect the internet, you can do a final validation of all your transferred files by running the AWS CLI command `aws s3 sync`\. This command syncs directories and S3 prefixes\. This command recursively copies new and updated files from the source directory to the destination\. For more information, see [https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html)\.
 
 **Important**  
 If you specify your local storage as the destination for this command, make sure that you have a backup of the files you sync against\. These files are overwritten by the contents in the specified Amazon S3 source\.

@@ -1,12 +1,24 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # AWS Snowball Device Differences<a name="device-differences"></a>
 
-The Snowball and the Snowball Edge are two different devices\. This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the *[AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.* Both devices allow you to move huge amounts of data into and out of Amazon S3, they both have the same [job management API](http://docs.aws.amazon.com/snowball/latest/api-reference/api-reference.html), and they both use the same [console](https://console.aws.amazon.com/importexport)\. However, the two devices differ in hardware specifications, some features, what transfer tools are used, and price\.
+The Snowball and the Snowball Edge are two different devices\. This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the *[AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.* Both devices allow you to move huge amounts of data into and out of Amazon S3, they both have the same [job management API](https://docs.aws.amazon.com/snowball/latest/api-reference/api-reference.html), and they both use the same [console](https://console.aws.amazon.com/importexport)\. However, the two devices differ in hardware specifications, some features, what transfer tools are used, and price\.
+
+## Snowball Edge Device Options<a name="device-options"></a>
+
+Snowball Edge devices have three options for device configurations:
++ **Snowball Edge Storage Optimized** – This option of Snowball Edge device has the most storage capacity at up to 80 TB of useable storage space, 24 vCPUs, and 32 GiB of memory for compute functionality\.
++ **Snowball Edge Compute Optimized** – This option of Snowball Edge device has the most compute functionality with 52 vCPUs, 208 GiB of memory, and 7\.68 TB of dedicated NVMe SSD storage for instances\. This option also comes with 42 TB of additional storage space\.
++ **Snowball Edge Compute Optimized with GPU** – This option of Snowball Edge devices is identical to the compute optimized option, save for an installed GPU, equivalent to the one available in the P3 Amazon EC2 instance type\.
+
+For more information on the compute functionality of these three options, see [Using Amazon EC2 Compute Instances](using-ec2.md)\.
+
+**Note**  
+When this guide refers to Snowball Edge devices, it's referring to all optional variants of the device\. Whenever specific information applies only to one or more optional configurations of devices, like how the Snowball Edge Compute Optimized with GPU option has an on\-board GPU peripheral, it will be mentioned explicitly\.
 
 ## AWS Snowball Use Case Differences<a name="usecase-differences"></a>
 
@@ -19,29 +31,34 @@ Following is a table that shows the different use cases for the different AWS Sn
 | Export from Amazon S3 | ✓ | ✓ | 
 | Durable local storage |  | ✓ | 
 | Local compute with AWS Lambda |  | ✓ | 
-| Amazon EC2 compute instances |  | ✓ | 
-| Use in a cluster of devices |  | ✓ | 
-| Use with AWS Greengrass \(IoT\) |  | ✓ | 
+| Local compute instances |  | ✓ | 
+| Durable Amazon S3 storage in a cluster of devices |  | ✓ | 
+| Use with AWS IoT Greengrass \(IoT\) |  | ✓ | 
 | Transfer files through NFS with a GUI |  | ✓ | 
+| GPU workloads |  | ✓ | 
+
+**Note**  
+Workloads that need GPU support require the Snowball Edge Compute Optimized with GPU option\.
 
 ## AWS Snowball Hardware Differences<a name="hardware-differences"></a>
 
-Following is a table that shows how the devices differ from each other, physically\. For information on specifications for the Snowball, see [AWS Snowball Specifications](http://docs.aws.amazon.com/snowball/latest/ug/specifications.html)\. For information on specifications for the Snowball Edge, see [AWS Snowball Edge Specifications](specifications.md)\.
+Following is a table that shows how the devices differ from each other, physically\. For information on specifications for the Snowball, see [AWS Snowball Specifications](https://docs.aws.amazon.com/snowball/latest/ug/specifications.html)\. For information on specifications for the Snowball Edge, see [AWS Snowball Edge Specifications](specifications.md)\.
 
 
 | Snowball | Snowball Edge | 
 | --- | --- | 
-|  ![\[The Snowball is a large briefcase-sized device that weighs less than 50 pounds and is used to transfer data.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/Snowball-closed-600w.png)  |  ![\[The Snowball Edge is a large briefcase-sized device that weighs less than 50 pounds and is used to transfer, store, or compute data.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/SnowballEdgeAppliance.png)  | 
+|  ![\[The Snowball is a large briefcase-sized device that weighs less than 50 pounds and is used to transfer data.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/Snowball-closed-600w.png)  |  ![\[The Snowball Edge is a large briefcase-sized device that weighs less than 50 pounds and is used to transfer, store, or compute data.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/Snowball-Edge-Image.png)  | 
 
 Each device has different storage capacities, as follows:
-
-
-| Storage capacity \(usable capacity\) | Snowball | Snowball Edge | 
-| --- | --- | --- | 
-|  50 TB \(42 TB\) \- US regions only  | ✓ |  | 
-|  80 TB \(72 TB\)  | ✓ |  | 
-|  100 TB \(80 TB\)  |  | ✓ | 
-|  100 TB Clustered \(45 TB per node\)  |  | ✓ | 
++ **Snowball**
+  + 50 TB \(42 TB usable\) only available in US regions
+  + 80 TB \(72 TB usable\)
++ **Snowball Edge Storage Optimized**
+  + 100 TB \(80 TB usable\)
++ **Snowball Edge Compute Optimized**
+  + 42 TB \(39\.5 usable\) plus 7\.68 TB of dedicated NVMe SSD for compute instances
++ **Snowball Edge Compute Optimized with GPU**
+  + 42 TB \(39\.5 usable\) plus 7\.68 TB of dedicated NVMe SSD for compute instances
 
 Each device has the following physical interfaces for management purposes:
 
@@ -58,19 +75,19 @@ The following outlines the different tools used with the AWS Snowball devices, a
 ### Snowball Tools<a name="tool-differences-snowball"></a>
 
 **Snowball client with Snowball**
-+ Must be downloaded from the [AWS Snowball Edge Resources](http://aws.amazon.com/snowball-edge/resources/) page and installed on a powerful workstation that you own\.
-+ Can transfer data to or from the Snowball\. For more information, see [Using the Snowball Client](http://docs.aws.amazon.com/snowball/latest/ug/using-client.html)\.
++ The Snowball client must be downloaded from the [AWS Snowball Edge Resources](http://aws.amazon.com/snowball-edge/resources/) page and installed on your own powerful workstation\.
++ Can transfer data to or from the Snowball\. For more information, see [Using the Snowball Client](https://docs.aws.amazon.com/snowball/latest/ug/using-client.html)\.
 + Encrypts data on your powerful workstation before the data is transferred to the Snowball\.
 
 **Amazon S3 Adapter for Snowball with Snowball**
-+ Must be downloaded from the [AWS Snowball Edge Resources](http://aws.amazon.com/snowball-edge/resources/) page and installed on a powerful workstation that you own\.
-+ Can transfer data to or from the Snowball\. For more information, see [Transferring Data with the Amazon S3 Adapter for Snowball](http://docs.aws.amazon.com/snowball/latest/ug/snowball-transfer-adapter.html)\.
++ The Amazon S3 Adapter for Snowball must be downloaded from the [AWS Snowball Resources](http://aws.amazon.com/snowball/resources/) page and installed on your own powerful workstation\.
++ Can transfer data to or from the Snowball\. For more information, see [Transferring Data with the Amazon S3 Adapter for Snowball](https://docs.aws.amazon.com/snowball/latest/ug/snowball-transfer-adapter.html)\.
 + Encrypts data on your powerful workstation before the data is transferred to the Snowball\.
 
 ### Snowball Edge Tools<a name="tool-differences-edge"></a>
 
 **Snowball client with Snowball Edge**
-+ Must be downloaded from the [AWS Snowball Edge Resources](http://aws.amazon.com/snowball-edge/resources/) page and installed on a computer that you own\.
++ The Snowball client must be downloaded from the [AWS Snowball Edge Resources](http://aws.amazon.com/snowball-edge/resources/) page and installed on your own computer\.
 + Must be used to unlock the Snowball Edge or the cluster of Snowball Edge devices\. For more information, see [Using the Snowball Client](using-client.md)\.
 + Can't be used to transfer data\.
 
@@ -84,8 +101,8 @@ The following outlines the different tools used with the AWS Snowball devices, a
 + Can transfer data by dragging and dropping files up to 150 GB in size from your computer to the buckets on the Snowball Edge through an easy\-to\-configure NFS mount point\. For more information, see [Using the File Interface for the AWS Snowball Edge](using-fileinterface.md)\.
 + Encrypts data on the Snowball Edge while the data is transferred to the device\.
 
-**AWS Greengrass console with Snowball Edge**
-+ With a Snowball Edge, you can use the AWS Greengrass console to update your AWS Greengrass group and the core running on the Snowball Edge\.
+**AWS IoT Greengrass console with Snowball Edge**
++ With a Snowball Edge, you can use the AWS IoT Greengrass console to update your AWS IoT Greengrass group and the core running on the Snowball Edge\.
 
 ### Differences Between Items Provided for the Snowball and Snowball Edge<a name="network-differences"></a>
 
@@ -100,7 +117,7 @@ The following outlines the differences between the network adapters, cables used
 | QSFP |   | ✓ | No cables or optics provided | 
 
 For more information on the network interfaces, cables, and connectors that work with the different device types, see the following topics:
-+ [Supported Network Hardware](http://docs.aws.amazon.com/snowball/latest/ug/specifications.html#network-hardware) in the *AWS Snowball User Guide\.*
++ [Supported Network Hardware](https://docs.aws.amazon.com/snowball/latest/ug/specifications.html#network-hardware) in the *AWS Snowball User Guide\.*
 + [Supported Network Hardware](specifications.md#network-hardware) in this guide\.
 
 ## AWS Snowball Other Differences<a name="other-differences"></a>

@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -15,7 +15,7 @@ You can only get your credentials after the device has been delivered to you\.
 
 1. Sign in to the AWS Management Console and open the AWS Snowball Management Console at [AWS Snowball Management Console](https://console.aws.amazon.com/importexport/home?region=us-west-2)\.
 
-1. In the AWS Snowball Management Console, search the table for the specific job to download the job manifest for, and then choose that job\.
+1. In the console, search the table for the specific job to download the job manifest for, and then choose that job\.
 
 1. Expand that job's **Job status** pane, and choose **View job details**\.
 

@@ -1,12 +1,12 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # Troubleshooting Compute Instances on Snowball Edge Devices<a name="troubleshooting-ec2-edge"></a>
 
-Following, you'll find troubleshooting tips for Snowball Edge jobs with compute instances\.
+Following, you can find troubleshooting tips for Snowball Edge jobs with compute instances\.
 
 **Topics**
 + [Virtual Network Interface Has an IP Address of 0\.0\.0\.0](#troubleshoot-vnic-ipaddress)
@@ -20,7 +20,7 @@ This issue can occur if the physical network interface \(NIC\) you associated wi
 
 **Action to Take**  
 If this occurs, you can do the following:
-+ Create a new VNIC, associated with a NIC that has an IP address\. For more information, see [Network Configuration for Compute Instances](using-ec2.md#network-config-ec2-edge)\.
++ Create a new VNIC, associated with a NIC that has an IP address\. For more information, see [Network Configuration for Compute Instances](network-config-ec2-edge.md)\.
 + Update an existing VNIC\. For more information, see [Updating a Virtual Network Interface](using-ec2-edge-client.md#ec2-edge-update-vnic)\.
 
 ## Snowball Edge Hangs When Launching a Large Compute Instance<a name="ec2-edge-launch-stopped"></a>
@@ -38,7 +38,7 @@ This error can occur if your PEM file on your compute instance has insufficient 
 **Action to Take**  
 You can resolve this by changing the permissions for the file with the following procedure:
 
-1. Open a terminal and navigate to the location that you've saved your PEM file to\.
+1. Open a terminal and navigate to the location that you saved your PEM file to\.
 
 1. Enter the following command:
 

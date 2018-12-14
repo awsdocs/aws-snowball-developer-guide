@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -9,7 +9,7 @@ This guide is for the Snowball Edge\. If you are looking for documentation for t
 The process for creating an AWS Snowball Edge device job in the AWS Snowball Management Console has the following steps\.
 
 **Important**  
-Before including Amazon EC2 compute instances in your job creation request, see [Creating a Job with Compute Instances](using-ec2.md#create-ec2-edge-job)\.
+Before including Amazon EC2 compute instances in your job creation request, see [Creating a Job with Compute Instances](create-ec2-edge-job.md)\.
 
 **To create an AWS Snowball Edge device job in the console**
 
@@ -53,7 +53,7 @@ Once your job is created, you're taken to the job dashboard, where you can view 
 **Note**  
 The **Job created** status is the only status during which you can cancel a job\.
 
-For more information on managing jobs from the AWS Snowball Management Console and tracking job status, see [Job Statuses](jobstatuses.md)\. Jobs can also be created and managed with the job management API\. For more information, see the [AWS Snowball API Reference](http://docs.aws.amazon.com/snowball/latest/api-reference/api-reference.html)\.
+For more information on managing jobs from the AWS Snowball Management Console and tracking job status, see [Job Statuses](jobstatuses.md)\. Jobs can also be created and managed with the job management API\. For more information, see the [AWS Snowball API Reference](https://docs.aws.amazon.com/snowball/latest/api-reference/api-reference.html)\.
 
 After you created your first job, AWS processes the information you provided and prepares an AWS Snowball Edge device specifically for your job\. During the processing stage, if there's an issue with your job, we contact you by email\. Otherwise, we ship the device to the address you provided when you created the job\. Shipping can take a few days, but you can track the shipping status of the device we prepared for your job\. In your job's details, you should see a link to the tracking webpage with your tracking number provided\.
 

@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -10,7 +10,7 @@ Local compute and storage jobs enable you to use Amazon S3 and AWS Lambda powere
 
 ## Local Compute Jobs<a name="aboutcompute"></a>
 
-The local compute functionality is AWS Lambda powered by AWS Greengrass, and can automatically run Python\-language code in response to [Amazon S3 PUT object](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html) action API calls to the AWS Snowball Edge device\. You write the Python code as a Lambda function in the Lambda console\.
+The local compute functionality is AWS Lambda powered by AWS Greengrass, and can automatically run Python\-language code in response to [Amazon S3 PUT object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html) action API calls to the AWS Snowball Edge device\. You write the Python code as a Lambda function in the Lambda console\.
 
 Buckets and Lambda functions have a one\-to\-one relationship, meaning that one Lambda function can be associated with one bucket when the job is created\. For more information, see [Using AWS Lambda with an AWS Snowball Edge](using-lambda.md)\.
 

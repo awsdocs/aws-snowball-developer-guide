@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -10,7 +10,7 @@ Like the standard Snowball, the AWS Snowball Edge device is designed to take adv
 
 You can also choose from the status list which job status values trigger these notifications\. For more information about the different job status values, see [Job Statuses](jobstatuses.md)\.
 
-You can configure Amazon SNS to send text messages for these status notifications from the Amazon SNS console\. For more information, see [Sending and Receiving SMS Notifications Using Amazon SNS](http://docs.aws.amazon.com/sns/latest/dg/SMSMessages.html)\.
+You can configure Amazon SNS to send text messages for these status notifications from the Amazon SNS console\. For more information, see [Sending and Receiving SMS Notifications Using Amazon SNS](https://docs.aws.amazon.com/sns/latest/dg/SMSMessages.html)\.
 
 **Note**  
 These notifications are optional, and are free if you're within your first million Amazon SNS requests for the month\. For more information about Amazon SNS pricing, see [https://aws.amazon.com/sns/pricing](https://aws.amazon.com/sns/pricing)\.

@@ -1,12 +1,12 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
 # Other Security Considerations for AWS Snowball<a name="security-considerations"></a>
 
-Following are some security points that we recommend you consider when using AWS Snowball, and also some high\-level information on other security precautions that we take when an device arrives at AWS for processing\.
+Following are some security points that we recommend you consider when using AWS Snowball, and also some high\-level information on other security precautions that we take when a device arrives at AWS for processing\.
 
 We recommend the following security approaches:
 + When the device first arrives, inspect it for damage or obvious tampering\. If you notice anything that looks suspicious about the device, don't connect it to your internal network\. Instead, contact [AWS Support](https://aws.amazon.com/premiumsupport/), and a new device will be shipped to you\.

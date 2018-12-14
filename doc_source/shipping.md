@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -38,7 +38,7 @@ You don't need to pack the AWS Snowball Edge device in a container, because it i
 
 ## Region\-Based Shipping Restrictions<a name="shipwithinregion"></a>
 
-Before you create a job, you should sign in to the console from the AWS Region that your Amazon S3 or Amazon Glacier data is housed in\. A few shipping restrictions apply, as follows:
+Before you create a job, you should sign in to the console from the AWS Region that your Amazon S3 or Glacier data is housed in\. A few shipping restrictions apply, as follows:
 + For data transfers in US regions, we don't ship AWS Snowball Edge devices outside of the United States\.
 + We don't ship AWS Snowball Edge devices between non\-US regions—for example, from EU \(Ireland\) to EU \(Frankfurt\), or from Asia Pacific \(Mumbai\) to Asia Pacific \(Sydney\)\.
 + For data transfers in Asia Pacific \(Sydney\), we only ship AWS Snowball Edge devices within Australia\.

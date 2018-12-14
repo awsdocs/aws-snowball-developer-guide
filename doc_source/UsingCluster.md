@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -22,7 +22,7 @@ For the AWS Snowball service, a cluster is a collective of Snowball Edges, used 
 
 A cluster offers two primary benefits over a standalone Snowball Edge for local storage and compute purposes:
 + **Increased Durability** – The data stored in a cluster of Snowball Edge devices enjoys increased data durability over a single device\. In addition, the data on the cluster remains as safe and viable as it was previously, despite possible Snowball Edge outages in the cluster\. Clusters can withstand the loss of two nodes before the data is in danger\. You can also add or replace nodes\.
-+ **Increased Storage** – The total available storage is 45 terabytes of data per node in the cluster\. Thus, in a five\-node cluster there are 225 terabytes of available storage space\. In contrast, there are about 82 terabytes of available storage space in a standalone Snowball Edge\. Clusters that have more than five nodes have even more storage space\.
++ **Increased Storage** – The total available storage is 45 terabytes of data per node in the cluster\. Thus, in a five\-node cluster there are 225 terabytes of available storage space\. In contrast, there are about 80 terabytes of available storage space in a standalone Snowball Edge\. Clusters that have more than five nodes have even more storage space\.
 
 A cluster of Snowball Edge devices is made of leaderless nodes\. Any node can write data to and read data from the entire cluster, and all nodes are capable of performing the behind\-the\-scenes management of the cluster\.
 

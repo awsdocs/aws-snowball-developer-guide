@@ -1,6 +1,6 @@
 --------
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](http://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
 
 --------
 
@@ -15,7 +15,7 @@ Following, you can find information about administrative tasks to operate a heal
 + [Adding or Replacing a Node in a Cluster](#replacement)
 
 Most administrative tasks require that you use the Snowball client and its commands that perform the following actions:
-+ [Unlocking AWS Snowball Edge Devices](using-client-commands.md#setting-up-client)
++ [Unlocking Snowball Edge Devices](using-client-commands.md#setting-up-client)
 + [Getting Device Status](using-client-commands.md#client-status) of a cluster
 + [Removing a Node from a Cluster](using-client-commands.md#client-cluster-remove)
 + [Adding a Node to a Cluster](using-client-commands.md#client-cluster-add)
@@ -42,7 +42,7 @@ When you detect that a node is unavailable, we recommend that you try one of the
 
 1. Wait for the node to finish powering up, if it needed to be powered up\.
 
-1. Run the `snowballEdge unlock-cluster` command, or the `snowballEdge associate-device` command\. For an example, see [Unlocking AWS Snowball Edge Devices](using-client-commands.md#setting-up-client)\.
+1. Run the `snowballEdge unlock-cluster` command, or the `snowballEdge associate-device` command\. For an example, see [Unlocking Snowball Edge Devices](using-client-commands.md#setting-up-client)\.
 
 **To reconnect an unavailable node that lost network but didn't lose power**
 
