@@ -19,6 +19,9 @@ All three compute instance types supported for use on Snowball Edge device optio
 
 To use a compute instance on a Snowball Edge, create a job and specify your AMIs\. You can do this from the [AWS Snowball Management Console](https://console.aws.amazon.com/importexport/home?region=us-west-2), with the AWS CLI, or with one of the AWS SDKs\. Typically, there are some housekeeping prerequisites that you must perform before creating your job, to use your instances\.
 
+**Note**
+Only AMIs that have been loaded on to the AWS Snowball Edge device during job creation can be used\. To use new AMIs, you must submit a new device request job\.
+
 After your device arrives, you can start managing your AMIs and instances\. You can manage your compute instances on a Snowball Edge through an Amazon EC2–compatible endpoint\. This type of endpoint supports many of the Amazon EC2 CLI commands and actions for the AWS SDKs\. You can't use the AWS Management Console on the Snowball Edge to manage your AMIs and compute instances\.
 
 When you're done with your device, return it to AWS\. If the device was used in an import job, the data transferred using the Amazon S3 Adapter for Snowball or the file interface is imported into Amazon S3\. Otherwise, we perform a complete erasure of the device when it is returned to AWS\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.
