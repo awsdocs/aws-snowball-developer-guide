@@ -16,6 +16,9 @@ Using the following procedure, you connect the AWS Snowball Edge device to your 
 
 1. Choose one of your RJ45, SFP\+, or QSFP\+ network cables, and plug the device into your network\. The network ports are on the back of the device\.
 
+    **Note**
+    AWS Snowball Edge devices do not natively support wireless network connections\. A separate network device, such as a wireless bridge, is required to connect devices to wireless networks\.
+
 1. Power on the AWS Snowball Edge device by pressing the power button above the LCD display\.
 
 1. When the device is ready, the LCD display shows a short video while the device is getting ready to start\. After about 10 minutes, the device is ready to be unlocked\.
