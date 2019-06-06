@@ -42,7 +42,7 @@ Before exporting data from Amazon S3, take these steps:
 
 For jobs using compute instances:
 + Before you can add any AMIs to your job, you must have an AMI created in your AWS account of the supported image type\. Currently, supported AMIs are based on the [CentOS 7 \(x86\_64\) \- with Updates HVM](https://aws.amazon.com/marketplace/pp/B00O7WM7QW), [Ubuntu Server 14\.04 LTS \(HVM\)](https://aws.amazon.com/marketplace/pp/B00JV9TBA6), and [Ubuntu 16\.04 LTS \- Xenial \(HVM\)](https://aws.amazon.com/marketplace/pp/B01JBL2M0O) images\. You can get these images from the [AWS Marketplace](https://aws.amazon.com/marketplace?b_k=291)\.
-+ If you're going to SSH into the instances running on a Snowball Edge, you must already have the key pair for connecting to the instance\.
++ If you're going to SSH into the instances running on a Snowball Edge, you must already have the key pair for connecting to the instance\. For more information, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).
 + For information specific to using compute instances on a device, see [Using Amazon EC2 Compute Instances](using-ec2.md)\.
 
 ## Services Related to the AWS Snowball Edge<a name="edge-related"></a>
