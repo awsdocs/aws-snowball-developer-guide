@@ -30,7 +30,7 @@ If you don't follow this procedure, you can't connect to your instances with SSH
 
 1. Make a copy of the PEM/PPK file that you used for the SSH key pair to create this instance\. Save this file to the server that you plan to use to communicate with the Snowball Edge\. This file is required for using SSH to connect to the launched instance on your device, so make a note of the path to this file\.
 
-1. Save the instance as an AMI\. For more information, see [Creating an Amazon EBS\-Backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html) in the* Amazon EC2 User Guide for Linux Instances\.*
+1. Save the instance as an AMI\. For more information, see [Creating an Amazon EBS\-Backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html) in the* Amazon EC2 User Guide for Linux Instances\.* Note that AMIs must conform to the 1 TB size limit of VM Export. For more information, see [Considerations When Using VM Export](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html).
 
 1. Repeat this procedure for each of the instances that you want to connect to using SSH\. Make sure that you copies of your different SSH key pairs and take note of the AMIs they're associated with\.
 
