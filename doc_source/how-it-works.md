@@ -58,7 +58,7 @@ The listing operation to split your job into parts is a function of Amazon S3, a
 
 Soon after that, we start exporting your data onto a device\. Typically, exporting data takes one business day; however, this process can take longer\. Once the export is done, AWS gets the device ready for pickup by your region's carrier\.
 
-When it arrives in a few days, you’ll connect the AWS Snowball Edge device to your network and transfer the data that you want imported into Amazon S3 onto the device\. When you’re done transferring data, ship the device back to AWS\. Once we receive a returned device for your export job part, we erase it completely\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\. This step marks the completion of that particular job part\. If there are more job parts, the next job part now is prepared for shipping\.
+When it arrives in a few days, you’ll connect the AWS Snowball Edge device to your network and transfer the data to a device on your network\. When you’re done transferring data, ship the device back to AWS\. Once we receive a returned device for your export job part, we erase it completely\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\. This step marks the completion of that particular job part\. If there are more job parts, the next job part now is prepared for shipping\.
 
 ## How Local Compute and Storage Works<a name="how-localcompute"></a>
 
