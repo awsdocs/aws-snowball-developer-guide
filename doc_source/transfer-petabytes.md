@@ -40,7 +40,7 @@ While determining your target transfer speed, keep in mind that you can change t
 
 ### Step 3: Determine How Many AWS Snowball Edge Devices You Need<a name="number-of-snowballs"></a>
 
-Using the total amount of data you're going to move into the cloud, found in step 1, the transfer speed you estimated from step 2, and the number of days in which you want to move the data into AWS, determine how many AWS Snowball Edge devices you need to finish your large\-scale data migration\. Remember that AWS Snowball Edge devices have about 73 TB of usable space\. So if you want to move 300 TB of data into AWS in 10 days, and you have a transfer speed of 250 MB/s, you would need five AWS Snowball Edge devices\.
+Using the total amount of data you're going to move into the cloud, found in step 1, the transfer speed you estimated from step 2, and the number of days in which you want to move the data into AWS, determine how many AWS Snowball Edge devices you need to finish your large\-scale data migration\. Remember that AWS Snowball Edge devices have about 80 TB of usable space\. So if you want to move 300 TB of data into AWS in 10 days, and you have a transfer speed of 250 MB/s, you would need 4 AWS Snowball Edge devices\.
 
 ### Step 4: Create Your Jobs<a name="make-jobs"></a>
 
