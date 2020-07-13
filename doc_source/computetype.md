@@ -16,7 +16,7 @@ Buckets and Lambda functions have a one\-to\-one relationship, meaning that one 
 
 ## Local Storage Jobs<a name="aboutstorage"></a>
 
-You can read and write objects to an AWS Snowball Edge device using the Amazon S3 Adapter for Snowball or the file interface\. The adapter comes built\-into the device, and it supports Amazon S3 REST API actions\. This Amazon S3 REST API support is limited to a subset of S3 REST API actions\. For more information, see [Using the Amazon S3 Adapter](using-adapter.md)\.
+You can read and write objects to an AWS Snowball Edge device using the Amazon S3 Adapter for Snowball or the file interface\. The adapter comes built\-into the device, and it supports Amazon S3 REST API actions\. This Amazon S3 REST API support is limited to a subset of S3 REST API actions\. For more information, see [Transferring Files Using the Amazon S3 Adapter](using-adapter.md)\.
 
 When you've finished using the device, return it to AWS and the device will be erased\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.
 

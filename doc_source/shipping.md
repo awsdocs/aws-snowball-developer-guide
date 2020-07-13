@@ -38,9 +38,9 @@ You don't need to pack the AWS Snowball Edge device in a container, because it i
 
 ## Region\-Based Shipping Restrictions<a name="shipwithinregion"></a>
 
-Before you create a job, you should sign in to the console from the AWS Region that your Amazon S3 or Glacier data is housed in\. A few shipping restrictions apply, as follows:
+Before you create a job, you should sign in to the console from the AWS Region that your Amazon S3 or S3 Glacier data is housed in\. A few shipping restrictions apply, as follows:
 + For data transfers in US regions, we don't ship AWS Snowball Edge devices outside of the United States\.
-+ We don't ship AWS Snowball Edge devices between non\-US regions—for example, from EU \(Ireland\) to EU \(Frankfurt\), or from Asia Pacific \(Mumbai\) to Asia Pacific \(Sydney\)\.
++ We don't ship AWS Snowball Edge devices between non\-US regions—for example, from Europe \(Ireland\) to Europe \(Frankfurt\), or from Asia Pacific \(Mumbai\) to Asia Pacific \(Sydney\)\.
 + For data transfers in Asia Pacific \(Sydney\), we only ship AWS Snowball Edge devices within Australia\.
 + For data transfers in the EU regions, we only ship AWS Snowball Edge devices to the EU member countries listed following: Austria, Belgium, Bulgaria, Croatia, Republic of Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Italy, Ireland, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden, and the UK\.
 + For data transfers in the Asia Pacific \(Singapore\) region, we only ship Snowballs to Singapore\.

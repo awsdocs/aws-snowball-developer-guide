@@ -39,7 +39,7 @@ AWS Lambda is a compute service that lets you run code without provisioning or m
 
 The following topics are related to running AWS Lambda powered by AWS Greengrass functions on a Snowball Edge:
 + [Limitations for Lambda Powered by AWS IoT Greengrass](limits.md#function-limits)
-+ [Customer Managed Policy Examples](access-control-managing-permissions.md#access-policy-examples-for-sdk-cli)
++ [Customer Managed Policy Examples](access-policy-examples-for-sdk-cli.md)
 
 **Next:**  
 [Getting Started with Lambda Powered by AWS IoT Greengrass](function-getting-started.md)

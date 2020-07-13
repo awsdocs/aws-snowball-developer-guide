@@ -15,7 +15,7 @@ If you're going to use SSH to connect to the instance *after* you launch the ins
 
 ## Configure an AMI to Use SSH to Connect to Compute Instances Launched on the Device<a name="important-create-ec2-edge-job"></a>
 
-To use Secure Shell \(SSH\) to connect to your compute instances on Snowball Edge devices, you must perform the following procedure to add the SSH key to the AMI before creating your job\. We also recommend that you use this procedure to set up your applications on the instance that you plan to use as the AMI for your job\.
+To use Secure Shell \(SSH\) to connect to your compute instances on Snowball Edge devices, you must perform the following procedure\. This procedure adds the SSH key to the AMI before creating your job\. We also recommend that you use this procedure to set up your applications on the instance that you plan to use as the AMI for your job\.
 
 **Important**  
 If you don't follow this procedure, you can't connect to your instances with SSH when you receive your Snowball Edge device\.
@@ -24,7 +24,7 @@ If you don't follow this procedure, you can't connect to your instances with SSH
 
 1. Launch a new instance in the AWS Cloud based on the [CentOS 7 \(x86\_64\) \- with Updates HVM](https://aws.amazon.com/marketplace/pp/B00O7WM7QW), [Ubuntu Server 14\.04 LTS \(HVM\)](https://aws.amazon.com/marketplace/pp/B00JV9TBA6), or [Ubuntu 16\.04 LTS \- Xenial \(HVM\)](https://aws.amazon.com/marketplace/pp/B01JBL2M0O) image\.
 
-   When you launch your instance, make sure that the storage size that you assign to the instance is appropriate for your later use on the Snowball Edge\. In the Amazon EC2 console, you do this in **Step 4: Add Storage**\. For a list of the supported sizes for compute instance storage volumes on a Snowball Edge, see [Limits for Compute Instances on a Snowball Edge](ec2-edge-limits.md)\.
+   When you launch your instance, make sure that the storage size that you assign to the instance is appropriate for your later use on the Snowball Edge\. In the Amazon EC2 console, you do this in **Step 4: Add Storage**\. For a list of the supported sizes for compute instance storage volumes on a Snowball Edge, see [Quotas for Compute Instances on a Snowball Edge](ec2-edge-limits.md)\.
 
 1. Install and configure the applications that you want to run on the Snowball Edge, and test that they work as expected\.
 
@@ -32,7 +32,7 @@ If you don't follow this procedure, you can't connect to your instances with SSH
 
 1. Save the instance as an AMI\. For more information, see [Creating an Amazon EBS\-Backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html) in the* Amazon EC2 User Guide for Linux Instances\.*
 
-1. Repeat this procedure for each of the instances that you want to connect to using SSH\. Make sure that you copies of your different SSH key pairs and take note of the AMIs they're associated with\.
+1. Repeat this procedure for each of the instances that you want to connect to using SSH\. Make sure that you make copies of your different SSH key pairs and take note of the AMIs they're associated with\.
 
 ## Creating Your Job in the Console<a name="create-ec2-edge-console"></a>
 
@@ -50,7 +50,7 @@ Your next step is to create a job\. Your job can be of any job type, including a
 
 ## Creating Your Job in the AWS CLI<a name="create-ec2-edge-cli"></a>
 
-Alternatively, you can create your job using the AWS CLI\. To do this, open a terminal and run the following command, replacing the red text with your actual values:
+You can also create your job using the AWS CLI\. To do this, open a terminal and run the following command, replacing the red text with your actual values:
 
 ```
 aws snowball create-job --job-type IMPORT --resources '{"S3Resources":[{"BucketArn":"arn:aws:s3:::bucket-name"}],"Ec2AmiResources":[{"AmiId":"ami-12345678"}]}' --description Example --address-id ADIEXAMPLE60-1234-1234-5678-41fEXAMPLE57  --kms-key-arn arn:aws:kms:us-west-2:012345678901:key/eEXAMPLE-1234-1234-5678-5b4EXAMPLE8e --role-arn arn:aws:iam::012345678901:role/snowball-local-s3-lambda-us-west-2-role --snowball-capacity-preference T100 --shipping-option SECOND_DAY --snowball-type EDGE

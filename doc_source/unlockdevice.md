@@ -41,4 +41,4 @@ If you're unlocking a cluster, you need to specify only the IP address for one o
 
 Now you can begin using the AWS Snowball Edge device\. 
 
-**Next:** [Use the Snowball Edge](transfer-data.md) 
+**Next:** [Set Up Local Users](setup-local-iam.md) 

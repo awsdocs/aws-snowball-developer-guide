@@ -9,7 +9,7 @@ This guide is for the Snowball Edge\. If you are looking for documentation for t
 Following, you can find information about using the file interface for the AWS Snowball Edge\. Using this file interface, you can drag and drop files from your computer onto Amazon S3 buckets on the Snowball Edge\.
 
 **Note**  
-If you created your job after July 17th, 2018, this information doesn't apply to your device\. Instead, see [Using the File Interface for the AWS Snowball Edge](using-fileinterface.md)\.
+If you created your job after July 17, 2018, this information doesn't apply to your device\. Instead, see [Transferring Files to AWS Snowball Edge Using the File Interface](using-fileinterface.md)\.
 
 **Topics**
 + [Overview of the File Interface](#fileinterface-overview-old)
@@ -20,7 +20,7 @@ If you created your job after July 17th, 2018, this information doesn't apply to
 
 The file interface exposes a Network File System \(NFS\) mount point for each bucket on your AWS Snowball Edge device\. You can mount the file share from your NFS client using standard Linux, Microsoft Windows, or Mac commands\. You can use standard file operations to access the file share\.
 
-After the file share has been mounted, a new **file interface** tab appears on the LCD screen on the front of the Snowball Edge\. From this tab, you can get transfer status information, see your NFS point IP addresses, secure NFS client access to specific buckets, and open a support channel to AWS Support if a problem occurs with the file interface\.
+After the file share has been mounted, a new **file interface** tab appears on the LCD screen on the front of the Snowball Edge\. From this tab, you can get transfer status information, see your NFS point IP addresses, and secure NFS client access to specific buckets\.
 
 You can use the local LCD display on the AWS Snowball Edge device to disable or enable the file interface\. By unlocking the AWS Snowball Edge device, you have all the permissions necessary to read and write data through the file interface\. 
 
@@ -46,7 +46,7 @@ Before you can use the file interface, the following steps must occur:
 
 If one or more of those steps haven't occurred, see the following topics:
 + For more information about creating a job to use a Snowball Edge, see [Getting Started with an AWS Snowball Edge Device](getting-started.md)\.
-+ For more information about unlocking a Snowball Edge, see [Using the Amazon S3 Adapter](using-adapter.md)\.
++ For more information about unlocking a Snowball Edge, see [Transferring Files Using the Amazon S3 Adapter](using-adapter.md)\.
 
 ### Considerations for Using the File Interface<a name="fileinterface-considerations-old"></a>
 

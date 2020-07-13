@@ -4,7 +4,7 @@ This guide is for the Snowball Edge\. If you are looking for documentation for t
 
 --------
 
-# Using an AWS Snowball Edge<a name="using-device"></a>
+# Using an AWS Snowball Edge Device<a name="using-device"></a>
 
 Following, you can find an overview of the AWS Snowball Edge device, the physically rugged device protected by AWS Key Management Service \(AWS KMS\) that you'll use for local storage and compute, or to transfer data between your on\-premises servers and Amazon Simple Storage Service \(Amazon S3\)\.
 
@@ -25,7 +25,10 @@ Once your device arrives and is powered on, you're ready to use it\.
 
 **Topics**
 + [Using the Snowball Client](using-client.md)
-+ [Using the Amazon S3 Adapter](using-adapter.md)
-+ [Using the File Interface for the AWS Snowball Edge](using-fileinterface.md)
++ [Transferring Files Using the Amazon S3 Adapter](using-adapter.md)
++ [Transferring Files to AWS Snowball Edge Using the File Interface](using-fileinterface.md)
 + [Using AWS Lambda with an AWS Snowball Edge](using-lambda.md)
 + [Using Amazon EC2 Compute Instances](using-ec2.md)
++ [Using IAM Locally](using-local-iam.md)
++ [Using AWS Security Token Service](using-sts.md)
++ [Ports Required to Use AWS Services on an AWS Snowball Edge Device](port-requirements.md)

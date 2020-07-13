@@ -13,6 +13,8 @@ To help get the maximum benefit from and satisfaction with your AWS Snowball Edg
 + We recommend that you don't save a copy of the unlock code in the same location in the workstation as the manifest for that job\. Saving these separately helps prevent unauthorized parties from gaining access to the AWS Snowball Edge device\. For example, you can save a copy of the manifest to your local server, and email the code to a user that unlocks the device\. This approach limits access to the AWS Snowball Edge device to individuals who have access to files saved on the server and also that user's email address\.
 + The credentials displayed when you run the Snowball client command `snowballEdge credentials` are a pair of keys: an access key and a secret key\. These keys are only associated with the job and the local resources on the device\. They don't map to your AWS account or any other AWS account\. If you try to use these keys to access services and resources in the AWS Cloud, they fail, because they work only for the local resources associated with your job\.
 
+For information about how to use AWS Identity and Access Management policies to control access, see [AWS\-Managed \(Predefined\) Policies for AWS Snowball Edge](access-control-managing-permissions.md#access-policy-examples-aws-managed)\.
+
 **Network**
 + We recommend that you only use one method of reading and writing data to a local bucket on an AWS Snowball Edge device at a time\. Using both the file interface and the Amazon S3 Adapter for Snowball on the same bucket at the same time can result in read/write conflicts\.
 + To prevent corrupting your data, don't disconnect an AWS Snowball Edge device or change its network settings while transferring data\.
@@ -20,7 +22,7 @@ To help get the maximum benefit from and satisfaction with your AWS Snowball Edg
 + For more information about improving performance of your AWS Snowball Edge device, see [Performance](#performance)\.
 
 **Resource Management**
-+ The 10 free days for performing your on\-premises data transfer start the day after the AWS Snowball Edge device arrives at your data center\.
++ The 10 free days for performing your on\-premises data transfer start the day after the AWS Snowball Edge device arrives at your data center\. This applies to all Snowball types\.
 + The **Job created** status is the only status in which you can cancel a job\. When a job changes to a different status, it can’t be canceled\. This functionality is also true for clusters\.
 + For import jobs, don't delete your local copies of the transferred data until the import into Amazon S3 is successful at the end of the process\. As part of your process, be sure to verify the results of the data transfer\.
 
@@ -68,3 +70,6 @@ One of the major ways that you can improve the performance of an AWS Snowball Ed
 1. **Reduce local network use** – Your AWS Snowball Edge device communicates across your local network\. Because of this, reducing other local network traffic between the AWS Snowball Edge device, the switch it's connected to, and the computer that hosts your data source can improve data transfer speeds\.
 
 1. **Eliminate unnecessary hops** – We recommend that you set up your AWS Snowball Edge device, your data source, and the computer running the terminal connection between them so that they're the only machines communicating across a single switch\. Doing so can result in improved data transfer speeds\.
+
+**Note**  
+The data transfer rate using the file interface is typically between 25 MB/s and 40 MB/s\. If you need to transfer data faster than this, use the Amazon S3 adapter for Snowball, which has a data transfer rate typically between 250 MB/s and 400 MB/s\. For more information on using the file interface, see [Transferring Files to AWS Snowball Edge Using the File Interface](using-fileinterface.md)\. For more information on using the Amazon S3 adapter, see [Transferring Files Using the Amazon S3 Adapter](using-adapter.md)\. 

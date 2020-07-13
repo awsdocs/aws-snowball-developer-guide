@@ -193,6 +193,6 @@ You've now successfully tested your Lambda function\. The JSON object indicates 
 
 ### Stopping AWS IoT Greengrass<a name="stopping-gg-lambda"></a>
 
-When you're done with AWS Lambda powered by AWS Greengrass, you can stop it with the `snowballEdge stop-service` Snowball client command\. For more information, see [Stopping a Service on your Snowball Edge](using-client-commands.md#edge-stop-service)\.
+When you're done with AWS Lambda powered by AWS Greengrass, you can stop it with the `snowballEdge stop-service` Snowball client command\. For more information, see [Stopping a Service on Your Snowball Edge](using-client-commands.md#edge-stop-service)\.
 
 AWS Lambda powered by AWS Greengrass running on a Snowball Edge; device is stateless\. As a result, any data \(including AWS IoT Greengrass configuration, certificates, and Lambda functions\) running on the device is lost when the AWS IoT Greengrass service enters the `DEACTIVATING` state or becomes `INACTIVE`\.

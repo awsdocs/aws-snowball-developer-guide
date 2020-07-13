@@ -4,7 +4,7 @@ This guide is for the Snowball Edge\. If you are looking for documentation for t
 
 --------
 
-# Limits for Compute Instances on a Snowball Edge<a name="ec2-edge-limits"></a>
+# Quotas for Compute Instances on a Snowball Edge<a name="ec2-edge-limits"></a>
 
 The following AWS Regions are supported for you to add compute instances to your devices:
 + US East \(Ohio\)
@@ -14,17 +14,17 @@ The following AWS Regions are supported for you to add compute instances to your
 + Asia Pacific \(Singapore\)
 + Asia Pacific \(Sydney\)
 + Asia Pacific \(Tokyo\)
-+ EU \(Frankfurt\)
-+ EU \(Ireland\)
-+ EU \(London\)
-+ EU \(Paris\)
++ Europe \(Frankfurt\)
++ Europe \(Ireland\)
++ Europe \(London\)
++ Europe \(Paris\)
 + South America \(São Paulo\)
 
-## Storage Limits<a name="device-storage-limits"></a>
+## Storage Quotas<a name="device-storage-limits"></a>
 
-The storage available for compute resources is a separate resource from the dedicated Amazon S3 storage on a Snowball Edge device\. The limits for storage are as follows: 
-+ **Storage limits for the Snowball Edge Storage Optimized option** – The total available storage for Amazon S3 is between 60 TB and 80 TB depending on whether you're using compute instances on the device\. If you are using compute instances, then total available dedicated storage for `sbe1` compute instances for the Snowball Edge Storage Optimized option is 1,000 GB\.
-+ **Storage limits for the Snowball Edge Compute Optimized and with GPU options** – The total available dedicated storage for `sbe-c` and `sbe-g` instances is 7\.68 TB\. The total available storage remaining is 42 TB\.
+The storage available for compute resources is a separate resource from the dedicated Amazon S3 storage on a Snowball Edge device\. The quotas for storage are as follows: 
++ **Storage quotas for the Snowball Edge Storage Optimized option** – The total available storage for Amazon S3 is between 60 TB and 80 TB depending on whether you're using compute instances on the device\. If you are using compute instances, then total available dedicated storage for `sbe1` compute instances for the Snowball Edge Storage Optimized option is 1,000 GB\.
++ **Storage quotas for the Snowball Edge Compute Optimized and with GPU options** – The total available dedicated storage for `sbe-c` and `sbe-g` instances is 7\.68 TB\. The total available storage remaining is 42 TB\.
 
 The following tables outline the available compute resources for Snowball Edge devices\.
 
@@ -35,8 +35,8 @@ The following tables outline the available compute resources for Snowball Edge d
 | --- | --- | 
 | Number of AMIs on a single Snowball Edge Storage Optimized option | 10 | 
 | Number of AMIs on a single Snowball Edge Compute Optimized option | 20 | 
-| Number of AMIs on a single Snowball Edge Compute Optimzied with GPU option | 20 | 
-| Number of volumes per instance | 1 | 
+| Number of AMIs on a single Snowball Edge Compute Optimized with GPU option | 20 | 
+| Number of volumes per instance | 10 | 
 | Concurrently running \(or stopped\) instances | Varies depending on available resources | 
 
 
@@ -51,14 +51,14 @@ The following tables outline the available compute resources for Snowball Edge d
 | sbe1\.2xlarge | 8 | 16 | 0 | storage optimized | 
 | sbe1\.4xlarge | 16 | 32 | 0 | storage optimized | 
 | sbe1\.6xlarge | 24 | 32 | 0 | storage optimized | 
-| sbe\-c\.small | 1 | 2 | 0 |  compute optimized with GPU  | 
-| sbe\-c\.medium | 1 | 4 | 0 |  compute optimized with GPU  | 
-| sbe\-c\.large | 2 | 8 | 0 |  compute optimized with GPU  | 
-| sbe\-c\.xlarge | 4 | 16 | 0 |  compute optimized with GPU  | 
-| sbe\-c\.2xlarge | 8 | 32 | 0 |  compute optimized with GPU  | 
-| sbe\-c\.4xlarge | 16 | 64 | 0 |  compute optimized with GPU  | 
-| sbe\-c\.8xlarge | 32 | 128 | 0 |  compute optimized with GPU  | 
-| sbe\-c\.12xlarge | 48 | 192 | 0 |  compute optimized with GPU  | 
+| sbe\-c\.small | 1 | 2 | 0 |  compute optimized  | 
+| sbe\-c\.medium | 1 | 4 | 0 |  compute optimized  | 
+| sbe\-c\.large | 2 | 8 | 0 |  compute optimized  | 
+| sbe\-c\.xlarge | 4 | 16 | 0 |  compute optimized  | 
+| sbe\-c\.2xlarge | 8 | 32 | 0 |  compute optimized  | 
+| sbe\-c\.4xlarge | 16 | 64 | 0 |  compute optimized  | 
+| sbe\-c\.8xlarge | 32 | 128 | 0 |  compute optimized  | 
+| sbe\-c\.12xlarge | 48 | 192 | 0 |  compute optimized  | 
 | sbe\-g\.small | 1 | 2 | 1 | with GPU | 
 | sbe\-g\.medium | 1 | 4 | 1 | with GPU | 
 | sbe\-g\.large | 2 | 8 | 1 | with GPU | 
@@ -76,7 +76,7 @@ All services on a Snowball Edge device use some of the finite resources on the d
   + On a compute optimized option, you have 52 vCPUs and 208 GiB of memory for your compute instances\. This is also true for the with GPU option\.
 + While AWS IoT Greengrass and AWS Lambda powered by AWS Greengrass are `ACTIVE`:
   + On a storage optimized option, these services use 4 vCPU cores and 8 GiB of memory\.
-  + On a compute optimized option, these services use 1 vCPU cores and 1 GiB of memory\. This is also true for the with GPU option\.
-  + While the file interface is `ACTIVE` it uses 8 vCPU cores and 16 GiB of memory on a Snowball Edge device\.
+  + On a compute optimized option, these services use 1 vCPU core and 1 GiB of memory\. This is also true for the GPU option\.
+  + While the file interface is `ACTIVE`, it uses 8 vCPU cores and 16 GiB of memory on a Snowball Edge device\.
 
-You can determine whether or not a service is `ACTIVE` on a Snowball Edge by using the command `snowballEdge describe-service` on the Snowball client\. For more information, see [Getting Service Status](using-client-commands.md#client-service-status)\.
+You can determine whether a service is `ACTIVE` on a Snowball Edge by using the command `snowballEdge describe-service` on the Snowball client\. For more information, see [Getting Service Status](using-client-commands.md#client-service-status)\.

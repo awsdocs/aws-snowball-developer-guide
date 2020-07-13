@@ -4,14 +4,14 @@ This guide is for the Snowball Edge\. If you are looking for documentation for t
 
 --------
 
-# AWS Snowball Edge Limits<a name="limits"></a>
+# AWS Snowball Edge Quotas<a name="limits"></a>
 
 Following, you can find information about limitations on using the AWS Snowball Edge device\.
 
 **Important**  
 When you transfer data into Amazon Simple Storage Service using a Snowball Edge, keep in mind that individual Amazon S3 objects can range in size from a minimum of 0 bytes to a maximum of 5 terabytes \(TB\)\.
 
-## Regional Limitations for AWS Snowball<a name="region-limits"></a>
+## Region Availability for AWS Snowball<a name="region-limits"></a>
 
 The AWS Snowball service has two device types, the standard Snowball and the Snowball Edge\. The following table highlights which of these devices are available in which regions\. 
 
@@ -28,18 +28,19 @@ The guide you're reading now is for the Snowball Edge, which has 100 TB of stora
 | US West \(N\. California\) | ✓ 50 TB and 80 TB | ✓ | 
 | US West \(Oregon\) | ✓ 50 TB and 80 TB | ✓ | 
 | Canada \(Central\) | ✓ 80 TB only | ✓ | 
-| Asia Pacific \(Mumbai\) | ✓ 80 TB only |  | 
+| Asia Pacific \(Mumbai\) | ✓ 80 TB only | ✓ | 
+| Asia Pacific \(Singapore\) | ✓ 80 TB only | ✓ | 
 | Asia Pacific \(Sydney\) | ✓ 80 TB only | ✓ | 
 | Asia Pacific \(Tokyo\) | ✓ 80 TB only | ✓ | 
-| EU \(Frankfurt\) | ✓ 80 TB only | ✓ | 
-| EU \(Ireland\) | ✓ 80 TB only | ✓ | 
-| EU \(London\) | ✓ 80 TB only | ✓ | 
+| Europe \(Frankfurt\) | ✓ 80 TB only | ✓ | 
+| Europe \(Ireland\) | ✓ 80 TB only | ✓ | 
+| Europe \(London\) | ✓ 80 TB only | ✓ | 
 | South America \(São Paulo\) | ✓ 80 TB only | ✓ | 
 
-## Limitations on AWS Snowball Edge Jobs<a name="job-limits"></a>
+## Limitations AWS Snowball Edge Jobs<a name="job-limits"></a>
 
 The following limitations exist for creating AWS Snowball Edge device jobs:
-+ For security purposes, jobs must be completed within 120 days of the AWS Snowball Edge device being prepared\. If you need to keep one or more devices for longer than 120 days, contact AWS Support\.
++ For security purposes, data transfers must be completed within 360 days of the AWS Snowball Edge device being prepared\.
 + Currently, AWS Snowball Edge device doesn't support server\-side encryption with customer\-provided keys \(SSE\-C\)\. AWS Snowball Edge device does support server\-side encryption with Amazon S3–managed encryption keys \(SSE\-S3\) and server\-side encryption with AWS Key Management Service–managed keys \(SSE\-KMS\)\. For more information, see [Protecting Data Using Server\-Side Encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html) in the *Amazon Simple Storage Service Developer Guide*\.
 + If you're using AWS Snowball Edge device to import data, and you need to transfer more data than will fit on a single AWS Snowball Edge device, create additional jobs\. Each export job can use multiple AWS Snowball Edge devices\.
 + The default service limit for the number of AWS Snowball Edge devices you can have at one time is 1\. If you want to increase your service limit or create a cluster job, contact [AWS Support](https://aws.amazon.com/premiumsupport/)\.
@@ -52,6 +53,7 @@ The following limitations exist for transferring data to or from a AWS Snowball 
 + Jumbo frames are not supported—that is, Ethernet frames with more than 1500 bytes of payload\.
 + When selecting what data to export, keep in mind that objects with trailing slashes in their names \(`/` or `\`\) will not be transferred\. Before exporting any objects with trailing slashes, update their names to remove the slash\.
 + When using the Amazon S3 Adapter for Snowball with the AWS CLI to transfer data, note that the `--recursive` option for the `cp` command is only supported for uploading data to an AWS Snowball Edge device, not for downloading data from a AWS Snowball Edge device\.
++ When using multipart data transfer, the maximum part size is 512 megabytes \(MB\)\.
 
 ## Limitations for Lambda Powered by AWS IoT Greengrass<a name="function-limits"></a>
 

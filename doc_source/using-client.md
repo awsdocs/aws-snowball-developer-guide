@@ -11,9 +11,11 @@ Following, you can find information about how to get and use the Snowball client
 When you read and write data to the AWS Snowball Edge device, you use the Amazon S3 Adapter for Snowball or the file interface\.
 
 **Note**  
-In January 2018, there was a feature update for clusters, making them leaderless\. The cluster update is backward\-compatible with older clusters\. However, if you're looking for documentation for the original Snowball client for Snowball Edge, see [Using the Snowball Client](old-using-client.md) in the Appendices\.
+In January 2018, there was a feature update for clusters, making them leaderless\. The cluster update is backward\-compatible with older clusters\. However, if you're looking for documentation for the original Snowball client for Snowball Edge, see [Using the Snowball Client](old-using-client.md)\.
 
 ## Downloading and Installing the Snowball Client<a name="download-client"></a>
+
+You can download and install the Snowball client from the [AWS Snowball resources website](https://aws.amazon.com/snowball/resources/)\.
 
 You can download and install the Snowball client from the [AWS Snowball Edge Resources](http://aws.amazon.com/snowball-edge/resources/) page\. On that page, you can find the installation package for your operating system and follow the instructions to install the Snowball client\. Running the Snowball client from a terminal in your workstation might require using a specific path, depending on your operating system:
 + **Microsoft Windows** – When the client has been installed, you can run it from any directory without any additional preparation\.

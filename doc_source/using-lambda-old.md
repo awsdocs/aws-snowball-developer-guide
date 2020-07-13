@@ -9,7 +9,7 @@ This guide is for the Snowball Edge\. If you are looking for documentation for t
 Following, you can find an overview of AWS Lambda powered by AWS Greengrass as used in an AWS Snowball Edge device\. With this feature, you can run Lambda functions locally on a Snowball Edge\. There is no charge for AWS Lambda powered by AWS Greengrass functions executed locally on an appliance\. However, there might be charges for functions that create or use resources in the AWS Cloud\. To use AWS Lambda powered by AWS Greengrass functions with Snowball Edge, you must create your jobs in an AWS Region supported by AWS IoT Greengrass\. For a list of valid regions, see [AWS Greengrass](https://docs.aws.amazon.com/general/latest/gr/rande.html#greengrass_region) in the *AWS General Reference*\.
 
 **Note**  
-If you created your job after July 17th, 2018, this information doesn't apply to your device\. Instead, see [Using AWS Lambda with an AWS Snowball Edge](using-lambda.md)\.
+If you created your job after July 17, 2018, this information doesn't apply to your device\. Instead, see [Using AWS Lambda with an AWS Snowball Edge](using-lambda.md)\.
 
 ## Before You Start<a name="function-recommendations-old"></a>
 
@@ -37,7 +37,7 @@ AWS Lambda is a compute service that lets you run code without provisioning or m
 
 The following topics are related to running AWS Lambda powered by AWS Greengrass functions on a Snowball Edge:
 + [Limitations for Lambda Powered by AWS IoT Greengrass](limits.md#function-limits)
-+ [Customer Managed Policy Examples](access-control-managing-permissions.md#access-policy-examples-for-sdk-cli)
++ [Customer Managed Policy Examples](access-policy-examples-for-sdk-cli.md)
 
 **Next:**  
 [Getting Started with Lambda Powered by AWS IoT Greengrass](function-getting-started.md)

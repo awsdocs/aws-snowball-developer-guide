@@ -29,7 +29,7 @@ Ranges are UTF\-8 binary sorted\. UTF\-8 binary data is sorted in the following 
 + Lowercase English characters come last when sorted against uppercase English characters and numbers\.
 + Special characters are sorted among the other character sets\.
 
-For more information on the specifics of UTF\-8 sort order, see [https://en\.wikipedia\.org/wiki/UTF\-8](https://en.wikipedia.org/wiki/UTF-8)\.
+For more information on the specifics of UTF\-8, see [https://en\.wikipedia\.org/wiki/UTF\-8](https://en.wikipedia.org/wiki/UTF-8)\.
 
 ### Export Range Examples<a name="range-examples"></a>
 

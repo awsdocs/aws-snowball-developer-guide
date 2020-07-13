@@ -41,7 +41,7 @@ Before exporting data from Amazon S3, take these steps:
 + For any files with a colon \(`:`\) in the file name, change the file names in Amazon S3 before you create the export job to get these files\. Files with a colon in the file name fail export to Microsoft Windows Server\. 
 
 For jobs using compute instances:
-+ Before you can add any AMIs to your job, you must have an AMI created in your AWS account of the supported image type\. Currently, supported AMIs are based on the [CentOS 7 \(x86\_64\) \- with Updates HVM](https://aws.amazon.com/marketplace/pp/B00O7WM7QW), [Ubuntu Server 14\.04 LTS \(HVM\)](https://aws.amazon.com/marketplace/pp/B00JV9TBA6), and [Ubuntu 16\.04 LTS \- Xenial \(HVM\)](https://aws.amazon.com/marketplace/pp/B01JBL2M0O) images\. You can get these images from the [AWS Marketplace](https://aws.amazon.com/marketplace?b_k=291)\.
++ Before you can add any AMIs to your job, you must have an AMI created in your AWS account of the supported image type\. Currently, supported AMIs are based on the [CentOS 7 \(x86\_64\) \- with Updates HVM](https://aws.amazon.com/marketplace/pp/B00O7WM7QW), [Ubuntu Server 14\.04 LTS \(HVM\)](https://aws.amazon.com/marketplace/pp/B00JV9TBA6), and [Ubuntu 16\.04 LTS \- Xenial \(HVM\)](https://aws.amazon.com/marketplace/pp/B01JBL2M0O) images\. You can get these images from the [AWS Marketplace](https://aws.amazon.com/marketplace)\.
 + If you're going to SSH into the instances running on a Snowball Edge, you must already have the key pair for connecting to the instance\.
 + For information specific to using compute instances on a device, see [Using Amazon EC2 Compute Instances](using-ec2.md)\.
 
@@ -61,7 +61,7 @@ You can either use the [AWS Snowball Management Console](https://console.aws.ama
 
 ### Accessing an AWS Snowball Edge Device<a name="accessing-edge"></a>
 
-After your Snowball Edge device or devices are onsite, you can access them through either the LCD display built into each device, the Amazon S3 and Amazon EC2 compatible endpoints, or through the available file interface\. For more information, see [Using an AWS Snowball Edge](using-device.md)\.
+After your Snowball Edge device or devices are onsite, you can access them through either the LCD display built into each device, the Amazon S3 and Amazon EC2 compatible endpoints, or through the available file interface\. For more information, see [Using an AWS Snowball Edge Device](using-device.md)\.
 
 ## Pricing for the AWS Snowball Edge<a name="pricing-for-edge"></a>
 
@@ -73,7 +73,7 @@ If you are a first\-time user of the AWS Snowball service with the AWS Snowball 
 
 1. For information on the device types and options, see [AWS Snowball Device Differences](device-differences.md)\.
 
-1. To learn more about the types of jobs, see [Jobs for AWS Snowball Edge devices](jobs.md)\.
+1. To learn more about the types of jobs, see [Understanding AWS Snowball Edge Jobs](jobs.md)\.
 
 1. For an end\-to\-end overview of how to use an AWS Snowball Edge device, see [How AWS Snowball Works with the Snowball Edge](how-it-works.md)\.
 

@@ -4,12 +4,12 @@ This guide is for the Snowball Edge\. If you are looking for documentation for t
 
 --------
 
-# Using the File Interface for the AWS Snowball Edge<a name="using-fileinterface"></a>
+# Transferring Files to AWS Snowball Edge Using the File Interface<a name="using-fileinterface"></a>
 
 Following, you can find information about using the file interface for the AWS Snowball Edge\. Using this file interface, you can drag and drop files from your computer onto Amazon S3 buckets on the Snowball Edge\.
 
 **Note**  
-If you created your job before July 17th, 2018, this information doesn't apply to your device\. Instead, see [Using the File Interface for the AWS Snowball Edge](using-fileinterface-old.md)\.
+If you created your job before July 17, 2018, this information doesn't apply to your device\. Instead, see [Using the File Interface for the AWS Snowball Edge](using-fileinterface-old.md)\.
 
 **Topics**
 + [Overview of the File Interface](#fileinterface-overview)
@@ -21,7 +21,7 @@ If you created your job before July 17th, 2018, this information doesn't apply t
 
 The file interface exposes a Network File System \(NFS\) mount point for each bucket on your AWS Snowball Edge device\. You can mount the file share from your NFS client using standard Linux, Microsoft Windows, or Mac commands\. You can use standard file operations to access the file share\.
 
-After the file share has been mounted, a new **file interface** tab appears on the LCD screen on the front of the Snowball Edge\. From this tab, you can get transfer status information, see your NFS point IP addresses, secure NFS client access to specific buckets, and open a support channel to AWS Support if a problem occurs with the file interface\.
+After the file share has been mounted, a new **file interface** tab appears on the LCD screen on the front of the Snowball Edge\. From this tab, you can get transfer status information, see your NFS point IP addresses, and secure NFS client access to specific buckets\.
 
 You can use the local LCD display on the AWS Snowball Edge device to disable or enable the file interface\. By unlocking the AWS Snowball Edge device, you have all the permissions necessary to read and write data through the file interface\. 
 
@@ -47,7 +47,10 @@ Before you can use the file interface, the following steps must occur:
 
 If one or more of those steps haven't occurred, see the following topics:
 + For more information about creating a job to use a Snowball Edge, see [Getting Started with an AWS Snowball Edge Device](getting-started.md)\.
-+ For more information about unlocking a Snowball Edge, see [Using the Amazon S3 Adapter](using-adapter.md)\.
++ For more information about unlocking a Snowball Edge, see [Transferring Files Using the Amazon S3 Adapter](using-adapter.md)\.
+
+**Important**  
+For AWS services to work properly on a Snowball Edge, you must allow the ports for the services\. For details, see [Ports Required to Use AWS Services on an AWS Snowball Edge Device](port-requirements.md)\.
 
 ### Considerations for Using the File Interface<a name="fileinterface-considerations"></a>
 
@@ -59,6 +62,9 @@ While using the file interface, keep the following considerations in mind:
 + Don't write data to a Snowball Edge that is full, or write more data than the size of the remaining available storage\. Either action causes errors that might corrupt your data\. We recommend that you use the Snowball client's `snowballEdge status` command to determine the remaining amount of space on the Snowball Edge\. Then compare that to the amount of data you want to copy over using the file interface before copying the data\.
 + When you've finished copying data to the Snowball Edge using the file interface, you must disable the file interface to avoid losing any data that might be in the buffer but not yet written to the Amazon S3 bucket\. For more information, see [Disabling the File Interface](#fileinterface-cleanup)\.
 + We recommend that you keep a local copy of all data that is written to the file interface until the Snowball Edge has been shipped back to AWS and the data has been ingested to Amazon S3\.
+
+**Note**  
+The data transfer rate using the file interface is typically between 25 MB/s and 40 MB/s\. If you need to transfer data faster than this, use the Amazon S3 adapter for Snowball, which has a data transfer rate typically between 250 MB/s and 400 MB/s\. For more information, see [Transferring Files Using the Amazon S3 Adapter](using-adapter.md)\. 
 
 ## Starting the File Interface<a name="starting-fileinterface"></a>
 
@@ -84,6 +90,23 @@ It can take an hour or more for the file interface to activate\. Don't power off
    --physical-network-interface-id s.ni-abcd1234 \
    --ip-address-assignment STATIC \
    --static-ip-address-configuration IpAddress=192.0.2.0,Netmask=255.255.255.0
+   ```  
+**Example**  
+
+   Output
+
+   ```
+   {
+        "VirtualNetworkInterface" : {
+            "VirtualNetworkInterfaceArn" : "arn:aws:snowball-device:::interface/s.ni-abcd1234",
+            "PhysicalNetworkInterfaceId" : "s.ni-abcd1234",
+            "IpAddressAssignment" : "DHCP",
+            "IpAddress" : "192.0.2.0",
+            "Netmask" : "255.255.255.0",
+            "DefaultGateway" : "192.0.2.10",
+            "MacAddress" : "1a:2b:3c:4d:5e:6f"
+        }
+   }
    ```
 
 1. When the command returns a JSON structure that includes the IP address, make a note of that IP address\.
@@ -92,8 +115,15 @@ It can take an hour or more for the file interface to activate\. Don't power off
 
    ```
    snowballEdge start-service \
-   --service-id fileinterface\
+   --service-id fileinterface \
    --virtual-network-interface-arns arn:aws:snowball-device:::interface/s.ni-abcd1234abcd1234a
+   ```  
+**Example**  
+
+   Output
+
+   ```
+   Starting the AWS service on your Snowball Edge. You can determine the status of the AWS service using the describe-service command.                    
    ```
 
 1. It can take an hour or more for the file interface to activate\. To see if the service has started, or if it's still activating, you can run the `snowballEdge describe-service --service-id fileinterface` Snowball client command\.
@@ -211,7 +241,6 @@ When you use the file interface, it's important to keep an eye on its overall he
 + [Getting the Status of the File Interface](#fileinterface-statusinfo)
 + [Securing Your NFS Connection](#fileinterface-secureconnect)
 + [Disabling the File Interface](#fileinterface-cleanup)
-+ [Opening a Support Channel for AWS Support](#fileinterface-support)
 
 ### Getting the Status of the File Interface<a name="fileinterface-statusinfo"></a>
 
@@ -245,30 +274,10 @@ Therefore, we recommend that you secure the buckets by specifying which NFS clie
 
 You have now secured the file share for one of your buckets on the Snowball Edge\. You can repeat this process for all the file shares for the buckets on the Snowball Edge to secure access to the data in your device\.
 
-Once you specify an IP address for an allowed client, that file share return to unrestricted again by changing the IP address to `0.0.0.0`\. If the IP address of the computer connected to it ever changes, you need to update the IP address for that allowed client\.
+Once you specify an IP address for an allowed client, you can return that file share to unrestricted again by changing the IP address to `0.0.0.0`\. If the IP address of the computer connected to it ever changes, you need to update the IP address for that allowed client\.
 
 ### Disabling the File Interface<a name="fileinterface-cleanup"></a>
 
 When you're done using the file interface, you should disable the file interface after the **Write Status** on the AWS Snowball Edge device is set to **Complete**\. Disabling the file interface helps you avoid data loss by ensuring that all files have been written to the device\.
 
-When you're done with the file interface, you can stop it with the `snowballEdge stop-service` Snowball client command\. For more information, see [Stopping a Service on your Snowball Edge](using-client-commands.md#edge-stop-service)\.
-
-### Opening a Support Channel for AWS Support<a name="fileinterface-support"></a>
-
-If the file interface ever enters into an error state, you might need to contact AWS Support\. When you do so, AWS Support might ask you to open the support channel on your Snowball Edge\. 
-
-The support channel is a special channel through which AWS Support can get information about the state of the file interface for troubleshooting purposes, if the Snowball Edge is connected to the internet\. The following procedure outlines how to open a support channel when you're asked to do so by AWS Support\.
-
-**To open a support channel for AWS Support**
-
-1. Access the LCD display on the front of the device\.
-
-1. On the LCD display, tap **File interface** to open its tab\.
-
-1. Scroll down to the bottom of the page\.
-
-1. When instructed by AWS Support, tap **Open support channel**\.
-
-1. After the channel opens, a port number appears that is labeled **on port: *XXXX*\. Give this port number to AWS Support\.** where *XXXX* is your port number\.
-
-At this point, you can work with AWS Support through this channel to troubleshoot the issue\.
+When you're done with the file interface, you can stop it with the `snowballEdge stop-service` Snowball client command\. For more information, see [Stopping a Service on Your Snowball Edge](using-client-commands.md#edge-stop-service)\.

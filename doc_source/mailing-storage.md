@@ -17,6 +17,8 @@ When you create a job, you provide the address that you want the AWS Snowball Ed
 
 Following is the list of supported carriers for AWS Snowball Edge devices by region:
 + For Japan, Schenker\-Seino Co\., Ltd\. is the carrier\.
++ For Korea, Kuehne \+ Nagel, is the carrier\.
++ For China and Hong Kong, S\.F\. Express is the carrier\.
 + For all other regions, [UPS](https://www.ups.com/) is the carrier\.
 
 ### AWS Snowball Pickups in the EU, US, and Canada<a name="standard-pickup"></a>
@@ -47,16 +49,28 @@ For non\-ICMS taxpayer declaration, we recommend that you generate four copies o
 
 ### AWS Snowball Pickups in Australia<a name="Australia-pickup"></a>
 
-In Australia, if you're shipping an AWS Snowball Edge device back to AWS, send an email to [snowball\-pickup@amazon\.com](mailto:snowball-pickup@amazon.com) with *Snowball Edge Pickup Request* in the subject line so we can schedule the pickup for you\. In the body of the email, include the following information:
+In Australia, if you're shipping an AWS Snowball Edge device back to AWS, send an email to [snowball\-pickup@amazon\.com](mailto:snowball-pickup@amazon.com) with **Snowball Edge Pickup Request** in the subject line so we can schedule the pickup for you\. In the body of the email, include the following information:
 + **Job ID** – The job ID associated with the AWS Snowball Edge device that you want returned to AWS\.
 + **AWS Account ID** – The ID for the AWS account that created the job\.
-+ **Postcode** – The postcode for the address where we originally shipped the AWS Snowball Edge device to you\.
 + **Earliest Pickup Time** \(your local time\) – The earliest time of day that you want the AWS Snowball Edge device picked up\.
 + **Latest Pickup Time** \(your local time\) – The latest time of day that you want the AWS Snowball Edge device picked up\.
-+ **Email Address** – The email address that you want the pickup request confirmation sent to\.
 + **Special Instructions** \(optional\) – Any special instructions for picking up the AWS Snowball Edge device\.
 
-Soon, you get a follow\-up email from UPS to the email address you specified with more information about your pending pickup, scheduled for the soonest available date\.
+Soon, you will get a follow\-up email from the Snowball team with more information about your pending pickup at the address your device was originally delivered to\.
+
+### AWS Snowball Pickups in India<a name="India-pickup"></a>
+
+In India, Blue Dart picks up the Snowball device\. When you are ready to return your Snowball device, turn it off and and prepare it for return shipping\. To schedule pickup, email [snowball\-pickup@amazon\.com](mailto:snowball-pickup@amazon.com) with **Snowball Pickup Request** in the subject line\. In the email, include the following information:
++ **Job ID** – The job ID associated with the Snowball that you want returned to AWS\.
++ **AWS Account ID** – The ID for the AWS account that created the job\.
++ **Earliest Pickup Time** \(your local time\) – The earliest time of day that you want the Snowball picked up\.
++ **Latest Pickup Time** \(your local time\) – The latest time of day that you want the Snowball picked up\.
++ **Special Instructions** \(optional\) – Any special instructions for picking up the Snowball, including contact details for coordinating pickup\.
+
+The Snowball team arranges the pickup with Blue Dart and sends you a confirmation email\. Blue Dart provides you with a paper shipping label and picks up the Snowball device\. 
+
+**Important**  
+When using a Snowball in India, remember to file all relevant tax paperwork with your state\.
 
 ### AWS Snowball Pickups in Japan<a name="Japan-pickup"></a>
 
@@ -65,6 +79,33 @@ In Japan, Schenker\-Seino handles your pickups\. When you are ready to return yo
 + Find the self\-adhesive paper return shipping label in the pouch attached to the device and apply it over the existing paper shipping label on the side of the device\. Don't apply the paper label on the doors, inside the doors, on the bottom of the device, or on either of the displays\.
 + The Snowball Edge is delivered to an AWS sorting facility and forwarded to the AWS data center\. Schenker\-Seino automatically reports back a tracking number for your job\.
 
+### AWS Snowball Edge device Pickups in Korea<a name="Korea-pickup"></a>
+
+In Korea, Kuehne \+ Nagel handles your pickups\. When you are ready to return your device, send an email to snowball\-shipping@amazon\.com with *Snowball Pickup Request* in the subject line so we can schedule the pickup for you\. In the body of the email, include the following information:
++ **Job ID** – The job ID associated with the Snowball that you want returned to AWS\.
++ **Pickup Address** \- The address where the device will be picked up
++ **Pickup Date** \- The soonest day you would like the device picked up\.
++ **Point of contact details** – the name, email address, and local phone number that Kuehne \+ Nagel can use to get in touch with you if needed\.
+
+Soon, you will get a follow\-up email from the Snowball team with information regarding the pickup at the address your device you provided\. Power cycle the device and be ready for pickup usually between 1300 and 1500\.
+
+### AWS Snowball Edge device Pickups in Hong Kong<a name="hkg-pickup"></a>
+
+In Hong Kong, S\.F\. Express handles your pickups\. When you are ready to return your device, send an email to snowball\-shipping\-ap\-east\-1@amazon\.com with *Snowball Pickup Request* in the subject line so we can schedule the pickup for you\. In the body of the email, include the following information:
++ Job id
++ AWS account id
++ Contact name
++ Contact phone number
++ Contact email address
++ The day you want the device\(s\) picked up
++ Earliest pickup time
++ Latest pickup time
++ Pickup address
+
+Once you arrange a pickup date with S\.F\. Express, it can't be rescheduled\.
+
+The device will be delivered to AWS by S\.F\. Express\. The S\.F\. Express tracking number for the return shipment tells you when it was delivered\.
+
 ### Shipping Speeds<a name="shippingspeeds"></a>
 
 Each country has different shipping speeds available\. These shipping speeds are based on the country in which you're shipping an AWS Snowball Edge device\. Shipping speeds are as follows:
@@ -72,5 +113,7 @@ Each country has different shipping speeds available\. These shipping speeds are
 + **Brazil** – When shipping within Brazil, you have access to UPS Domestic Express Saver shipping, which delivers within two business days during commercial hours\. Shipping speeds might be affected by interstate border delays\.
 + **European Union \(EU\)** – When shipping to any of the countries that within the EU, you have access to express shipping\. Typically, AWS Snowball Edge devices shipped express are delivered in about a day\. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way\.
 + **Japan** – When shipping within Japan, you have access to standard shipping speed\.
++ **Korea** – When shipping within Korea, you have access to standard shipping speed, generally within 1 \- 3 days
 + **United States of America \(US\) and Canada** – When shipping in the US or in Canada, you have access to one\-day shipping and two\-day shipping\.
 + **Singapore** – When shipping within Singapore, you have access to Domestic Express Saver shipping\.
++ **Hong Kong** – When shipping within Hong Kong, you have access to express shipping\.

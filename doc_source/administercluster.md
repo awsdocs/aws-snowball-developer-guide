@@ -22,7 +22,7 @@ Most administrative tasks require that you use the Snowball client and its comma
 
 ## Reading and Writing Data to a Cluster<a name="transfer-to-cluster"></a>
 
-After you've unlocked a cluster, you're ready to read and write data to it\. You can use the Amazon S3 Adapter for Snowball to read and write data to a cluster\. For more information, see [Using the Amazon S3 Adapter](using-adapter.md)\.
+After you've unlocked a cluster, you're ready to read and write data to it\. You can use the Amazon S3 Adapter for Snowball to read and write data to a cluster\. For more information, see [Transferring Files Using the Amazon S3 Adapter](using-adapter.md)\.
 
 To write data to a cluster, you must have a read/write quorum with no more than one unavailable node\. To read data from a cluster, you must have a read quorum of no more than two unavailable nodes\. For more information on quorums, see [Snowball Edge Cluster Quorums](UsingCluster.md#clusterquorums)\.
 

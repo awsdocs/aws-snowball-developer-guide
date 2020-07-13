@@ -14,22 +14,25 @@ Following, you can find information on the Snowball client commands, including e
 + [Unlocking Snowball Edge Devices](#setting-up-client)
 + [Updating a Snowball Edge](#update-client-commands)
 + [Getting Credentials](#client-credentials)
-+ [Starting a Service on your Snowball Edge](#edge-start-service)
-+ [Stopping a Service on your Snowball Edge](#edge-stop-service)
++ [Starting a Service on Your Snowball Edge](#edge-start-service)
++ [Stopping a Service on Your Snowball Edge](#edge-stop-service)
 + [Getting Your Certificate for Transferring Data](#snowball-edge-certificates-cli)
 + [AWS Snowball Edge Logs](#logs)
 + [Getting Device Status](#client-status)
 + [Getting Service Status](#client-service-status)
 + [Removing a Node from a Cluster](#client-cluster-remove)
 + [Adding a Node to a Cluster](#client-cluster-add)
++ [Creating Tags for Your Device](#client-create-tags)
++ [Deleting Tags from Your Device](#client-delete-tags)
++ [Describing Tags on Your Device](#client-describe-tags)
 
 ## Configuring a Profile for the Snowball Client<a name="client-configuration"></a>
 
-Every time you run a command for the Snowball client, you provide your manifest file, unlock code, and an IP address\. You can get the first two of these from the AWS Snowball Management Console or the job management API\. For more information on getting your manifest and unlock code, see [Get Your Credentials and Tools](get-credentials.md)\.
+Every time you run a command for the Snowball client, you provide your manifest file, unlock code, and an IP address\. You can get the first two of these from the AWS Snowball Management Console or the job management API\. For more information about getting your manifest and unlock code, see [Getting Credentials](#client-credentials)\.
 
-You have the option of using the `snowballEdge configure` command to store the path to the manifest, the 29\-character unlock code, and the endpoint as a profile\. After configuration, you can use other Snowball client commands without having to manually type in these values for a particular job\. After you configure the Snowball client, the information is saved in a plaintext JSON format to `home directory/.aws/snowball/config/snowball-edge.config`\. 
+You have the option of using the `snowballEdge configure` command to store the path to the manifest, the 29\-character unlock code, and the endpoint as a profile\. After configuration, you can use other Snowball client commands without having to manually enter these values for a particular job\. After you configure the Snowball client, the information is saved in a plaintext JSON format to `home directory/.aws/snowball/config/snowball-edge.config`\. 
 
-The endpoint is the IP address, with `https://` added to it\. You can locate the IP address for the AWS Snowball Edge device on the AWS Snowball Edge device's LCD display\. When the AWS Snowball Edge device is connected to your network for the first time, it automatically gets a DHCP IP address, if a DHCP server is available\. If you want to use a different IP address, you can change it from the LCD display\. For more information, see [Using an AWS Snowball Edge](using-device.md)\.
+The endpoint is the IP address, with `https://` added to it\. You can locate the IP address for the AWS Snowball Edge device on the AWS Snowball Edge device's LCD display\. When the AWS Snowball Edge device is connected to your network for the first time, it automatically gets a DHCP IP address, if a DHCP server is available\. If you want to use a different IP address, you can change it from the LCD display\. For more information, see [Using an AWS Snowball Edge Device](using-device.md)\.
 
 **Important**  
 Anyone who can access the configuration file can access the data on your Snowball Edge devices or clusters\. Managing local access control for this file is one of your administrative responsibilities\.
@@ -51,11 +54,11 @@ Unlock Code: 29 character unlock code
 Default Endpoint: https://192.0.2.0
 ```
 
-You can have multiple profiles if you have multiple jobs at once, or if you want the option of managing a cluster from different endpoints\. For more info on multiple AWS CLI profiles, see [Named Profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html) in the AWS Command Line Interface User Guide\.
+You can have multiple profiles if you have multiple jobs at once, or if you want the option of managing a cluster from different endpoints\. For more information about multiple AWS CLI profiles, see [Named Profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html) in the AWS Command Line Interface User Guide\.
 
 ## Getting Your QR Code for NFC Validation<a name="client-qr-code"></a>
 
-You can use this command to generate a device\-specific QR code for use with the AWS Snowball Edge Verification App\. You can download this app from the App Store or Google Play store\. For more information on NFC validation, see [Validating NFC Tags](nfc-validation.md)\.
+You can use this command to generate a device\-specific QR code for use with the AWS Snowball Edge Verification App\. You can download this app from the Apple App Store or Google Play store\. For more information on NFC validation, see [Validating NFC Tags](data-protection-device.md#nfc-validation)\.
 
 **Usage**
 
@@ -110,7 +113,7 @@ Your Snowball Edge Cluster is unlocking. You may determine the unlock state of y
 
 ## Updating a Snowball Edge<a name="update-client-commands"></a>
 
-The following commands can be used to download and install updates for your Snowball Edge device\. For procedures that use these commands, see [Updating an AWS Snowball Edge](updating-device.md)\.
+The following commands can be used to download and install updates for your Snowball Edge device\. For procedures that use these commands, see [Updating software on a AWS Snowball Edge](updating-device.md)\.
 
 `snowballEdge check-for-updates`: Returns version information about the Snowball Edge software available in the cloud, and the current version installed on the device\. 
 
@@ -240,7 +243,7 @@ auto-reboot: false;
 
 ## Getting Credentials<a name="client-credentials"></a>
 
-Using the `snowballEdge list-access-keys` and `snowballEdge get-secret-access-key` commands, you can get your local credentials\. You use these to authenticate your requests when using the AWS CLI or with an AWS SDK\. These credentials are only associated with an individual job for Snowball Edge, and you can use them only on the device or cluster of devices\. The device or devices don't have any AWS Identity and Access Management \(IAM\) permissions in the AWS Cloud\.
+Using the `snowballEdge list-access-keys` and `snowballEdge get-secret-access-key` commands, you can get the credentials of the Admin user of your AWS account on Snowball Edge\. You can use these credentials to create IAM users and roles, and to authenticate your requests when using the AWS CLI or with an AWS SDK\. These credentials are only associated with an individual job for Snowball Edge, and you can use them only on the device or cluster of devices\. The device or devices don't have any AWS Identity and Access Management \(IAM\) permissions in the AWS Cloud\.
 
 **Note**  
 If you're using the AWS CLI with the Snowball Edge, you must use these credentials when you configure the CLI\. For information on configuring credentials for the CLI, see [Quick Configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration) in the *AWS Command Line Interface User Guide\. *
@@ -273,7 +276,7 @@ aws_access_key_id = AKIAIOSFODNN7EXAMPLE
 aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ```
 
-## Starting a Service on your Snowball Edge<a name="edge-start-service"></a>
+## Starting a Service on Your Snowball Edge<a name="edge-start-service"></a>
 
 Snowball Edge devices support multiple services, in addition to Amazon S3\. These include compute instances, the file interface, and AWS IoT Greengrass\. Amazon S3 and Amazon EC2 are always on by default, and can't be stopped or restarted with the Snowball client\. However, the file interface and AWS IoT Greengrass can be started with the `snowballEdge start-service` command\. To get the service ID for each service, you can use the `snowballEdge list-services` command\.
 
@@ -288,17 +291,15 @@ snowballEdge start-service --service-id service_id --virtual-network-interface-a
 **Example Output**  
 
 ```
-[snowballEdge]
-aws_access_key_id = AKIAIOSFODNN7EXAMPLE
-aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+                    Starting the AWS service on your Snowball Edge. You can determine the status of the AWS service using the describe-service command.
 ```
 
-## Stopping a Service on your Snowball Edge<a name="edge-stop-service"></a>
+## Stopping a Service on Your Snowball Edge<a name="edge-stop-service"></a>
 
 To stop a service running on your Snowball Edge, you can use the `snowballEdge stop-service` command\. The Amazon S3 and Amazon EC2 services cannot be stopped\.
 
 **Warning**  
-Data loss can occur if the file interface is stopped before remaining buffered data is written to the device\. For more information on using the file interface, see [Using the File Interface for the AWS Snowball Edge](using-fileinterface.md)\.
+Data loss can occur if the file interface is stopped before remaining buffered data is written to the device\. For more information on using the file interface, see [Transferring Files to AWS Snowball Edge Using the File Interface](using-fileinterface.md)\.
 
 **Usage \(configured Snowball client\)**
 
@@ -454,7 +455,6 @@ You can determine the status and general health of your Snowball Edge devices wi
       "DefaultGateway" : "192.0.2.3",
       "MacAddress" : "EX:AM:PL:E0:90:12"
     } ]
-  }
   }
   ```
 + `describe-cluster`
@@ -642,4 +642,69 @@ snowballEdge associate-device --device-ip-address IP Address
 
 ```
 Associating your Snowball Edge device with the cluster. Your Snowball Edge device will be associated with the cluster when it is in the ASSOCIATED state. You can use the describe-cluster command to determine the state of your cluster.
+```
+
+## Creating Tags for Your Device<a name="client-create-tags"></a>
+
+Adds or overwrites the specified tags on your device\. You can create a maximum of 50 tags\. Each tag consists of a key\-value pair\. The value is optional\. 
+
+**Note**  
+Don't put sensitive data in your tags\.
+
+**Usage \(configured Snowball client\)**
+
+```
+snowballEdge create-tags --tag Key=Name,Value=user-test --tag Key=Stage,Value=beta
+```
+
+For more information, run the `describe-tags` command\.
+
+**Example Output**  
+
+```
+Tag(s) [Key=Name,Value=test, Key=Stage,Value=beta] created.
+```
+
+## Deleting Tags from Your Device<a name="client-delete-tags"></a>
+
+The `delete-tags` command deletes the specified tags from your Snowball Edge device\.
+
+**Usage \(configured Snowball client\)**
+
+```
+snowballEdge delete-tags --tag Key=Stage,Value=beta
+    Tag(s) [Key=Stage,Value=beta] deleted.
+```
+
+For more information, run the `describe-tags` command\.
+
+**Note**  
+If you want to delete multiple tags at the same time, you can specify multiple key\-value pairs, like the following:  
+ `delete-tags --tag Key=Name,Value=test --tag Key=Stage,Value=Beta`  
+If you specify a tag key without a tag value, any tag with this key regardless of its value is deleted\. If you specify a tag key with an empty string as the tag value, only tags that have an empty string as the value are deleted\.
+
+## Describing Tags on Your Device<a name="client-describe-tags"></a>
+
+The `describe-tags` command describes the tags on your Snowball Edge device\.
+
+**Usage \(configured Snowball client\)**
+
+```
+snowballEdge describe-tags
+```
+
+For more information, run the `describe-tags` command\.
+
+**Example Output**  
+
+```
+{
+  "Tags" : [ {
+    "Key" : "Name",
+    "Value" : "user-test"
+  }, {
+    "Key" : "Stage",
+    "Value" : "beta"
+  } ]
+}
 ```

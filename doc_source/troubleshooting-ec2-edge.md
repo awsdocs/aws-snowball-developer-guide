@@ -25,22 +25,22 @@ If this occurs, you can do the following:
 
 ## Snowball Edge Hangs When Launching a Large Compute Instance<a name="ec2-edge-launch-stopped"></a>
 
-It can appear that your Snowball Edge has stopped launching an instance\. This is not the case, as it can take an hour or more for the largest compute instances to launch\. You can check the status of your instances with the AWS CLI command `aws ec2 describe-instances` run against the HTTP or HTTPS Amazon EC2 endpoint on the Snowball Edge\.
+It can appear that your Snowball Edge has stopped launching an instance\. This is generally not the case\. However, it can take an hour or more for the largest compute instances to launch\. You can check the status of your instances with the AWS CLI command `aws ec2 describe-instances` run against the HTTP or HTTPS Amazon EC2 endpoint on the Snowball Edge\.
 
 ## My Instance Has One Root Volume<a name="multiple-root-volume"></a>
 
-This is by design\. All `sbe1.xxxx` instances have a single root volume\.
+Instances have one root volume by design\. All `sbe` instances have a single root volume\.
 
 ## Unprotected Private Key File Error<a name="pem-key-perms-ec2-edge"></a>
 
-This error can occur if your PEM file on your compute instance has insufficient read/write permissions\.
+This error can occur if your \.pem file on your compute instance has insufficient read/write permissions\.
 
 **Action to Take**  
 You can resolve this by changing the permissions for the file with the following procedure:
 
-1. Open a terminal and navigate to the location that you saved your PEM file to\.
+1. Open a terminal and navigate to the location that you saved your \.pem file to\.
 
-1. Enter the following command:
+1. Enter the following command\.
 
    ```
    chmod 400 filename.pem

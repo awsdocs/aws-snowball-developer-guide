@@ -24,13 +24,13 @@ Before including Amazon EC2 compute instances in your job creation request, see 
 
 1. Choose **Next**\.
 
-1. On the **Give shipping details** page, provide the shipping address that you want the AWS Snowball Edge device for this job delivered to\. In some regions, you choose your shipping speed at this point\. For more information, see [Shipping Speeds](mailing-storage.md#shippingspeeds)\.
+1. On the **Give shipping details** page, provide the shipping address that you want the AWS Snowball Edge device for this job delivered to\. In some Regions, you choose your shipping speed at this point\. For more information, see [Shipping Speeds](mailing-storage.md#shippingspeeds)\.
 
 1. Choose **Next**\.
 
-1. On the **Give job details** page, provide the details for your job, including a name, region, and at least one bucket\.
+1. On the **Give job details** page, provide the details for your job, including a name, Region, and at least one bucket\.
 **Important**  
-With an AWS Snowball Edge device, all jobs can use the compute functionality in regions where Lambda is supported\. How the compute functionality is implemented in AWS Snowball jobs is specific to Snowball—the functionality can differ significantly from how Lambda works in the cloud\. Before creating your first compute job, we recommend that you familiarize yourself with how AWS Lambda powered by AWS Greengrass works\. For more information, see [Using AWS Lambda with an AWS Snowball Edge](using-lambda.md)\.
+With an AWS Snowball Edge device, all jobs can use the compute functionality in Regions where Lambda is supported\. How the compute functionality is implemented in AWS Snowball jobs is specific to Snowball—the functionality can differ significantly from how Lambda works in the cloud\. Before creating your first compute job, we recommend that you familiarize yourself with how AWS Lambda powered by AWS Greengrass works\. For more information, see [Using AWS Lambda with an AWS Snowball Edge](using-lambda.md)\.
 
 1. Choose **Next**\.
 

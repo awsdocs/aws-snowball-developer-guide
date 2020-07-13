@@ -13,6 +13,8 @@ Following, you can find information about how to get and use the Snowball client
 
 ## Downloading and Installing the Snowball Client<a name="old-download-client"></a>
 
+You can download and install the Snowball client from the [AWS Snowball resources website](https://aws.amazon.com/snowball/resources/)\. When you've reached that page, find the installation package for your operating system and follow the instructions to install the Snowball client\. Running the Snowball client from a terminal in your workstation might require using a specific path, depending on your operating system:
+
 You can download and install the Snowball client from the [AWS Snowball Edge Resources](http://aws.amazon.com/snowball-edge/resources/) page\. When you've reached that page, find the installation package for your operating system and follow the instructions to install the Snowball client\. Running the Snowball client from a terminal in your workstation might require using a specific path, depending on your operating system:
 + **Microsoft Windows** – When the client has been installed, you can run it from any directory without any additional preparation\.
 + **Linux** – The Snowball client must be run from the \~/snowball\-client\-linux\-*build\_number*/bin/ directory\.
@@ -230,7 +232,7 @@ To unlock the AWS Snowball Edge device, run the `snowballEdge unlock` command\. 
 
    1. Get the unlock code, a 29\-character code that also appears when you download your manifest\. We recommend that you write it down and keep it in a separate location from the manifest that you downloaded, to prevent unauthorized access to the AWS Snowball Edge device while it’s at your facility\.
 
-1. Locate the IP address for the AWS Snowball Edge device on the AWS Snowball Edge device's LCD display\. When the AWS Snowball Edge device is connected to your network for the first time, it automatically creates a DHCP IP address\. If you want to use a different IP address, you can change it from the E Ink display\. For more information, see [Using an AWS Snowball Edge](using-device.md)\.
+1. Locate the IP address for the AWS Snowball Edge device on the AWS Snowball Edge device's LCD display\. When the AWS Snowball Edge device is connected to your network for the first time, it automatically creates a DHCP IP address\. If you want to use a different IP address, you can change it from the E Ink display\. For more information, see [Using an AWS Snowball Edge Device](using-device.md)\.
 
 1. Execute the `snowballEdge unlock` command to authenticate your access to the AWS Snowball Edge device with the AWS Snowball Edge device's IP address and your credentials, as follows:
 

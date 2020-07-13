@@ -6,7 +6,7 @@ This guide is for the Snowball Edge\. If you are looking for documentation for t
 
 # How AWS Snowball Works with the Snowball Edge<a name="how-it-works"></a>
 
-With AWS Snowball, you can use one of two devices\. From this guide, you can learn how to use AWS Snowball with an AWS Snowball Edge device\. The devices are owned by AWS, and they reside at your on\-premises location while they're in use\.
+With AWS Snowball, Edge you can use one of two devices\. From this guide, you can learn how to use AWS Snowball with an AWS Snowball Edge device\. The devices are owned by AWS, and they reside at your on\-premises location while they're in use\.
 
 There are three job types you can use with an AWS Snowball Edge device\.  Although the job types differ in their use cases, every job type has the same workflow for how you order, receive, and return devices\.
 
@@ -22,6 +22,8 @@ There are three job types you can use with an AWS Snowball Edge device\.  Althou
 
 1. **Get your credentials and download the Snowball client** – Get ready to start transferring data by getting your credentials, your job manifest, and the manifest's unlock code, and then downloading the Snowball client\.
    + The Snowball client is the tool that you’ll use to manage the flow of data from the device to your on\-premises data destination\.
+
+     You can download and install the Snowball client from the [AWS Snowball resources website](https://aws.amazon.com/snowball/resources/)\.
 
      The Snowball client must be downloaded from the [AWS Snowball Edge Resources](http://aws.amazon.com/snowball-edge/resources/) page and installed on a powerful workstation that you own\.
    + The manifest is used to authenticate your access to the device, and it is encrypted so that only the unlock code can decrypt it\. You can get the manifest from the console or with the job management API when the device is on\-premises at your location\.
@@ -45,9 +47,15 @@ For a cluster job, there are additional steps; see [How Clustered Local Compute 
 **Note**  
 For export and cluster jobs, there are additional steps; see [How Export Works](#how-export) and [How Clustered Local Compute and Storage Works](#how-cluster)\.
 
+**Topics**
++ [How Import Works](#how-import)
++ [How Export Works](#how-export)
++ [How Local Compute and Storage Works](#how-localcompute)
++ [Snowball Edge Videos and Blogs](#blog-videos)
+
 ## How Import Works<a name="how-import"></a>
 
-Each import job uses a single Snowball appliance\. After you create a job in the AWS Snowball Management Console or the job management API, we ship you a Snowball\. When it arrives in a few days, you’ll connect the Snowball to your network and transfer the data that you want imported into Amazon S3 onto that Snowball\. When you’re done transferring data, ship the Snowball back to AWS, and we’ll import your data into Amazon S3\.
+Each import job uses a single Snowball appliance\. After you create a job in the AWS Snowball Management Console or the job management API, we ship you a Snowball\. When it arrives in a few days, you’ll connect the Snowball to your network and transfer the data that you want imported into Amazon S3 onto the device\. When you’re done transferring data, ship the Snowball back to AWS, and we’ll import your data into Amazon S3\.
 
 ## How Export Works<a name="how-export"></a>
 
@@ -58,7 +66,7 @@ The listing operation to split your job into parts is a function of Amazon S3, a
 
 Soon after that, we start exporting your data onto a device\. Typically, exporting data takes one business day; however, this process can take longer\. Once the export is done, AWS gets the device ready for pickup by your region's carrier\.
 
-When it arrives in a few days, you’ll connect the AWS Snowball Edge device to your network and transfer the data that you want imported into Amazon S3 onto the device\. When you’re done transferring data, ship the device back to AWS\. Once we receive a returned device for your export job part, we erase it completely\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\. This step marks the completion of that particular job part\. If there are more job parts, the next job part now is prepared for shipping\.
+When it arrives in a few days, you’ll connect the AWS Snowball Edge device to your network and transfer the data that you want imported from Amazon S3 onto the device\. When you’re done transferring data, ship the device back to AWS\. Once we receive a returned device for your export job part, we erase it completely\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\. This step marks the completion of that particular job part\. If there are more job parts, the next job part now is prepared for shipping\.
 
 ## How Local Compute and Storage Works<a name="how-localcompute"></a>
 
@@ -76,3 +84,11 @@ Clusters have anywhere from 5 to 10 AWS Snowball Edge devices, called nodes\. Wh
 You can write data to an unlocked cluster by using the Amazon S3 Adapter for Snowball or the NFS mount point through the leader node, and it distributes the data among the other nodes\.
 
 When you’re done with your cluster, ship all the nodes back to AWS\. Once we receive a returned cluster node, we perform a complete erasure of the Snowball\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.
+
+## Snowball Edge Videos and Blogs<a name="blog-videos"></a>
++ [AWS Snowball Edge Data Migration](https://d1.awsstatic.com/whitepapers/snowball-edge-data-migration-guide.pdf)
++ [AWS OpsHub for Snow Family](https://www.youtube.com/watch?v=_A3A47Vuu0I)
++ [Novetta delivers IoT and Machine Learning to the edge for disaster response](https://aws.amazon.com/blogs/storage/novetta-delivers-iot-and-machine-learning-to-the-edge-for-disaster-response/)
++ [Enable large\-scale database migrations with AWS DMS and AWS Snowball](https://aws.amazon.com/blogs/storage/enable-large-scale-database-migrations-with-aws-dms-and-aws-snowball/)
++ [Data Migration Best Practices with AWS Snowball Edge](https://aws.amazon.com/blogs/storage/data-migration-best-practices-with-snowball-edge/)
++ [AWS Snowball Resources](https://aws.amazon.com/snowball/resources/)

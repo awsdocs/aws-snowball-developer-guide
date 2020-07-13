@@ -49,7 +49,7 @@ Now that you know how many AWS Snowball Edge devices you need, you can create an
 ### Step 5: Separate Your Data into Transfer Segments<a name="prepare-segments"></a>
 
 As a best practice for large data transfers involving multiple jobs, we recommend that you separate your data into a number of smaller, manageable data transfer segments\. If you separate the data this way, you can transfer each segment one at a time, or multiple segments in parallel\. When planning your segments, make sure that all the sizes of the data for each segment combined fit on the AWS Snowball Edge device for this job\. When segmenting your data transfer, take care not to copy the same files or directories multiple times\. Some examples of separating your transfer into segments are as follows:
-+ You can make 9 segments of 10 TB each for an AWS Snowball Edge device\.
++ You can make 9 segments of 8 TB each for an AWS Snowball Edge device\.
 + For large files, each file can be an individual segment, keeping in mind the 5 TB size limit for objects in Amazon S3\.
 + Each segment can be a different size, and each individual segment can be made of the same kind of data—for example, small files in one segment, compressed archives in another, large files in another segment, and so on\. This approach helps you determine your average transfer rate for different types of files\.
 
@@ -73,3 +73,9 @@ Sometimes the fastest way to transfer data with the AWS Snowball Edge device is 
 + Using multiple instances of the Amazon S3 Adapter for Snowball on multiple AWS Snowball Edge devices\.
 
 When you complete these steps, you should know how quickly you can transfer data to an AWS Snowball Edge device\.
+
+## Managing EC2 Instances<a name="managing-ec2-instances"></a>
+
+To avoid accidentally deleting the Amazon EC2 instances that you create on your device, don't shut down your instances from the operating system\. For example, don't use the `shutdown` or `reboot` commands\. Shutting down an instance from within the operating system has the same effect as calling the [terminate\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/terminate-instances.html) command\.
+
+Instead, use the [stop\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) command to suspend Amazon EC2 instances that you want to preserve\.

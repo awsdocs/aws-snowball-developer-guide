@@ -15,6 +15,7 @@ Regardless of the type of job you're creating for an AWS Snowball Edge device, t
 + [Get Your Credentials and Tools](get-credentials.md)
 + [Download and Install the Snowball Client](download-the-client.md)
 + [Unlock the Snowball Edge](unlockdevice.md)
++ [Set Up Local Users](setup-local-iam.md)
 + [Use the Snowball Edge](transfer-data.md)
 + [Stop the Snowball Client, and Power Off the Snowball Edge](turnitoff.md)
 + [Disconnect the Snowball Edge](disconnectdevice.md)

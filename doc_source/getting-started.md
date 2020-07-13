@@ -25,6 +25,11 @@ If you already have an AWS account, go ahead and skip to the next section: [Crea
 
 If you already have an administrator AWS Identity and Access Management \(IAM\) user account, go ahead and skip to one of the sections listed following\. If you don't have an administrator IAM user, we recommend that you create one and not use the root credentials of your AWS account to make requests\. To do so, see [Create an IAM User](setting-up.md#setting-up-iam)\.
 
+For information about how to use AWS Identity and Access Management policies to control access, see [AWS\-Managed \(Predefined\) Policies for AWS Snowball Edge](access-control-managing-permissions.md#access-policy-examples-aws-managed)\.
+
+**Note**  
+ After you unlock your device, you will also want to create local users\. You will do this in a later step\.
+
 **Important**  
 There is no free tier for AWS Snowball\. To avoid unwanted charges and delays, read through the relevant import or export section following before you start creating your jobs\.
 
