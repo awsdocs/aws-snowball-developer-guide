@@ -25,6 +25,7 @@ When you're done with your device, return it to AWS\. If the device was used in 
 
 **Important**  
 Using encrypted AMIs on Snowball Edge devices is not supported\.
+Using shared AMIs on Snowball Edge devices is not supported\.
 Data in compute instances running on a Snowball Edge isn't imported into AWS\.
 
 ### Compute Instances on Clusters<a name="ec2-overview-cluster"></a>
