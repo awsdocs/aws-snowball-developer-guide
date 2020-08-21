@@ -4,7 +4,7 @@ This guide is for the Snowball Edge\. If you are looking for documentation for t
 
 --------
 
-# Administrating a Cluster<a name="administercluster"></a>
+# Administering a Cluster<a name="administercluster"></a>
 
 Following, you can find information about administrative tasks to operate a healthy cluster of Snowball Edge devices\. The primary administrative tasks are covered in the following topics\.
 
