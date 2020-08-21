@@ -14,7 +14,7 @@ In January 2018, there was a feature update for clusters, making them leaderless
 **Topics**
 + [Clustering Overview](#ClusterOverview)
 + [Related Topics](#relatedcluster)
-+ [Administrating a Cluster](administercluster.md)
++ [Administering a Cluster](administercluster.md)
 
 ## Clustering Overview<a name="ClusterOverview"></a>
 
@@ -59,4 +59,4 @@ Keep the following considerations in mind when planning to use a cluster of Snow
 Beyond the content presented in this topic, you can find other topics in this guide that are relevant to clusters:
 + [Getting Started with an AWS Snowball Edge Device](getting-started.md) – This section outlines how to get started creating your first job\. The techniques in this section work for all job types, including cluster jobs\.
 + [Commands for the Snowball Client](using-client-commands.md) – This section contains a list of commands for the Snowball client tool\. These commands include the Snowball Edge administrative commands to unlock a cluster, get the status information for the nodes and the cluster as a whole, remove unavailable nodes, and add new nodes\.
-+ [Administrating a Cluster](administercluster.md) – This section contains information about the administrative tasks you perform with a cluster, like adding and removing nodes, and includes helpful procedures\.
++ [Administering a Cluster](administercluster.md) – This section contains information about the administrative tasks you perform with a cluster, like adding and removing nodes, and includes helpful procedures\.
