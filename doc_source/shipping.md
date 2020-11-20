@@ -16,7 +16,7 @@ Following, you can find information about how shipping is handled for an AWS Sno
 When you create a job, you specify a shipping address and shipping speed\. This shipping speed doesn’t indicate how soon you can expect to receive the AWS Snowball Edge device from the day you created the job\. It only shows the time that the device is in transit between AWS and your shipping address\. That time doesn’t include any time for processing, which depends on factors including job type \(exports take longer than imports, typically\) and job size \(cluster jobs take longer than individual jobs, typically\)\. Also, carriers generally only pick up outgoing AWS Snowball Edge devices once a day\. Thus, processing before shipping can take a day or more\.
 
 **Note**  
-Snowball Edge devices can only be used to import or export data within the AWS Region where the devices were ordered\.
+Snowball Edge devices can only be returned to the same AWS Region where the devices were ordered\. Some AWS Regions support sending Snowball Edge devices to alternate countries\. Please refer to [Region\-Based Shipping Restrictions](#shipwithinregion) for more information\. 
 
 ## Preparing an AWS Snowball Edge for Shipping<a name="device-shipping"></a>
 
@@ -40,7 +40,7 @@ You don't need to pack the AWS Snowball Edge device in a container, because it i
 
 Before you create a job, you should sign in to the console from the AWS Region that your Amazon S3 or S3 Glacier data is housed in\. A few shipping restrictions apply, as follows:
 + For data transfers in US regions, we don't ship AWS Snowball Edge devices outside of the United States\.
-+ We don't ship AWS Snowball Edge devices between non\-US regions—for example, from Europe \(Ireland\) to Europe \(Frankfurt\), or from Asia Pacific \(Mumbai\) to Asia Pacific \(Sydney\)\.
++ We don't ship AWS Snowball Edge devices between non\-US regions—for example, from Europe \(Ireland\) to Middle East \(Bahrain\), or from Asia Pacific \(Mumbai\) to Asia Pacific \(Sydney\)\.
 + For data transfers in Asia Pacific \(Sydney\), we only ship AWS Snowball Edge devices within Australia\.
 + For data transfers in the EU regions, we only ship AWS Snowball Edge devices to the EU member countries listed following: Austria, Belgium, Bulgaria, Croatia, Republic of Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Italy, Ireland, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden, and the UK\.
 + For data transfers in the Asia Pacific \(Singapore\) region, we only ship Snowballs to Singapore\.
