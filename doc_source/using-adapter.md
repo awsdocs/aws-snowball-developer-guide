@@ -81,7 +81,7 @@ Default output format [None]: json
 Or
 
 ```
-aws s3 ls --profile snowballEdge --endpoint http://192.0.2.0:8080 --region snow 
+aws s3 ls --profile snowballEdge --endpoint http://192.0.2.0:8080 --region snowball 
 ```
 
 ### Authorization with the Amazon S3 API Adapter for AWS Snowball<a name="auth-adapter"></a>
