@@ -1,12 +1,6 @@
---------
-
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
-
---------
-
 # Automating Your Management Tasks<a name="automate-task"></a>
 
-You can use AWS OpsHub to automate operational tasks that you perform frequently on your Snow Family Devices\. You can create a task for reoccurring actions that you might want to perform on resources, such as restarting virtual servers, stopping Amazon EC2 instances, and so on\. You provide an automation document that safely performs operational tasks and executes the operation on AWS resources in bulk\. You can also schedule common IT workflows\. 
+You can use AWS OpsHub to automate operational tasks that you perform frequently on your Snow Family devices\. You can create a task for reoccurring actions that you might want to perform on resources, such as restarting virtual servers, stopping Amazon EC2 instances, and so on\. You provide an automation document that safely performs operational tasks and runs the operation on AWS resources in bulk\. You can also schedule common IT workflows\. 
 
 **Note**  
  Automating tasks is not supported on clusters\.
@@ -22,7 +16,7 @@ When you create a task, you specify the types of resources that the task should 
 
 **To create a task**
 
-1. In the **Launch tasks** section of the dashboard, choose **Get started** to open the Tasks page\. If you have created tasks, they appear under **Tasks**\. 
+1. In the **Launch tasks** section of the dashboard, choose **Get started** to open the **Tasks** page\. If you have created tasks, they appear under **Tasks**\. 
 
 1. Choose **Create task** and provide details for the task\.
 
@@ -34,7 +28,7 @@ The name must be between 3 and 128 characters\. Valid characters are `a-z`, `A-Z
 
    For example, you can specify **/AWS::EC2::Instance** for the tasks to run on an Amazon EC2 instance or **/** to run on all resource types\. 
 
-1. In the **Content** section, choose **YAML** or **JSON**, and provide the script that executes the task\. You have two options, YAML or JSON format\. For examples, see [Task Examples](#task-examples)\.
+1. In the **Content** section, choose **YAML** or **JSON**, and provide the script that performs the task\. You have two options, YAML or JSON format\. For examples, see [Task Examples](#task-examples)\.
 
 1. Choose **Create**\. The task that you created then appears on the **Tasks** page\.
 

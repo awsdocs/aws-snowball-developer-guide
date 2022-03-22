@@ -1,9 +1,3 @@
---------
-
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
-
---------
-
 # Using Identity\-Based Policies \(IAM Policies\) for AWS Snowball<a name="access-control-managing-permissions"></a>
 
 This topic provides examples of identity\-based policies that demonstrate how an account administrator can attach permissions policies to IAM identities \(that is, users, groups, and roles\)\. These policies thereby grant permissions to perform operations on AWS Snowball resources in the AWS Cloud\.
@@ -55,7 +49,7 @@ For a table showing all of the AWS Snowball job management API actions and the r
 
 The permissions reference table lists the AWS Snowball job management API operations and shows the required permissions for each operation\. For more information about job management API operations, see [AWS Snowball API Permissions: Actions, Resources, and Conditions Reference](access-policy-examples-for-sdk-cli.md#snowball-api-permissions-ref)\. 
 
- To use the AWS Snowball Management Console, you need to grant permissions for additional actions as shown in the following permissions policy: 
+ To use the AWS Snow Family Management Console, you need to grant permissions for additional actions as shown in the following permissions policy: 
 
 ```
 {
@@ -89,14 +83,14 @@ The permissions reference table lists the AWS Snowball job management API operat
                 "lambda:GetFunction",
                 "lambda:GetFunctionConfiguration"
             ],
-            "Resource": "arn:aws:lambda:::function:*"
+            "Resource": "arn:aws:lambda:*::function:*"
         },
         {
             "Effect": "Allow",
             "Action": [
                 "lambda:ListFunctions"
             ],
-            "Resource": "arn:aws:lambda:::*"
+            "Resource": "arn:aws:*:::*"
         },
         {
             "Effect": "Allow",
@@ -122,12 +116,21 @@ The permissions reference table lists the AWS Snowball job management API operat
                 "iam:CreateRole",
                 "iam:ListRoles",
                 "iam:ListRolePolicies",
-                "iam:PutRolePolicy",
-                "iam:PassRole"
+                "iam:PutRolePolicy"
             ],
             "Resource": [
                 "*"
             ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "iam:PassedToService": "importexport.amazonaws.com"
+                }
+            }
         },
         {
            "Effect": "Allow",
@@ -192,7 +195,7 @@ You can use the following AWS\-managed policies with AWS Snowball\.
 
 An IAM role policy must be created with read and write permissions for your Amazon S3 buckets\. The IAM role must also have a trust relationship with Snowball\. Having a trust relationship means that AWS can write the data in the Snowball and in your Amazon S3 buckets, depending on whether you're importing or exporting data\.
 
-When you create a job in the AWS Snowball Management Console, creating the necessary IAM role occurs in step 4 in the **Permission** section\. This process is automatic\. The IAM role that you allow Snowball to assume is only used to write your data to your bucket when the Snowball with your transferred data arrives at AWS\. The following procedure outlines that process\.
+When you create a job in the AWS Snow Family Management Console, creating the necessary IAM role occurs in step 4 in the **Permission** section\. This process is automatic\. The IAM role that you allow Snowball to assume is only used to write your data to your bucket when the Snowball with your transferred data arrives at AWS\. The following procedure outlines that process\.
 
 **To create the IAM role for your import job**
 
@@ -208,7 +211,7 @@ When you create a job in the AWS Snowball Management Console, creating the neces
 
 1. Review the details on this page, and then choose **Allow**\.
 
-   You return to the AWS Snowball Management Console, where **Selected IAM role ARN** contains the Amazon Resource Name \(ARN\) for the IAM role that you just created\.
+   You return to the AWS Snow Family Management Console, where **Selected IAM role ARN** contains the Amazon Resource Name \(ARN\) for the IAM role that you just created\.
 
 1. Choose **Next** to finish creating your IAM role\.
 

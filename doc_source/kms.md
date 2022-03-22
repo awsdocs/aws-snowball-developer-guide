@@ -1,9 +1,3 @@
---------
-
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
-
---------
-
 # AWS Key Management Service in AWS Snowball Edge<a name="kms"></a>
 
 AWS Key Management Service \(AWS KMS\) is a managed service that makes it easy for you to create and control the encryption keys used to encrypt your data\. AWS KMS uses hardware security modules \(HSMs\) to protect the security of your keys\. Specifically, the Amazon Resource Name \(ARN\) for the AWS KMS key that you choose for a job in AWS Snowball Edge is associated with a KMS key\. That KMS key is used to encrypt the unlock code for your job\. The unlock code is used to decrypt the top layer of encryption on your manifest file\. The encryption keys stored within the manifest file are used to encrypt and de\-encrypt the data on the device\.
@@ -12,11 +6,11 @@ In AWS Snowball Edge, AWS KMS protects the encryption keys used to protect data 
 
 ## Using the AWS\-Managed Customer Master Key for Snowball Edge<a name="defaultenvelopekey"></a>
 
->If you'd like to use the AWS\-managed customer master key \(CMK\) for Snowball Edge created for your account, use the following procedure\.
+If you'd like to use the AWS\-managed customer master key \(CMK\) for Snowball Edge created for your account, follow these steps\.
 
 **To select the AWS KMS CMK for your job**
 
-1. On the AWS Snowball Management Console, choose **Create job**\.
+1. On the AWS Snow Family Management Console, choose **Create job**\.
 
 1. Choose your job type, and then choose **Next**\.
 

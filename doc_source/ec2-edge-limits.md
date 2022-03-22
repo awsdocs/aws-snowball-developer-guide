@@ -1,24 +1,6 @@
---------
+# Quotas for Compute Instances on a Snowball Edge Device<a name="ec2-edge-limits"></a>
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
-
---------
-
-# Quotas for Compute Instances on a Snowball Edge<a name="ec2-edge-limits"></a>
-
-The following AWS Regions are supported for you to add compute instances to your devices:
-+ US East \(Ohio\)
-+ US East \(N\. Virginia\)
-+ US West \(N\. California\)
-+ US West \(Oregon\)
-+ Asia Pacific \(Singapore\)
-+ Asia Pacific \(Sydney\)
-+ Asia Pacific \(Tokyo\)
-+ Europe \(Frankfurt\)
-+ Europe \(Ireland\)
-+ Europe \(London\)
-+ Europe \(Paris\)
-+ South America \(São Paulo\)
+The following are storage quotas and shared resource limitations for compute resources on an AWS Snowball Edge device\.
 
 ## Storage Quotas<a name="device-storage-limits"></a>
 
@@ -70,13 +52,13 @@ The following tables outline the available compute resources for Snowball Edge d
 
 ## Shared Compute Resource Limitations<a name="shared-resource-limitations"></a>
 
-All services on a Snowball Edge device use some of the finite resources on the device\. A Snowball Edge device with its available compute resources maximized can't launch new compute resources\. For example, if you try to start the file interface while also running a `sbe1.4xlarge` compute instance on a storage optimized device, the file interface service doesn't start\. The following outlines the available resources on the different device options as well as resource requirements for each service\.
+All services on a Snowball Edge device use some of the finite resources on the device\. A Snowball Edge device with its available compute resources maximized can't launch new compute resources\. For example, if you try to start the NFS interface while also running a `sbe1.4xlarge` compute instance on a storage optimized device, the NFS interface service doesn't start\. The following outlines the available resources on the different device options as well as resource requirements for each service\.
 + If no compute services are `ACTIVE`:
   + On a storage optimized option, you have 24 vCPUs and 32 GiB of memory for your compute instances\.
   + On a compute optimized option, you have 52 vCPUs and 208 GiB of memory for your compute instances\. This is also true for the with GPU option\.
-+ While AWS IoT Greengrass and AWS Lambda powered by AWS Greengrass are `ACTIVE`:
++ While AWS IoT Greengrass and AWS Lambda powered by AWS IoT Greengrass are `ACTIVE`:
   + On a storage optimized option, these services use 4 vCPU cores and 8 GiB of memory\.
   + On a compute optimized option, these services use 1 vCPU core and 1 GiB of memory\. This is also true for the GPU option\.
-  + While the file interface is `ACTIVE`, it uses 8 vCPU cores and 16 GiB of memory on a Snowball Edge device\.
+  + While the NFS interface is `ACTIVE`, it uses 8 vCPU cores and 16 GiB of memory on a Snowball Edge device\.
 
-You can determine whether a service is `ACTIVE` on a Snowball Edge by using the command `snowballEdge describe-service` on the Snowball client\. For more information, see [Getting Service Status](using-client-commands.md#client-service-status)\.
+You can determine whether a service is `ACTIVE` on a Snowball Edge by using the command `snowballEdge describe-service` on the Snowball Edge client\. For more information, see [Getting Service Status](using-client-commands.md#client-service-status)\.
