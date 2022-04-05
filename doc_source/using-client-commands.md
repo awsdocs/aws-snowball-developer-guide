@@ -13,7 +13,7 @@ Following, you can find information on the Snowball Edge client commands, includ
 + [Getting Your Certificate for Transferring Data](#snowball-edge-certificates-cli)
 + [Starting NFS and Restricting Access](#sbe-start-nfs)
 + [Restricting Access to NFS Shares When NFS is Running](#sbe-restrict-access)
-+ [AWSAWS Snowball Edge Logs](#logs)
++ [AWS Snowball Edge Logs](#logs)
 + [Getting Device Status](#client-status)
 + [Getting Service Status](#client-service-status)
 + [Removing a Node from a Cluster](#client-cluster-remove)
