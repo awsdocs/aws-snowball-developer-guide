@@ -1,9 +1,3 @@
---------
-
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
-
---------
-
 # Customer Managed Policy Examples<a name="access-policy-examples-for-sdk-cli"></a>
 
 In this section, you can find example user policies that grant permissions for various AWS Snowball job management actions\. These policies work when you are using AWS SDKs or the AWS CLI\. When you are using the console, you need to grant additional permissions specific to the console, which is discussed in [Permissions Required to Use the AWS Snowball Console](access-control-managing-permissions.md#additional-console-required-permissions)\.
@@ -19,7 +13,7 @@ All examples use the us\-west\-2 region and contain fictitious account IDs\.
 
 ## Example 1: Role Policy That Allows a User to Create a Job with the API<a name="access-policy-example-create-api"></a>
 
-The following permissions policy is a necessary component of any policy that is used to grant job or cluster creation permission using the job management API\. The user also needs some or all of the permissions specified in [Permissions Required to Use the AWS Snowball Console](access-control-managing-permissions.md#additional-console-required-permissions), depending on the type of job created\.
+The following permissions policy is a necessary component of any policy that is used to grant job or cluster creation permission using the job management API\. The statement is needed as a Trust Relationship policy statement for the Snowball IAM role\.
 
 ```
 {
@@ -44,7 +38,7 @@ The following permissions policy is a necessary component of any policy that is 
 
 ## Example 2: Role Policy for Creating Import Jobs<a name="role-policy-example-import"></a>
 
-You use the following role trust policy for creating import jobs for Snowball Edge that use AWS Lambda powered by AWS Greengrass functions\.
+You use the following role trust policy for creating import jobs for Snowball Edge that use AWS Lambda powered by AWS IoT Greengrass functions\.
 
 ```
                     {
@@ -133,7 +127,7 @@ You use the following role trust policy for creating import jobs for Snowball Ed
 
 ## Example 3: Role Policy for Creating Export Jobs<a name="role-policy-example-export"></a>
 
-You use the following role trust policy for creating export jobs for Snowball Edge that use AWS Lambda powered by AWS Greengrass functions\.
+You use the following role trust policy for creating export jobs for Snowball Edge that use AWS Lambda powered by AWS IoT Greengrass functions\.
 
 ```
                     {
