@@ -61,8 +61,8 @@ Soon after that, we start exporting your data onto a device\. Typically, exporti
 When you’re done transferring data, ship the device back to AWS\. When we receive the device for your export job part, we erase it completely\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\. This step marks the completion of that particular job part\.
 + For keylisting 
 
-  Before we export the objects in the S3 bucket, we scan the bucket\. If the bucket is altered after the scan, the job could encounter delays because we scan for missing or altered objects\.
-+ For S3 Glacier Flexible Retrieval
+
+When it arrives in a few days, you’ll connect the AWS Snowball Edge device to your network and transfer the data to a device on your network\. When you’re done transferring data, ship the device back to AWS\. Once we receive a returned device for your export job part, we erase it completely\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\. This step marks the completion of that particular job part\. If there are more job parts, the next job part now is prepared for shipping\.
 
    It is important to note that AWS Snowball cannot export objects in the S3 Glacier Flexible Retrieval storage class\. These objects must be restored before AWS Snowball can successfully export the objects in the bucket\.
 
@@ -83,6 +83,9 @@ You can write data to an unlocked cluster by using the Amazon S3 interface or th
 
 When you’re done with your cluster, ship all the nodes back to AWS\. When we receive the cluster node, we perform a complete erasure of the Snowball\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.
 
+
+When you’re done with your cluster, ship all the nodes back to AWS\. Once we receive a returned cluster node, we perform a complete erasure of the Snowball\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.
+
 ## Snowball Edge Videos and Blogs<a name="blog-videos"></a>
 + [AWS Snowball Edge Data Migration](https://d1.awsstatic.com/whitepapers/snowball-edge-data-migration-guide.pdf)
 + [AWS OpsHub for Snow Family](https://www.youtube.com/watch?v=_A3A47Vuu0I)
@@ -90,3 +93,4 @@ When you’re done with your cluster, ship all the nodes back to AWS\. When we r
 + [Enable large\-scale database migrations with DMS and AWS Snowball](https://aws.amazon.com/blogs/storage/enable-large-scale-database-migrations-with-aws-dms-and-aws-snowball/)
 + [Data Migration Best Practices with AWS Snowball Edge](https://aws.amazon.com/blogs/storage/data-migration-best-practices-with-snowball-edge/)
 + [AWS Snowball resources](https://aws.amazon.com/snowball/resources/)
+
