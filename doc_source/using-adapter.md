@@ -75,7 +75,9 @@ Default output format [None]: json
 Or
 
 ```
-aws s3 ls --profile snowballEdge --endpoint http://192.0.2.0:8080 --region snow         
+
+aws s3 ls --profile snowballEdge --endpoint http://192.0.2.0:8080 --region snowball 
+
 ```
 
 ### Authorization with the Amazon S3 API interface for AWS Snowball<a name="auth-adapter"></a>
@@ -149,5 +151,7 @@ Using the Amazon S3 interface, you can programmatically transfer data to and fro
 + [Supported REST API Actions](using-adapter-supported-api.md)
 
 Any features or actions not explicitly listed in these topics are not supported\. For example, the following features and actions are not supported for use with Snowball Edge:
-+ [TransferManager](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/examples-s3-transfermanager.html) – This utility transfers files from a local environment to Amazon S3 with the SDK for Java\. Consider using the supported API actions or AWS CLI commands with the interface instead\.
+
++ [TransferManager](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-s3-transfermanager.html) – This utility transfers files from a local environment to Amazon S3 with the SDK for Java\. Consider using the supported API actions or AWS CLI commands with the adapter instead\.
 + [GET Bucket \(List Objects\) Version 2](https://docs.aws.amazon.com/AmazonS3/latest/API/v2-RESTBucketGET.html) – This implementation of the GET action returns some or all \(up to 1,000\) of the objects in a bucket\. Consider using the [GET Bucket \(List Objects\) Version 1](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html) action or the [ls](https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html) AWS CLI command\.
+
