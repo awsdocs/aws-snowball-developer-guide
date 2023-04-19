@@ -1,12 +1,6 @@
---------
-
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
-
---------
-
 # Logging AWS Snowball Edge API Calls with AWS CloudTrail<a name="logging-using-cloudtrail"></a>
 
-The AWS Snowball Edge device is integrated with AWS CloudTrail, a service that provides a record of actions taken by a user, role, or an AWS service in AWS Snowball Edge\. CloudTrail captures all API calls for AWS Snowball Edge as events\. The calls captured include calls from the AWS Snowball Edge console and code calls to the AWS Snowball Edge API operations\. If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for AWS Snowball Edge\. If you don't configure a trail, you can still view the most recent events in the CloudTrail console in **Event history**\. Using the information collected by CloudTrail, you can determine the request that was made to AWS Snowball Edge, the IP address from which the request was made, who made the request, when it was made, and additional details\. 
+The AWS Snowball or Snow Family service integrates with AWS CloudTrail, a service that provides a record of actions taken by a user, role, or service\. CloudTrail captures all API calls for AWS Snow Family service\. The calls captured include calls from the AWS Snowball Family console and code calls to the AWS Snowball Family Job Management API\. If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for AWS Snowball Family API calls\. If you don't configure a trail, you can still view the most recent events in the CloudTrail console in **Event history**\. Using the information collected by CloudTrail, you can determine the request made with AWS Snowball Family API, the IP address of the request made, who made the request, when it was made, and additional details\. 
 
 To learn more about CloudTrail, see the [AWS CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/)\.
 

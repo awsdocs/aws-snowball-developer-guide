@@ -1,9 +1,3 @@
---------
-
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
-
---------
-
 # Troubleshooting Compute Instances on Snowball Edge Devices<a name="troubleshooting-ec2-edge"></a>
 
 Following, you can find troubleshooting tips for Snowball Edge jobs with compute instances\.
@@ -20,16 +14,18 @@ This issue can occur if the physical network interface \(NIC\) you associated wi
 
 **Action to Take**  
 If this occurs, you can do the following:
-+ Create a new VNIC, associated with a NIC that has an IP address\. For more information, see [Network Configuration for Compute Instances](network-config-ec2-edge.md)\.
++ Create a new VNIC, associated with a NIC that has an IP address\. For more information, see [Network Configuration for Compute Instances](snowcone-network-config-ec2.md)\.
 + Update an existing VNIC\. For more information, see [Updating a Virtual Network Interface](using-ec2-edge-client.md#ec2-edge-update-vnic)\.
 
 ## Snowball Edge Hangs When Launching a Large Compute Instance<a name="ec2-edge-launch-stopped"></a>
 
-It can appear that your Snowball Edge has stopped launching an instance\. This is generally not the case\. However, it can take an hour or more for the largest compute instances to launch\. You can check the status of your instances with the AWS CLI command `aws ec2 describe-instances` run against the HTTP or HTTPS Amazon EC2 endpoint on the Snowball Edge\.
+It can appear that your Snowball Edge has stopped launching an instance\. This is generally not the case\. However, it can take an hour or more for the largest compute instances to launch\. 
+
+To check the status of your instances, use the AWS CLI command `aws ec2 describe-instances` run against the HTTP or HTTPS Amazon EC2 endpoint on the Snowball Edge\.
 
 ## My Instance Has One Root Volume<a name="multiple-root-volume"></a>
 
-Instances have one root volume by design\. All `sbe` instances have a single root volume\.
+Instances have one root volume by design\. All `sbe` instances have a single root volume, but with Snowball Edge, you can add or remove block storage based on the needs of your applications\. For more information, see [Using Block Storage with Your Amazon EC2 Instances](edge-ebs.md)\.
 
 ## Unprotected Private Key File Error<a name="pem-key-perms-ec2-edge"></a>
 
