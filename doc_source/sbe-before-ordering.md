@@ -2,13 +2,13 @@
 
 AWS Snowball Edge is a region\-specific service\. So before you plan your job, be sure that the service is available in your region\. Ensure that your location and Amazon S3 bucket are within the same AWS Region or the same country because it will impact your ability to order the device\. 
 
-As part of the order process, you create an AWS Identity and Access Management \(IAM\) role and an AWS Key Management Service \(AWS KMS\) key\. The KMS key is used for encrypting the data during transit and at rest on the Snowball Edge device\. For more information about creating IAM roles and KMS keys, see [Creating an AWS Snowball Edge Job](https://docs.aws.amazon.com/snowball/latest/developer-guide/create-job-common.html)\.
+As part of the order process, you create an AWS Identity and Access Management \(IAM\) role and an AWS Key Management Service \(AWS KMS\) key\. The KMS key is used to encrypt the unlock code for your job\. For more information about creating IAM roles and KMS keys, see [Creating an AWS Snowball Edge Job](https://docs.aws.amazon.com/snowball/latest/developer-guide/create-job-common.html)\.
 
 **Topics**
 + [Questions about the Local Environment](#sbe-before-questions)
 + [Working with Files That Contain Special Characters](#sbe-before-data-format)
 + [Using Amazon EC2 on Snowball](#before-ec2)
-+ [Using Amazon S3 on Snowball](#before-s3)
++ [Using Amazon S3 on Snowball Edge](#before-s3)
 + [Snowball Edge Clusters](#sbe-ordering-cluster)
 
 ## Questions about the Local Environment<a name="sbe-before-questions"></a>
@@ -172,22 +172,22 @@ To create an AMI from a snapshot, you can use one of the following commands\. Fo
 + [register\-image](https://docs.aws.amazon.com/cli/latest/reference/ec2/register-image.html) \(AWS CLI\)
 + [Register\-EC2Image](https://docs.aws.amazon.com/powershell/latest/reference/items/Register-EC2Image.html) \(AWS Tools for Windows PowerShell\)
 
-## Using Amazon S3 on Snowball<a name="before-s3"></a>
+## Using Amazon S3 on Snowball Edge<a name="before-s3"></a>
 
-As part of the order process, you are asked to create an AWS Identity and Access Management \(IAM\) role and AWS Key Management Service \(AWS KMS\) key\. The KMS key is used for encrypting the data during transit and at rest on the Snowball Edge device\. For more information about creating IAM roles and KMS keys, see [Creating an AWSAWS Snowball Edge Job](https://docs.aws.amazon.com/snowball/latest/developer-guide/create-job-common.html)\.
+As part of the order process, you are asked to create an AWS Identity and Access Management \(IAM\) role and AWS Key Management Service \(AWS KMS\) key\. The KMS key is used for encrypting the data at rest on the Snowball Edge device\. For more information about creating IAM roles and KMS keys, see [Creating an AWSAWS Snowball Edge Job](https://docs.aws.amazon.com/snowball/latest/developer-guide/create-job-common.html)\.
 
 **Important**  
 If the imported data must be encrypted in the S3 bucket using Server\-Side Encryption with keys stored in AWS KMS \(SSE\-KMS\), see [Amazon S3 Encryption with AWS KMS](#s3-kms-encryption)\.  
-If the imported data must be encrypted in the S3 bucket using Server\-Side Encryption with Amazon S3 managed keys \(SSE\-S3\), see [Amazon S3 Encryption with Server\-Side Encryption](#s3-sse-encryption)\.
+If the imported data must be encrypted in the S3 bucket using Server\-Side Encryption with Amazon S3 managed keys \(SSE\-S3\), see [Amazon S3 Encryption with server\-side encryption](#s3-sse-encryption)\.
 
-### How Import Works<a name="s3-import"></a>
+### How import works<a name="s3-import"></a>
 
 Each import job uses a single Snowball Edge device\. After you create a job, we ship a Snowball Edge device to you\. When it arrives, you connect the Snowball Edge device to your network and transfer the data that you want to import to Amazon S3 onto that Snowball Edge\. When you’re done transferring data, ship the Snowball Edge back to AWS\. We then import your data into Amazon S3\.
 
 **Important**  
 Snowball Edge cannot write to buckets if you have turned on S3 Object Lock\. We also cannot write to your bucket if IAM policies on the bucket prevent writing to the bucket\.
 
-### How Export Works<a name="s3-export"></a>
+### How export works<a name="s3-export"></a>
 
 Each export job can use any number of AWS Snowball Edge devices\. After you create a job, a listing operation starts in Amazon S3\. This listing operation splits your job into parts\. Each job part has exactly one device associated with it\. After your job parts are created, your first job part enters the **Preparing** Snowball status\.
 
@@ -207,7 +207,7 @@ Snowball Edge is unable to export files that are in S3 Glacier storage class\. T
 
 You can use the default AWS managed or customer managed encryption keys to protect your data when importing or exporting data\.
 
-#### Using Amazon S3 Default Bucket Encryption with AWS KMS Managed Keys<a name="kms-aws-managed-keys"></a>
+#### Using Amazon S3 default bucket encryption with AWS KMS managed keys<a name="kms-aws-managed-keys"></a>
 
 **To enable AWS managed encryption with AWS KMS**
 
@@ -231,7 +231,7 @@ The following are examples of such a statement\.
 
 If you use server\-side encryption with AWS KMS managed keys \(SSE\-KMS\) to encrypt the Amazon S3 buckets associated with your import job, you also need to add the following statement to your IAM role\.
 
-**Example: Snowball import IAM role**  
+**Example Snowball import IAM role**  
 
 ```
 {
@@ -248,7 +248,7 @@ If you use server\-side encryption with AWS KMS managed keys \(SSE\-KMS\) to enc
 
 If you use server\-side encryption with AWS KMS managed keys to encrypt the Amazon S3 buckets associated with your export job, you also must add the following statement to your IAM role\.
 
-**Example Snowball import IAM role**  
+**Example Snowball export IAM role**  
 
 ```
 {
@@ -260,7 +260,7 @@ If you use server\-side encryption with AWS KMS managed keys to encrypt the Amaz
 }
 ```
 
-#### Using S3 Default Bucket Encryption with AWS KMS Customer Keys<a name="kms-customer-keys"></a>
+#### Using S3 default bucket encryption with AWS KMS customer keys<a name="kms-customer-keys"></a>
 
 You can use the default Amazon S3 bucket encryption with your own KMS keys to protect data you are importing and exporting\.
 
@@ -359,7 +359,7 @@ After this policy has been added to the AWS KMS customer managed key, it is also
 
 After this policy has been added to the AWS KMS customer managed key, it is also needed to update the IAM role associated with the Snowball job\. By default, the role is `snowball-export-s3-only-role`\.
 
-### Amazon S3 Encryption with Server\-Side Encryption<a name="s3-sse-encryption"></a>
+### Amazon S3 Encryption with server\-side encryption<a name="s3-sse-encryption"></a>
 
 AWS Snowball supports server\-side encryption with Amazon S3 managed encryption keys \(SSE\-S3\)\. Server\-side encryption is about protecting data at rest, and SSE\-S3 has strong, multifactor encryption to protect your data at rest in Amazon S3\. For more information about SSE\-S3, see [Protecting Data Using Server\-Side Encryption with Amazon S3\-Managed Encryption Keys \(SSE\-S3\)](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html) in the * Amazon Simple Storage Service User Guide*\.
 

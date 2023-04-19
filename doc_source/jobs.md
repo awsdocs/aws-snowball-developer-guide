@@ -12,7 +12,7 @@ With an AWS Snowball Edge device, all jobs can use the compute functionality in 
 
 ## Job Details<a name="jobdetails"></a>
 
-Each job is defined by the details that you specify when it's created\. The following table describes all the details of a job\.
+Before creating a job, ensure the [prerequisites](whatisedge.md#snowball-prereqs) are met\. Each job is defined by the details that you specify when it's created\. The following table describes all the details of a job\.
 
 
 ****  
@@ -24,7 +24,7 @@ Each job is defined by the details that you specify when it's created\. The foll
 | Job ID | JobId | A unique 39\-character label that identifies your job\. The job ID appears at the bottom of the shipping label that appears on the E Ink display, and in the name of a job's manifest file\. | 
 | Address | AddressId | The address that the device will be shipped to\. In the case of the API, this is the ID for the address data type\. | 
 | Created date |  CreationDate  | The date that you created this job\. | 
-| Shipping speed | ShippingOption | Speed options are based on region\. For more information, see [Shipping Speeds](mailing-storage.md#shippingspeeds)\. | 
+| Shipping speed | ShippingOption | Speed options are based on region\. For more information, see [Shipping speeds](mailing-storage.md#shippingspeeds)\. | 
 | IAM role ARN | RoleARN | This Amazon Resource Name \(ARN\) is the AWS Identity and Access Management \(IAM\) role that is created during job creation with write permissions for your Amazon S3 buckets\. The creation process is automatic, and the IAM role that you allow AWS Snowball to assume is only used to copy your data between your S3 buckets and the Snowball\. For more information, see [Permissions Required to Use the AWS Snowball Console](access-control-managing-permissions.md#additional-console-required-permissions)\. | 
 | AWS KMS key | KmsKeyARN | In AWS Snowball, AWS Key Management Service \(AWS KMS\) encrypts the keys on each Snowball\. When you create your job, you also choose or create an ARN for an AWS KMS encryption key that you own\. For more information, see [AWS Key Management Service in AWS Snowball Edge](kms.md)\. | 
 | Snowball capacity | SnowballCapacityPreference | AWS Snowball devices come in two sizes: 80 TB for Storage Optimized or 42 TB for Compute Optimized\. The available size depends on your AWS Region\.  | 

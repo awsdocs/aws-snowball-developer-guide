@@ -1,4 +1,4 @@
-# Transferring Files to AWS Snowball Edge Using the File Interface<a name="using-fileinterface"></a>
+# Transferring Files to Snowball Edge devices using the File Interface<a name="using-fileinterface"></a>
 
 Following, you can find information about using the file interface for the AWS Snowball Edge device\. Using this file interface, you can drag and drop files from your computer into Amazon S3 buckets on the Snowball Edge device\.
 
@@ -8,7 +8,7 @@ If you created your job before July 17, 2018, this information doesn't apply to 
 **Topics**
 + [Overview of the File Interface](#fileinterface-overview)
 + [Starting the File Interface](#starting-fileinterface)
-+ [Mounting a Bucket with the File Interface](#mounting-fileinterface)
++ [Mounting a bucket with the File Interface](#mounting-fileinterface)
 + [Monitoring the File Interface](#monitor-fileinterface)
 
 ## Overview of the File Interface<a name="fileinterface-overview"></a>
@@ -19,10 +19,13 @@ After the file share has been mounted, a new **file interface** tab appears on t
 
 You can use the local LCD display on the AWS Snowball Edge device to disable or enable the file interface\. By unlocking the AWS Snowball Edge device, you have all the permissions necessary to read and write data through the file interface\. 
 
+**Note**  
+For best performance, use a Linux client to copy files to the Snowball Edge device\.
+
 **Topics**
 + [Benefits of the File Interface](#fileinterface-benefits)
-+ [Prerequisites for Using the File Interface](#fileinterface-prereqs)
-+ [Considerations for Using the File Interface](#fileinterface-considerations)
++ [Prerequisites for using the File Interface](#fileinterface-prereqs)
++ [Considerations for using the File Interface](#fileinterface-considerations)
 
 ### Benefits of the File Interface<a name="fileinterface-benefits"></a>
 
@@ -32,7 +35,7 @@ You might want to use the file interface to read and write data because of the f
 + The file interface preserves user\-defined metadata in objects\. This metadata includes permissions, ownership, and timestamps and can be useful for tracking\.
 + Because files are written to the buckets on the device, adding files can trigger associated AWS Lambda powered by AWS IoT Greengrass functions\.
 
-### Prerequisites for Using the File Interface<a name="fileinterface-prereqs"></a>
+### Prerequisites for using the File Interface<a name="fileinterface-prereqs"></a>
 
 Before you can use the file interface, the following steps must occur:
 + You must create a job for your Snowball Edge device\. 
@@ -42,13 +45,13 @@ Before you can use the file interface, the following steps must occur:
 
 If one or more of those steps haven't occurred, see the following topics:
 + For information about creating a job to use a Snowball Edge device, see [Getting Started](getting-started.md)\.
-+ For information about unlocking a Snowball Edge device, see [Transferring Files Using the Amazon S3 Interface](using-adapter.md)\.
++ For information about using the S3 interface, see [Transferring Files Using the Amazon S3 Interface](using-adapter.md)\.
 + For information about unlocking a Snowball Edge device, see [unlocking a device](https://docs.aws.amazon.com/en_us/snowball/latest/developer-guide/connect-unlock-device-sbe.html)\.
 
 **Important**  
 For AWS services to work properly on a Snowball Edge device, you must allow the ports for the services\. For details, see [Ports Required to Use AWS Services on an AWS Snowball Edge Device](port-requirements.md)\.
 
-### Considerations for Using the File Interface<a name="fileinterface-considerations"></a>
+### Considerations for using the File Interface<a name="fileinterface-considerations"></a>
 
 While using the file interface, keep the following considerations in mind:
 + The maximum size of a file that you can transfer to the file interface on a Snowball Edge device is 5 TB\. 
@@ -74,15 +77,15 @@ It can take an hour or more for the file interface to activate\. Don't power off
 
    ```
    snowballEdge create-virtual-network-interface \
-   --physical-network-interface-id s.ni-abcd1234 \
-   --ip-address-assignment DHCP
+       --physical-network-interface-id s.ni-abcd1234 \
+       --ip-address-assignment DHCP
    	         
    	        //OR//
    	        
    snowballEdge create-virtual-network-interface \
-   --physical-network-interface-id s.ni-abcd1234 \
-   --ip-address-assignment STATIC \
-   --static-ip-address-configuration IpAddress=192.0.2.0,Netmask=255.255.255.0
+       --physical-network-interface-id s.ni-abcd1234 \
+       --ip-address-assignment STATIC \
+       --static-ip-address-configuration IpAddress=192.0.2.0,Netmask=255.255.255.0
    ```  
 **Example**  
 
@@ -108,8 +111,8 @@ It can take an hour or more for the file interface to activate\. Don't power off
 
    ```
    snowballEdge start-service \
-   --service-id fileinterface \
-   --virtual-network-interface-arns arn:aws:snowball-device:::interface/s.ni-abcd1234abcd1234a
+       --service-id fileinterface \
+       --virtual-network-interface-arns arn:aws:snowball-device:::interface/s.ni-abcd1234abcd1234a
    ```  
 **Example**  
 
@@ -123,18 +126,18 @@ It can take an hour or more for the file interface to activate\. Don't power off
 
 It takes an hour or more for the file interface to activate\. After that time, the file interface will start\. Anytime you need the IP address for the file interface, you can use the `snowballEdge describe-virtual-network-interfaces` Snowball Edge client command\.
 
-## Mounting a Bucket with the File Interface<a name="mounting-fileinterface"></a>
+## Mounting a bucket with the File Interface<a name="mounting-fileinterface"></a>
 
 The following contains guidance on mounting a file share on a Snowball Edge device to the NFS client on your computer using the file interface\. It includes information about the supported NFS clients and procedures for enabling those clients on Linux, macOS, and Windows operating systems\.
 
 **Topics**
-+ [Supported NFS Clients for the File Interface](#supported-nfs-clients)
-+ [Getting the IP Address for the File Share of a Bucket on a Snowball Edge device](#fileinterface-ipaddress)
-+ [Mounting a File Share with the File Interface on Linux](#mounting-fileinterface-linux)
-+ [Mounting a File Share with the File Interface on macOS](#mounting-fileinterface-mac)
-+ [Mounting a File Share with the File Interface on Microsoft Windows](#mounting-fileinterface-windows)
++ [Supported NFS clients for the File Interface](#supported-nfs-clients)
++ [Getting the IP address for the file share of a bucket on a Snowball Edge device](#fileinterface-ipaddress)
++ [Mounting a file share with the file Interface on Linux](#mounting-fileinterface-linux)
++ [Mounting a file share with the file interface on macOS](#mounting-fileinterface-mac)
++ [Mounting a file share with the file interface on Microsoft Windows](#mounting-fileinterface-windows)
 
-### Supported NFS Clients for the File Interface<a name="supported-nfs-clients"></a>
+### Supported NFS clients for the File Interface<a name="supported-nfs-clients"></a>
 
 The file interface supports the following NFS clients:
 
@@ -147,7 +150,10 @@ The file interface supports the following NFS clients:
 + Windows 10, Windows Server 2012, and Windows Server 2016
 + Windows 7 and Windows Server 2008\. For these clients, the maximum supported NFS I/O size is 32 KB\. Because of this factor, you might experience degraded performance on these versions of Windows\.
 
-### Getting the IP Address for the File Share of a Bucket on a Snowball Edge device<a name="fileinterface-ipaddress"></a>
+**Note**  
+For best performance, use a Linux client to copy files to the Snowball Edge device\.
+
+### Getting the IP address for the file share of a bucket on a Snowball Edge device<a name="fileinterface-ipaddress"></a>
 
 You can mount the file shares with a simple command, if you have the IP address for the file share on a Snowball Edge device\. You can find the file share's IP address on the LCD display in the **CONNECTION** tab\. You can't use the file interface if this IP address is blank\. Ensure that the file interface gets an IP address\.
 
@@ -166,7 +172,7 @@ The IP address for the file interface is not the IP address that you used to unl
 
 Now that you have your IP address, you're ready to mount a bucket on the Snowball Edge device using the appropriate mount command for your computer's operating system\.
 
-### Mounting a File Share with the File Interface on Linux<a name="mounting-fileinterface-linux"></a>
+### Mounting a file share with the file Interface on Linux<a name="mounting-fileinterface-linux"></a>
 
 When you mount file shares on your Linux server, we recommend that you first update your NFS client with the following command\.
 
@@ -174,7 +180,7 @@ When you mount file shares on your Linux server, we recommend that you first upd
 $sudo yum install nfs-utils
 ```
 
-When the file interface is enabled, it exposes an NFS mount point for each local bucket on the device\. The file interface supports NFS versions 3, 4\.0, and 4\.1\. You can mount the file shares with a simple command with the IP address for the file interface\. For more information, see [Getting the IP Address for the File Share of a Bucket on a Snowball Edge device](#fileinterface-ipaddress)\.
+When the file interface is enabled, it exposes an NFS mount point for each local bucket on the device\. The file interface supports NFS versions 3, 4\.0, and 4\.1\. You can mount the file shares with a simple command with the IP address for the file interface\. For more information, see [Getting the IP address for the file share of a bucket on a Snowball Edge device](#fileinterface-ipaddress)\.
 
 When you have the IP address, you can mount a bucket with the following command\.
 
@@ -188,9 +194,9 @@ For example, suppose that the IP address for the file interface is 192\.0\.1\.0 
 mount -t nfs -o nolock 192.0.1.0:/test-bucket mnt/test-bucket
 ```
 
-### Mounting a File Share with the File Interface on macOS<a name="mounting-fileinterface-mac"></a>
+### Mounting a file share with the file interface on macOS<a name="mounting-fileinterface-mac"></a>
 
-You can mount the file shares with a simple command with the IP address for the file interface\. For more information, see [Getting the IP Address for the File Share of a Bucket on a Snowball Edge device](#fileinterface-ipaddress)\. When you mount file shares on macOS, you must declare the version of the NFS protocol that you're using when you run the `mount` command\. For example, if you're using the NFSv3\.0 protocol, you use the `vers=3` option\.
+You can mount the file shares with a simple command with the IP address for the file interface\. For more information, see [Getting the IP address for the file share of a bucket on a Snowball Edge device](#fileinterface-ipaddress)\. When you mount file shares on macOS, you must declare the version of the NFS protocol that you're using when you run the `mount` command\. For example, if you're using the NFSv3\.0 protocol, you use the `vers=3` option\.
 
 ```
 mount -t nfs -o vers=3,nolock IP Address:/BucketName local mount directory
@@ -202,7 +208,7 @@ For example, suppose that the IP address for the file interface is 192\.0\.1\.0,
 sudo mount_nfs -o vers=3,nolock -v 192.0.1.0:/test-bucket private/mybucket
 ```
 
-### Mounting a File Share with the File Interface on Microsoft Windows<a name="mounting-fileinterface-windows"></a>
+### Mounting a file share with the file interface on Microsoft Windows<a name="mounting-fileinterface-windows"></a>
 
 When you mount file shares on your Windows server, you must turn on the Windows Client for NFS\. You also must assign the mount point a drive letter with the `mount` command\.
 
@@ -219,7 +225,7 @@ For a Windows 7 or Windows Server 2008 server, the maximum supported NFS I/O siz
 
 1. Choose **OK**\.
 
-You can mount the file shares with a simple command with the IP address for the file interface\. For more information, see [Getting the IP Address for the File Share of a Bucket on a Snowball Edge device](#fileinterface-ipaddress)\. You can now mount the file shares on the AWS Snowball Edge device to an unused drive on your Windows server as in the following example\.
+You can mount the file shares with a simple command with the IP address for the file interface\. For more information, see [Getting the IP address for the file share of a bucket on a Snowball Edge device](#fileinterface-ipaddress)\. You can now mount the file shares on the AWS Snowball Edge device to an unused drive on your Windows server as in the following example\.
 
 ```
 mount -o nolock IP Address:/BucketName DriveLetter:
@@ -236,11 +242,11 @@ mount -o nolock 192.0.1.0:/test-bucket Z:
 When you use the file interface, it's important to monitor its overall health and current status\. You can perform these tasks by using the **file interface** tab on the LCD display on the front of the AWS Snowball Edge device\.
 
 **Topics**
-+ [Getting the Status of the File Interface](#fileinterface-statusinfo)
-+ [Securing Your NFS Connection](#fileinterface-secureconnect)
++ [Getting the status of the File Interface](#fileinterface-statusinfo)
++ [Securing your NFS connection](#fileinterface-secureconnect)
 + [Disabling the File Interface](#fileinterface-cleanup)
 
-### Getting the Status of the File Interface<a name="fileinterface-statusinfo"></a>
+### Getting the status of the File Interface<a name="fileinterface-statusinfo"></a>
 
 On the **file interface** tab, there are two health indicators, **Status** and **Write status**\. The following list describes how to work with these indicators:
 + **Status** indicates the operational status of the file interface as a whole\. It has the following possible values:
@@ -252,7 +258,7 @@ On the **file interface** tab, there are two health indicators, **Status** and *
   + At 0–99 percent, a write operation is actively happening on the device and data is in the buffer\. Don't disconnect the device before the write operation is completed\.
   + At 100 percent, with a green progress bar, the last write operation has been completed successfully\. There is no data in the buffer, and no new write operations have begun\.
 
-### Securing Your NFS Connection<a name="fileinterface-secureconnect"></a>
+### Securing your NFS connection<a name="fileinterface-secureconnect"></a>
 
 When a job for an AWS Snowball Edge device is created on the AWS Management Console, all Amazon S3 buckets selected for the job are enabled by default as active file shares\. When the device arrives at your site, and you set up, connect, and unlock it, anyone on your network who can see the IP address for the file interface can access the file shares for each bucket\.
 

@@ -10,7 +10,11 @@ Amazon EC2 compute instances that come with your Snow Family devices are launche
 The following Linux operating systems are supported:
 + [Amazon Linux 2 for Snow Family](https://aws.amazon.com/marketplace/pp/B08Q76DLTM/             )
 + [CentOS 7 \(x86\_64\) \- with Updates HVM](https://aws.amazon.com/marketplace/pp/B00O7WM7QW)
-+ [Ubuntu 16\.04 LTS \- Xenial \(HVM\)](https://aws.amazon.com/marketplace/pp/B01JBL2M0O)
++ Ubuntu 16\.04 LTS \- Xenial \(HVM\)
+**Note**  
+Ubuntu 16\.04 LTS \- Xenial \(HVM\) images are no longer supported in the AWS Marketplace, but still supported for use on Snowball Edge devices through Amazon EC2 VM Import/Export and running locally in AMIs\.
++ [Ubuntu 20\.04 LTS \- Focal](https://aws.amazon.com/marketplace/pp/prodview-iftkyuwv2sjxi)
++ [Ubuntu 22\.04 LTS \- Jammy](https://aws.amazon.com/marketplace/pp/prodview-f2if34z3a4e3i)
 
 **Windows**  
 The following Windows operating systems are supported:
@@ -21,7 +25,8 @@ The following Windows operating systems are supported:
 You can add Windows AMIs to your device by importing your Windows virtual machine \(VM\) image into AWS using VM Import/Export\. Or, you can import the image into your device right after the device is deployed to your site\. For more information, see [Adding a Microsoft Windows AMI](#windows-ami)\. 
 
 **Note**  
-Windows AMIs that originated in AWS can't be added to your device\.
+Windows AMIs that originated in AWS can't be added to your device\.  
+AMIs imported locally must be in BIOS boot mode as UEFI is not supported\.
 
  Snow Family supports the Bring Your Own License \(BYOL\) model\. For more information, see [Adding a Microsoft Windows AMI](#windows-ami)\. 
 
@@ -34,7 +39,7 @@ Windows AMIs that originated in AWS can't be added to your device\.
 
 ## Adding an AMI When Ordering Your Device<a name="add-ami-order"></a>
 
-When you order your device, you can add AMIs to the device by choosing **Enable Compute with EC2** in the AWS Snow Family Management Console\. When you choose **Add AMI**, you see the **Source AMI name** list that contains all the AMIs that can be loaded onto your device\. The AMIs fall into the following categories:
+When you order your device, you can add AMIs to the device by choosing them in the **Compute using EC2 instances \- optional** section in the AWS Snow Family Management Console\. The **Compute using EC2 instances \- optional** lists all of the AMIs that can be loaded onto your device\. The AMIs fall into the following categories:
 + **AMIs from AWS Marketplace** — These are AMIs created from the list of supported AMIs\. For information about creating an AMI from the supported AMIs from AWS Marketplace, see [Adding an AMI from AWS Marketplace](#add-marketplace-ami)\.
 + **AMIs uploaded using VM Import/Export** — When you order your device, the AMIs that were uploaded using VM Import/Export are listed in the console\. For more information, see [Importing a VM as an Image Using VM Import/Export](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html) in the *VM Import/Export User Guide*\. For information about supported virtualization environments, see [VM Import/Export Requirements](https://docs.aws.amazon.com/vm-import/latest/userguide/vmie_prereqs.html)\.
 

@@ -1,6 +1,6 @@
 # Administering a Cluster<a name="administercluster"></a>
 
-Following, you can find information about administrative tasks to operate a healthy cluster of Snowball Edge devices\. The primary administrative tasks are covered in the following topics\.
+The following sections provide information about the primary administrative tasks needed to operate a healthy cluster of Snowball Edge devices\. 
 
 **Topics**
 + [Reading and Writing Data to a Cluster](#transfer-to-cluster)

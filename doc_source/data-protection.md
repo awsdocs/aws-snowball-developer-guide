@@ -6,7 +6,7 @@ AWS Snowball conforms to the AWS [shared responsibility model](https://aws.amazo
 + [Protecting Data in the Cloud](data-protection-cloud.md)
 + [Protecting Data On Your Device](data-protection-device.md)
 
-For data protection purposes, we recommend that you protect AWS account credentials and set up individual user accounts with AWS Identity and Access Management \(IAM\), so that each user is given only the permissions necessary to fulfill their job duties\. We also recommend that you secure your data in the following ways:
+For data protection purposes, we recommend that you protect AWS account credentials and set up individual users with AWS Identity and Access Management \(IAM\), so that each user is given only the permissions necessary to fulfill their job duties\. We also recommend that you secure your data in the following ways:
 + Use multi\-factor authentication \(MFA\) with each account\.
 + Use SSL/TLS to communicate with AWS resources\. We recommend TLS 1\.2 or later\.
 + Set up API and user activity logging with AWS CloudTrail\.

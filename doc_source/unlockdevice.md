@@ -2,7 +2,7 @@
 
 Use the procedure described here or the section in [OpsHub for Snow Family to manage devices](https://docs.aws.amazon.com/snowball/latest/developer-guide/aws-opshub.html)
 
-To unlock the AWS Snowball Edge device, run the `snowballEdge unlock-device` command\. To run this command, the AWS Snowball Edge device that you use for your job must be onsite, plugged into power and network, and turned on\. In addition, the LCD display on the front of the AWS Snowball Edge device must indicate that the device is ready for use\.
+To unlock the AWS Snowball Edge device, run the `snowballEdge unlock-device` command\. To run this command, the AWS Snowball Edge device that you use for your job must be on site, plugged into power and network, and turned on\. In addition, the LCD display on the front of the AWS Snowball Edge device must indicate that the device is ready for use\.
 
 **To unlock the device with the Snowball Edge client**
 
@@ -17,7 +17,7 @@ To unlock the AWS Snowball Edge device, run the `snowballEdge unlock-device` com
 1. Run the `snowballEdge unlock-device` command to authenticate your access to the AWS Snowball Edge device with the endpoint of the AWS Snowball Edge device and your credentials, as follows\.
 
    ```
-   snowballEdge unlock-device --endpoint https://ip address --manifest-file Path/to/manifest/file --unlock-code
+   snowballEdge unlock-device --endpoint https://ip address --manifest-file /Path/to/manifest/file --unlock-code
     29 character unlock code
    ```
 

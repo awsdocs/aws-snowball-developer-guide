@@ -47,7 +47,7 @@ When any one of these validation errors occurs, it is logged\. You can take step
 After an import job has completed, you have several options to manually validate the data in Amazon S3, as described following\.
 
 **Check job completion report and associated logs**  
-Whenever data is imported into or exported out of Amazon S3, you get a downloadable PDF job report\. For import jobs, this report becomes available at the end of the import process\. For more information, see [Getting Your Job Completion Report and Logs on the Console](report.md)\.
+Whenever data is imported into or exported out of Amazon S3, you get a downloadable PDF job report\. For import jobs, this report becomes available at the end of the import process\. For more information, see [Getting your job completion report and logs on the console](report.md)\.
 
 **S3 inventory**  
 If you transferred a huge amount of data into Amazon S3 in multiple jobs, going through each job completion report might not be an efficient use of time\. Instead, you can get an inventory of all the objects in one or more Amazon S3 buckets\. Amazon S3 inventory provides a comma\-separated values \(CSV\) file showing your objects and their corresponding metadata on a daily or weekly basis\. This file covers objects for an Amazon S3 bucket or a shared prefix \(that is, objects that have names that begin with a common string\)\.

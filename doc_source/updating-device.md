@@ -1,31 +1,36 @@
-# Updating Software on an AWS Snowball Edge<a name="updating-device"></a>
+# Updating software on Snowball Edge devices<a name="updating-device"></a>
 
-You can download software updates from AWS and install them on AWS Snowball Edge devices in your on\-premises environments\. These updates happen in the background\. You can continue to use your devices as normal while the latest software is downloaded securely from AWS to your device\. However, to apply downloaded updates, you must restart the device\.
+You can download software updates from AWS and install them on Snowball Edge devices in your on\-premises environments\. These updates happen in the background\. You can continue to use your devices as normal while the latest software is downloaded securely from AWS to your device\. However, to apply downloaded updates, you must restart the device\.
+
+Software updates provided by AWS for Snowball Edge/Snowcone devices \(Appliances\) are Appliance Software as per Section 9 of the Service Terms\.
+
+The software updates are provided solely for the purpose of installing the software updates on the applicable Appliance on behalf of AWS\. You will not \(or attempt to\), and will not permit or authorize third parties to \(or attempt to\) \(i\) make any copies of the software updates other than those necessary to install the software updates on the applicable Appliance, or \(ii\) circumvent or disable any features or measures in the software updates, including, but not limited to, any encryption applied to the software update\. Once the software updates have been installed on the applicable Appliance, you agree to delete the software updates from any and all media utilized in installing the software updates to the Appliance\.
 
 **Warning**  
 We highly recommend that you suspend all activity on your device before restarting it\. Restarting a device stops running instances, interrupts any writing to local Amazon S3 buckets, and stops any write operations from the file interface without clearing the cache\. All of these processes can result in lost data\.
 
 **Topics**
 + [Prerequisites](#prereq-updating-device)
-+ [Downloading Updates](#download-updates)
-+ [Installing Updates](#install-updates)
++ [Downloading updates](#download-updates)
++ [Installing updates](#install-updates)
++ [Update the SSL certificate](#update-ssl-cert)
 
 ## Prerequisites<a name="prereq-updating-device"></a>
 
 Before you can update your device, the following prerequisites must be met:
-+ You've created your job, have the device on\-premises, and you've unlocked it\. For more information, see [Getting Started](getting-started.md)\.
-+ Updating a Snowball Edge is done through the Snowball Edge client\. The Snowball Edge client must be downloaded and installed on a computer in your local environment that has a network connection to the device you want to update\. For more information, see [Using the Snowball Edge Client](using-client.md)\.
-+ \(Optional\) We recommend that you configure a profile for the Snowball Edge client\. For more information, see [Configuring a Profile for the Snowball Edge Client](using-client-commands.md#client-configuration)\.
++ You've created your job, have the device on\-premises, and you've unlocked it\. For more information, see [Getting Started](https://docs.aws.amazon.com/snowball/latest/developer-guide/getting-started.html)\.
++ Updating Snowball Edge devices is done through the Snowball Edge client\. The Snowball Edge client must be downloaded and installed on a computer in your local environment that has a network connection to the device you want to update\. For more information, see [Using the Snowball Edge Client](https://docs.aws.amazon.com/snowball/latest/developer-guide/using-client.html)\.
++ \(Optional\) We recommend that you configure a profile for the Snowball Edge client\. For more information, see [Configuring a Profile for the Snowball Edge Client](https://docs.aws.amazon.com/snowball/latest/developer-guide/using-client-commands.html#client-configuration)\.
 
 After you complete these tasks, you can download and install updates for Snowball Edge devices\.
 
-## Downloading Updates<a name="download-updates"></a>
+## Downloading updates<a name="download-updates"></a>
 
-There are two primary ways that you can download an update for a Snowball Edge device: 
+There are two primary ways that you can download an update for Snowball Edge devices: 
 + You can trigger manual updates at any time using specific Snowball Edge client commands\.
 + You can programmatically determine a time to automatically update the device\.
 
-The following procedure outlines the process of manually downloading updates\. For information about automatically updating your Snowball Edge device, see `snowballEdge configure-auto-update-strategy` in [Updating a Snowball Edge](using-client-commands.md#update-client-commands)\.
+The following procedure outlines the process of manually downloading updates\. For information about automatically updating your Snowball Edge; device, see `snowballEdge configure-auto-update-strategy` in [Updating a Snowball Edge](https://docs.aws.amazon.com/snowball/latest/developer-guide/using-client-commands.html#update-client-commands)\.
 
 **Note**  
 If your device has no access to the internet, you can download an update file using the [GetSoftwareUpdates](https://docs.aws.amazon.com/snowball/latest/api-reference/API_GetSoftwareUpdates.html) API\. Then point to a local file location when you call `download-updates` using the `--uri` option, as in the following example\.  
@@ -53,7 +58,7 @@ If your device is not connected to the internet, first download an update file u
 **Example output**  
  `Install State: Downloading`
 
-## Installing Updates<a name="install-updates"></a>
+## Installing updates<a name="install-updates"></a>
 
 After downloading updates, you must install them and restart your device for the updates to take effect\. The following procedure guides you through manually installing updates\.
 
@@ -74,7 +79,7 @@ After downloading updates, you must install them and restart your device for the
 **Warning**  
 Restarting your Snowball Edge device without stopping all activity on the device can result in lost data\.
 
-   To stop a service running on your Snowball Edge, you can use the `snowballEdge stop-service` command\. 
+   To stop a service running on your Snowball Edge device, you can use the `snowballEdge stop-service` command\. 
 
    The Amazon S3, Amazon EC2, AWS STS, and IAM services cannot be stopped\.
 
@@ -84,10 +89,46 @@ Restarting your Snowball Edge device without stopping all activity on the device
 
 1. Use this information to stop those services \(setting the services to the `INACTIVE` state\)\.
 
-1. When all the services on the device have stopped, run the `snowballEdge reboot-device` command\. This command immediately power\-cycles the device to complete installation of the downloaded software updates\.
+1. When all the services on the device have stopped, run the `snowballEdge reboot-device` command **twice**\. This command immediately power\-cycles the device to complete installation of the downloaded software updates\.
 
-1. After the device powers on, open a terminal window and use the `snowballEdge unlock-device` command to unlock the device\.
+1. When the device powers on after the second reboot, open a terminal window and use the `snowballEdge unlock-device` command to unlock the device\.
 
 1. Run the `snowballEdge check-for-updates` command\. This command returns the latest available version of the Snowball Edge software, and also the current version that is installed on the device\.
 
 You have now successfully updated your device and confirmed that your device is up to date with the latest Snowball Edge software\.
+
+## Update the SSL certificate<a name="update-ssl-cert"></a>
+
+If you plan to keep your Snowball Edge device for more than 360 days, you will need to update the Secure Sockets Layer \(SSL\) certificate on the device to avoid interruption of your use of the device\. If the certificate expires, you will not be able to use the device and will have to return it to AWS\.
+
+This topic explains how update your device after you determined when the certificate will expire\.
+
+**Note**  
+Request an update from AWS at least two weeks before the certificate will expire to avoid interruption of your use of the device\.
+
+1. Use a tool like [OpenSSL](https://www.openssl.org) to determine when the certificate will expire\. For example, use the `openssl s_client` command to connect to the device and see information about the certificate\.  
+**Example of openssL s\_client command syntax on Windows**  
+
+   ```
+       openssl s_client -connect IP.ADDRESSOFSNOW:9091
+   ```  
+**Example of openssl s\_client command syntax on macOS**  
+
+   ```
+       openssl s_client -connect IP.ADDRESSOFSNOW:9091 | openssl x509 -noout -enddate
+   ```
+
+   In the output of the command, the value of `NotAfter` is the date and time at which the certificate expires\.  
+**Example value of NotAfter output of openssl s\_client command**  
+
+   ```
+   …
+   NotAfter: Sep  3 19:11:50 2022 GMT
+   …
+   ```
+
+1. Contact AWS Support and request an SSL certificate update\.
+
+1. AWS Support will provide an update file\. [Download](#download-updates) and [install](#install-updates) the update file\.
+
+1. Use the new unlock code and manifest file when [Unlocking the Snowball Edge](https://docs.aws.amazon.com/latest/developer-guide/unlockdevice.html)\.

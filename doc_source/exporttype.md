@@ -12,6 +12,7 @@ When you copy objects into your on\-premises data destination from a device usin
 When AWS receives a returned device, we completely erase it, following the NIST 800\-88 standards\.
 
 **Important**  
+Data you want to export to a Snow device must be in Amazon S3\. Any data in Amazon S3 Glacier that you plan to export to the Snow device will have to be thawed or moved into the S3 storage class before it can be exported\. Do this before creating the Snow export job\.  
 Don't change, update, or delete the exported Amazon S3 objects until you can verify that all of your contents for the entire job have been copied to your on\-premises data destination\.
 
 When you create an export job, you can export an entire Amazon S3 bucket or a specific range of objects keys\.
@@ -30,12 +31,16 @@ For more information about the specifics of UTF\-8, see [UTF\-8 on Wikipedia](ht
 
 ### Export Range Examples<a name="range-examples"></a>
 
-Assume that you have a bucket containing the following objects, sorted in UTF\-8 binary order:
+Assume that you have a bucket containing the following objects and prefixes, sorted in UTF\-8 binary order:
 + 01
 + Aardvark
 + Aardwolf
 + Aasvogel/apple
++ Aasvogel/arrow/object1
++ Aasvogel/arrow/object2
 + Aasvogel/banana
++ Aasvogel/banker/object1
++ Aasvogel/banker/object2
 + Aasvogel/cherry
 + Banana
 + Car
@@ -44,16 +49,23 @@ Assume that you have a bucket containing the following objects, sorted in UTF\-8
 | Specified range beginning | Specified range ending | Objects in the range that will be exported | 
 | --- | --- | --- | 
 | \(none\) | \(none\) | All of the objects in your bucket | 
-| \(none\) | Aasvogel |  01 Aardvark Aardwolf Aasvogel/apple Aasvogel/banana Aasvogel/cherry  | 
-| \(none\) | Aasvogel/banana |  01 Aardvark Aardwolf Aasvogel/apple Aasvogel/banana | 
-| Aasvogel | \(none\) |  Aasvogel/apple Aasvogel/banana Aasvogel/cherry Banana Car | 
-| Aardwolf | \(none\) | Aardwolf Aasvogel/apple Aasvogel/banana Aasvogel/cherry Banana Car | 
-| Aar | \(none\) | Aardvark Aardwolf Aasvogel/apple Aasvogel/banana Aasvogel/cherry Banana Car | 
+| \(none\) | Aasvogel |  01 Aardvark Aardwolf Aasvogel/apple Aasvogel/arrow/object1 Aasvogel/arrow/object2 Aasvogel/banana Aasvogel/banker/object1 Aasvogel/banker/object2 Aasvogel/cherry  | 
+| \(none\) | Aasvogel/banana |  01 Aardvark Aardwolf Aasvogel/apple Aasvogel/arrow/object1 Aasvogel/arrow/object2 Aasvogel/banana | 
+| Aasvogel | \(none\) |  Aasvogel/apple Aasvogel/arrow/object1 Aasvogel/arrow/object2 Aasvogel/banana Aasvogel/banker/object1 Aasvogel/banker/object2 Aasvogel/cherry Banana Car | 
+| Aardwolf | \(none\) | Aardwolf Aasvogel/apple Aasvogel/arrow/object1 Aasvogel/arrow/object2 Aasvogel/banana Aasvogel/banker/object1 Aasvogel/banker/object2 Aasvogel/cherry Banana Car | 
+| Aar | \(none\) | Aardvark Aardwolf Aasvogel/apple Aasvogel/arrow/object1 Aasvogel/arrow/object2 Aasvogel/banana Aasvogel/banker/object1 Aasvogel/banker/object2 Aasvogel/cherry Banana Car | 
 | car | \(none\) | No objects are exported, and you get an error message when you try to create the job\. Note that *car* is sorted below *Car* according to UTF\-8 binary values\. | 
 | Aar | Aarrr | Aardvark Aardwolf | 
+|  Aasvogel/arrow  | Aasvogel/arrox |  Aasvogel/arrow/object1 Aasvogel/arrow/object2  | 
+| Aasvogel/apple | Aasvogel/banana |  Aasvogel/apple Aasvogel/arrow/object1 Aasvogel/arrow/object2 Aasvogel/banana  | 
+| Aasvogel/apple | Aasvogel/banker |  Aasvogel/apple Aasvogel/arrow/object1 Aasvogel/arrow/object2 Aasvogel/banana Aasvogel/banker/object1 Aasvogel/banker/object2  | 
+| Aasvogel/apple | Aasvogel/cherry |  Aasvogel/apple Aasvogel/arrow/object1 Aasvogel/arrow/object2 Aasvogel/banana Aasvogel/banker/object1 Aasvogel/banker/object2 Aasvogel/cherry  | 
 
 ## Export Jobs Best Practices<a name="export-jobs-best-practices"></a>
 + Ensure data is in Amazon S3, batch small files before ordering the job
 + Ensure key ranges are specified in the export job definition if you have millions of objects in your bucket
 + Ensure begin key marker and end key marker are not the same
 + Update object keys to remove slash in the name as objects with trailing slashes in their names \(/ or \\\) are not transferred to Snowball Edge
++ For S3 buckets, the object length limitation is 255 characters\.
++ For S3 buckets that are version‐enabled, only the current version of objects are exported\.
++ Delete markers are not exported\.

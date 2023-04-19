@@ -41,6 +41,8 @@ The following tables outline the available compute resources for Snowball Edge d
 | sbe\-c\.4xlarge | 16 | 64 | 0 |  compute optimized  | 
 | sbe\-c\.8xlarge | 32 | 128 | 0 |  compute optimized  | 
 | sbe\-c\.12xlarge | 48 | 192 | 0 |  compute optimized  | 
+| sbe\-c\.16xlarge | 64 | 256 | 0 |  compute optimized  | 
+| sbe\-c\.24xlarge | 96 | 384 | 0 |  compute optimized  | 
 | sbe\-g\.small | 1 | 2 | 1 | with GPU | 
 | sbe\-g\.medium | 1 | 4 | 1 | with GPU | 
 | sbe\-g\.large | 2 | 8 | 1 | with GPU | 

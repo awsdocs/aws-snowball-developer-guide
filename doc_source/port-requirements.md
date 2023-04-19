@@ -18,3 +18,8 @@ The following is a list of network ports that are required for each AWS service\
 | 8008 \(HTTP\) | TCP | EC2 HTTP endpoint | 
 | 8243 \(HTTPS\) | TCP | EC2 HTTPS endpoint | 
 | 9091 \(HTTP\) | TCP |  Endpoint for device management  | 
+| 9092 | TCP |  Inbound for EKS Anywhere and CAPAS device controller  | 
+| 8242 | TCP |  Inbound for EC2 HTTPS endpoint for EKS Anywhere  | 
+| 6443 | TCP |  Inbound for EKS Anywhere Kubernetes API endpoint  | 
+| 2379 | TCP |  Inbound for EKS Anywhere Etcd API endpoint  | 
+| 2380 | TCP |  Inbound for EKS Anywhere Etcd API endpoint  | 

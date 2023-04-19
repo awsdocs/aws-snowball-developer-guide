@@ -6,21 +6,7 @@ As with all AWS services, access to AWS Snowball requires credentials that AWS c
 
 1. Physical and network access control for a device on\-premises is your responsibility\.
 
-The following sections provide details on how you can use [AWS Identity and Access Management \(IAM\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/) and AWS Snowball to help secure your resources by controlling who can access them in the AWS Cloud, and also local access control recommendations\.
-+ [Authentication](#authentication)
-+ [Access Control in the AWS Cloud](access-control.md)
-
-## Authentication<a name="authentication"></a>
-
-You can access AWS as any of the following types of identities:
-+ **AWS account root user** –  When you first create an AWS account, you begin with a single sign\-in identity that has complete access to all AWS services and resources in the account\. This identity is called the AWS account *root user* and is accessed by signing in with the email address and password that you used to create the account\. We strongly recommend that you do not use the root user for your everyday tasks, even the administrative ones\. Instead, adhere to the [best practice of using the root user only to create your first IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#create-iam-users)\. Then securely lock away the root user credentials and use them to perform only a few account and service management tasks\. 
-+ **IAM user** – An [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) is an identity within your AWS account that has specific custom permissions \(for example, permissions to create a job in AWS Snowball\)\. You can use an IAM user name and password to sign in to secure AWS webpages like the [AWS Management Console](https://console.aws.amazon.com/), [AWS Discussion Forums](https://forums.aws.amazon.com/), or the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\.
-
-  In addition to a user name and password, you can also generate [access keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for each user\. You can use these keys when you access AWS services programmatically, either through [one of the several SDKs](https://aws.amazon.com/tools/#sdk) or by using the [AWS Command Line Interface \(CLI\)](https://aws.amazon.com/cli/)\. The SDK and CLI tools use the access keys to cryptographically sign your request\. If you don’t use AWS tools, you must sign the request yourself\. AWS Snowball supports *Signature Version 4*, a protocol for authenticating inbound API requests\. For more information about authenticating requests, see [Signature Version 4 signing process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) in the *AWS General Reference*\.
-+ **IAM role** –  An [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) is an IAM identity that you can create in your account that has specific permissions\. An IAM role is similar to an IAM user in that it is an AWS identity with permissions policies that determine what the identity can and cannot do in AWS\. However, instead of being uniquely associated with one person, a role is intended to be assumable by anyone who needs it\. Also, a role does not have standard long\-term credentials such as a password or access keys associated with it\. Instead, when you assume a role, it provides you with temporary security credentials for your role session\. IAM roles with temporary credentials are useful in the following situations:
-  + **Federated user access** –  Instead of creating an IAM user, you can use existing identities from AWS Directory Service, your enterprise user directory, or a web identity provider\. These are known as *federated users*\. AWS assigns a role to a federated user when access is requested through an [identity provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html)\. For more information about federated users, see [Federated users and roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction_access-management.html#intro-access-roles) in the *IAM User Guide*\. 
-  + **AWS service access** –  A service role is an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) that a service assumes to perform actions on your behalf\. An IAM administrator can create, modify, and delete a service role from within IAM\. For more information, see [Creating a role to delegate permissions to an AWS service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html) in the *IAM User Guide*\. 
-  + **Applications running on Amazon EC2** –  You can use an IAM role to manage temporary credentials for applications that are running on an EC2 instance and making AWS CLI or AWS API requests\. This is preferable to storing access keys within the EC2 instance\. To assign an AWS role to an EC2 instance and make it available to all of its applications, you create an instance profile that is attached to the instance\. An instance profile contains the role and enables programs that are running on the EC2 instance to get temporary credentials\. For more information, see [Using an IAM role to grant permissions to applications running on Amazon EC2 instances](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html) in the *IAM User Guide*\. 
+See [Identity and Access Management for AWS Snowball](security-iam.md) for details on how you can use [AWS Identity and Access Management \(IAM\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/) and AWS Snowball to help secure your resources by controlling who can access them in the AWS Cloud, and also local access control recommendations\.
 
 ## Overview of Managing Access Permissions to Your Resources in the AWS Cloud<a name="access-control-overview"></a>
 
@@ -28,8 +14,6 @@ Every AWS resource is owned by an AWS account, and permissions to create or acce
 
 **Note**  
 An *account administrator* \(or administrator user\) is a user with administrator privileges\. For more information, see [IAM Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html) in the *IAM User Guide*\.
-
-When granting permissions, you decide who is getting the permissions, the resources they get permissions for, and the specific actions that you want to allow on those resources\.
 
 **Topics**
 + [Resources and Operations](#access-control-resources)
@@ -68,45 +52,7 @@ This section discusses using IAM in the context of AWS Snowball\. It doesn't pro
 Policies attached to an IAM identity are referred to as *identity\-based* policies \(IAM polices\) and policies attached to a resource are referred to as *resource\-based* policies\. AWS Snowball supports only identity\-based policies \(IAM policies\)\. 
 
 **Topics**
-+ [Identity\-Based Policies \(IAM Policies\)](#access-control-manage-access-intro-iam-policies)
 + [Resource\-Based Policies](#access-control-manage-access-intro-resource-policies)
-
-#### Identity\-Based Policies \(IAM Policies\)<a name="access-control-manage-access-intro-iam-policies"></a>
-
-You can attach policies to IAM identities\. For example, you can do the following:
-+ **Attach a permissions policy to a user or a group in your account** – To grant a user permissions to create a job, you can attach a permissions policy to a user or group that the user belongs to\.
-+ **Attach a permissions policy to a role \(grant cross\-account permissions\)** – You can attach an identity\-based permissions policy to an IAM role to grant cross\-account permissions\. For example, the administrator in Account A can create a role to grant cross\-account permissions to another AWS account \(for example, Account B\) or an AWS service as follows:
-
-  1. Account A administrator creates an IAM role and attaches a permissions policy to the role that grants permissions on resources in Account A\.
-
-  1. Account A administrator attaches a trust policy to the role identifying Account B as the principal who can assume the role\. 
-
-  1. Account B administrator can then delegate permissions to assume the role to any users in Account B\. Doing this allows users in Account B to create or access resources in Account A\. The principal in the trust policy can also be an AWS service principal if you want to grant an AWS service permissions to assume the role\.
-
-  For more information about using IAM to delegate permissions, see [Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html) in the *IAM User Guide*\.
-
-The following is an example policy that allows a user to perform the `CreateJob` action for your AWS account\.
-
-```
-{
-   "Version": "2012-10-17",
-   "Statement": [
-      {
-        "Sid": "VisualEditor0",
-        "Effect": "Allow",
-        "Action": [
-            "snowball:DescribeAddress",
-            "snowball:CreateJob",
-            "snowball:DescribeAddresses",
-            "snowball:CreateAddress"
-        ],
-        "Resource": "*"
-      },
-   ]
-}
-```
-
-For more information about using identity\-based policies with AWS Snowball, see [Using Identity\-Based Policies \(IAM Policies\) for AWS Snowball](access-control-managing-permissions.md)\. For more information about users, groups, roles, and permissions, see [Identities \(Users, Groups, and Roles\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html) in the *IAM User Guide*\. 
 
 #### Resource\-Based Policies<a name="access-control-manage-access-intro-resource-policies"></a>
 
@@ -138,3 +84,125 @@ For a table showing all of the AWS Snowball API actions, see [AWS Snowball API P
 When you grant permissions, you can use the IAM policy language to specify the conditions when a policy should take effect\. For example, you might want a policy to be applied only after a specific date\. For more information about specifying conditions in a policy language, see [Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#Condition) in the *IAM User Guide*\. 
 
 To express conditions, you use predefined condition keys\. There are no condition keys specific to AWS Snowball\. However, there are AWS\-wide condition keys that you can use as appropriate\. For a complete list of AWS\-wide keys, see [Available Keys for Conditions](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#AvailableKeys) in the *IAM User Guide*\. 
+
+## AWS\-Managed \(Predefined\) Policies for AWS Snowball Edge<a name="access-policy-examples-aws-managed"></a>
+
+AWS addresses many common use cases by providing standalone IAM policies that are created and administered by AWS\. Managed policies grant necessary permissions for common use cases so you can avoid having to investigate what permissions are needed\. For more information, see [AWS Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) in the *IAM User Guide*\. 
+
+You can use the following AWS\-managed policies with AWS Snowball\.
+
+### Creating an IAM Role Policy for Snowball Edge<a name="create-iam-role"></a>
+
+An IAM role policy must be created with read and write permissions for your Amazon S3 buckets\. The IAM role must also have a trust relationship with Snowball\. Having a trust relationship means that AWS can write the data in the Snowball and in your Amazon S3 buckets, depending on whether you're importing or exporting data\.
+
+When you create a job in the AWS Snow Family Management Console, creating the necessary IAM role occurs in step 4 in the **Permission** section\. This process is automatic\. The IAM role that you allow Snowball to assume is only used to write your data to your bucket when the Snowball with your transferred data arrives at AWS\. The following procedure outlines that process\.
+
+**To create the IAM role for your import job**
+
+1. Sign in to the AWS Management Console and open the AWS Snowball console at [https://console\.aws\.amazon\.com/importexport/](https://console.aws.amazon.com/importexport/)\. 
+
+1. Choose **Create job**\.
+
+1. In the first step, fill out the details for your import job into Amazon S3, and then choose **Next**\.
+
+1. In the second step, under **Permission**, choose **Create/Select IAM Role**\.
+
+   The IAM Management Console opens, showing the IAM role that AWS uses to copy objects into your specified Amazon S3 buckets\.
+
+1. Review the details on this page, and then choose **Allow**\.
+
+   You return to the AWS Snow Family Management Console, where **Selected IAM role ARN** contains the Amazon Resource Name \(ARN\) for the IAM role that you just created\.
+
+1. Choose **Next** to finish creating your IAM role\.
+
+The preceding procedure creates an IAM role that has write permissions for the Amazon S3 buckets that you plan to import your data into\. The IAM role that is created has one of the following structures, depending on whether it's for an import job or export job\.
+
+**IAM Role for an Import Job**
+
+```
+          {
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetBucketLocation",
+        "s3:ListBucketMultipartUploads"
+      ],
+      "Resource": "arn:aws:s3:::*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetBucketPolicy",
+        "s3:PutObject",
+        "s3:AbortMultipartUpload",
+        "s3:ListMultipartUploadParts",
+        "s3:PutObjectAcl"
+      ],
+      "Resource": "arn:aws:s3:::*"
+    }
+  ]
+}
+```
+
+If you use server\-side encryption with AWS KMS–managed keys \(SSE\-KMS\) to encrypt the Amazon S3 buckets associated with your import job, you also need to add the following statement to your IAM role\.
+
+```
+{
+     "Effect": "Allow",
+     "Action": [
+       "kms:GenerateDataKey"
+     ],
+     "Resource": "arn:aws:kms:us-west-2:123456789012:key/abc123a1-abcd-1234-efgh-111111111111"
+}
+```
+
+If the object sizes are larger, the Amazon S3 client that is used for the import process uses multipart upload\. If you initiate a multipart upload using SSE\-KMS, then all the uploaded parts are encrypted using the specified AWS KMS key\. Because the parts are encrypted, they must be decrypted before they can be assembled to complete the multipart upload\. So you must have permission to decrypt the AWS KMS key \(`kms:Decrypt`\) when you run a multipart upload to Amazon S3 with SSE\-KMS\.
+
+The following is an example of an IAM role needed for an import job that needs `kms:Decrypt` permission\.
+
+```
+{
+    "Effect": "Allow",
+     "Action": [
+       "kms:GenerateDataKey","kms:Decrypt"
+
+     ],
+     "Resource": "arn:aws:kms:us-west-2:123456789012:key/abc123a1-abcd-1234-efgh-111111111111"
+}
+```
+
+ The following is an example of an IAM role needed for an export job\.
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetBucketLocation",
+        "s3:GetBucketPolicy",
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": "arn:aws:s3:::*"
+    }
+  ]
+}
+```
+
+If you use server\-side encryption with AWS KMS–managed keys to encrypt the Amazon S3 buckets associated with your export job, you also need to add the following statement to your IAM role\.
+
+```
+{
+     "Effect": "Allow",
+     "Action": [
+            “kms:Decrypt”
+      ],
+     "Resource": "arn:aws:kms:us-west-2:123456789012:key/abc123a1-abcd-1234-efgh-111111111111"
+}
+```
+
+You can create your own custom IAM policies to allow permissions for API operations for AWS Snowball job management\. You can attach these custom policies to the IAM users or groups that require those permissions\. 

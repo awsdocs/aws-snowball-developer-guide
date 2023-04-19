@@ -14,7 +14,7 @@ This issue can occur if the physical network interface \(NIC\) you associated wi
 
 **Action to Take**  
 If this occurs, you can do the following:
-+ Create a new VNIC, associated with a NIC that has an IP address\. For more information, see [Network Configuration for Compute Instances](snowcone-network-config-ec2.md)\.
++ Create a new VNIC, associated with a NIC that has an IP address\. For more information, see [Network Configuration for Compute Instances](network-config-ec2.md)\.
 + Update an existing VNIC\. For more information, see [Updating a Virtual Network Interface](using-ec2-edge-client.md#ec2-edge-update-vnic)\.
 
 ## Snowball Edge Hangs When Launching a Large Compute Instance<a name="ec2-edge-launch-stopped"></a>

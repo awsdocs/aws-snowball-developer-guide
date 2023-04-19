@@ -52,7 +52,7 @@ Following is a description of the subset of AWS CLI commands and options for IAM
 + [create\-user](https://docs.aws.amazon.com/cli/latest/reference/iam/create-user.html) – Creates a new local IAM user for your device\. The following parameters are **not** supported:
   + `Tags`
   + `PermissionsBoundary`
-+ [delete\-access\-key](https://docs.aws.amazon.com/cli/latest/reference/iam/delete-access-key.html) – Creates a new local IAM secret access key and corresponding AWS access key ID for the specified user\.
++ [delete\-access\-key](https://docs.aws.amazon.com/cli/latest/reference/iam/delete-access-key.html) – Deletes a new local IAM secret access key and corresponding AWS access key ID for the specified user\.
 + [delete\-policy](https://docs.aws.amazon.com/cli/latest/reference/iam/delete-policy.html) – Deletes the specified managed policy\.
 + [delete\-role](https://docs.aws.amazon.com/cli/latest/reference/iam/delete-role.html) – Deletes the specified role\.
 + [delete\-user](https://docs.aws.amazon.com/cli/latest/reference/iam/delete-user.html) – Deletes the specified user\.

@@ -16,7 +16,7 @@ For the AWS Snowball service, a cluster is a collective of Snowball Edge devices
 
 A cluster offers two primary benefits over a standalone Snowball Edge for local storage and computing:
 + **Increased durability** – The data stored in a cluster of Snowball Edge devices enjoys increased data durability over a single device\. In addition, the data on the cluster remains as safe and viable as it was previously, despite possible Snowball Edge outages in the cluster\. Clusters can withstand the loss of two nodes before the data is in danger\. You can also add or replace nodes\.
-+ **Increased storage** – The total available storage is 45 terabytes of data per node in the cluster\. Thus, in a five\-node cluster, there are 225 terabytes of available storage space\. In contrast, there are about 80 terabytes of available storage space in a standalone Snowball Edge\. Clusters that have more than five nodes have even more storage space\.
++ **Increased storage** – The total available storage is 45 terabytes of data per node in a cluster of Snowball Edge Storage Optimized devices\. Thus, in a five\-node cluster, there are 225 terabytes of available storage space\. In contrast, there are about 80 terabytes of available storage space in a standalone Snowball Edge\. Clusters that have more than five nodes have even more storage space\.
 
 A cluster of Snowball Edge devices is made of leaderless nodes\. Any node can write data to and read data from the entire cluster, and all nodes are capable of performing the behind\-the\-scenes management of the cluster\.
 
@@ -48,9 +48,7 @@ Keep the following considerations in mind when planning to use a cluster of Snow
 
 ## Related Topics<a name="relatedcluster"></a>
 
-
-Beyond the content presented in this topic, you can find other topics in this guide that are relevant to clusters:
-+ [Getting Started with an AWS Snowball Edge Device](getting-started.md) – This section outlines how to get started creating your first job\. The techniques in this section work for all job types, including cluster jobs\.
-+ [Commands for the Snowball Client](using-client-commands.md) – This section contains a list of commands for the Snowball client tool\. These commands include the Snowball Edge administrative commands to unlock a cluster, get the status information for the nodes and the cluster as a whole, remove unavailable nodes, and add new nodes\.
-+ [Administering a Cluster](administercluster.md) – This section contains information about the administrative tasks you perform with a cluster, like adding and removing nodes, and includes helpful procedures\.
-
+Beyond the content presented here, you can find other topics in this guide that are relevant to clusters:
++ [Getting Started](getting-started.md) – Outlines how to get started creating your first job\. The techniques in this section work for all job types, including cluster jobs\.
++ [Commands for the Snowball Edge Client](using-client-commands.md) – Contains a list of commands for the Snowball Edge client tool\. These commands include the Snowball Edge administrative commands to unlock a cluster, get the status information for the nodes and the cluster as a whole, remove unavailable nodes, and add new nodes\.
++ [Administering a Cluster](administercluster.md) – Contains information about the administrative tasks you perform with a cluster, like adding and removing nodes, and includes helpful procedures\.

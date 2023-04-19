@@ -9,6 +9,7 @@ All examples use the us\-west\-2 region and contain fictitious account IDs\.
 + [Example 1: Role Policy That Allows a User to Create a Job with the API](#access-policy-example-create-api)
 + [Example 2: Role Policy for Creating Import Jobs](#role-policy-example-import)
 + [Example 3: Role Policy for Creating Export Jobs](#role-policy-example-export)
++ [Example 4: Expected Role Permissions and Trust Policy](#expected-role-permissions-and-trust-policy)
 + [AWS Snowball API Permissions: Actions, Resources, and Conditions Reference](#snowball-api-permissions-ref)
 
 ## Example 1: Role Policy That Allows a User to Create a Job with the API<a name="access-policy-example-create-api"></a>
@@ -17,22 +18,16 @@ The following permissions policy is a necessary component of any policy that is 
 
 ```
 {
-  "Version": "2012-10-17",
-  "Statement": [
+    "Version": "2012-10-17",
+    "Statement": [
     {
-      "Sid": "",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "importexport.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole",
-      "Condition": {
-        "StringEquals": {
-          "sts:ExternalId": "AWSIE"
-        }
-      }
+         "Effect": "Allow",
+         "Principal": {
+         "Service": "importexport.amazonaws.com"
+    },
+    "Action": "sts:AssumeRole"
     }
-  ]
+    ]
 }
 ```
 
@@ -56,10 +51,15 @@ You use the following role trust policy for creating import jobs for Snowball Ed
             "Effect": "Allow",
             "Action": [
                 "s3:GetBucketPolicy",
+                "s3:GetBucketLocation",
+                "s3:ListBucketMultipartUploads",
+                "s3:ListBucket",
+                "s3:HeadBucket",
                 "s3:PutObject",
                 "s3:AbortMultipartUpload",
                 "s3:ListMultipartUploadParts",
-                "s3:PutObjectAcl"
+                "s3:PutObjectAcl",
+                "s3:GetObject"
             ],
             "Resource": "arn:aws:s3:::*"
         },
@@ -201,6 +201,59 @@ You use the following role trust policy for creating export jobs for Snowball Ed
             ]
         }
     ]
+}
+```
+
+## Example 4: Expected Role Permissions and Trust Policy<a name="expected-role-permissions-and-trust-policy"></a>
+
+The following expected role permissions policy is a necessary for an existing service role to use\. It is a one time set up\.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement":
+    [
+        {
+            "Effect": "Allow",
+            "Action": "sns:Publish",
+            "Resource": ["[[snsArn]]"]
+        },
+        {
+            "Effect": "Allow",
+            "Action":
+            [
+                "cloudwatch:ListMetrics",
+                "cloudwatch:GetMetricData",
+                "cloudwatch:PutMetricData"
+            ],
+            "Resource":
+            [
+                "*"
+            ],
+            "Condition": {
+                    "StringEquals": {
+                        "cloudwatch:namespace": "AWS/SnowFamily"
+                    }
+            }
+        }
+    ]
+}
+```
+
+The following expected role trust policy is a necessary for an existing service role to use\. It is a one time set up\.
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "importexport.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
 }
 ```
 

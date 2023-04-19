@@ -45,7 +45,7 @@ The following parameters are supported for `assume-role`:
 To assume a role, use the following command\.
 
 ```
-aws iam list-policies --endpoint http://123.456.1.789:6078 --profile snowballEdge --region snow --role-session-name section-name --duration-seconds 3600
+    aws sts assume-role --role-arn "arn:aws:iam::123456789012:role/example-role" --role-session-name AWSCLI-Session  --endpoint http://snow-device-IP-address:7078
 ```
 
 For more information about using the `assume-role` command, see [How do I assume an IAM role using the AWS CLI?](https://aws.amazon.com/premiumsupport/knowledge-center/iam-assume-role-cli) 

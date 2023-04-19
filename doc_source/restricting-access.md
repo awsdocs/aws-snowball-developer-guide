@@ -1,6 +1,6 @@
-# Restricting Access to the Snow Role Policy<a name="restricting-access"></a>
+# Restricting access to the Snow role policy<a name="restricting-access"></a>
 
-You can restrict access to the selected role based on the customer account number and source arn\.
+You can restrict access to the selected role based on the customer account number and source ARN\.
 
 1. In the navigation pane of the IAM console, choose **Roles**\. The console displays the roles for your account\.
 
@@ -22,7 +22,7 @@ You can restrict access to the selected role based on the customer account numbe
          "Action": "sts:AssumeRole",
          "Condition":{
              "StringEquals":{
-             "aws:SourceAccount":"<AWS_ACCOUNT_ID>"
+             "aws:SourceAccount":"111122223333"
              }
          }
        }
@@ -30,7 +30,7 @@ You can restrict access to the selected role based on the customer account numbe
    }
    ```
 
-   To restrict access by **source arn**:
+   To restrict access by **source ARN**:
 
    ```
    {
@@ -43,14 +43,14 @@ You can restrict access to the selected role based on the customer account numbe
            "Action": "sts:AssumeRole",
            "Condition": {
                "ArnLike": {
-                   "aws:SourceArn": "arn:aws:snowball:<REGION>:<AWS_ACCOUNT_ID>:<RESOURCE_ID>"
+                   "aws:SourceArn": "arn:aws:snowball:REGION:555555555555:RESOURCE_ID"
                }
            }
        }]
    }
    ```
 
-   To restrict access by both **customer account number** and **source arn**:
+   To restrict access by both **customer account number** and **source ARN**:
 
    ```
    {
@@ -63,10 +63,10 @@ You can restrict access to the selected role based on the customer account numbe
            "Action": "sts:AssumeRole",
            "Condition": {
                "StringEquals": {
-                   "aws:SourceAccount": "<AWS_ACCOUNT_ID>"
+                   "aws:SourceAccount": "111122223333"
                },
                "ArnLike": {
-                   "aws:SourceArn": "arn:aws:snowball:<REGION>:<AWS_ACCOUNT_ID>:<RESOURCE_ID>"
+                   "aws:SourceArn": "arn:aws:snowball:REGION:111122223333:RESOURCE_ID"
                }
            }
        }]

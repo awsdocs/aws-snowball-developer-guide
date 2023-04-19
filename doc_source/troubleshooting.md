@@ -1,4 +1,6 @@
 # Troubleshooting AWS Snowball Edge<a name="troubleshooting"></a>
+
+Keep the following general guidelines in mind when troubleshooting\.
 + Objects in Amazon S3 have a maximum file size of 5 TB\.
 + Objects transferred onto an AWS Snowball Edge device have a maximum key length of 933 bytes\. Key names that include characters that take up more than 1 byte each still have a maximum key length of 933 bytes\. When determining key length, you include the file or object name and also its path or prefixes\. Thus, files with short file names within a heavily nested path can have keys longer than 933 bytes\. The bucket name is not factored into the path when determining the key length\. Some examples follow\.    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/troubleshooting.html)
@@ -7,6 +9,7 @@
 
 **Topics**
 + [How to Identify Your Device](#identifying-device)
++ [Troubleshooting Boot‐up problems](#boot-troubleshoot)
 + [Troubleshooting Connection Problems](#connection-troubleshooting)
 + [Troubleshooting Manifest File Problems](#manifest-file-troubleshooting)
 + [Troubleshooting Credentials Problems](#credentials-troubleshooting)
@@ -14,10 +17,48 @@
 + [Troubleshooting AWS CLI Problems](#cli-troubleshooting)
 + [Troubleshooting Import Job Problems](#import-troubleshooting)
 + [Troubleshooting Export Job Problems](#export-troubleshooting)
++ [Troubleshooting problems returning Snow Family devices](#return-shipping-troubleshooting)
 
 ## How to Identify Your Device<a name="identifying-device"></a>
 
 There are two Snowball device types, Snowball and Snowball Edge\. If you're not sure which type of device you have, see [AWS Snowball Edge Device Differences](device-differences.md)\.
+
+## Troubleshooting Boot‐up problems<a name="boot-troubleshoot"></a>
+
+The following information can help you troubleshoot certain issues you might have with booting‐up your Snow Family devices\.
++ Allow 10 minutes for a device to boot up\. Avoid moving or using the device during this time\.
++ Ensure both ends of the cable supplying power are connected securely\.
++ Replace the cable supplying power with another cable that you know is good\.
++ Connect the cable supplying power to another source of power that you know is good\.
+
+### Troubleshooting problems with the LCD display during boot\-up<a name="lcd-display-troubleshooting"></a>
+
+Sometimes, after powering on a Snowball Edge device, the LCD display does not advance past the **Setting you your Snowball Edge, this may take a number of minutes\.** message and the network configuration screen does not appear\.
+
+![\[Message on LCD screen indicating the Snowball Edge is starting.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/starting-up-lcd-screen.png)
+
+**Action to take**
+
+1. Let the screen stay on the **Setting you your Snowball Edge, this may take a number of minutes\.** message for 10 minutes\.
+
+1. On the screen, choose the **Restart display** button\. The **Shutting down…** message will appear, then the **Setting you your Snowball Edge, this may take a number of minutes\.** message will appear and the device will start normally\.  
+![\[Message on LCD screen indicating the LCD screen is restarting.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/power-off-lcd-screen.png)
+
+If the LCD screen does not advance past the **Setting you your Snowball Edge, this may take a number of minutes\.** message after using the **Restart display** button, use the following procedure\.
+
+**Action to take**
+
+1. Above the LCD screen, press the power button to power off the device\.
+
+1. Disconnect all cables from the device\.
+
+1. Leave the device powered off and disconnected for 20 minutes\.
+
+1. Connect the power and network cables\.
+
+1. Above the LCD screen, press the power button to power on the device\.
+
+If the problem persists, contact AWS Support to return the device and receive a new Snowball Edge device\.
 
 ## Troubleshooting Connection Problems<a name="connection-troubleshooting"></a>
 
@@ -63,7 +104,7 @@ Get your credentials from the Snowball Edge client\. For more information, see [
 
 ## Troubleshooting Data Transfer Problems<a name="transfer-troubleshooting"></a>
 
-If you encounter performance issues while transferring data to or from a Snowball Edge, see [Performance](BestPractices.md#performance) for recommendations and guidance on improving transfer performance\. The following can help you troubleshoot issues that you might have with your data transfer to or from a Snowball Edge:
+If you encounter performance issues while transferring data to or from a Snowball Edge, see [Performance](performance.md) for recommendations and guidance on improving transfer performance\. The following can help you troubleshoot issues that you might have with your data transfer to or from a Snowball Edge:
 + You can't transfer data into the root directory of the Snowball Edge\. If you have trouble transferring data into the device, make sure that you're transferring data into a subdirectory\. The top\-level subdirectories have the names of the Amazon S3 buckets that you included in the job\. Put your data in those subdirectories\.
 + If you're using Linux and you can't upload files with UTF\-8 characters to an AWS Snowball Edge device, it might be because your Linux server doesn't recognize UTF\-8 character encoding\. You can correct this issue by installing the `locales` package on your Linux server and configuring it to use one of the UTF\-8 locales like `en_US.UTF-8`\. You can configure the `locales` package by exporting the environment variable `LC_ALL`, for example: `export LC_ALL=en_US.UTF-8`
 + When you use the Amazon S3 interface with the AWS CLI, you can work with files or folders with spaces in their names, such as `my photo.jpg` or `My Documents`\. However, make sure that you handle the spaces properly\. For more information, see [Specifying parameter values for the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html) in the *AWS Command Line Interface User Guide*\.
@@ -123,10 +164,26 @@ A file can fail export to a Microsoft Windows Server if it or a related folder i
 
 **Action to take**
 
-1. Make a list of the names that are causing the error\. You can find the names of the files and folders that failed export in your logs\. For more information, see [AWSAWS Snowball Edge Logs](using-client-commands.md#logs)\.
+1. Make a list of the names that are causing the error\. You can find the names of the files and folders that failed export in your logs\. For more information, see [AWS Snowball Edge Logs](using-client-commands.md#logs)\.
 
 1. Change the names of the objects in Amazon S3 that are causing the issue to remove or replace the unsupported characters\.
 
 1. If the list of names is prohibitively large, or if the files in the list are too large to transfer over the internet, create a new export job specifically for those objects\.
 
    If the files are small and there isn't a large number of them, copy the renamed objects from Amazon S3 through the AWS CLI or the AWS Management Console\. For more information, see [How do I download an object from an S3 bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) in the* Amazon Simple Storage Service User Guide\.*
+
+## Troubleshooting problems returning Snow Family devices<a name="return-shipping-troubleshooting"></a>
+
+Sometimes, after turning off the Snow Family device in preparation to return it, the return shipping information does not appear on the E Ink display\.
+
+**Action to take**
+
+1. Log in to the AWS Snow Family Management Console\.
+
+1. View the job for the device\.
+
+1. In the **Details** section, in the **Return shipping label** section, choose **To view and print your return label follow this link**\.
+
+1. Print the label and attach it to the device\.
+
+1. Return the device according to [Return shipping for Snow Family devices](mailing-storage.md)\.

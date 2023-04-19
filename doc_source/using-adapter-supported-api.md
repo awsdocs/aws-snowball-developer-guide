@@ -64,8 +64,10 @@ Amazon S3 REST API calls require SigV4 signing\. If you're using the AWS CLI or 
 + [GET Service](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTServiceGET.html) 
 + [HEAD Bucket](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketHEAD.html) 
 + [HEAD Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectHEAD.html)  
-+ [GET Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html) – When an object is uploaded to an AWS Snowball Edge device using `GET Object`, an entity tag \(ETag\) is not generated unless the object was uploaded using multipart upload\. The ETag is a hash of the object\. The ETag reflects changes only to the contents of an object, not its metadata\. The ETag might or might not be an MD5 digest of the object data\. For more information about ETags, see [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html) in the *Amazon Simple Storage Service API Reference\.*
-+ [PUT Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html) – When an object is uploaded to an AWS Snowball Edge device using `PUT Object`, an ETag is not generated unless the object was uploaded using multipart upload\.
++ [GET Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html) – is a DOWNLOAD of an object from the Snow device's S3 bucket\.
++ [PUT Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html) – When an object is uploaded to an AWS Snowball Edge device using `PUT Object`, an ETag is generated\.
+
+  The ETag is a hash of the object\. The ETag reflects changes only to the contents of an object, not its metadata\. The ETag might or might not be an MD5 digest of the object data\. For more information about ETags, see [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html) in the *Amazon Simple Storage Service API Reference\.*
 + [DELETE Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html) 
 + [Initiate Multipart Upload](https://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadInitiate.html) – In this implementation, initiating a multipart upload request for an object already on the AWS Snowball Edge device first deletes that object\. It then copies it in parts to the AWS Snowball Edge device\. 
 + [List Multipart Uploads](https://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadListMPUpload.html)  

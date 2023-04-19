@@ -7,7 +7,7 @@ Using the AWS CLI, you can use the AWS feature VM Import/Export to import images
 + [Step 2: Set Up Required Permissions](#setup-permission-cli)
 + [Step 3: Import the Snapshot to Amazon S3 on Your Device](#import-snapshot-cli)
 + [Step 4: Register the Snapshot as an AMI](#register-snapshot-cli)
-+ [Step 5: Launch the AMI](#launch-ami-cli)
++ [Step 5: Launch an instance from the AMI](#launch-ami-cli)
 + [Describe Import Tasks](#decribe-import-task-cli)
 + [Cancel an Import Task](#cancel-import-task-cli)
 + [Describe Snapshots](#describe-snapshots-cli)
@@ -29,6 +29,20 @@ Snow Family devices currently only support importing snapshots with sizes from 1
 
 When you have the image, you must upload it to Amazon S3 on your device because you can only import images as snapshots from Amazon S3 that are available on your device or cluster\. During the importing process, you choose the S3 bucket on your Snowball Edge device to store the image in\. 
 
+### Upload Images to your Amazon S3 Device<a name="Upload-images-to-your-device"></a>
+
+**Check your S3 buckets:**
+
+```
+aws s3 ls --endpoint http://snowball-ip:8080 --profile profile-name
+```
+
+**To store your images, Choose the Amazon S3 bucket on your device to import images as snapshots:**
+
+```
+aws s3 cp image-path s3://S3-bucket-name --endpoint http://snowball-ip:8080 --profile profile-name
+```
+
 ## Step 2: Set Up Required Permissions<a name="setup-permission-cli"></a>
 
 For the import to be successful, you must set up permissions for VM Import/Export, Amazon EC2, and the user\.
@@ -38,17 +52,9 @@ For the import to be successful, you must set up permissions for VM Import/Expor
 
 ### Permissions Required for VM Import/Export<a name="vmie-permissions"></a>
 
-**Create a role**
-
 Before you can start the import process, you must create an IAM role with a trust policy that allows Snowball VM Import/Export to assume the role\. Additional permissions are given to the role to allow VM Import/Export to access the image stored in the S3 bucket on the device\. 
 
-The default role name for the API is `vmimport`\. You can change it by using the `--role-name` string in the command\.
-
-**Example command**  
-
-```
-aws iam create-role --role-name vmimport --assume-role-policy-document file:///path/to/trust-policy.json --profile xx --endpoint http://10.1.2.3:6078 --region snow
-```
+**Create a trust policy json file**
 
 Following is an example trust policy required to be attached to the role so that VM Import/Export can access the snapshot that needs to be imported from the S3 bucket\. 
 
@@ -67,43 +73,44 @@ Following is an example trust policy required to be attached to the role so that
 }
 ```
 
+**Create a role with the trust policy json file**
+
+The role name can be vmimport\. You can change it by using the \-\-role\-name option in the command:
+
+```
+aws iam create-role --role-name role-name --assume-role-policy-document file:///trust-policy-json-path --profile profile-name --endpoint http://snowball-ip:6078 --region snow
+```
+
 The following is an example output from the `create-role` command\. 
 
 ```
 {
-        "Role": {
-            "Path": "/",            
-            "RoleName": "vmimport",            
-            "RoleId": "XXXXXXXXXXXXXXXXXXXXXXXXXX",            
-            "Arn": "arn:aws:iam::123456789012:role/vmimport",            
-            "CreateDate": "2020-07-30T01:01:57.415000+00:00",            
-            "AssumeRolePolicyDocument": {
-                "Version": "2012-10-17",                
-                "Statement": [
-                    {
-                        "Effect": "Allow",                        
-                        "Principal": {
-                            "Service": "vmie.amazonaws.com"                    
-                        },                        
-                        "Action": "sts:AssumeRole"                    
-                    }
-                ]
-            },            
-            "MaxSessionDuration": 3600        
-        }
- }
+   "Role":{
+      "AssumeRolePolicyDocument":{
+         "Version":"2012-10-17",
+         "Statement":[
+            {
+               "Action":"sts:AssumeRole",
+               "Effect":"Allow",
+               "Principal":{
+                  "Service":"vmie.amazonaws.com"
+               }
+            }
+         ]
+      },
+      "MaxSessionDuration":3600,
+      "RoleId":"AROACEMGEZDGNBVGY3TQOJQGEZAAAABQBB6NSGNAAAABPSVLTREPY3FPAFOLKJ3",
+      "CreateDate":"2022-04-19T22:17:19.823Z",
+      "RoleName":"vmimport",
+      "Path":"/",
+      "Arn":"arn:aws:iam::123456789012:role/vmimport"
+   }
+}
 ```
 
-**Create a policy for the role and attach the policy to the role**
+**Create a policy for the role**
 
-You now attach a policy to the preceding role and grant permissions to access the required resources\. This allows the local VM Import/Export service to download the snapshot from Amazon S3 on the device\. 
-
-**Example command**  
-
-```
-aws iam create-policy --policy-name vmimport-resource-policy --policy-document file:///path/to/vmie-resource-policy.json --profile xxx --endpoint http://10.1.2.3:6078 --region snow
-```
-The following example policy has the minimum required permissions to access Amazon S3\. You can change the S3 bucket name if you need to\. You also can use prefixes to further narrow down the location where VM Import/Export can import snapshots from\.  
+The following example policy has the minimum required permissions to access Amazon S3\. Change the Amazon S3 bucket name to the one which has your images\. You also can use prefixes to further narrow down the location where VM Import/Export can import snapshots from\. Create a policy json file like this\.
 
 ```
 {
@@ -125,7 +132,14 @@ The following example policy has the minimum required permissions to access Amaz
    ]
 }
 ```
-The following is an example output from the `create-policy` command\.  
+
+**Create a policy with the policy file:**
+
+```
+aws iam create-policy --policy-name policy-name --policy-document file:///policy-json-file-path --profile profile-name --endpoint http://snowball-ip:6078 --region snow
+```
+
+The following is an output example from the create\-policy command\.
 
 ```
 {
@@ -142,28 +156,26 @@ The following is an example output from the `create-policy` command\.
    }
 }
 ```
-Attach the policy that you created in the previous step to the role that you created in step 2\.  
 
-**Example command**  
+****Attach the policy to the role****
+
+Attach a policy to the preceding role and grant permissions to access the required resources\. This allows the local VM Import/Export service to download the snapshot from Amazon S3 on the device\.
 
 ```
-aws iam attach-role-policy --role-name vmimport --policy-arn arn:aws:iam::123456789012:policy/vmimport-resource-policy --profile xxx --endpoint http://10.1.2.3:6078 --region snow
+aws iam attach-role-policy --role-name role-name --policy-arn arn:aws:iam::123456789012:policy/policy-name --profile profile-name --endpoint http://snowball-ip:6078 --region snow
 ```
 
 ### Permissions Required by the Caller<a name="caller-permissions"></a>
 
 In addition to the role for the Snowball Edge VM Import/Export to assume, you also must ensure that the user has the permissions that allow them to pass the role to VMIE\. If you use the default root user to perform the import, the root user already has all the permissions required, so you can skip this step, and go to step 3\.
 
-Attach the following two IAM permissions to the user account that is doing the import\.
+Attach the following two IAM permissions to the user that is doing the import\.
 + `pass-role`
 + `get-role`
 
-**Example command**  
+**Create a policy for the role**
 
-```
-aws iam create-policy --policy-name caller-policy --policy-document file:///path/to/caller-policy.json --profile xx --endpoint http://10.1.2.3:6078 --region snow
-```
-The following is an example policy that allows a user to perform the `get-role` and `pass-role` actions for the IAM role\.   
+The following is an example policy that allows a user to perform the `get-role` and `pass-role` actions for the IAM role\. 
 
 ```
 {
@@ -189,7 +201,13 @@ The following is an example policy that allows a user to perform the `get-role` 
 }
 ```
 
-**Example output**  
+****Create a policy with the policy file:****
+
+```
+aws iam create-policy --policy-name policy-name --policy-document file:///policy-json-file-path --profile profile-name --endpoint http://snowball-ip:6078 --region snow
+```
+
+The following is an output example from the create\-policy command\.
 
 ```
 {
@@ -206,17 +224,16 @@ The following is an example policy that allows a user to perform the `get-role` 
    }
 }
 ```
-After the policy has been generated, attach the policy to the IAM users that will call the Amazon EC2 API or CLI operation to import the snapshot\.  
 
-**Example command**  
+After the policy has been generated, attach the policy to the IAM users that will call the Amazon EC2 API or CLI operation to import the snapshot\.
 
 ```
-aws iam attach-user-policy --user-name yourUser --policy-arn arn:aws:iam::123456789012:policy/caller-policy --profile xx --endpoint http://10.1.2.3:6078 --region snow
+aws iam attach-user-policy --user-name your-user-name --policy-arn arn:aws:iam::123456789012:policy/policy-name --profile profile-name --endpoint http://snowball-ip:6078 --region snow
 ```
 
 ### Permissions Required to Call Amazon EC2 APIs on Your Device<a name="ec2-permissions"></a>
 
-To import a snapshot, the IAM user must have the `ec2:ImportSnapshot` permissions\. If restricting access to the user is not required, you can use the `ec2:*` permissions to grant full Amazon EC2 access\. The following are the permissions that can be granted or restricted for Amazon EC2 on your device\. 
+To import a snapshot, the IAM user must have the `ec2:ImportSnapshot` permissions\. If restricting access to the user is not required, you can use the `ec2:*` permissions to grant full Amazon EC2 access\. The following are the permissions that can be granted or restricted for Amazon EC2 on your device\. Create a policy file with the content shown:
 
 ```
 {
@@ -240,17 +257,46 @@ To import a snapshot, the IAM user must have the `ec2:ImportSnapshot` permission
 }
 ```
 
+**Create a policy with the policy file:**
+
+```
+aws iam create-policy --policy-name policy-name --policy-document file:///policy-json-file-path --profile profile-name --endpoint http://snowball-ip:6078 --region snow
+```
+
+The following is an output example from the create\-policy command\.
+
+```
+{ 
+    "Policy": 
+        {
+            "PolicyName": "ec2-import.json",
+            "PolicyId": "ANPACEMGEZDGNBVGY3TQOJQGEZAAAABQBGPDQC5AAAAATYN62UNBFYTF5WVCSCZS",
+            "Arn": "arn:aws:iam::123456789012:policy/ec2-import.json",
+            "Path": "/",
+            "DefaultVersionId": "v1",
+            "AttachmentCount": 0,
+            "IsAttachable": true,
+            "CreateDate": "2022-04-21T16:25:53.504000+00:00",
+            "UpdateDate": "2022-04-21T16:25:53.504000+00:00"
+        }
+}
+```
+
+After the policy has been generated, attach the policy to the IAM users that will call the Amazon EC2 API or CLI operation to import the snapshot\.
+
+```
+aws iam attach-user-policy --user-name your-user-name --policy-arn arn:aws:iam::123456789012:policy/policy-name --profile profile-name --endpoint http://snowball-ip:6078 --region snow
+```
+
 ## Step 3: Import the Snapshot to Amazon S3 on Your Device<a name="import-snapshot-cli"></a>
 
-The next step is to import your snapshot into the Amazon S3 on your device\.
-
-**Example command**  
+The next step is to import your snapshot into the Amazon S3 on your device\. The value of S3Bucket should be the bucket which has your image, S3Key should be the image file path in this bucket:
 
 ```
-aws ec2 import-snapshot --disk-container "Format=RAW,UserBucket={S3Bucket=bucket,S3Key=vmimport/image01}" --profile xx --endpoint http://10.1.2.3:8008 --region snow
+aws ec2 import-snapshot --disk-container "Format=RAW,UserBucket={S3Bucket=bucket-name,S3Key=image-file}" --profile profile-name --endpoint http://snowball-ip:8008 --region snow
 ```
 
-For more information, see [import\-snapshot](https://docs.aws.amazon.com/v2/documentation/api/latest/reference/ec2/import-snapshot.html)\.
+For more information, see [import\-snapshot](https://docs.aws.amazon.com/cli/latest/reference/ec2/import-snapshot.html)\.
 
 This command doesn't support the following switches\.
 + \[\-\-client\-data `value`\] 
@@ -284,7 +330,7 @@ This command doesn't support the following switches\.
 Snowball Edge currently only allows one active import job to run at a time, per device\. To start a new import task, either wait for the current task to finish, or choose another available node in a cluster\. You can also choose to cancel the current import if you want\. To prevent delays, don't reboot the Snowball Edge device while the import is in progress\. If you reboot the device, the import will fail, and progress will be deleted when the device becomes accessible\. To check the status of your snapshot import task status, use the following command:  
 
 ```
-aws ec2 describe-snapshots --endpoint http://10.1.2.3:8008 --profile xx
+aws ec2 describe-import-snapshot-tasks --import-task-ids id --profile profile-name --endpoint http://snowball-ip:8008 --region snow
 ```
 
 ## Step 4: Register the Snapshot as an AMI<a name="register-snapshot-cli"></a>
@@ -294,7 +340,7 @@ When the snapshot import to the device is successful, you can register it using 
 **Note**  
 You can only register an AMI when all its snapshots are available\.
 
-For more information, see [register\-image](https://docs.aws.amazon.com/v2/documentation/api/latest/reference/ec2/register-image.html)\.
+For more information, see [register\-image](https://docs.aws.amazon.com/cli/latest/reference/ec2/register-image.html)\.
 
 **Example command**  
 
@@ -302,30 +348,27 @@ For more information, see [register\-image](https://docs.aws.amazon.com/v2/docum
 aws ec2 register-image \
 --name ami-01 \
 --description my-ami-01 \
---block-device-mappings "[{\"DeviceName\": \"/dev/sda1\",\"Ebs\":{\"SnapshotId\": \"s.snap-0371c902634195955\", \"VolumeType\":\"sbg1\"}}, {\"DeviceName\": \"/dev/sda2\",\"Ebs\":{\"VolumeType\":\"sbp1\", \"VolumeSize\":1000}}]" \
+--block-device-mappings "[{\"DeviceName\": \"/dev/sda\",\"Ebs\":{\"Encrypted\":false,\"DeleteOnTermination\":true,\"SnapshotId\":\"snapshot-id\",\"VolumeSize\":30}}]" \
 --root-device-name /dev/sda1 \
---profile xxx \
---endpoint http://10.1.2.3:8008
+--profile profile-name \
+--endpoint http://snowball-ip:8008 \
+--region snow
 ```
 
-Block device mapping JSON \(unescaped\)
+Following is an example of block device mapping JSON\. For more information, see [block device mapping](https://docs.aws.amazon.com/cli/latest/reference/ec2/register-image.html#:~:text=%2D%2D-,block%2Ddevice%2Dmappings,-(list))\.
 
 ```
 [
-   {
-      "DeviceName":"/dev/sda1",
-      "Ebs":{
-         "SnapshotId":"s.snap-0371c902634195955",
-         "VolumeType":"sbg1"
-      }
-   },
-   {
-      "DeviceName":"/dev/sda2",
-      "Ebs":{
-         "VolumeType":"sbp1",
-         "VolumeSize":1000
-      }
-   }
+    {
+        "DeviceName": "/dev/sda",
+        "Ebs": 
+            {
+                "Encrypted": false,
+                "DeleteOnTermination": true,
+                "SnapshotId": "snapshot-id",
+                "VolumeSize": 30
+            }
+    }
 ]
 ```
 
@@ -337,17 +380,15 @@ Block device mapping JSON \(unescaped\)
  }
 ```
 
-## Step 5: Launch the AMI<a name="launch-ami-cli"></a>
+## Step 5: Launch an instance from the AMI<a name="launch-ami-cli"></a>
 
 To launch an instance, see [run\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html)\.
 
-
+The image\-id value is the output of previous registry step:
 
 ```
-aws ec2 run-instances --image-id s.ami-xxxxxxxxxxx --instance-type sbe-c.large --profile xx --endpoint http://10.1.2.3:8008
+aws ec2 run-instances --image-id image-id --instance-type instance-type --profile profile-name --endpoint http://snowball-ip:8008 --region snow
 ```
-
-Example output
 
 ```
 {
@@ -388,7 +429,7 @@ To see the current state of the import progress, you can run the Amazon EC2 `des
 **Example command**  
 
 ```
-aws ec2 describe-import-snapshot-tasks --filter Name=task-state,Values=active --profile xx --endpoint http://10.1.2.3:8008
+aws ec2 describe-import-snapshot-tasks --import-task-ids id --profile profile-name --endpoint http://snowball-ip:8008 --region snow
 ```
 
 **Example output**  
@@ -431,7 +472,7 @@ To cancel an import task, run the `cancel-import-task` command\.
 **Example command**  
 
 ```
-aws ec2 cancel-import-task --import-task-id s.import-snap-8234ef2a01cc3b0c6 --profile xx --endpoint http://10.1.2.3:8008
+aws ec2 cancel-import-task --import-task-id import-task-id --profile profile-name --endpoint http://snowball-ip:8008 --region snow
 ```
 
 **Example output**  
@@ -456,7 +497,7 @@ After a snapshot is imported, you can use this command to describe it\. To filte
 **Example command**  
 
 ```
-aws ec2 describe-snapshots --snapshot-ids s.snap-848a22d7518ad442b --profile xx --endpoint http://10.1.2.3:8008
+aws ec2 describe-snapshots --snapshot-ids snapshot-id --profile profile-name --endpoint http://snowball-ip:8008 --region snow
 ```
 
 **Example output**  
@@ -489,7 +530,7 @@ To remove snapshots that you own and you no longer need, you can use the `delete
 **Example command**  
 
 ```
-aws ec2 delete-snapshot --snapshot-id s.snap-848a22d7518ad442b --profile XXX --endpoint http://012.345.6.78:8008 --region snow
+aws ec2 delete-snapshot --snapshot-id snapshot-id --profile profile-name --endpoint http://snowball-ip:8008 --region snow
 ```
 
 **Note**  
@@ -506,7 +547,7 @@ To deregister AMIs that you no longer need, you can run the `deregister-image` c
 **Example command**  
 
 ```
-aws ec2 deregister-image --image-id ami-01 --profile xxx --endpoint http://10.1.2.3:8008
+aws ec2 deregister-image --image-id image-id --profile profile-name --endpoint http://snowball-ip:8008 --region snow
 ```
 
 This command doesn't support the following switches\.

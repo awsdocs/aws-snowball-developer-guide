@@ -19,7 +19,7 @@ All job management actions are documented in the [AWS Snowball API Reference](ht
 + All read\-only API calls \(for API operations beginning with the prefix of `Get`, `Describe`, or `List`\) don't record response elements\.
 
 Every event or log entry contains information about who generated the request\. The identity information helps you determine the following: 
-+ Whether the request was made with root or AWS Identity and Access Management \(IAM\) user credentials\.
++ Whether the request was made with root or AWS Identity and Access Management \(IAM user\) credentials\.
 + Whether the request was made with temporary security credentials for a role or federated user\.
 + Whether the request was made by another AWS service\.
 

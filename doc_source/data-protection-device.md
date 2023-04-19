@@ -22,7 +22,7 @@ We perform the following security steps:
 
 ## Validating NFC Tags<a name="nfc-validation"></a>
 
-Snowball Edge devices have three options for device configurations\. Snowball Edge Compute Optimized devices \(with or without the GPU\) have NFC tags built into them\. You can scan these tags with the AWS Snowball Edge Verification App, available on Android\. Scanning and validating these NFC tags can help you verify that your device has not been tampered with before you use it\.
+Snowball Edge Compute Optimized and Snowball Edge Storage Optimized \(for data transfer\) devices have NFC tags built into them\. You can scan these tags with the AWS Snowball Edge Verification App, available on Android\. Scanning and validating these NFC tags can help you verify that your device has not been tampered with before you use it\.
 
 Validating NFC tags includes using the Snowball Edge client to generate a device\-specific QR code to verify that the tags you're scanning are for the right device\.
 
@@ -38,7 +38,7 @@ The following procedure describes how to validate the NFC tags on a Snowball Edg
 
 1. Download and install the Snowball Edge client\. For more information, see [Downloading and Installing the Snowball Edge client](download-the-client.md)\.
 
-**To validate the NFC tags in a Snowball Edge Compute Optimized device**
+**To validate the NFC tags**
 
 1. Run the `snowballEdge get-app-qr-code` Snowball Edge client command\. If you run this command for a node in a cluster, provide the serial number \(`--device-sn`\) to get a QR code for a single node\. Repeat this step for each node in the cluster\. For more information on using this command, see [Getting Your QR Code for NFC Validation](using-client-commands.md#client-qr-code)\.
 

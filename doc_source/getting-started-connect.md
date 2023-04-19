@@ -18,6 +18,8 @@ Using the following procedure, you connect the AWS Snowball Edge device to your 
 
    You can change your IP address to a different static address, which you provide by using the following procedure\.
 
+To troubleshoot boot\-up problems, see [Troubleshooting Boot‐up problems](troubleshooting.md#boot-troubleshoot)\.
+
 **To change the IP address of an AWS Snowball Edge device**
 
 1. On the LCD display, choose **CONNECTION**\. 

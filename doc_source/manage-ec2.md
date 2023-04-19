@@ -17,6 +17,10 @@ You can use AWS OpsHub to run pre\-installed software on virtual servers \(insta
 
 Follow these steps to launch an Amazon EC2 instance using AWS OpsHub\.
 
+This video shows how to launch an Amazon EC2 instance using AWS OpsHub\.
+
+[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/0Q7s7JiBCf0?start=88&end=97/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/0Q7s7JiBCf0?start=88&end=97)
+
 **To launch an Amazon EC2 instance**
 
 1. Open the AWS OpsHub application\.
@@ -27,7 +31,8 @@ Follow these steps to launch an Amazon EC2 instance using AWS OpsHub\.
 
 1. Choose **Launch instance**\. The launch instance wizard opens\.
 
-1. For **Device**, choose the Snow device that you want to launch the Amazon EC2 instance on\. 
+1. For **Device**, choose the Snow device that you want to launch the Amazon EC2 instance on\.   
+![\[AWS OpsHub launch instance wizard\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/opshub-launch-ec2-console.png)
 
 1. For **Image \(AMI\)**, choose an Amazon Machine Image \(AMI\) from the list\. This AMI is used to launch your instance\.
 
@@ -64,7 +69,8 @@ Use the following steps to use AWS OpsHub to stop an Amazon EC2 instance\.
 
 1. If you have Amazon EC2 instances running on your device, they appear in the **Instance name** column under **Instances**\.
 
-1. Choose the instance that you want to stop, and choose **Stop**\. The **State** changes to **Stopping**, and then to **Stopped** when done\.
+1. Choose the instance that you want to stop, choose the **Actions** menu, and choose **Stop**\. The **State** changes to **Stopping**, and then to **Stopped** when done\.  
+![\[Instance selection and Action menu showing Stop option\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/opshub-stop-ec2-console.png)
 
 ## Starting an Amazon EC2 instance<a name="start-instance"></a>
 
@@ -80,7 +86,8 @@ Use these steps to start an Amazon EC2 instance using AWS OpsHub\.
 
 1. In the **Instance name** column, under **Instances**, find the instance that you want to start\.
 
-1. Choose the instance, and then choose **Start**\. The **State** changes to **Pending**, and then changes to **Running** when done\.
+1. Choose the instance, and then choose **Start**\. The **State** changes to **Pending**, and then changes to **Running** when done\.  
+![\[Instances tab showing an instance chosen and the Actions menu open with Start chosen.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/opshub-instance-start-console.png)
 
 ## Working with key pairs<a name="working-with-key-pair"></a>
 
@@ -106,9 +113,15 @@ After you terminate an Amazon EC2 instance, you can't restart the instance\.
 
 1. In the **Instance name** column, under **Instances**, find the instance that you want to terminate\.
 
-1. Choose the instance, and choose **Terminate**\. The **State** changes to **Terminating**, and then to **Terminated** when done\. 
+1. Choose the instance, and choose the **Actions**menu\. From the **Actions** menu, choose **Terminate**\.  
+![\[Instances tab showing instance chose and Actions menu showing Terminate chosen.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/opshub-instance-terminate-console.png)
 
-   After the instance is terminated, you can't restart it\.
+1. In the **Terminate instances window, choose **Confirm terminate****\.  
+![\[Terminate instances window showing instance name and Confirm terminate button.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/opshub-instance-terminate-instances-console.png)
+**Note**  
+After the instance is terminated, you can't restart it\.
+
+   The **State** changes to **Terminating**, and then to **Terminated** when done\. 
 
 ## Using storage volumes locally<a name="manage-ebs-volumes"></a>
 
@@ -122,7 +135,8 @@ Amazon EC2 instances use Amazon EBS volumes for storage\. In this procedure, you
 
 1. Choose the **Storage volumes** tab\. If you have storage volumes on your device, the details about the volumes appear under **Storage volumes**\.
 
-1. Choose **Create volume** to open the **Create volume** page\.
+1. Choose **Create volume** to open the **Create volume** page\.  
+![\[Create Volume page\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/opshub-create-volume-console.png)
 
 1. Choose the device that you want to create the volume on, enter the size \(in GiBs\) that you want to create, and choose the type of volume\.
 
@@ -130,7 +144,8 @@ Amazon EC2 instances use Amazon EBS volumes for storage\. In this procedure, you
 
 **To attach a storage volume to your instance**
 
-1. Choose the volume that you created, and then choose **Attach volume**\.
+1. Choose the volume that you created, and then choose **Attach volume**\.  
+![\[Attach volume window showing Compute Instance Id and Volume Device Name\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/opshub-attach-volume-console.png)
 
 1. For **Compute instance Id**, choose the instance you want to attach the volume to\.
 
@@ -174,6 +189,10 @@ You must upload your snapshot to Amazon S3 on your device before you import it\.
 
 When your snapshot is uploaded to Amazon S3, you can import it to your device\. All snapshots that have been imported or are in the process of being imported are shown in **Snapshots** tab\.
 
+This video shows how to import and register a snapshot as an Amazon EC2 AMI, including creating a policy for an IAM user\.
+
+[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/GDDJgQCtPRg?start=192&end=348/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/GDDJgQCtPRg?start=192&end=348)
+
 **To import the snapshot to your device**
 
 1. Open the AWS OpsHub application\.
@@ -188,7 +207,7 @@ When your snapshot is uploaded to Amazon S3, you can import it to your device\. 
 
 1. For **Import description** and **Snapshot description**, enter a description for each\.
 
-1. In the **Role** list, choose a role to use for the import\. Snow Family devices use VM Import/Export to import snapshots\. AWS assumes this role and uses it to import the snapshot on your behalf\. If you don't have a role, open the AWS Identity and Access Management \(IAM\) console, where you can create role\. The role also needs a policy that has the required VM Import/Export permissions to perform the import\. You must attach this policy to the role\. 
+1. In the **Role** list, choose a role to use for the import\. Snow Family devices use VM Import/Export to import snapshots\. AWS assumes this role and uses it to import the snapshot on your behalf\. If you don't have a role configured on your AWS Snowball Edge, open the AWS Identity and Access Management \(IAM in AWS OpsHub where you can create a local IAM role\. The role also needs a policy that has the required VM Import/Export permissions to perform the import\. You must attach this policy to the role\. For more details on this please refer to [Using IAM Locally](https://docs.aws.amazon.com/snowball/latest/developer-guide/using-local-iam.html)\. 
 
    The following is an example of the policy\.
 
@@ -238,6 +257,10 @@ When your snapshot is uploaded to Amazon S3, you can import it to your device\. 
 
 The process of creating an Amazon EC2 AMI from an image imported as a snapshot is known as *registering*\. Images that are imported to your device must be registered before they can be launched as Amazon EC2 instances\.
 
+This video shows how to register a snapshot as an Amazon EC2 AMI\.
+
+[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/GDDJgQCtPRg?start=222&end=255/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/GDDJgQCtPRg?start=222&end=255)
+
 **To register an image imported as a snapshot**
 
 1. Open the AWS OpsHub application\.
@@ -246,7 +269,8 @@ The process of creating an Amazon EC2 AMI from an image imported as a snapshot i
 
 1. Choose the **Images** tab\. You can filter the images by name, ID, or state to find a specific image\.
 
-1. Choose the image that you want to register, and choose **Register image**\.
+1. Choose the image that you want to register, and choose **Register image**\.   
+![\[Image chosen with Register image button highlighted.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/opshub-register-imate-console.png)
 
 1. On the **Register image** page, provide a **Name** and **Description**\.
 
@@ -277,7 +301,8 @@ If you no longer need a snapshot, you can delete it from your device\. The image
 
 1. Choose the **Snapshot** tab to see all snapshots that have been imported\. You can filter by snapshot ID or state of the snapshot to find specific snapshots\. 
 
-1. Choose the snapshot that you want to delete, and choose **Delete**\. You can choose multiple snapshots\.
+1. Choose the snapshot that you want to delete, and choose **Delete**\. You can choose multiple snapshots\.  
+![\[Snapshots tab showing instance and Delete button\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/opshub-delete-snapshot-console.png)
 
 1. In the **Delete snapshot confirmation** box, choose **Delete snapshot**\. If your deletion is successful, the snapshot is removed from the list under the **Snapshots** tab\. 
 
@@ -293,6 +318,8 @@ If you no longer need a snapshot, you can delete it from your device\. The image
 
 1. Choose the **Images** tab\. All your images are listed\. You can filter the images by name, ID, or state to find a specific image\.
 
-1. Choose the image that you want to deregister, and choose **Deregister**\.
+1. Choose the image that you want to deregister, and choose **Deregister**\.  
+![\[Image tab showing image chosen and Deregister image button at top right.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/opshub-image-deregister-console.png)
 
-1.  In the confirmation dialog box, confirm the image ID and choose **Deregister image**\. When deregistering is successful, the image is removed from the list of images\. 
+1. In the **Confirm deregister image** window, confirm the image ID and choose **Deregister image**\. When deregistering is successful, the image is removed from the list of images\.   
+![\[Confirm deregister image window showing image name and Deregister image button.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/opshub-confirm-deregister-image-console.png)

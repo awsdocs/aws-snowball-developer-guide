@@ -8,7 +8,7 @@ The following sections provide detailed instructions on ordering, deploying, usi
 
 ## Ordering a Snowball Edge device with a Tape Gateway<a name="ordering-snowball-tape-gateway"></a>
 
-Use the following procedure to order a Snowball Edge device preinstalled with a Tape Gateway and the hardware specifications necessary to back up your tape data\. For more detailed information about ordering Snow Family devices, see [Creating an AWS Snowball Edge Job](create-job-common.md)\.
+Use the following procedure to order a Snowball Edge device preinstalled with a Tape Gateway and the hardware specifications necessary to back up your tape data\. For more detailed information about ordering Snow Family devices, see [Creating a Snowball Edge job](create-job-common.md)\.
 
 **To order your device**
 
@@ -50,7 +50,7 @@ After you receive your Snowball Edge device with a Tape Gateway, use the followi
 
 1. Obtain the job manifest and unlock code for your device from the [AWS Snow Family Management Console](https://console.aws.amazon.com/snowfamily/home)\. For more information, see [Getting Your Credentials and Tools](get-credentials.md)\.
 
-1. Using AWS OpsHub for Snow Family and the credentials and IP address that you obtained in the previous steps, sign in and unlock the device\. For more information, see [Unlocking a device](connect-unlock-device-sbe.md)\.
+1. Using AWS OpsHub for Snow Family and the credentials and IP address that you obtained in the previous steps, sign in and unlock the device\. For more information, see [Unlocking a device](connect-unlock-device.md)\.
 
 1. In AWS OpsHub for Snow Family, do the following to start the Tape Gateway application service on your device:
 
@@ -70,13 +70,13 @@ To avoid problems and keep your Snowball Edge device with a Tape Gateway running
 + After you order, receive, and deploy your Snowball Edge device, you must create and activate your Tape Gateway from the same AWS Region\. Attempting to create and activate the Tape Gateway in any AWS Region other than where the Snowball Edge was ordered is not supported, and will not work\.
 + To back up your tape data using your Snowball Edge device with a Tape Gateway, connect the virtual tape devices on the gateway to a Windows or Linux client on your network, and then access them using your preferred backup software\. For more information about connecting the gateway to a client and testing it with your backup software, see [Using Your Tape Gateway](https://docs.aws.amazon.com/storagegateway/latest/userguide/GettingStarted-create-tape-gateway.html) in the *AWS Storage Gateway User Guide*\.
 + When a virtual tape is in the **Available** state in the Storage Gateway console, it is ready to be mounted using your preferred backup software, and its full capacity is reserved in physical storage on the Snowball Edge device\. When you eject a virtual tape, its status changes from **Available** to **In transit to VTS**, and only the specific amount of data written to the tape remains reserved on the Snowball Edge device\. You don't need to eject virtual tapes from your backup software before shipping your Snowball Edge device back to AWS\. Any virtual tapes left in the **Available** state are automatically ejected during the data\-transfer process at the AWS facility\.
-+ After you copy the data to your Snowball Edge device, you can schedule a pickup appointment to ship the device back to AWS\. The E Ink shipping label is automatically updated to ensure that the device is sent to the correct AWS facility\. For more information, see [Shipping an AWS Snowball Edge](mailing-storage.md)\.
++ After you copy the data to your Snowball Edge device, you can schedule a pickup appointment to ship the device back to AWS\. The E Ink shipping label is automatically updated to ensure that the device is sent to the correct AWS facility\. For more information, see [Return shipping for Snow Family devices](mailing-storage.md)\.
 
   You can track the device by using Amazon SNS generated text messages and emails\.
 + After your tape data is successfully transferred to the AWS Cloud and your Snowball Edge job is complete, you must manually delete the associated Tape Gateway using the Storage Gateway console\.
 + In rare cases, data corruption or other technical difficulties might prevent AWS from transferring specific virtual tapes to the AWS Cloud after receiving your Snowball Edge device\. In such a case, you must use the Storage Gateway console to delete the virtual tapes that failed to transfer before you can re\-attempt the transfer on another Snowball Edge device\.
 + A Snowball Edge device with a Tape Gateway supports only importing virtual tape data to AWS, and cannot be used to access data that has already been imported\. To access your imported tape data, set up a standard Tape Gateway hosted on a virtual machine, hardware appliance, or Amazon EC2 instance, and transfer the data from AWS over a network connection\.
-+ A Snowball Edge device that is configured for a Tape Gateway is not intended for use with other Snowball Edge services or resources, such as Amazon S3, Network File System \(NFS\) file systems, AWS Lambda, or Amazon EC2\. To use those services or resources, you must create a new Snowball Edge job to order a separate, appropriately configured device\. For instructions, see [Creating an AWS Snowball Edge Job](create-job-common.md)\.
++ A Snowball Edge device that is configured for a Tape Gateway is not intended for use with other Snowball Edge services or resources, such as Amazon S3, Network File System \(NFS\) file systems, AWS Lambda, or Amazon EC2\. To use those services or resources, you must create a new Snowball Edge job to order a separate, appropriately configured device\. For instructions, see [Creating a Snowball Edge job](create-job-common.md)\.
 + To troubleshoot a Snowball Edge device with a Tape Gateway, or if directed to do so by AWS Support, you might need to connect to your gateway's local console\. The local console is a configuration interface that runs on the Snowball Edge device that's hosting your gateway\. You can use this local console to perform maintenance tasks specific to the gateway on that device\. For more information, see [Performing Maintenance Tasks on the Local Console](https://docs.aws.amazon.com/storagegateway/latest/userguide/manage-on-premises.html) in the *AWS Storage Gateway User Guide*\.
 
   To access the local console for the Tape Gateway running on your Snowball Edge device:

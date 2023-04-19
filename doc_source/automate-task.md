@@ -3,7 +3,8 @@
 You can use AWS OpsHub to automate operational tasks that you perform frequently on your Snow Family devices\. You can create a task for reoccurring actions that you might want to perform on resources, such as restarting virtual servers, stopping Amazon EC2 instances, and so on\. You provide an automation document that safely performs operational tasks and runs the operation on AWS resources in bulk\. You can also schedule common IT workflows\. 
 
 **Note**  
- Automating tasks is not supported on clusters\.
+Automating tasks is not supported on clusters\.  
+To use tasks, the Amazon EC2 Systems Manager service must be started first\. To start a service on your Snowball Edge, see [Starting a Service on Your Snowball Edge](using-client-commands.md#edge-start-service)\.
 
 **Topics**
 + [Creating and Starting a Task](#create-task)

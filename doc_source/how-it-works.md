@@ -10,12 +10,12 @@ There are three job types you can use with an AWS Snowball Edge device\.  Althou
 
 1. **A device is prepared for your job** – We prepare an AWS Snowball Edge device for your job, and the status of your job is now **Preparing Snowball**\.
 
-1. **A device is shipped to you by your region's carrier** – The carrier takes over from here, and the status of your job is now **In transit to you**\. You can find your tracking number and a link to the tracking website on the console or with the job management API\. For information about who your region's carrier is, see [Shipping Considerations for AWS Snowball](shipping.md)\.
+1. **A device is shipped to you by your region's carrier** – The carrier takes over from here, and the status of your job is now **In transit to you**\. You can find your tracking number and a link to the tracking website on the console or with the job management API\. For information about who your region's carrier is, see [Shipping considerations for Snow Family devices](shipping.md)\.
 
 1. **Receive the device** – A few days later, your region's carrier delivers the AWS Snowball Edge device to the address that you provided when you created the job, and the status of your job changes to **Delivered to you**\. When it arrives, you’ll notice that it didn’t arrive in a box, because the device is its own shipping container\.
 
 1. **Get your credentials and download the Snowball Edge client** – Get ready to start transferring data by getting your credentials, your job manifest, and the manifest's unlock code, and then downloading the Snowball Edge client\.
-   + The 8 client is the tool that you use to manage the flow of data from the device to your on\-premises data destination\.
+   + The Snowball Edge client is the tool that you use to manage the flow of data from the device to your on\-premises data destination\.
 
      You can download and install the Snowball Edge client from the [AWS Snowball resources](http://aws.amazon.com/snowball/resources/) page\.
 
@@ -56,15 +56,15 @@ Each export job can use any number of AWS Snowball Edge devices\.  If the listin
 **Note**  
 The listing operation used to split your job into parts is a function of Amazon S3, and you are billed for it the same way as any Amazon S3 operation\.
 
-Soon after that, we start exporting your data onto a device\. Typically, exporting data takes one business day\. However, this process can take longer depending on the amount and type of data\. When the export is done, AWS gets the device ready for pickup by your region's carrier\. When it arrives, you connect the AWS AWS Snowball Edge device to your network and transfer the data that you want to import from Amazon S3 onto the device\. 
+Soon after that, we start exporting your data onto a device\. Typically, exporting data takes one business day\. However, this process can take longer depending on the amount and type of data\. When the export is done, AWS gets the device ready for pickup by your region's carrier\. When it arrives, you connect the AWS AWS Snowball Edge device to your network and transfer the data from the device to storage on your network\.
 
 When you’re done transferring data, ship the device back to AWS\. When we receive the device for your export job part, we erase it completely\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\. This step marks the completion of that particular job part\.
 + For keylisting 
 
+  Before we export the objects in the S3 bucket, we scan the bucket\. If the bucket is altered after the scan, the job could encounter delays because we scan for missing or altered objects\.
++ For S3 Glacier Flexible Retrieval
 
-When it arrives in a few days, you’ll connect the AWS Snowball Edge device to your network and transfer the data to a device on your network\. When you’re done transferring data, ship the device back to AWS\. Once we receive a returned device for your export job part, we erase it completely\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\. This step marks the completion of that particular job part\. If there are more job parts, the next job part now is prepared for shipping\.
-
-   It is important to note that AWS Snowball cannot export objects in the S3 Glacier Flexible Retrieval storage class\. These objects must be restored before AWS Snowball can successfully export the objects in the bucket\.
+   It is important to note that AWS Snowball cannot export objects that are in S3 Glacier storage class\. These objects must be restored before AWS Snowball can successfully export the objects in the bucket\.
 
 ## How Local Compute and Storage Jobs Work<a name="how-localcompute"></a>
 
@@ -83,9 +83,6 @@ You can write data to an unlocked cluster by using the Amazon S3 interface or th
 
 When you’re done with your cluster, ship all the nodes back to AWS\. When we receive the cluster node, we perform a complete erasure of the Snowball\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.
 
-
-When you’re done with your cluster, ship all the nodes back to AWS\. Once we receive a returned cluster node, we perform a complete erasure of the Snowball\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.
-
 ## Snowball Edge Videos and Blogs<a name="blog-videos"></a>
 + [AWS Snowball Edge Data Migration](https://d1.awsstatic.com/whitepapers/snowball-edge-data-migration-guide.pdf)
 + [AWS OpsHub for Snow Family](https://www.youtube.com/watch?v=_A3A47Vuu0I)
@@ -93,4 +90,3 @@ When you’re done with your cluster, ship all the nodes back to AWS\. Once we r
 + [Enable large\-scale database migrations with DMS and AWS Snowball](https://aws.amazon.com/blogs/storage/enable-large-scale-database-migrations-with-aws-dms-and-aws-snowball/)
 + [Data Migration Best Practices with AWS Snowball Edge](https://aws.amazon.com/blogs/storage/data-migration-best-practices-with-snowball-edge/)
 + [AWS Snowball resources](https://aws.amazon.com/snowball/resources/)
-

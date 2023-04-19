@@ -56,7 +56,7 @@ If you have other configuration changes that you want to make for the AWS IoT Gr
 
 ## Creating Your Job<a name="function-create-job"></a>
 
-Create a job in the AWS Snow Family Management Console and associate the Amazon Resource Name \(ARN\) for at least one published Lambda function with a bucket\. For a walkthrough on creating your first job, see [Creating an AWSAWS Snowball Edge Job](https://docs.aws.amazon.com/snowball/latest/developer-guide/create-job-common.html)\. 
+Create a job in the AWS Snow Family Management Console and associate the Amazon Resource Name \(ARN\) for at least one published Lambda function with a bucket\. For a walkthrough on creating your first job, see [Creating an AWS Snowball Edge Job](https://docs.aws.amazon.com/snowball/latest/developer-guide/create-job-common.html)\. 
 
 All the Lambda functions that you choose during job creation are triggered by MQTT messages sent by the IoT device associated with the Amazon S3 interface\. These MQTT messages are triggered when an [Amazon S3 PUT object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html) action is made against the bucket on the AWS Snowball Edge device\.
 
@@ -138,7 +138,7 @@ AWS Lambda powered by AWS IoT Greengrass has now started\. Anytime you need the 
 
 ## Connecting to the Internet to Update AWS IoT Greengrass Group Certificates<a name="function-update-certs"></a>
 
-Every time you start the AWS IoT Greengrass service, you must log into the AWS IoT Greengrass console with the account used to create the job in the AWS Snow Family Management Console and initiate an AWS IoT Greengrass group deployment to the AWS IoT Greengrass core\. For more information, see [Deploy cloud configurations to a Greengrass core device](https://docs.aws.amazon.com/greengrass/latest/developerguide/configs-core.html) in the *AWS IoT Greengrass Developer Guide*\. After that, you can disconnect the device from the internet\. The associated AWS IoT Greengrass group then functions in offline mode\.
+Every time you start the AWS IoT Greengrass service, you must log into the AWS IoT Greengrass console with the account used to create the job in the AWS Snow Family Management Console and initiate an AWS IoT Greengrass group deployment to the AWS IoT Greengrass core\. For more information, see [https://docs.aws.amazon.com/greengrass/v2/developerguide/import-lambda-function-console.html](https://docs.aws.amazon.com/greengrass/v2/developerguide/import-lambda-function-console.html) in the *AWS IoT Greengrass Developer Guide*\. After that, you can disconnect the device from the internet\. The associated AWS IoT Greengrass group then functions in offline mode\.
 
 **Important**  
 When the IP address for any device in the local AWS IoT Greengrass group changes, reconnect the Snowball Edge to the internet so it can get new certificates\.
@@ -165,7 +165,7 @@ To test your Lambda functions on\-premises, use the following procedure\.
 
 **To test your Lambda functions on\-premises**
 
-1. Create a subscription in the AWS IoT Greengrass console\. For more information, see [Configure subscriptions](https://docs.aws.amazon.com/greengrass/latest/developerguide/config_subs.html) in the *AWS IoT Greengrass Developer Guide*\.
+1. Create a subscription in the AWS IoT Greengrass console\. For more information, see [Configure subscriptions](https://docs.aws.amazon.com/greengrass/v2/developerguide/interprocess-communication.html#ipc-subscribe-operations) in the *AWS IoT Greengrass Developer Guide*\.
 
 1. Deploy the AWS IoT Greengrass group containing that subscription to the AWS IoT Greengrass core running on the Snowball Edge device\. In this subscription, you specify the following:
    + The **Source** as the device with Snowball Edge Job ID generated when you created the job\.
@@ -183,7 +183,7 @@ To test your Lambda functions on\-premises, use the following procedure\.
 
 A JSON object then displays the payloads included in the MQTT message published to the AWS IoT Greengrass core backing the AWS IoT Greengrass service running on the Snowball Edge device\. This payload includes the name of the object and the name of the bucket the object was PUT into\. 
 
-You've now successfully tested your Lambda function\. The JSON object indicates that the MQTT message published to the AWS IoT Greengrass core was received successfully, and the associated Lambda function was run\. For information about adding AWS IoT Greengrass subscriptions to your AWS IoT Greengrass group, see [Configure subscriptions](https://docs.aws.amazon.com/greengrass/latest/developerguide/config_subs.html) in the *AWS IoT Greengrass Developer Guide*\.
+You've now successfully tested your Lambda function\. The JSON object indicates that the MQTT message published to the AWS IoT Greengrass core was received successfully, and the associated Lambda function was run\. For information about adding AWS IoT Greengrass subscriptions to your AWS IoT Greengrass group, see [Configure subscriptions](https://docs.aws.amazon.com/greengrass/v2/developerguide/interprocess-communication.html#ipc-subscribe-operations) in the *AWS IoT Greengrass Developer Guide*\.
 
 ### Stopping AWS IoT Greengrass<a name="stopping-gg-lambda"></a>
 

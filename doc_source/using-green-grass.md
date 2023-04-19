@@ -11,17 +11,13 @@ To install AWS IoT Greengrass Version 2 on a Snow Family device, make sure that 
 
 **To set up an EC2 instance for AWS IoT Greengrass V2**
 
-1. On the AWS OpsHub dashboard, in the **Start Green Grass** section, choose **Get Started**\.
+1. Launch an Amazon EC2 instance with a public IP Address and an SSH key:
 
-1. Choose **Launch instance**\.
+   1. Using the AWS CLI: [run\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html)\.
 
-1. Configure the instance with the settings that you want\. The instance should have a public IP address and an SSH key\.
-
-1. Choose **Launch** in the launch instance window to launch the instance\.
-
-1. Open the Amazon EC2 console, and choose the **Instance** tab\. Choose the instance and verify that it’s running\. 
-
-   Take note of the public IP address and SSH key name that are associated with the instance\.
+   1. Using AWS OpsHub: [Launching an Amazon EC2 instance](https://docs.aws.amazon.com/snowball/latest/developer-guide/manage-ec2.html#launch-instance)\.
+**Note**  
+Take note of the public IP address and SSH key name that are associated with the instance\.
 
 1. Connect to the EC2 instance using SSH\. To do so, run the following command on the computer that is connected to your device\. Replace *ssh\-key* with the key you used to launch the EC2 instance\. Replace *public\-ip\-address* with the public IP address of the EC2 instance\.
 
@@ -40,7 +36,7 @@ Next, you set up your EC2 instance as an AWS IoT Greengrass Core device that you
 1. Use the following command to install the prerequisite software for AWS IoT Greengrass\. This command installs the AWS Command Line Interface \(AWS CLI\) v2, Python 3, and Java 8\.
 
    ```
-   "curl \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"awscliv2.zip\" && unzip awscliv2.zip &&sudo ./aws/install && sudo yum -y install python3 java-1.8.0-openjdk" 
+   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip &&sudo ./aws/install && sudo yum -y install python3 java-1.8.0-openjdk
    ```
 
 1. Grant the root user permission to run the AWS IoT Greengrass software and modify the root permission from `root ALL=(ALL) ALL` to `root ALL=(ALL:ALL) ALL` in the sudoers config file\.
@@ -49,14 +45,37 @@ Next, you set up your EC2 instance as an AWS IoT Greengrass Core device that you
    sudo sed -in 's/root\tALL=(ALL)/root\tALL=(ALL:ALL)/' /etc/sudoers
    ```
 
-1. Use the following command to download the AWS IoT Greengrass Core software\.
+1. Use the following commands to provide credentials to allow you to install AWS IoT Greengrass Core software\. Replace the example values with your credentials:
 
    ```
-   curl -s https://d2s8p88vqu9w66.cloudfront.net/releases/greengrass-nucleus-latest.zip > greengrass-nucleus-latest.zip && unzip greengrass-nucleus-latest.zip -d GreengrassCore  && rm greengrass-nucleus-latest.zip 
+   export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE 
+   export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
    ```
+**Note**  
+These are credentials from the IAM user in the AWS Region, not the Snow Family device\.
 
-1. Install and configure the AWS IoT Greengrass Core software\. For instructions, see [Getting started with AWS IoT Greengrass V2](https://docs.aws.amazon.com/greengrass/v2/developerguide/getting-started.html) in the *AWS IoT Greengrass Developer Guide*\.
+1. Use the following command to install the AWS IoT Greengrass Core software\. The command creates AWS resources that the core software requires to operate and sets up the core software as a system service that runs when the AMI boots up\.
 
-   Skip steps 1–3 and start with step 4\. Steps 1–3 are not needed\.
+   Replace the following parameters in the command:
+   + `region`: The AWS Region in which to find or create resources\.
+   + `MyGreengrassCore`: The name of the AWS IoT thing for your AWS IoT Greengrass core device\.
+   + `MyGreengrassCoreGroup`: The name of the AWS IoT thing group for your AWS IoT Greengrass core device\.
+
+   ```
+   sudo -E java -Droot="/greengrass/v2" -Dlog.store=FILE \
+       -jar ./GreengrassInstaller/lib/Greengrass.jar \
+       --aws-region region \
+       --thing-name MyGreengrassCore \
+       --thing-group-name MyGreengrassCoreGroup \
+       --thing-policy-name GreengrassV2IoTThingPolicy \
+       --tes-role-name GreengrassV2TokenExchangeRole \
+       --tes-role-alias-name GreengrassCoreTokenExchangeRoleAlias \
+       --component-default-user ggc_user:ggc_group \
+       --provision true \
+       --setup-system-service true \
+       --deploy-dev-tools true
+   ```
+**Note**  
+This command is for an Amazon EC2 instance running an Amazon Linux 2 AMI\. For a Windows AMI, see [Install the AWS IoT Greengrass Core software](https://docs.aws.amazon.com/greengrass/v2/developerguide/install-greengrass-core-v2.html)\.
 
 When you are finished, you will have an AWS IoT Greengrass core running on your Snow Family device for your local use\.

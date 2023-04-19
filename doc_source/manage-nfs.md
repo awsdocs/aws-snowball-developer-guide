@@ -4,9 +4,6 @@ You can use AWS OpsHub to upload files to your device and move them to other loc
 
 
 
-**Warning**  
-The 'NFS based data transfer type' is only available if specified at job creation\. The S3 interface is not available if this transfer type is selected\.
-
 **Topics**
 + [Mounting NFS on a Windows client](#mount-nfs-on-window-client)
 + [Configuring NFS automatically \(quick setup\)](#auto-configure-nfs)
@@ -16,6 +13,7 @@ The 'NFS based data transfer type' is only available if specified at job creatio
 You can configure your Snow Family device as an NFS file system and use your native file system to manage files on your device\. You can upload files from an on\-premises location to your device and then transfer the files to AWS or move them to other locations\. You can use the AWS OpsHub defaults to configure NFS automatically or you can configure it manually yourself\.
 
 **Note**  
+Available storage space on the Snowcone device is not accurate until the NFS service is started\.  
 You can provide CIDR blocks of IP ranges that are allowed to mount the NFS shares exposed by the device\. For example, `10.0.0.0/16`\. If you don't provide allowed CIDR blocks, all mount requests will be denied\.  
 Be aware that data transferred through NFS is not encrypted in transit\.  
 Other than the allowed hosts by CIDR blocks, your Snow Family device doesn't provide any authentication or authorization mechanism for the NFS shares\.
@@ -46,7 +44,8 @@ In Linux, mounting and unmount NFS endpoints requires root permissions\.
 
 **To start and enable NFS on your Snow Family device automatically**
 
-1. In the **Transfer data** section on the dashboard, choose **Enable & start**\. This could take a minute or two to complete\. 
+1. In the **Transfer data** section on the dashboard, choose **Enable & start**\. This could take a minute or two to complete\.   
+![\[File storage dashboard showing Enable and start button.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/opshub_enable_start_nfs_console.png)
 
 1. When the NFS service is started, the IP address of the NFS server is shown on the dashboard and the **Transfer data** section indicates that the service is active\.
 
@@ -58,11 +57,15 @@ In Linux, mounting and unmount NFS endpoints requires root permissions\.
 
 You can manually configure NFS by providing IP address \(VNI\) and restrict access to your file share\.
 
+This video shows how to configure NFS manually using AWS OpsHub\.
+
+[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/StMa2A7X2yA?start=78&end=119/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/StMa2A7X2yA?start=78&end=119)
+
 **To configure NFS manually**
 
 1. At the bottom of **Transfer data** section, on the dashboard, choose **Configure manually**\. 
 
-1. Choose **Enable & start** to open the **Start NFS** wizard\. The **Physical network interface** field is populated\.
+1. Choose **Enable & start** to open the **Start NFS** wizard\. The **Physical network interface** field is populated\. ![\[The Start NFS wizard\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/opshub-nfs-console.png) 
 
 1. Choose **Create IP address \(VNI\)** or choose **Use existing IP address**\.
 
@@ -89,9 +92,9 @@ Don't turn off your device while the service is starting\.
 1. For **Endpoint name**, choose an endpoint from the list, and choose **Mount NFS endpoint**\. In Linux, mounting and unmount NFS endpoints requires root permissions\. This endpoint is configured with the S3 bucket you specified when you ordered the device\. The endpoint is shown under **NFS endpoints**\. The endpoint is configured as an NFS file and shares\. It appears as a drive letter and you can use your native operating system to drag and drop files onto and out of your device\. 
 
    The following are the default mount options:
-   + Windows: `mount -o nolock rsize=128 wsize=128 mtype=hard ipaddress:buckets/BucketName *`
-   + Linux: `mount -t nfs ipaddress:buckets/BucketName mount_point`
-   + macOS: `mount -t nfs -o vers=3,rsize=131072,wsize=131072,nolocks,hard,retrans=2 ipaddress:buckets/$bucketname mount_point`
+   + Windows: `mount -o nolock rsize=128 wsize=128 mtype=hard ipaddress:/buckets/BucketName *`
+   + Linux: `mount -t nfs ipaddress:/buckets/BucketName mount_point`
+   + macOS: `mount -t nfs -o vers=3,rsize=131072,wsize=131072,nolocks,hard,retrans=2 ipaddress:/buckets/$bucketname mount_point`
 
 1. Choose the icon next to the drive letter to open the file share in your client's file browser\. Then start transferring files from your client to your Snow Family device\. You can copy and paste, or drag and drop files from your client computer into the file share\. In Windows, your file share looks like the following: `buckets(\\12.123.45.679)(Z:)`
 

@@ -10,55 +10,35 @@ For more information, see [Class S3ClientOptions\.Builder](https://docs.aws.amaz
 
 **Important**  
 We recommend that you use only one method at a time to read and write data to a local bucket on an AWS Snowball Edge device\. Using both the file interface and the Amazon S3 interface on the same bucket at the same time can result in read/write conflicts\.  
+[Rate Limits on AWS Snowball Edge](rate-limiting.md) details the limits\.  
 For AWS services to work properly on a Snowball Edge, you must allow the ports for the services\. For details, see [Ports Required to Use AWS Services on an AWS Snowball Edge Device](port-requirements.md)\.
+
+**Topics**
++ [Downloading and Installing the AWS CLI Version 1\.16\.14](#cli-version)
++ [Using the AWS CLI and API Operations on Snowball Edge](#using-adapter-cli-specify-region)
++ [Getting and Using Local Amazon S3 Credentials](#adapter-credentials)
++ [Unsupported Amazon S3 Features for Snowball Edge](#snowball-edge-s3-unsupported-features)
++ [Batching Small Files](batching-small-files.md)
++ [Supported AWS CLI Commands](using-adapter-cli.md)
++ [Supported REST API Actions](using-adapter-supported-api.md)
 
 ## Downloading and Installing the AWS CLI Version 1\.16\.14<a name="cli-version"></a>
 
-Currently, Snowball Edge devices support only version 1\.16\.14 and earlier of the AWS CLI\. You can download and install this version of the AWS CLI from GitHub\. Use the following procedure to perform this task\.
+Currently, Snowball Edge devices support only version 1\.16\.14 and earlier of the AWS CLI\. Use the following procedure for your operating system to perform this task\.
 
-**Note**  
-Be sure to install version 2\.6\.5\+ or 3\.4\+ of Python before you install version 1\.16\.14 of the AWS CLI\.
+### Install the AWS CLI on Linux operating systems<a name="install-cli-linux"></a>
 
-**To download and install version 1\.16\.14 of the AWS CLI**
+Run this chained command:
 
-1. Uninstall existing versions of the AWS CLI\. This step is optional for Linux installations\.
-   + **Windows** – For more information, see [Uninstall the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/awscli-install-windows.html#install-msi-uninstall) in the *AWS Command Line Interface User Guide*\.
-   + **Linux** – This step is optional for Linux installations\. However, to uninstall an existing installation of the AWS CLI, run the following commands from a terminal\.
+```
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle-1.16.14.zip" -o "awscli-bundle.zip";unzip awscli-bundle.zip;sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws;/usr/local/bin/aws --version;
+```
 
-     ```
-     sudo rm -rf /usr/local/aws
-     sudo rm /usr/local/bin/aws
-     ```
+### Install the AWS CLI on Windows operating systems<a name="install-cli-windows"></a>
 
-1. Download the AWS CLI as a [\.zip file](https://github.com/aws/aws-cli/archive/1.16.14.zip) from the AWS GitHub repository where it resides\.
-
-1. Install the AWS CLI version 1\.16\.14 from the `1.16.14.zip` file with one of the following procedures:
-   + **Windows**
-
-     1. Extract the archive to a location on your computer, for example: `C:\Users\username\aws_cli\aws-cli-1.16.14`
-
-     1. Open a command prompt, navigate to the folder that you extracted the archive to, and run the setup script with the following command\.
-
-        ```
-        py setup.py install
-        ```
-
-     1. Add the AWS CLI to your `PATH` environment variable\. 
-
-     Doing this installs version 1\.16\.14 of the AWS CLI\.
-   + **Linux**
-
-     1. Extract the archive to a location on your computer, for example: `/home/username/aws_cli/aws-cli-1.16.14`
-
-     1. Open a terminal window, navigate to the directory that you extracted the archive to, and run the setup script with the following command\.
-
-        ```
-        python setup.py install
-        ```
-**Note**  
-You might need to run the command with `sudo`\.
-
-        This command installs version 1\.16\.14 of the AWS CLI, and overwrites files created by any previously installed AWS CLI version\.
+Download and run the installer file for your operating system:
++ [32‐bit](https://s3.amazonaws.com/aws-cli/AWSCLI32-1.16.14.msi)
++ [64‐bit](https://s3.amazonaws.com/aws-cli/AWSCLI64-1.16.14.msi)
 
 ## Using the AWS CLI and API Operations on Snowball Edge<a name="using-adapter-cli-specify-region"></a>
 
@@ -75,9 +55,7 @@ Default output format [None]: json
 Or
 
 ```
-
-aws s3 ls --profile snowballEdge --endpoint http://192.0.2.0:8080 --region snowball 
-
+aws s3 ls --profile snowballEdge --endpoint http://192.0.2.0:8080 --region snow         
 ```
 
 ### Authorization with the Amazon S3 API interface for AWS Snowball<a name="auth-adapter"></a>
@@ -146,12 +124,6 @@ aws s3 ls --profile snowballEdge --endpoint https://192.0.2.0:8443
 
 ## Unsupported Amazon S3 Features for Snowball Edge<a name="snowball-edge-s3-unsupported-features"></a>
 
-Using the Amazon S3 interface, you can programmatically transfer data to and from a Snowball Edge with Amazon S3 API actions\. However, not all Amazon S3 transfer features and API actions are supported for use with a Snowball Edge device\. For more information on the supported features, see the following:
-+ [Supported AWS CLI Commands](using-adapter-cli.md)
-+ [Supported REST API Actions](using-adapter-supported-api.md)
-
-Any features or actions not explicitly listed in these topics are not supported\. For example, the following features and actions are not supported for use with Snowball Edge:
-
-+ [TransferManager](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-s3-transfermanager.html) – This utility transfers files from a local environment to Amazon S3 with the SDK for Java\. Consider using the supported API actions or AWS CLI commands with the adapter instead\.
+Using the Amazon S3 interface, you can programmatically transfer data to and from a Snowball Edge with Amazon S3 API actions\. However, not all Amazon S3 transfer features and API actions are supported for use with a Snowball Edge device\. For example, the following features and actions are not supported for use with Snowball Edge: 
++ [TransferManager](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/examples-s3-transfermanager.html) – This utility transfers files from a local environment to Amazon S3 with the SDK for Java\. Consider using the supported API actions or AWS CLI commands with the interface instead\.
 + [GET Bucket \(List Objects\) Version 2](https://docs.aws.amazon.com/AmazonS3/latest/API/v2-RESTBucketGET.html) – This implementation of the GET action returns some or all \(up to 1,000\) of the objects in a bucket\. Consider using the [GET Bucket \(List Objects\) Version 1](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html) action or the [ls](https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html) AWS CLI command\.
-

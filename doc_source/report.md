@@ -1,12 +1,14 @@
-# Getting Your Job Completion Report and Logs on the Console<a name="report"></a>
+# Getting your job completion report and logs on the console<a name="report"></a>
 
-When data is imported into or exported out of Amazon S3, you get a downloadable PDF job report\. For import jobs, this report becomes available at the very end of the import process\. For export jobs, your job report typically becomes available for you while the AWS Snowball Edge device for your job part is being delivered to you\.
+When data is imported into or exported out of Amazon S3, you get a downloadable PDF job report\. For import jobs, this report becomes available at the very end of the import process\. For export jobs, your job report typically becomes available for you while the AWS Snowball Edge device for your job part is being delivered to you\. There are no job completion reports available for *Local Use* job type\.
 
 The job report provides you insight into the state of your Amazon S3 data transfer\. The report includes details about your job or job part for your records\. The job report also includes a table that provides a high\-level overview of the total number of objects and bytes transferred between the device and Amazon S3\.
 
 For deeper visibility into the status of your transferred objects, you can look at the two associated logs: a success log and a failure log\. The logs are saved in comma\-separated value \(CSV\) format, and the name of each log includes the ID of the job or job part that the log describes\.
 
-You can download the report and the logs from the AWS Snow Family Management Console\.
+You can download the report and the logs from the AWS Snow Family Management Console\. Below is a sample report\.
+
+![\[Sample job completion report including job ID, job type, device type, job state, and data transfer details.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/job-complete-report.png)
 
 **To get your job report and logs**
 

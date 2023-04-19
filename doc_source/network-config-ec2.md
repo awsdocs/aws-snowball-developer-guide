@@ -1,4 +1,4 @@
-# Network Configuration for Compute Instances<a name="snowcone-network-config-ec2"></a>
+# Network Configuration for Compute Instances<a name="network-config-ec2"></a>
 
 After you launch your compute instances on a Snow Family device, you must provide it with an IP address by creating a network interface\. Snow Family devices support two kinds of network interfaces, a virtual network interface and a direct network interface\. 
 
@@ -11,10 +11,12 @@ VNI: All physical interfaces \(RJ45, SFP\+, and QSFP\) are supported\.
 
 **Direct network interface \(DNI\)**
 
-A direct network interface \(DNI\) is an advanced network feature that enables use cases like multicast streams, transitive routing, and load balancing\. By providing instances with layer 2 network access without any intermediary translation or filtering, you can gain increased flexibility over the network configuration of your Snow Family device and improved network performance\. DNIs can be associated with any physical network port, allowing you to use any or all of the physical network ports on your Snow Family device\. A maximum of 20 DNIs can be associated with an EC2 instance\. DNIs support VLAN tags and customizing the MAC address\. Traffic on DNIs is not protected by security groups\.
+A direct network interface \(DNI\) is an advanced network feature that enables use cases like multicast streams, transitive routing, and load balancing\. By providing instances with layer 2 network access without any intermediary translation or filtering, you can gain increased flexibility over the network configuration of your Snow Family device and improved network performance\. DNIs support VLAN tags and customizing the MAC address\. Traffic on DNIs is not protected by security groups\.
+
+On Snowball Edge devices, DNIs can be associated with the SFP or QSFP ports\. DNIs cannot be associated with RJ45 ports\. Each optical port supports a maximum of seven DNIs\. DNIs do not have to be associated to the physical network port you use to control your Snow Family device\. One EC2 instance can support four DNIs and another instance can support three, for a maximum of seven per device\. 
 
 **Note**  
-DNI: Only SFP\+ or QSFP interface are supported for this feature\. RJ45 is not supported
+Snowball Edge storage optimized \(with EC2 compute functionality\) devices don't support DNIs\.
 
 **Topics**
 + [Prerequisites](#snowcone-configuration-prerequisites)
@@ -89,7 +91,7 @@ Before you configure a VNI or a DNI, be sure that you've done the following prer
 1. To associate your newly created IP address with your instance, use the following command, replacing the red text with your values:
 
    ```
-   aws ec2 associate-address --public-ip 192.0.2.0 --instance-id s.i-01234567890123456 --endpoint Snow Family device physical IP address:8008
+   aws ec2 associate-address --public-ip 192.0.2.0 --instance-id s.i-01234567890123456 --endpoint http://Snow Family device physical IP address:8008
    ```
 
 ## Setting Up a Direct Network Interface \(DNI\)<a name="snowcone-setup-dni"></a>
@@ -135,9 +137,46 @@ If you added direct networking to your existing device by performing an in\-the\
    + The first is to change ensure that packets meant for the VNI associated with the EC2 instance are sent through eth0\. 
    + The second change configures your direct network interface to use either DCHP or static IP when booting\. 
 
-   To set these configurations, you must first SSH into your EC2 instance and run a script to route packets that are meant for the VNI to eth0 and set your DNI to either DHCP or static IP\. 
+   The following are examples of shell scripts for Amazon Linux 2 and CentOS Linux that make these configuration changes\.
 
-   The following is an example of a shell script for CentOS that makes these configuration changes\.
+------
+#### [ Amazon Linux 2 ]
+
+   ```
+   # Mac address of the direct network interface. 
+   # You got this when you created the direct network interface.
+   DNI_MAC=[MAC ADDRESS FROM CREATED DNI]
+   
+   # Configure routing so that packets meant for the VNI always are sent through eth0.
+   PRIVATE_IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
+   PRIVATE_GATEWAY=$(ip route show to match 0/0 dev eth0 | awk '{print $3}')
+   ROUTE_TABLE=10001
+   echo "from $PRIVATE_IP table $ROUTE_TABLE" > /etc/sysconfig/network-scripts/rule-eth0
+   echo "default via $PRIVATE_GATEWAY dev eth0 table $ROUTE_TABLE" > /etc/sysconfig/network-scripts/route-eth0
+   echo "169.254.169.254 dev eth0" >> /etc/sysconfig/network-scripts/route-eth0
+   
+   # Query the persistent DNI name, assigned by udev via ec2net helper.
+   #   changable in /etc/udev/rules.d/70-persistent-net.rules
+   DNI=$(ip --oneline link | grep -i $DNI_MAC | awk -F ': ' '{ print $2 }')
+   
+   # Configure DNI to use DHCP on boot.
+   cat << EOF > /etc/sysconfig/network-scripts/ifcfg-$DNI
+   DEVICE="$DNI"
+   NAME="$DNI"
+   HWADDR=$DNI_MAC
+   ONBOOT=yes
+   NOZEROCONF=yes
+   BOOTPROTO=dhcp
+   TYPE=Ethernet
+   MAINROUTETABLE=no
+   EOF
+   
+   # Make all changes live.
+   systemctl restart network
+   ```
+
+------
+#### [ CentOS Linux ]
 
    ```
    # Mac address of the direct network interface. You got this when you created the direct network interface.
@@ -170,3 +209,5 @@ If you added direct networking to your existing device by performing an in\-the\
    # Make all changes live.
    systemctl restart network
    ```
+
+------

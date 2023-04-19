@@ -4,7 +4,7 @@ An Amazon EC2 *cluster* is a group of devices that provision together as a clust
 
 **To create an Amazon EC2 cluster**
 
-1. Connect and log in to your Snow device\. For instructions on how to log in to your device, see [Unlocking a device](connect-unlock-device-sbe.md)\.
+1. Connect and log in to your Snow device\. For instructions on how to log in to your device, see [Unlocking a device](connect-unlock-device.md)\.
 
 1. On the **Choose device** page, choose **Snowball Edge cluster**, and then choose **Next**\.
 

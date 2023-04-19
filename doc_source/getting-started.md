@@ -9,7 +9,7 @@ The getting started exercises assume that you use the AWS Snow Family Management
 Before you can get started, you must create an AWS account and an administrator user in AWS Identity and Access Management \(IAM\)\. For information, see [Setting Up Your AWS Access for AWS Snowball Edge](setting-up.md)\.
 
 **Topics**
-+ [Creating an AWS Snowball Edge Job](create-job-common.md)
++ [Creating a Snowball Edge job](create-job-common.md)
 + [Receiving the Snowball Edge](receive-device.md)
 + [Connecting to Your Local Network](getting-started-connect.md)
 + [Getting Your Credentials and Tools](get-credentials.md)
@@ -19,6 +19,7 @@ Before you can get started, you must create an AWS account and an administrator 
 + [Using Your Snowball Edge](transfer-data.md)
 + [Powering Off the Snowball Edge](turnitoff.md)
 + [Returning the Snowball Edge Device](return-device.md)
++ [Return shipping for Snow Family devices](mailing-storage.md)
 + [Monitoring the Import Status](monitor-status.md)
-+ [Getting Your Job Completion Report and Logs on the Console](report.md)
++ [Getting your job completion report and logs on the console](report.md)
 + [Where Do I Go from Here?](where-to.md)

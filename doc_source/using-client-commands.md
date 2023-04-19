@@ -5,6 +5,7 @@ Following, you can find information on the Snowball Edge client commands, includ
 **Topics**
 + [Configuring a Profile for the Snowball Edge Client](#client-configuration)
 + [Getting Your QR Code for NFC Validation](#client-qr-code)
++ [Snowball Edge client version](#cli-version)
 + [Unlocking Snowball Edge Devices](#setting-up-client)
 + [Updating a Snowball Edge](#update-client-commands)
 + [Getting Credentials](#client-credentials)
@@ -51,7 +52,7 @@ snowballEdge configure
 
 ```
 Configuration will stored at home directory\.aws\snowball\config\snowball-edge.config
-Snowball Edge Manifest Path: Path/to/manifest/file
+Snowball Edge Manifest Path: /Path/to/manifest/file
 Unlock Code: 29 character unlock code
 Default Endpoint: https://192.0.2.0
 ```
@@ -74,6 +75,22 @@ snowballEdge get-app-qr-code --output-file ~/downloads/snowball-qr-code.png
 QR code is saved to ~/downloads/snowball-qr-code.png
 ```
 
+## Snowball Edge client version<a name="cli-version"></a>
+
+Use the `snowball version` command to see the version of the Snowball Edge command line interface \(CLI\) client\.
+
+### Usage<a name="cli-version-usage"></a>
+
+```
+    snowball version                
+```
+
+### Example output<a name="cli-version-output"></a>
+
+```
+    Snowball client version: 1.2.0  Build 254                
+```
+
 ## Unlocking Snowball Edge Devices<a name="setting-up-client"></a>
 
 To unlock a standalone AWS Snowball Edge device, run the `snowballEdge unlock-device` command\. To unlock a cluster, use the `snowballEdge unlock-cluster` command\. These commands authenticate your access to the AWS Snowball Edge device\.
@@ -81,16 +98,16 @@ To unlock a standalone AWS Snowball Edge device, run the `snowballEdge unlock-de
 **Note**  
 To unlock the devices associated with your job, the devices must be on\-site, plugged into power and the network, and turned on\. In addition, the LCD display on the front of the AWS Snowball Edge device must indicate that the device is ready for use\.
 
-**Usage \(configured Snowball Edge client\)**
+**Usage**
 
 ```
-snowballEdge unlock-device
+snowballEdge unlock-device --endpoint https://192.0.2.0 --manifest-file Path/to/manifest/file --unlock-code 01234-abcde-ABCDE-01234
 ```
 
 **Example Single Device Unlock Input**  
 
 ```
-snowballEdge unlock-device
+snowballEdge unlock-device --endpoint https://192.0.2.0 --manifest-file /usr/home/manifest.bin --unlock-code 01234-abcde-ABCDE-01234
 ```
 
 **Example Single Device Unlock Output**  
@@ -115,7 +132,7 @@ Your Snowball Edge Cluster is unlocking. You may determine the unlock state of y
 
 ## Updating a Snowball Edge<a name="update-client-commands"></a>
 
-Use the following commands to download and install updates for your Snowball Edge device\. For procedures that use these commands, see [Updating Software on an AWS Snowball Edge](updating-device.md)\.
+Use the following commands to download and install updates for your Snowball Edge device\. For procedures that use these commands, see [Updating software on Snowball Edge devices](updating-device.md)\.
 
 `snowballEdge check-for-updates` – Returns version information about the Snowball Edge software available in the cloud, and the current version installed on the device\. 
 
@@ -245,7 +262,7 @@ auto-reboot: false;
 
 ## Getting Credentials<a name="client-credentials"></a>
 
-Using the `snowballEdge list-access-keys` and `snowballEdge get-secret-access-key` commands, you can get the credentials of the admin user of your AWS account on Snowball Edge\. You can use these credentials to create AWS Identity and Access Management \(IAM\) users and roles, and to authenticate your requests when using the AWS CLI or with an AWS SDK\. These credentials are only associated with an individual job for Snowball Edge, and you can use them only on the device or cluster of devices\. The device or devices don't have any IAM permissions in the AWS Cloud\.
+Using the `snowballEdge list-access-keys` and `snowballEdge get-secret-access-key` commands, you can get the credentials of the admin user of your AWS account on Snowball Edge\. You can use these credentials to create AWS Identity and Access Management \(IAM users\) and roles, and to authenticate your requests when using the AWS CLI or with an AWS SDK\. These credentials are only associated with an individual job for Snowball Edge, and you can use them only on the device or cluster of devices\. The device or devices don't have any IAM permissions in the AWS Cloud\.
 
 **Note**  
 If you're using the AWS CLI with the Snowball Edge, you must use these credentials when you configure the CLI\. For information about configuring credentials for the AWS CLI, see [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration) in the *AWS Command Line Interface User Guide*\.
@@ -303,7 +320,7 @@ To stop a service running on your Snowball Edge, you can use the `snowballEdge s
 The Amazon S3, Amazon EC2, AWS STS, and IAM services cannot be stopped\.
 
 **Warning**  
-Data loss can occur if the file interface is stopped before remaining buffered data is written to the device\. For more information on using the file interface, see [Transferring Files to AWS Snowball Edge Using the File Interface](using-fileinterface.md)\.
+Data loss can occur if the file interface is stopped before remaining buffered data is written to the device\. For more information on using the file interface, see [Transferring Files to Snowball Edge devices using the File Interface](using-fileinterface.md)\.
 
 **Usage \(configured Snowball Edge client\)**
 
@@ -398,7 +415,7 @@ To see the current restrictions, use the `describe-service` command\.
  snowballEdge describe-service --service-id nfs
 ```
 
-## AWSAWS Snowball Edge Logs<a name="logs"></a>
+## AWS Snowball Edge Logs<a name="logs"></a>
 
 When you transfer data between your on\-premises data center and a Snowball Edge, logs are automatically generated\. If you encounter unexpected errors during data transfer to the device, you can use the following commands to save a copy of the logs to your local server\.
 
@@ -807,6 +824,9 @@ It is your responsibility to provide a secure NTP time server\. To set which NTP
 
 **Note**  
 The `update-time-servers` command will override the previous NTP time servers settings\.
+
+**Supported NTP device types and software versions**  
+NTP isn't available on any version 2 storage and compute device types\. Snowball Edge version 3 storage and compute device types with software version 77 or later support NTP, however\. To check if NTP is enabled, use the Snowball Edge CLI command `describe-time-sources`\.
 
 **Usage**
 

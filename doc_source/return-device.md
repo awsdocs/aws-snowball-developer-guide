@@ -1,23 +1,26 @@
 # Returning the Snowball Edge Device<a name="return-device"></a>
 
-For information about returning a Snowball Edge, see [AWS Snowball Pickups in the EU, US, South Africa, Singapore, and Canada](mailing-storage.md#standard-pickup)\.
+The prepaid shipping information on the E Ink display contains the address to return the AWS Snowball Edge device\. For information about with which carrier to return the device, see [Shipping carriers](mailing-storage.md#carriers)\. 
 
-The prepaid shipping label on the E Ink display contains the correct address to return the AWS Snowball Edge device\. For information about how to return the device, see [Shipping Carriers](mailing-storage.md#carriers)\. 
+The device is delivered to an AWS sorting facility and forwarded to the AWS data center\. The carrier automatically provides a tracking number for your job to the AWS Snow Family Management Console\. You can access the tracking number and a link to the carrier's tracking website by viewing the job's status details in the console or by making calls to the job management API\.
 
-The device is delivered to an AWS sorting facility and forwarded to the AWS data center\. The carrier automatically reports back a tracking number for your job to the AWS Snow Family Management Console\. You can access that tracking number, and also a link to the tracking website, by viewing the job's status details in the console, or by making calls to the job management API\.
+If you've powered off and unplugged your Snowball Edge device and the shipping information doesn't appear on the E Ink screen after about a minute, see [Troubleshooting problems returning Snow Family devices](troubleshooting.md#return-shipping-troubleshooting)\.
 
-**Important**  
-Unless personally instructed otherwise by AWS, never affix a separate shipping label to the device\. Always use the shipping label that is on the E Ink display\.
-
-In addition, you can track the status changes of your job through the AWS Snow Family Management Console\. You can use Amazon SNS notifications if you selected that option during job creation, or you can make calls to the job management API\. For more information about this API, see [AWS Snowball API Reference](https://docs.aws.amazon.com/snowball/latest/api-reference/api-reference.html)\. 
+You can track the status changes of your job through the AWS Snow Family Management Console as AWS processes the device\. You can use Amazon SNS notifications if you selected that option during job creation, or you can make calls to the job management API\. For more information about this API, see [AWS Snowball API Reference](https://docs.aws.amazon.com/snowball/latest/api-reference/api-reference.html)\. 
 
 The final status values include when the AWS Snowball Edge device has been received by AWS, when data import begins, and when the job is completed\.
 
-## Disconnecting the Snowball Edge<a name="disconnectdevice"></a>
+## Preparing an AWS Snowball Edge device for shipping<a name="device-shipping"></a>
 
-Disconnect the AWS Snowball Edge device cables\. Secure the device's power cable into the cable nook beneath the top door on the device\. 
+The following explains how to prepare an AWS Snowball Edge device and ship it back to AWS\.
 
-Pull out and close the front and back doors\. When they close completely, you hear an audible click\. When the return shipping label appears on the E Ink display on top of the device, it's ready to be returned\. To see who your region's carrier is, see [Shipping Carriers](mailing-storage.md#carriers)\.
+**To prepare an AWS Snowball Edge device for shipping**
+
+1. Disconnect and stow the power cable in the cable nook on top of the AWS Snowball Edge device\.
+
+1. Close the doors on the back, top, and front of the AWS Snowball Edge device\. Press in until you hear and feel them click\.
+
+You don't need to pack the AWS Snowball Edge device in a container, because the device itself is its own physically rugged shipping container\. The E Ink display on the top of the AWS Snowball Edge device displays the return shipping information when the device is turned off\.
 
 **Job\-Type Specific Consideration** 
 
