@@ -1,9 +1,3 @@
---------
-
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
-
---------
-
 # Access Control in the AWS Cloud<a name="access-control"></a>
 
 You can have valid credentials to authenticate your requests in AWS\. However, unless you have permissions you cannot create or access AWS resources\. For example, you must have permissions to create a job for AWS Snowball\.
