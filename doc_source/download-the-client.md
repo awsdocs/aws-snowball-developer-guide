@@ -1,13 +1,7 @@
---------
+# Downloading and Installing the Snowball Edge client<a name="download-the-client"></a>
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
+The Snowball Edge client is the tool that you use to unlock the AWS Snowball Edge device\. We recommend that you use the AWS OpsHub for Snow Family application\. For instructions, see [Using AWS OpsHub for Snow Family to Manage Devices](aws-opshub.md)\.
 
---------
+You can download and install the Snowball Edge client from [AWS Snowball resources](https://aws.amazon.com/snowball/resources/) page to a powerful workstation that you own\.
 
-# Download and Install the Snowball Client<a name="download-the-client"></a>
-
-The Snowball client is the tool that you use to unlock the AWS Snowball Edge device\.
-
-The Snowball client must be downloaded from the [AWS Snowball Edge Resources](http://aws.amazon.com/snowball-edge/resources/) page and installed on a powerful workstation that you own\.
-
-**Next:** [Unlock the Snowball Edge](unlockdevice.md) 
+**Next:** [Unlocking the Snowball Edge](unlockdevice.md) 

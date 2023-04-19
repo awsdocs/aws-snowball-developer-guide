@@ -1,12 +1,6 @@
---------
+# Connecting to Your Local Network<a name="getting-started-connect"></a>
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
-
---------
-
-# Connect to Your Local Network<a name="getting-started-connect"></a>
-
-Using the following procedure, you connect the AWS Snowball Edge device to your local network\. The device doesn't need to be connected to the internet\. The device has three doors, a front, a back, and a top\.
+Using the following procedure, you connect the AWS Snowball Edge device to your local network\. The device doesn't need to be connected to the internet\. The device has three doors: a front, a back, and a top\.
 
 **To connect the device to your network**
 
@@ -24,7 +18,7 @@ Using the following procedure, you connect the AWS Snowball Edge device to your 
 
    You can change your IP address to a different static address, which you provide by using the following procedure\.
 
-**To change the IP address of a AWS Snowball Edge device**
+**To change the IP address of an AWS Snowball Edge device**
 
 1. On the LCD display, choose **CONNECTION**\. 
 
@@ -37,4 +31,4 @@ The device is now connected to your network\.
 **Important**  
 To prevent corrupting your data, don't disconnect the AWS Snowball Edge device or change its connection settings while it's in use\.
 
-**Next:** [Get Your Credentials and Tools](get-credentials.md) 
+**Next:** [Getting Your Credentials and Tools](get-credentials.md) 

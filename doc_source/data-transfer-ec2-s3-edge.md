@@ -1,15 +1,9 @@
---------
+# Transferring Data from EC2 Compute Instances to S3 Buckets on the Same Snowball Edge<a name="data-transfer-ec2-s3-edge"></a>
 
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
-
---------
-
-# Transferring Data from Amazon EC2 Compute Instances to Amazon S3 Buckets on the Same Snowball Edge<a name="data-transfer-ec2-s3-edge"></a>
-
-You can transfer data between compute instances and Amazon S3 buckets on the same Snowball Edge device\. This is done by using the supported AWS CLI commands and the appropriate endpoints\. For example, assume that you want to move data from a directory in my `sbe1.xlarge` instance into the Amazon S3 bucket, `myBucket` on the same device, using the Amazon S3 endpoint `192.0.2.1:8080`\. You would use the following procedure\.
+You can transfer data between compute instances and Amazon S3 buckets on the same Snowball Edge device\. You do this by using the supported AWS CLI commands and the appropriate endpoints\. For example, assume that you want to move data from a directory in my `sbe1.xlarge` instance into the Amazon S3 bucket, `myBucket` on the same device\. Assume also that you're using the Amazon S3 endpoint `192.0.2.1:8080`\. You use the following procedure\.
 
 **Note**  
-This procedure only works if you've followed the instructions in [Configure an AMI to Use SSH to Connect to Compute Instances Launched on the Device](create-ec2-edge-job.md#important-create-ec2-edge-job)\.
+This procedure only works if you've followed the instructions in [Configuring an AMI to Use SSH to Connect to Compute Instances Launched on the Device](create-ec2-edge-job.md#important-create-ec2-edge-job)\.
 
 **To transfer data between a compute instance and a bucket on the same Snowball Edge**
 
