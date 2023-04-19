@@ -1,17 +1,11 @@
---------
-
-This guide is for the Snowball Edge\. If you are looking for documentation for the Snowball, see the [AWS Snowball User Guide](https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html)\.
-
---------
-
 # Supported Instance Metadata and User Data<a name="edge-compute-instance-metadata"></a>
 
-*Instance metadata *is data about your instance that you can use to configure or manage the running instance\. Snowball Edge supports a subset of instance metadata categories for your compute instances\. For more information, see [Instance Metadata and User Data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) in the *Amazon EC2 User Guide for Linux Instances\.*
+*Instance metadata* is data about your instance that you can use to configure or manage the running instance\. Snowball Edge supports a subset of instance metadata categories for your compute instances\. For more information, see [Instance metadata and user data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) in the *Amazon EC2 User Guide for Linux Instances\.*
 
 The following categories are supported\. Using any other categories returns a `404` error message\.
 
 
-**Supported Instance Metadata Categories on a Snowball Edge**  
+**Supported instance metadata categories on a Snowball Edge**  
 
 | Data | Description | 
 | --- | --- | 
@@ -32,7 +26,7 @@ The following categories are supported\. Using any other categories returns a `4
 | userData | Shell scripts to send instructions to an instance at launch\. | 
 
 
-**Supported Instance Dynamic Data Categories on a Snowball Edge**  
+**Supported instance dynamic data categories on a Snowball Edge**  
 
 | Data | Description | 
 | --- | --- | 
