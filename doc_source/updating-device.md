@@ -101,30 +101,19 @@ You have now successfully updated your device and confirmed that your device is 
 
 If you plan to keep your Snowball Edge device for more than 360 days, you will need to update the Secure Sockets Layer \(SSL\) certificate on the device to avoid interruption of your use of the device\. If the certificate expires, you will not be able to use the device and will have to return it to AWS\.
 
-This topic explains how update your device after you determined when the certificate will expire\.
+This topic explains how to determine when the certificate will expire and how to update your device\.
 
 **Note**  
 Request an update from AWS at least two weeks before the certificate will expire to avoid interruption of your use of the device\.
 
-1. Use a tool like [OpenSSL](https://www.openssl.org) to determine when the certificate will expire\. For example, use the `openssl s_client` command to connect to the device and see information about the certificate\.  
-**Example of openssL s\_client command syntax on Windows**  
+1. Use the `snowballEdge describe-device-software` command to determine when the certificate will expire\. In the output of the command, the value of `CertificateExpiry` includes the date and time at which the certificate will expire\.  
+**Example of `describe-device-software` output**  
 
    ```
-       openssl s_client -connect IP.ADDRESSOFSNOW:9091
-   ```  
-**Example of openssl s\_client command syntax on macOS**  
-
-   ```
-       openssl s_client -connect IP.ADDRESSOFSNOW:9091 | openssl x509 -noout -enddate
-   ```
-
-   In the output of the command, the value of `NotAfter` is the date and time at which the certificate expires\.  
-**Example value of NotAfter output of openssl s\_client command**  
-
-   ```
-   …
-   NotAfter: Sep  3 19:11:50 2022 GMT
-   …
+   Installed version: 101
+   Installing version: 102
+   Install State: Downloading
+   CertificateExpiry : Thur Jan 01 00:00:00 UTC 1970
    ```
 
 1. Contact AWS Support and request an SSL certificate update\.

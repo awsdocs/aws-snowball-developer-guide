@@ -34,14 +34,14 @@ The following practices are highly recommended, because they have the largest im
 ## Speeding Up Data Transfer<a name="transferspeed"></a>
 
 **Note**  
-If you are using a Snowball Edge with the S3 data transfer mechanism, the data transfer rate using the file interface is typically between 25 MB/s and 40 MB/s\. If you need to transfer data faster than this, use the Amazon S3 interface\. The S3 interface has a data transfer rate typically between 250 MB/s and 400 MB/s\. For more information about using the Amazon S3 interface, see [Transferring Files Using the Amazon S3 Interface](using-adapter.md)  
+If you are using a Snowball Edge with the S3 data transfer mechanism, the data transfer rate using the file interface is typically between 25 MB/s and 40 MB/s\. If you need to transfer data faster than this, use the Amazon S3 adapter\. The S3 interface has a data transfer rate typically between 250 MB/s and 400 MB/s\. For more information about using the Amazon S3 adapter, see [Transferring files using the Amazon S3 adapter for data migration](using-adapter.md)  
 If you are using a Snowball Edge with the NFS data transfer mechanism, the data transfer rate using the file interface is typically between 250 MB/s and 400 MB/s\. For more information about using the file interface, see [Transferring Files to Snowball Edge devices using the File Interface](using-fileinterface.md)\.
 
 One of the best ways that you can improve the performance of an AWS Snowball Edge device is to speed up the transfer of data going to and from a device\. In general, you can improve the transfer speed from your data source to the device in the following ways\. This following list is ordered from largest to smallest positive impact on performance:
 
 1. **Perform multiple write operations at one time** – To do this, run each command from multiple terminal windows on a computer with a network connection to a single AWS Snowball Edge device\.
 
-1. **Transfer small files in batches ** – Each copy operation has some overhead because of encryption\. To speed up the process, batch files together in a single archive\. When you batch files together, they can be auto\-extracted when they are imported into Amazon S3\. For more information, see [Batching Small Files](batching-small-files.md)\.
+1. **Transfer small files in batches ** – Each copy operation has some overhead because of encryption\. To speed up the process, batch files together in a single archive\. When you batch files together, they can be auto\-extracted when they are imported into Amazon S3\. For more information, see [Batching small files](batching-small-files.md)\.
 
 1. **Don't perform other operations on files during transfer** – Renaming files during transfer, changing their metadata, or writing data to the files during a copy operation has a negative impact on transfer performance\. We recommend that your files remain in a static state while you transfer them\. 
 

@@ -10,10 +10,11 @@ The first step in creating a job is to determine the type of job that you need a
 
 1. In the **Job name** section, provide a name for your job in the **Job name** box\.
 
-1. Depending on your use case, choose one of the following job types:
+1. Depending on your need, choose one of the following job types:
    + **Import into Amazon S3** – Choose this option to have AWS ship an empty Snowball Edge device to you\. You connect the device to your local network and run the Snowball Edge client\. You copy data onto the device using NFS share or the S3 adapter, ship it back to AWS, and your data is uploaded to AWS\.
    + **Export from Amazon S3** – Choose this option to export data from your Amazon S3 bucket to your device\. AWS loads your data on the device and ships it to you\. You connect the device to your local network and run the Snowball Edge client\. You copy data from your device to your servers\. When you are done, ship the device to AWS, and your data is erased from the device\.
    + **Local compute and storage only** – Perform compute and storage workloads on the device without transferring data\. 
-   + **Import virtual tapes into AWS Storage Gateway** – AWS ships an empty Snow Family device configured as a Tape Gateway\. You transfer the data to the device in the form of virtual tapes, and ship it back\. AWS ingests the data and displays it as virtual tapes in the AWS Storage Gateway console\. Your data is then erased from the device\.
+   + **Import virtual tapes into AWS Storage Gateway** – AWS ships an empty Snow Family device configured as a Tape Gateway\. You transfer the data to the device in the form of virtual tapes, and ship it back\. AWS ingests the data and displays it as virtual tapes in the AWS Storage Gateway console\. Your data is then erased from the device\.  
+![\[Choose job type panel showing Import into Amazon S3 job type selected.\]](http://docs.aws.amazon.com/snowball/latest/developer-guide/images/choose-job-type-console.png)
 
 1. Choose **Next** to continue\.

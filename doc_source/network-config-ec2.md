@@ -7,13 +7,13 @@ After you launch your compute instances on a Snow Family device, you must provid
 A virtual network interface is the standard network interface for connecting to an EC2 instance on your Snow Family device\. You must create a VNI for each of your EC2 instances regardless of whether you also use a direct network interface or not\. The traffic passing through a VNI is protected by the security groups that you set up\. You can only associate VNIs with the physical network port you use to control your Snow Family device\.
 
 **Note**  
-VNI: All physical interfaces \(RJ45, SFP\+, and QSFP\) are supported\.
+VNI will use the same physical interface \(RJ45, SFP\+, or QSFP\) that is used to managed the Snow Family device\. Creating a VNI on a different physical interface than the one being used for device management could lead to unexpected results\.
 
 **Direct network interface \(DNI\)**
 
 A direct network interface \(DNI\) is an advanced network feature that enables use cases like multicast streams, transitive routing, and load balancing\. By providing instances with layer 2 network access without any intermediary translation or filtering, you can gain increased flexibility over the network configuration of your Snow Family device and improved network performance\. DNIs support VLAN tags and customizing the MAC address\. Traffic on DNIs is not protected by security groups\.
 
-On Snowball Edge devices, DNIs can be associated with the SFP or QSFP ports\. DNIs cannot be associated with RJ45 ports\. Each optical port supports a maximum of seven DNIs\. DNIs do not have to be associated to the physical network port you use to control your Snow Family device\. One EC2 instance can support four DNIs and another instance can support three, for a maximum of seven per device\. 
+On Snowball Edge devices, DNIs can be associated with the RJ45, SFP, or QSFP ports\. Each port supports a maximum of seven DNIs\. For example, the SFP port can have seven DNIs, four of which are mapped to one EC2 instance and three mapped to another EC2 instance\. The QSFP can have another seven DNIs associated to other EC2 instances\. DNIs do not have to be associated to the physical network port you use to control your Snow Family device\.
 
 **Note**  
 Snowball Edge storage optimized \(with EC2 compute functionality\) devices don't support DNIs\.

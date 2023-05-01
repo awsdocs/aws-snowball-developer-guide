@@ -3,7 +3,7 @@
 Now that you've read through the previous sections and begun your first job, you can learn more about using AWS Snowball Edge device tools and interfaces in detail from the following topics:
 + [Using an AWS Snowball Edge Device](using-device.md)
 + [Using the Snowball Edge Client](using-client.md)
-+ [Transferring Files Using the Amazon S3 Interface](using-adapter.md)
++ [Transferring files using the Amazon S3 adapter for data migration](using-adapter.md)
 
 We also recommend that you learn about the job management API for AWS Snowball\. For more information, see [AWS Snowball API Reference](https://docs.aws.amazon.com/snowball/latest/api-reference/api-reference.html)\.
 

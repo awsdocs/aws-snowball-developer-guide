@@ -11,7 +11,7 @@ This procedure only works if you've followed the instructions in [Configuring an
 
 1. Download and install the AWS CLI\. If your instance doesn't already have the AWS CLI, download and install it\. For more information, see [Installing the AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)\. 
 
-1. Configure the AWS CLI on your compute instance to work with the Amazon S3 endpoint on the Snowball Edge\. For more information, see [Getting and Using Local Amazon S3 Credentials](using-adapter.md#adapter-credentials)\.
+1. Configure the AWS CLI on your compute instance to work with the Amazon S3 endpoint on the Snowball Edge\. For more information, see [Getting and using local Amazon S3 credentials](using-adapter.md#adapter-credentials)\.
 
 1. Use the supported Amazon S3 AWS CLI commands to transfer data\. For example:
 

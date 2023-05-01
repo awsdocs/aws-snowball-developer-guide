@@ -1,12 +1,13 @@
-# Supported REST API Actions<a name="using-adapter-supported-api"></a>
+# Supported REST API actions<a name="using-adapter-supported-api"></a>
 
 Following, you can find REST API actions that you can use with an AWS Snowball Edge device and Amazon S3\.
 
 **Topics**
-+ [Supported REST API Actions for Snowball Edge](#using-adapter-snowball-api)
-+ [Supported REST API Actions for Amazon S3](#using-adapter-s3api)
++ [Supported REST API actions for Snowball Edge devices](#using-adapter-snowball-api)
++ [Supported REST API actions for the Amazon S3 adapter](#using-adapter-s3api)
++ [Supported REST API actions for Amazon S3 compatible storage on Snow Family devices](#s3-snow-api)
 
-## Supported REST API Actions for Snowball Edge<a name="using-adapter-snowball-api"></a>
+## Supported REST API actions for Snowball Edge devices<a name="using-adapter-snowball-api"></a>
 
 ### HEAD Snowball Edge<a name="adapter-snowball-head-api"></a>
 
@@ -41,9 +42,9 @@ curl -X HEAD http://192.0.2.0:8080
 </Status>
 ```
 
-## Supported REST API Actions for Amazon S3<a name="using-adapter-s3api"></a>
+## Supported REST API actions for the Amazon S3 adapter<a name="using-adapter-s3api"></a>
 
-Following, you can find the list of Amazon S3 REST API actions that are supported for using the Amazon S3 interface\. The list includes links to information about how the API actions work with Amazon S3\. The list also covers any differences in behavior between the Amazon S3 API action and the AWS Snowball Edge device counterpart\. All responses coming back from an AWS Snowball Edge device declare `Server` as `AWSSnowball`, as in the following example\.
+Following, you can find the list of Amazon S3 REST API actions that are supported for using the Amazon S3 adapter\. The list includes links to information about how the API actions work with Amazon S3\. The list also covers any differences in behavior between the Amazon S3 API action and the AWS Snowball Edge device counterpart\. All responses coming back from an AWS Snowball Edge device declare `Server` as `AWSSnowball`, as in the following example\.
 
 ```
 HTTP/1.1 201 OK
@@ -76,4 +77,38 @@ Amazon S3 REST API calls require SigV4 signing\. If you're using the AWS CLI or 
 + [Abort Multipart Upload](https://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadAbort.html)  
 
 **Note**  
-Any Amazon S3 REST API actions not listed here are not supported\. Using any unsupported REST API actions with your Snowball Edge returns an error message saying that the action is not supported\.
+Any Amazon S3 adapter REST API actions not listed here are not supported\. Using any unsupported REST API actions with your Snowball Edge returns an error message saying that the action is not supported\.
+
+## Supported REST API actions for Amazon S3 compatible storage on Snow Family devices<a name="s3-snow-api"></a>
+
+The following lists show the API operations that are supported by Amazon S3 compatible storage on Snow Family devices, including links to the related operations for Amazon S3 in AWS Regions\.
+
+Supported bucket API operations:
++ [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
++ [DeleteBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucket.html)
++ [DeleteBucketLifecycle](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html)
++ [GetBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucket.html)
++ [GetBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html)
++ [ListBuckets](https://docs.aws.amazon.com/https://alpha.www.docs.aws.a2z.com/AmazonS3/latest/API/API_control_ListRegionalBuckets.html)
++ [PutBucketLifecycleConfiguration](https://docs.aws.amazon.com/https://alpha.www.docs.aws.a2z.com/AmazonS3/latest/API/API_control_PutBucketLifecycleConfiguration.html)
+
+Supported object API operations:
++ [AbortMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html)
++ [CompleteMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html)
++ [CopyObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html)
++ [CreateMultipartUpload](https://docs.aws.amazon.com/https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3control/create-bucket.html)
++ [DeleteObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html)
++ [DeleteObjects](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjects.html)
++ [DeleteObjectTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjectTagging.html)
++ [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
++ [GetObjectTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html)
++ [HeadBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_HeadBucket.html)
++ [HeadObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_HeadObject.html)
++ [ListMultipartUploads](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html)
++ [ListObjects](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html)
++ [ListObjectsV2](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html)
++ [ListParts](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html)
++ [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
++ [PutObjectTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectTagging.html)
++ [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
++ [UploadPartCopy](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPartCopy.html)

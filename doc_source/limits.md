@@ -10,6 +10,5 @@ When you transfer data into Amazon Simple Storage Service \(Amazon S3\) using a 
 + [Limitations for AWS Snowball Edge Jobs](job-limits.md)
 + [Rate Limits on AWS Snowball Edge](rate-limiting.md)
 + [Limitations on Transferring On\-Premises Data with a Snowball Edge Device](transfer-limits.md)
-+ [Limitations for Lambda Powered by AWS IoT Greengrass](function-limits.md)
 + [Limitations on Shipping a Snowball Edge](shipping-limits.md)
 + [Limitations on Processing Your Returned Snowball Edge for Import](return-limits.md)

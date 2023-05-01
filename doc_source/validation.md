@@ -22,7 +22,7 @@ When these checksums don't match, the associated data is not imported into Amazo
 
 ## Local Inventory Creation During Snowball Transfer<a name="local-inventory-creation-during-snowball-transfer"></a>
 
-Create a local inventory of files copied to the Snowball when using the Amazon S3 Interface or CLI\. The content of the local inventory can be used to compare with what is on the local storage or server\. 
+Create a local inventory of files copied to the Snowball when using the Amazon S3 adapter or CLI\. The content of the local inventory can be used to compare with what is on the local storage or server\. 
 
 For example,
 

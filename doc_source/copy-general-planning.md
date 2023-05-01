@@ -22,11 +22,11 @@ When you're done with this step, you should know the total amount of data that y
 It's important to estimate how quickly you can transfer data to the Snowball Edge devices that are connected to each of your servers\. This estimated speed equals your target transfer rate\. This rate is the rate at which you can expect data to move into an AWS Snowball Edge device given the realities of your local network architecture\.
 
 **Note**  
-For large data transfers, we recommend using the Amazon S3 interface to transfer your data\.
+For large data transfers, we recommend using the Amazon S3 adapter to transfer your data\.
 
 Capture a baseline transfer rate by calculating the transfer of a representative subset of your data to the Snowball Edge device, or by creating a 10 GB sample file to measure the throughput\.
 
-While determining your target transfer speed, keep in mind that you can change the speed by changing the network speed, the size of the files being transferred, and the speed at which data can be read from your local servers\. The Amazon S3 interface copies data to the AWS Snowball Edge device as quickly as your conditions allow\.
+While determining your target transfer speed, keep in mind that you can change the speed by changing the network speed, the size of the files being transferred, and the speed at which data can be read from your local servers\. The Amazon S3 adapter copies data to the AWS Snowball Edge device as quickly as your conditions allow\.
 
 ## Step 3: Determine How Many AWS Snowball Edge Devices You Need<a name="number-of-snowballs"></a>
 

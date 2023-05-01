@@ -1,6 +1,8 @@
 # Before You Order a Snowball Edge device<a name="sbe-before-ordering"></a>
 
-AWS Snowball Edge is a region\-specific service\. So before you plan your job, be sure that the service is available in your region\. Ensure that your location and Amazon S3 bucket are within the same AWS Region or the same country because it will impact your ability to order the device\. 
+AWS Snowball Edge is a region\-specific service\. So before you plan your job, be sure that the service is available in your AWS Region\. Ensure that your location and Amazon S3 bucket are within the same AWS Region or the same country because it will impact your ability to order the device\. 
+
+To use Amazon S3 compatible storage on Snow Family devices with compute optimized devices for local edge compute and storage jobs, you need to provision S3 capacity on the device or devices when you order\. Amazon S3 compatible storage on Snow Family devices supports local bucket management, so you can create S3 buckets on the device or cluster after you receive the device or devices\.
 
 As part of the order process, you create an AWS Identity and Access Management \(IAM\) role and an AWS Key Management Service \(AWS KMS\) key\. The KMS key is used to encrypt the unlock code for your job\. For more information about creating IAM roles and KMS keys, see [Creating an AWS Snowball Edge Job](https://docs.aws.amazon.com/snowball/latest/developer-guide/create-job-common.html)\.
 
@@ -20,7 +22,7 @@ Transferring a large number of small files does not work well with AWS Snowball 
 
 **Will the data be accessed during the transfer?**  
 It is important to have a static dataset, \(that is, no users or systems are accessing the data during transfer\)\. If not, the file transfer can fail due to a checksum mismatch\. The files won't be transferred and the files will be marked as `Failed`\.   
-We recommend that if you are using the file interface, you only use one method of transferring data to the AWS Snowball Edge\. Copying data with both the file interface and the Amazon S3 interface can result in read/write conflicts\.   
+We recommend that if you are using the file interface, you only use one method of transferring data to the AWS Snowball Edge\. Copying data with both the file interface and the Amazon S3 adapter can result in read/write conflicts\.   
 To prevent corrupting your data, don't disconnect an AWS Snowball Edge device or change its network settings while transferring data\. Files should be in a static state while being written to the device\. Files that are modified while they are being written to the device can result in read/write conflicts\.
 
 **Will the network support AWS Snowball data transfer?**  
@@ -75,18 +77,10 @@ To use a compute instance on a Snowball Edge, create a job and specify your AMIs
 
 After your device arrives, you can start managing your AMIs and instances\. You can manage your compute instances on a Snowball Edge through an Amazon EC2\-compatible endpoint\. This type of endpoint supports many of the Amazon EC2 CLI commands and actions for the AWS SDKs\. You can't use the AWS Management Console on the Snowball Edge to manage your AMIs and compute instances\.
 
-When you're done with your device, return it to AWS\. If the device was used in an import job, the data transferred using the Amazon S3 interface or the file interface is imported into Amazon S3\. Otherwise, we perform a complete erasure of the device when it is returned to AWS\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.
+When you're done with your device, return it to AWS\. If the device was used in an import job, the data transferred using the Amazon S3 adapter or the file interface is imported into Amazon S3\. Otherwise, we perform a complete erasure of the device when it is returned to AWS\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.
 
 **Important**  
 Data in compute instances running on a Snowball Edge isn't imported into AWS\.
-
-### Using Compute Instances on Clusters<a name="ec2-overview-cluster"></a>
-
-You can use compute instances on clusters of Snowball Edge devices\. The procedures and guidance for doing so are the same as for using compute instances on a standalone device\.
-
-When you create a cluster job with AMIs, a copy of each AMI exists on each node in the cluster\. You can have only 10 AMIs associated with a cluster of devices regardless of the number of nodes on the cluster\. When you launch an instance in a cluster, you declare the node to host the instance in your command and the instance runs on a single node\. 
-
-Clusters must be either compute\-optimized or storage\-optimized\. You can have a cluster of compute\-optimized nodes, and some number of them can have GPUs\. You can have a cluster made entirely of storage\-optimized nodes\. A cluster can't be made of a combination of compute\-optimized nodes and storage\-optimized nodes\.
 
 ### Pricing for Compute Instances on Snowball Edge<a name="pricing-for-ec2-edge"></a>
 
@@ -177,8 +171,8 @@ To create an AMI from a snapshot, you can use one of the following commands\. Fo
 As part of the order process, you are asked to create an AWS Identity and Access Management \(IAM\) role and AWS Key Management Service \(AWS KMS\) key\. The KMS key is used for encrypting the data at rest on the Snowball Edge device\. For more information about creating IAM roles and KMS keys, see [Creating an AWSAWS Snowball Edge Job](https://docs.aws.amazon.com/snowball/latest/developer-guide/create-job-common.html)\.
 
 **Important**  
-If the imported data must be encrypted in the S3 bucket using Server\-Side Encryption with keys stored in AWS KMS \(SSE\-KMS\), see [Amazon S3 Encryption with AWS KMS](#s3-kms-encryption)\.  
-If the imported data must be encrypted in the S3 bucket using Server\-Side Encryption with Amazon S3 managed keys \(SSE\-S3\), see [Amazon S3 Encryption with server\-side encryption](#s3-sse-encryption)\.
+If the imported data must be encrypted in the S3 bucket using Server\-Side Encryption with keys stored in AWS KMS \(SSE\-KMS\), see [Amazon S3 encryption with AWS KMS](#s3-kms-encryption)\.  
+If the imported data must be encrypted in the S3 bucket using Server\-Side Encryption with Amazon S3 managed keys \(SSE\-S3\), see [Amazon S3 encryption with server\-side encryption](#s3-sse-encryption)\.
 
 ### How import works<a name="s3-import"></a>
 
@@ -203,7 +197,15 @@ This step marks the completion of that particular job part\. If there are more j
 **Important**  
 Snowball Edge is unable to export files that are in S3 Glacier storage class\. These objects must be restored before we can export the files\. If we encounter files in S3 Glacier storage class, we contact you to let you know, but this might add delays to your export job\.
 
-### Amazon S3 Encryption with AWS KMS<a name="s3-kms-encryption"></a>
+### Using Amazon S3 compatible storage on Snow Family devices for edge compute and storage jobs<a name="s3-on-snow-before"></a>
+
+Amazon S3 compatible storage on Snow Family devices delivers secure object storage with increased resiliency, scale, and expanded Amazon S3 API feature\-set to the rugged, mobile edge, and disconnected environments\. Amazon S3 compatible storage on Snow Family devices enables customers to store data and run highly available applications on Snow Family devices for edge compute use case\.
+
+Amazon S3 compatible storage on Snow Family devices can be deployed in standalone configuration or cluster configuration\. In standalone configuration you can provision usable S3 capacity on device and the balance will be available as block storage\. In cluster setup all data disk capacity will be utilzied for S3 storage\. Depending on the size of cluster, S3 service is designed to sustain device fault tolerance of 1 or 2 devices\. For more information about cluster fault tolerance, see [Clustering overview](ClusterOverview.md)\. 
+
+To set up and use Amazon S3 compatible storage on Snow Family devices see [Amazon S3 compatible storage on Snow Family devices](https://docs.aws.amazon.com/snowball/latest/developer-guide/s3compatible-on-snow.html) in this guide\.
+
+### Amazon S3 encryption with AWS KMS<a name="s3-kms-encryption"></a>
 
 You can use the default AWS managed or customer managed encryption keys to protect your data when importing or exporting data\.
 
@@ -280,7 +282,7 @@ You can use the default Amazon S3 bucket encryption with your own KMS keys to pr
 
 1. Alternatively, you can choose **Switch to Policy view** to display the key policy document and add a statement to the key policy\. The following is an example of the policy\.
 
-**Example: Policy for the AWS KMS customer managed key**  
+**Example of a policy for the AWS KMS customer managed key**  
 
 ```
 {
@@ -300,7 +302,7 @@ You can use the default Amazon S3 bucket encryption with your own KMS keys to pr
 ```
 After this policy has been added to the AWS KMS customer managed key, it is also needed to update the IAM role associated with the Snowball job\. By default, the role is `snowball-import-s3-only-role`\.
 
-**Example: The Snowball import IAM role**  
+**Example of the Snowball import IAM role**  
 
 ```
 {
@@ -321,7 +323,7 @@ The KMS key that is being used looks like the following:
 
 **For exporting data**
 
-**Example: Policy for the AWS KMS customer managed key**  
+**Example of a policy for the AWS KMS customer managed key**  
 
 ```
 {
@@ -344,7 +346,7 @@ After this policy has been added to the AWS KMS customer managed key, it is also
 
  `snowball-export-s3-only-role`
 
-**Example: The Snowball export IAM role**  
+**Example of the Snowball export IAM role**  
 
 ```
 {
@@ -359,7 +361,7 @@ After this policy has been added to the AWS KMS customer managed key, it is also
 
 After this policy has been added to the AWS KMS customer managed key, it is also needed to update the IAM role associated with the Snowball job\. By default, the role is `snowball-export-s3-only-role`\.
 
-### Amazon S3 Encryption with server\-side encryption<a name="s3-sse-encryption"></a>
+### Amazon S3 encryption with server\-side encryption<a name="s3-sse-encryption"></a>
 
 AWS Snowball supports server\-side encryption with Amazon S3 managed encryption keys \(SSE\-S3\)\. Server\-side encryption is about protecting data at rest, and SSE\-S3 has strong, multifactor encryption to protect your data at rest in Amazon S3\. For more information about SSE\-S3, see [Protecting Data Using Server\-Side Encryption with Amazon S3\-Managed Encryption Keys \(SSE\-S3\)](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html) in the * Amazon Simple Storage Service User Guide*\.
 
@@ -370,28 +372,26 @@ Currently, AWS Snowball doesn't support server\-side encryption with customer\-p
 
 ## Snowball Edge Clusters<a name="sbe-ordering-cluster"></a>
 
-A *cluster* is a logical grouping of AWS Snowball Edge devices, in groups of 5–10 devices\. A cluster is created with a single job\. A cluster offers increased durability and storage capacity\. This section provides information about Snowball Edge clusters\.
+A *cluster* is a logical grouping of AWS Snowball Edge devices, in groups of 3 to 16 devices\. A cluster is created with a single job\. A cluster offers increased durability and storage capacity\. This section provides information about Snowball Edge clusters with Amazon S3 compatible storage on Snow Family devices\.
 
 For the AWS Snowball service, a cluster is a collective of Snowball Edge devices, used as a single logical unit, for local storage and compute purposes\.
 
 A cluster offers these primary benefits over a standalone Snowball Edge used for local storage and compute purposes:
-+ **Increased durability** – The data stored in a cluster of Snowball Edge devices has increased data durability\. In addition, the data on the cluster remains as safe and viable even during possible Snowball Edge outages in the cluster\. Clusters can withstand the loss of two nodes before the data it becomes a concern\. You can also add or replace nodes\.
-+ **Increased storage** – The total available storage is 45 terabytes of data per node in the cluster\. So in a five\-node cluster, there are 225 terabytes of available storage space\. In contrast, there are about 80 terabytes of available storage space in a standalone Snowball Edge\. Clusters that have more than five nodes have even more storage space\.
++ **Increased durability** – The data stored in a cluster of Snowball Edge devices has increased data durability\. In addition, the data on the cluster remains as safe and viable even during possible Snowball Edge outages in the cluster\. Clusters of 3 or 4 nodes can withstand the loss of 1 node and clusters of 5 to 16 nodes can withstand loss of up to 2 nodes before the data in the cluster becomes a concern\. You can also add or replace nodes\.
++ **Increased storage** – For compute\-optimized Snowball Edge devices with Amazon S3 compatible storage on Snow Family devices, the total available storage is up to 31 terabytes of data per node in a cluster, depending on the device used\. Thus, in a sixteen\-node cluster, there are up to 501 terabytes of available storage space\. In contrast, there are about 39\.5 terabytes of available storage space in a standalone Snowball Edge compute\-optimized device\. For more information about cluster capacity, see [Clustering overview](ClusterOverview.md)\.
 
 A cluster of Snowball Edge devices is made of leaderless nodes\. Any node can write data to and read data from the entire cluster, and all nodes can perform the behind\-the\-scenes management of the cluster\.
 
-### Snowball Edge Cluster Quorums<a name="sbe-clusterquorums"></a>
+### Snowball Edge cluster quorums<a name="sbe-clusterquorums"></a>
 
-A *quorum* represents the minimum number of Snowball Edge devices in a cluster that must be communicating with each other to maintain some level of operation\. There are two levels of quorum for Snowball Edge clusters—a read/write quorum and a read quorum\.
+A *quorum* represents the minimum number of Snowball Edge devices in a cluster that must be communicating with each other to maintain some level of operation\. For more information about cluster fault tolerance, see [Clustering overview](ClusterOverview.md)\.
 
-Suppose that you upload your data to a cluster of Snowball Edge devices\. With all devices healthy, you have a *read/write quorum* for your cluster\. If one of those nodes goes offline, you reduce the operational capacity of the cluster, but you can still read and write to the cluster\. In that case, the cluster still has a read/write quorum\.
+Suppose that you upload your data to a cluster of Snowball Edge devices\. With all devices healthy, you have a *read/write quorum* for your cluster\. If one or two nodes goes offline, you reduce the operational capacity of the cluster, but you can still read and write to the cluster\.
 
-If two nodes in your cluster go offline, any additional or ongoing write operations fail, but any data that was successfully written to the cluster can be accessed and read\. This is called a *read quorum*\.
-
-Finally, if a third node goes offline, the cluster is offline and the data in the cluster becomes unavailable\. In this case, you might be able fix it, but the data could be permanently lost depending on the severity of the event\. If it is a temporary external power event, and you can bring the three Snowball Edge devices back online and unlock all the nodes in the cluster, your data becomes available again\.
+Finally, if a third node goes offline and quorum is breached, the cluster is offline and the data in the cluster becomes unavailable\. In this case, you might be able fix it, but the data could be permanently lost depending on the severity of the event\. If it is a temporary external power event, and you can bring the three Snowball Edge devices back online and unlock all the nodes in the cluster, your data becomes available again\.
 
 **Important**  
-If a minimum quorum of healthy nodes doesn't exist, contact AWS Support\.
+As soon as one cluster node is unhealthy or unrecoverable, contact AWS Support for a replacement device\.
 
 You can determine the quorum state of your cluster by determining your node's lock state and network reachability\. The `snowballEdge describe-cluster` command reports back the lock and network reachability state for every node in an unlocked cluster\. Ensuring that the devices in your cluster are healthy and connected is an administrative responsibility that you take on when you create the cluster job\. For more information about the different client commands, see [Commands for the Snowball Edge Client](https://docs.aws.amazon.com/snowball/latest/developer-guide/using-client-commands.html)\.
 

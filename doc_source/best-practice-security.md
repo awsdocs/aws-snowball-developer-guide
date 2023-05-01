@@ -13,7 +13,7 @@ The following are recommendations and best practices for maintaining security wh
 For information about how to use AWS Identity and Access Management \(IAM\) policies to control access, see [AWS\-Managed \(Predefined\) Policies for AWS Snowball Edge](authentication-and-access-control.md#access-policy-examples-aws-managed)\.
 
 **Network Security**
-+ We recommend that you only use one method at a time for reading and writing data to a local bucket on an AWS Snowball Edge device\. Using both the file interface and the Amazon S3 interface on the same Amazon S3 bucket at the same time can result in read/write conflicts\.
++ We recommend that you only use one method at a time for reading and writing data to a local bucket on an AWS Snowball Edge device\. Using both the file interface and the Amazon S3 adapter on the same Amazon S3 bucket at the same time can result in read/write conflicts\.
 + To prevent corrupting your data, don't disconnect the AWS Snowball Edge device or change its network settings while transferring data\.
 + Files that are being written to on the device should be in a static state\. Files that are modified while they are being written to can result in read/write conflicts\.
 + For more information about improving performance of your AWS Snowball Edge device, see [Performance](performance.md)\.

@@ -1,6 +1,6 @@
-# Managing Amazon S3 storage<a name="manage-s3"></a>
+# Managing Amazon S3 adapter storage<a name="manage-s3"></a>
 
-You can use AWS OpsHub to create and manage Amazon Simple Storage Service \(Amazon S3\) storage on your Snow Family devices\.
+You can use AWS OpsHub to create and manage Amazon Simple Storage Service \(Amazon S3\) storage on your Snow Family devices using the S3 adapter\.
 
 **Topics**
 + [Accessing Amazon S3 Storage](#create-s3-storage)

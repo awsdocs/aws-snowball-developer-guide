@@ -7,7 +7,7 @@ Your data source for an export job is one or more Amazon S3 buckets\. After the 
 
 You can export any number of objects for each export job, using as many devices as it takes to complete the transfer\. Each AWS Snowball Edge device for an export job's job parts is delivered one after another, with subsequent devices shipping to you after the previous job part enters the **In transit to AWS** status\.
 
-When you copy objects into your on\-premises data destination from a device using the Amazon S3 interface or the NFS mount point, those objects are saved as files\. If you copy objects into a location that already holds files, any existing files with the same names are overwritten\. The export job type is also capable of local storage and compute functionality\. This functionality uses the file interface or Amazon S3 interface to read and write data, and triggers Lambda functions based off of Amazon S3 PUT object API actions running locally on the AWS Snowball Edge device\.
+When you copy objects into your on\-premises data destination from a device using the Amazon S3 adapter or the NFS mount point, those objects are saved as files\. If you copy objects into a location that already holds files, any existing files with the same names are overwritten\. The export job type is also capable of local storage and compute functionality\. This functionality uses the file interface or Amazon S3 adapter to read and write data, and triggers Lambda functions based off of Amazon S3 PUT object API actions running locally on the AWS Snowball Edge device\.
 
 When AWS receives a returned device, we completely erase it, following the NIST 800\-88 standards\.
 

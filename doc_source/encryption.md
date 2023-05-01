@@ -6,7 +6,7 @@ When you're using a Snowball Edge to import data into S3, all data transferred t
 
 AWS Snowball Edge supports server\-side encryption with Amazon S3–managed encryption keys \(SSE\-S3\)\. Server\-side encryption is about protecting data at rest, and SSE\-S3 has strong, multifactor encryption to protect your data at rest in Amazon S3\. For more information on SSE\-S3, see [Protecting Data Using Server\-Side Encryption with Amazon S3\-Managed Encryption Keys \(SSE\-S3\)](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html) in the * Amazon Simple Storage Service User Guide*\.
 
-Currently, AWS Snowball Edge doesn't offer server\-side encryption with customer\-provided keys \(SSE\-C\)\. However, you might want to use that SSE type to protect data that has been imported, or you might already use it on data you want to export\. In these cases, keep the following in mind:
+Currently, AWS Snowball Edge doesn't offer server\-side encryption with customer\-provided keys \(SSE\-C\)\. Amazon S3 compatible storage on Snow Family devices offers SSS\-C for local compute and storage jobs\. However, you might want to use that SSE type to protect data that has been imported, or you might already use it on data you want to export\. In these cases, keep the following in mind:
 + **Import** – 
 
   If you want to use SSE\-C to encrypt the objects that you've imported into Amazon S3, you should consider using SSE\-KMS or SSE\-S3 encryption instead established as a part of that bucket's bucket policy\. However, if you have to use SSE\-C to encrypt the objects that you've imported into Amazon S3, then you will have to copy the object within your bucket to encrypt with SSE\-C\. A sample CLI command to achieve this is shown below:

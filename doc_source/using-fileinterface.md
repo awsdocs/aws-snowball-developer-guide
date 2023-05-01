@@ -3,7 +3,7 @@
 Following, you can find information about using the file interface for the AWS Snowball Edge device\. Using this file interface, you can drag and drop files from your computer into Amazon S3 buckets on the Snowball Edge device\.
 
 **Note**  
-If you created your job before July 17, 2018, this information doesn't apply to your device\. Instead, see [Transferring Files Using the Amazon S3 Interface](using-adapter.md)\.
+If you created your job before July 17, 2018, this information doesn't apply to your device\. Instead, see [Transferring files using the Amazon S3 adapter for data migration](using-adapter.md)\.
 
 **Topics**
 + [Overview of the File Interface](#fileinterface-overview)
@@ -45,7 +45,7 @@ Before you can use the file interface, the following steps must occur:
 
 If one or more of those steps haven't occurred, see the following topics:
 + For information about creating a job to use a Snowball Edge device, see [Getting Started](getting-started.md)\.
-+ For information about using the S3 interface, see [Transferring Files Using the Amazon S3 Interface](using-adapter.md)\.
++ For information about using the S3 interface, see [Transferring files using the Amazon S3 adapter for data migration](using-adapter.md)\.
 + For information about unlocking a Snowball Edge device, see [unlocking a device](https://docs.aws.amazon.com/en_us/snowball/latest/developer-guide/connect-unlock-device-sbe.html)\.
 
 **Important**  
@@ -55,7 +55,7 @@ For AWS services to work properly on a Snowball Edge device, you must allow the 
 
 While using the file interface, keep the following considerations in mind:
 + The maximum size of a file that you can transfer to the file interface on a Snowball Edge device is 5 TB\. 
-+ We recommend that you use only one method at a time of reading and writing data to each bucket on a Snowball Edge device\. Using both the file interface and the Amazon S3 interface on the same bucket might result in undefined behavior\.
++ We recommend that you use only one method at a time of reading and writing data to each bucket on a Snowball Edge device\. Using both the file interface and the Amazon S3 adapter on the same bucket might result in undefined behavior\.
 + The file interface supports all NFS file operations, except truncate, rename, or changing ownership\. Requests that use these unsupported file operations are rejected with error messages sent to your NFS client\. Attempts to change a file's permissions after the file has been created on the Snowball Edge device are ignored without error\.
 + If the Snowball Edge device has a power failure or is rebooted, data in the file interface buffer persists\. On reboot, this buffered data is uploaded to buckets on the device\. When **Write status** on the **File interface** tab shows 100 percent with a green progress bar, all data in the file interface buffer is uploaded to the buckets on the device\.
 + Don't write data to a Snowball Edge device that is full, or write more data than the size of the remaining available storage\. Either action causes errors that might corrupt your data\. Before writing data, we recommend that you determine the remaining amount of space on the Snowball Edge device\. Then compare that to the amount of data you want to copy over using the file interface before copying the data\.

@@ -2,7 +2,7 @@
 
 With an AWS Snowball Edge device, you can access the storage and compute power of the AWS Cloud locally and cost effectively in places where connecting to the internet might not be an option\. You can also transfer hundreds of terabytes or petabytes of data between your on\-premises data centers and Amazon Simple Storage Service \(Amazon S3\)\. 
 
-Following, you can find general instructions for creating and completing your first AWS Snowball Edge device job in the AWS Snow Family Management Console\. The console presents the most common workflows, separated into job types\. You can find more information about specific components of the AWS Snowball Edge device in this documentation\. For an overview of the service as a whole, see [How AWS Snowball Edge Works](how-it-works.md)\. 
+Following, you can find general instructions for creating and completing your first AWS Snowball Edge device job in the AWS Snow Family Management Console\. The console presents the most common workflows, separated into job types\. You can find more information about specific components of the AWS Snowball Edge device in this documentation\. For an overview of the service as a whole, see [How AWS Snowball Edge works](how-it-works.md)\. 
 
 The getting started exercises assume that you use the AWS Snow Family Management Console to create your job, the AWS OpsHub for Snow Family to unlock and manage the AWS Snowball Edge device, and the Amazon S3 interface to read and write data\. If you'd rather create your job programmatically with more options for the jobs you're creating, you can use the job management API\. For more information, see [AWS Snowball API Reference](https://docs.aws.amazon.com/snowball/latest/api-reference/api-reference.html)\.
 

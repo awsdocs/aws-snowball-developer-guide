@@ -4,7 +4,6 @@ This section provides an overview of using Amazon EC2 compute instances on an AW
 
 **Topics**
 + [Overview](#ec2-overview-edge)
-+ [Compute Instances on Clusters](#ec2-overview-cluster)
 + [Pricing for Compute Instances on Snowball Edge](#pricing-for-ec2-edge)
 + [Using an Amazon EC2 AMI on Your Device](using-ami.md)
 + [Importing an Image into Your Device as an Amazon EC2 AMI](ec2-ami-import-cli.md)
@@ -34,19 +33,11 @@ To use a compute instance on a Snowball Edge, create a job and specify your AMIs
 
 After your device arrives, you can start managing your AMIs and instances\. You can manage your compute instances on a Snowball Edge through an Amazon EC2–compatible endpoint\. This type of endpoint supports many of the Amazon EC2 CLI commands and actions for the AWS SDKs\. You can't use the AWS Management Console on the Snowball Edge to manage your AMIs and compute instances\.
 
-When you're done with your device, return it to AWS\. If the device was used in an import job, the data transferred using the Amazon S3 interface or the NFS interface is imported into Amazon S3\. Otherwise, we perform a complete erasure of the device when it is returned to AWS\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.
+When you're done with your device, return it to AWS\. If the device was used in an import job, the data transferred using the Amazon S3 adapter or the NFS interface is imported into Amazon S3\. Otherwise, we perform a complete erasure of the device when it is returned to AWS\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.
 
 **Important**  
 Using encrypted AMIs on Snowball Edge devices is not supported\.
 Data in compute instances running on a Snowball Edge isn't imported into AWS\.
-
-## Compute Instances on Clusters<a name="ec2-overview-cluster"></a>
-
-You can use compute instances on clusters of Snowball Edge devices\. The procedures and guidance for doing so are the same as for using compute instances on a standalone device\.
-
-When you create a cluster job with AMIs, a copy of each AMI exists on each node in the cluster\. For that reason, there can only be 10 AMIs associated with a cluster of devices, regardless of the number of nodes on the cluster\. When you launch an instance in a cluster, you declare the node to host the instance in your command, and the instance runs on a single node\.
-
-Clusters must be either compute optimized or storage optimized\. You can have a cluster of compute optimized nodes, and some number of them can have GPUs\. You can have a cluster made entirely of storage optimized nodes\. A cluster can't be made of a combination of compute optimized nodes and storage optimized nodes\.
 
 ## Pricing for Compute Instances on Snowball Edge<a name="pricing-for-ec2-edge"></a>
 

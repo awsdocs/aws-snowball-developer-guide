@@ -388,7 +388,7 @@ By default, when you use a command like `shutdown` or `poweroff` to initiate a s
 
 ## Supported Amazon EC2 API Operations<a name="using-ec2-adapter-supported-api"></a>
 
-Following, you can find Amazon EC2 API operations that you can use with a Snowball Edge, with links to their descriptions in the *Amazon EC2 API Reference\. *Amazon EC2 API calls require Signature Version 4 \(SigV4\) signing\. If you're using the AWS CLI or an AWS SDK to make these API calls, the SigV4 signing is handled for you\. Otherwise, you need to implement your own SigV4 signing solution\. For more information, see [Getting and Using Local Amazon S3 Credentials](using-adapter.md#adapter-credentials)\.
+Following, you can find Amazon EC2 API operations that you can use with a Snowball Edge, with links to their descriptions in the *Amazon EC2 API Reference\. *Amazon EC2 API calls require Signature Version 4 \(SigV4\) signing\. If you're using the AWS CLI or an AWS SDK to make these API calls, the SigV4 signing is handled for you\. Otherwise, you need to implement your own SigV4 signing solution\. For more information, see [Getting and using local Amazon S3 credentials](using-adapter.md#adapter-credentials)\.
 + [AssociateAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateAddress.html) – Associates an Elastic IP address with an instance or a network interface\. 
 +  [AttachVolume](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AttachVolume.html) – The following request parameters are supported:
   + `Device`

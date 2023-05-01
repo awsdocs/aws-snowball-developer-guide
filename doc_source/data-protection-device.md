@@ -15,7 +15,7 @@ We recommend the following security approaches:
 The AWS Snowball Edge devices are the property of AWS\. Tampering with a device is a violation of the AWS Acceptable Use Policy\. For more information, see [http://aws\.amazon\.com/aup/](http://aws.amazon.com/aup/)\.
 
 We perform the following security steps:
-+ When transferring data with the Amazon S3 interface, object metadata is not persisted\. The only metadata that remains the same is `filename` and `filesize`\. All other metadata is set as in the following example: `-rw-rw-r-- 1 root root [filesize] Dec 31 1969 [path/filename]`
++ When transferring data with the Amazon S3 adapter, object metadata is not persisted\. The only metadata that remains the same is `filename` and `filesize`\. All other metadata is set as in the following example: `-rw-rw-r-- 1 root root [filesize] Dec 31 1969 [path/filename]`
 + When transferring data with the file interface, object metadata is persisted\.
 + When a device arrives at AWS, we inspect it for any signs of tampering and to verify that no changes were detected by the Trusted Platform Module \(TPM\)\. AWS Snowball Edge uses multiple layers of security designed to protect your data, including tamper\-resistant enclosures, 256\-bit encryption, and an industry\-standard TPM designed to provide both security and full chain of custody for your data\. 
 + Once the data transfer job has been processed and verified, AWS performs a software erasure of the Snowball device that follows the National Institute of Standards and Technology \(NIST\) guidelines for media sanitization\.
@@ -46,7 +46,7 @@ The following procedure describes how to validate the NFC tags on a Snowball Edg
 
 1.  Navigate to the \.png file that you saved, and open it so that you can scan the QR code with the app\.
 
-1. You can scan these tags using the AWS Snowball Edge Verification App available on iOS and Android\.
+1. You can scan these tags using the AWS Snowball Edge Verification App available on Android\.
 
 1. Start the app, and follow the on\-screen instructions\.
 

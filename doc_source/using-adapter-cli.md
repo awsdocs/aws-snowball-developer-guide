@@ -1,16 +1,16 @@
-# Supported AWS CLI Commands<a name="using-adapter-cli"></a>
+# Supported AWS CLI commands<a name="using-adapter-cli"></a>
 
-Following, you can find information about how to specify the Amazon S3 interface as the endpoint for applicable AWS Command Line Interface \(AWS CLI\) commands\. You can also find the list of AWS CLI commands for Amazon S3 that are supported for transferring data to the AWS Snowball Edge device with the interface\.
+Following, you can find information about how to specify the Amazon S3 adapter or Amazon S3 compatible storage on Snow Family devices as the endpoint for applicable AWS Command Line Interface \(AWS CLI\) commands\. You can also find the list of AWS CLI commands for Amazon S3 that are supported for transferring data to the AWS Snowball Edge device with the adapter or Amazon S3 compatible storage on Snow Family devices\.
 
 **Note**  
 For information about installing and setting up the AWS CLI, including specifying what Regions you want to make AWS CLI calls against, see [AWS Command Line Interface User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
 
-Currently, Snowball Edge devices support only version 1\.16\.14 and earlier of the AWS CLI\. You can download and install this version of the AWS CLI from GitHub\. Use the following procedure to perform this task\.
+Currently, Snowball Edge devices support only version 1\.16\.14 and earlier of the AWS CLI when using the Amazon S3 adapter\. See [Snowball Edge client version](using-adapter.md#aws-cli-version)\. If you are using Amazon S3 compatible storage on Snow Family devices, you can use the lastest version of the AWS CLI\. To download and use the latest version, see [AWS Command Line Interface User Guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)\.
 
 **Note**  
 Be sure to install version 2\.6\.5\+ or 3\.4\+ of Python before you install version 1\.16\.14 of the AWS CLI\.
 
-## Supported AWS CLI Commands for Amazon S3<a name="using-adapter-cli-commands"></a>
+## Supported AWS CLI commands for Amazon S3<a name="using-adapter-cli-commands"></a>
 
 Following is a description of the subset of AWS CLI commands and options for Amazon S3 that the AWS Snowball Edge device supports\. If a command or option isn't listed, it's not supported\. You can declare some unsupported options, like `--sse` or `--storage-class`, along with a command\. However, these are ignored and have no impact on how data is imported\.
 + [cp](https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html) – Copies a file or object to or from the AWS Snowball Edge device\. The following are options for this command:

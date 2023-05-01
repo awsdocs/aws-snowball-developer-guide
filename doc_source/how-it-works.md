@@ -1,8 +1,8 @@
-# How AWS Snowball Edge Works<a name="how-it-works"></a>
+# How AWS Snowball Edge works<a name="how-it-works"></a>
 
 AWS Snowball Edge devices are owned by AWS, and they reside at your on\-premises location while they're in use\.
 
-There are three job types you can use with an AWS Snowball Edge device\.  Although the job types differ in their use cases, every job type has the same workflow for how you order, receive, and return devices\. Regardless of the job type, every job follows a data erasure of the National Institute of Standards and Technology \(NIST\) 800\-88 standard after the job completes\.
+There are four job types you can use with an AWS Snowball Edge device\.  Although the job types differ in their use cases, every job type has the same workflow for how you order, receive, and return devices\. Regardless of the job type, every job follows a data erasure of the National Institute of Standards and Technology \(NIST\) 800\-88 standard after the job completes\.
 
 **The shared workflow**
 
@@ -31,25 +31,25 @@ There are three job types you can use with an AWS Snowball Edge device\.  Althou
 
 1. **Use the Snowball Edge client to unlock the device** – When you use the Snowball Edge client to unlock the AWS Snowball Edge device, enter the IP address of the device, the path to your manifest, and the unlock code\. The Snowball Edge client decrypts the manifest and uses it to authenticate your access to the device\.
 
-1. **Use the device** – The device is up and running\. You can use it to transfer data or for local compute and storage\. You can read and write data with the Amazon S3 interface or the Network File System \(NFS\) mount point\.
+1. **Use the device** – The device is up and running\. You can use it to transfer data with the Amazon S3 adapter or the Network File System \(NFS\) mount point or for local compute and storage with Amazon S3 compatible storage on Snow Family devices\.
 
 1. **Prepare the device for its return trip** – After you're done with the device in your on\-premises location and the file interface status is **Complete**, press the power button above the LCD display\. It takes about 20 seconds or so for the device to power off\. Unplug the device and its power cables into the cable nook on top of the device, and shut all three of the device's doors\. The device is now ready to be returned\.
 
 1. **Your region's carrier returns the device to AWS** – When the carrier has the AWS Snowball Edge device, the status for the job becomes **In transit to AWS**\.
 **Note**  
-There are additional steps for export and cluster jobs\. For more information, see [How Export Jobs Work](#how-export) and [How a Clustered Local Compute and Storage Job Works](#how-cluster)\.
+There are additional steps for export and cluster jobs\. For more information, see [How export jobs work](#how-export) and [How a clustered local compute and storage job works](#how-cluster)\.
 
 **Topics**
-+ [How Import Jobs Work](#how-import)
-+ [How Export Jobs Work](#how-export)
-+ [How Local Compute and Storage Jobs Work](#how-localcompute)
-+ [Snowball Edge Videos and Blogs](#blog-videos)
++ [How import jobs work](#how-import)
++ [How export jobs work](#how-export)
++ [How local compute and storage jobs work](#how-localcompute)
++ [Snowball Edge videos and blogs](#blog-videos)
 
-## How Import Jobs Work<a name="how-import"></a>
+## How import jobs work<a name="how-import"></a>
 
 Each import job uses a single Snowball appliance\. After you create a job in the AWS Snow Family Management Console or the job management API, we ship a Snowball to you\. When it arrives in a few days, you connect the Snowball Edge device to your network and transfer the data that you want imported into Amazon S3 onto the device\. When you’re done transferring data, ship the Snowball back to AWS, and we import your data into Amazon S3\.
 
-## How Export Jobs Work<a name="how-export"></a>
+## How export jobs work<a name="how-export"></a>
 
 Each export job can use any number of AWS Snowball Edge devices\.  If the listing contains more data than can fit on a single device, multiple devices are provided to you\. Each job part has exactly one device associated with it\. After your job parts are created, your ﬁrst job part enters the **Preparing Snowball** status\.
 
@@ -66,24 +66,24 @@ When you’re done transferring data, ship the device back to AWS\. When we rece
 
    It is important to note that AWS Snowball cannot export objects that are in S3 Glacier storage class\. These objects must be restored before AWS Snowball can successfully export the objects in the bucket\.
 
-## How Local Compute and Storage Jobs Work<a name="how-localcompute"></a>
+## How local compute and storage jobs work<a name="how-localcompute"></a>
 
-You can use the local compute and storage functionality of an AWS Snowball Edge device with all job types in AWS Regions that support Lambda\. The compute functionality is named AWS Lambda powered by AWS IoT Greengrass, where Python\-language AWS Lambda functions can be triggered by Amazon S3 `PUT` object actions on buckets specified when you created the job\. For more information, see [Local Compute and Storage Only Jobs](computetype.md)\.
+You can use the local compute and storage functionality of an AWS Snowball Edge device by running AWS EC2 compute instances or Kubernetes containers in Amazon EKS Anywhere on Snow\. For compute functionality, data storage is provided by Amazon S3 compatible storage on Snow Family devices\. For more information, see [Local Compute and Storage Only Jobs](computetype.md)\.
 
-### How a Clustered Local Compute and Storage Job Works<a name="how-cluster"></a>
+### How a clustered local compute and storage job works<a name="how-cluster"></a>
 
 A cluster job is a special kind of job for local storage and compute only\. It is for those workloads that require increased data durability and storage capacity\. For more information, see [Local Cluster Option](computetype.md#clusteroption)\.
 
 **Note**  
 Like standalone local storage and compute jobs, the data stored in a cluster can't be imported into Amazon S3 without ordering additional devices as a part of separate import jobs\. If you order these devices, you can transfer the data from the cluster to the devices and import the data when you return the devices for the import jobs\.
 
-Clusters have 5–10 AWS Snowball Edge devices, called *nodes*\. When you receive the nodes from your regional carrier, connect all the nodes to power and your network to obtain their IP addresses\. You use these IP addresses to unlock all the nodes of the cluster at once with a single unlock command, using the IP address of one of the nodes\. For more information, see [Using the Snowball Edge Client](using-client.md)\.
+Clusters have 3 to 16 AWS Snowball Edge devices, called *nodes*\. When you receive the nodes from your regional carrier, connect all the nodes to power and your network to obtain their IP addresses\. You use these IP addresses to unlock all the nodes of the cluster at once with a single unlock command, using the IP address of one of the nodes\. For more information, see [Using the Snowball Edge Client](using-client.md)\.
 
-You can write data to an unlocked cluster by using the Amazon S3 interface or the NFS mount point through the leader node and the data distributed among the other nodes\.
+You can write data to an unlocked cluster by using or using Amazon S3 compatible storage on Snow Family devices and the data distributed among the other nodes\.
 
 When you’re done with your cluster, ship all the nodes back to AWS\. When we receive the cluster node, we perform a complete erasure of the Snowball\. This erasure follows the National Institute of Standards and Technology \(NIST\) 800\-88 standards\.
 
-## Snowball Edge Videos and Blogs<a name="blog-videos"></a>
+## Snowball Edge videos and blogs<a name="blog-videos"></a>
 + [AWS Snowball Edge Data Migration](https://d1.awsstatic.com/whitepapers/snowball-edge-data-migration-guide.pdf)
 + [AWS OpsHub for Snow Family](https://www.youtube.com/watch?v=_A3A47Vuu0I)
 + [Novetta delivers IoT and Machine Learning to the edge for disaster response](https://aws.amazon.com/blogs/storage/novetta-delivers-iot-and-machine-learning-to-the-edge-for-disaster-response/)

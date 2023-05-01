@@ -2,7 +2,7 @@
 
 Following, you can find information about how to get and use the Snowball Edge client with your AWS Snowball Edge device\. The Snowball Edge client is a standalone terminal application that you run on your local server to unlock the device and get credentials, logs, and status information\. You can also use the client for administrative tasks for a cluster\. While using the Snowball Edge client, you can get additional support information by running the `snowballEdge help` command\.
 
-When you read and write data to the AWS Snowball Edge device, you use the Amazon S3 interface or the file interface\.
+When you read and write data to the AWS Snowball Edge device, you use the Amazon S3 adapter or the file interface\.
 
 ## Downloading and Installing the Snowball Edge Client<a name="download-client"></a>
 

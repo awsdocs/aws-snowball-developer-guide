@@ -9,5 +9,6 @@ With AWS OpsHub, you can use and manage AWS services on your Snow Family devices
 **Topics**
 + [Using Amazon EC2 compute instances locally](manage-ec2.md)
 + [Managing an Amazon EC2 cluster](manage-clusters.md)
-+ [Managing Amazon S3 storage](manage-s3.md)
++ [Set up Amazon S3 compatible storage on Snow Family devices using AWS OpsHub](s3-edge-snow-opshub.md)
++ [Managing Amazon S3 adapter storage](manage-s3.md)
 + [Using NFS file shares to manage file storage](manage-nfs.md)

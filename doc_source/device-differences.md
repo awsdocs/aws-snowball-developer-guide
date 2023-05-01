@@ -1,6 +1,6 @@
 # AWS Snowball Edge Device Differences<a name="device-differences"></a>
 
-This guide contains documentation for the Snowball Edge devices\. You can use these devices to move huge amounts of data into and out of Amazon S3\. You can order them using the [job management API](https://docs.aws.amazon.com/snowball/latest/api-reference/api-reference.html) or the [AWS Snow Family console](https://console.aws.amazon.com/importexport)\. For frequently asked questions and pricing information, see [AWS Snowball](https://aws.amazon.com/snowball-edge)\.
+This guide contains documentation for the Snowball Edge devices\. You can use these devices to move large amounts of data into and out of Amazon S3\. You can order them using the [job management API](https://docs.aws.amazon.com/snowball/latest/api-reference/api-reference.html) or the [AWS Snow Family console](https://console.aws.amazon.com/importexport)\. For frequently asked questions and pricing information, see [AWS Snowball](https://aws.amazon.com/snowball-edge)\.
 
 **Topics**
 + [Snowball Edge Device Options](#device-options)
@@ -71,9 +71,10 @@ The following outlines the different tools used with the Snow Family devices, an
 + Use the Snowball Edge client to unlock the Snowball Edge or the cluster of Snowball Edge devices\. For more information, see [Using the Snowball Edge Client](using-client.md)\.
 + The Snowball Edge client doesn't transfer data\.
 
-**Amazon S3 interface with Snowball Edge**
-+ Is already installed on the Snowball Edge by default\. It does not need to be downloaded or installed\.
-+ Can transfer data to or from the Snowball Edge\. For more information, see [Transferring Files Using the Amazon S3 Interface](using-adapter.md)\.
+**Amazon S3 adapter with Snowball Edge**
++ Use the Amazon S3 adapter for data transfer\. For edge compute operations, use Amazon S3 compatible storage on Snow Family devices\. See [Amazon S3 compatible storage on Snow Family devices](https://docs.aws.amazon.com/snowball/latest/developer-guide/s3compatible-on-snow.html)\.
++ Is already installed on the Snowball Edge by default for export or import jobs\. It does not need to be downloaded or installed\.
++ Can transfer data to or from the Snowball Edge\. For more information, see [Transferring files using the Amazon S3 adapter for data migration](using-adapter.md)\.
 + Encrypts data on the Snowball Edge while the data is transferred to the device\.
 
 **File interface with Snowball Edge**

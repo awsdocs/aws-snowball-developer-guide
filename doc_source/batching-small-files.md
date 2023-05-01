@@ -1,4 +1,4 @@
-# Batching Small Files<a name="batching-small-files"></a>
+# Batching small files<a name="batching-small-files"></a>
 
 Each copy operation has some overhead because of encryption\. To speed up the process of transferring small files to your AWS Snowball Edge device, you can batch them together in a single archive\. When you batch files together, they can be auto\-extracted when they are imported into Amazon S3, if they were batched in one of the supported archive formats\.
 
